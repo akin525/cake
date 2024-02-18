@@ -203,37 +203,9 @@
                         <!-- Payment Method Start -->
                         <div class="checkout-box">
                             <h4 class="mb-4">Payment Method</h4>
-                            <div class="checkout-payment-method">
-                                <div class="single-method form-check">
-                                    <input class="form-check-input" type="radio" id="payment_check" name="payment-method" checked>
-                                    <label class="form-check-label" for="payment_check">Check Payment</label>
-                                    <p>Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
-                                </div>
-
-                                <div class="single-method form-check">
-                                    <input class="form-check-input" type="radio" id="payment_bank" name="payment-method">
-                                    <label class="form-check-label" for="payment_bank">Direct Bank Transfer</label>
-                                    <p>Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
-                                </div>
-
-                                <div class="single-method form-check">
-                                    <input class="form-check-input" type="radio" id="payment_cash" name="payment-method">
-                                    <label class="form-check-label" for="payment_cash">Cash on Delivery</label>
-                                    <p>Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
-                                </div>
-
-                                <div class="single-method form-check">
-                                    <input class="form-check-input" type="radio" id="payment_card" name="payment-method">
-                                    <label class="form-check-label" for="payment_card">Card Payment</label>
-                                    <p>Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
-                                </div>
-
-                                <div class="single-method form-check">
-                                    <input class="form-check-input" type="checkbox" id="accept_terms">
-                                    <label class="form-check-label" for="accept_terms">I’ve read and accept the terms &amp; conditions</label>
-                                </div>
-                            </div>
-                            <button class="btn btn-dark btn-primary-hover rounded-0 mt-6" onclick="processPayment()">Place order</button>
+                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Direct Bank Transfer</a>
+                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Cash on Delivery</a>
+                            <button class="btn btn-dark btn-primary-hover rounded-0 mt-6" onclick="processPayment()">Pay With Card</button>
                         </div>
                         <!-- Payment Method End -->
 
