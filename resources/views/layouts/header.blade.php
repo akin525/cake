@@ -158,13 +158,23 @@
             <li>
                 <a href="{{url('/')}}" class="menu-item-link active"><span>Home</span></a>
             </li>
-            <li class="position-static">
-                <a class="menu-item-link" href="#"><span>Cakes</span></a>
+
+            <li>
+                <a href="{{route('cakes')}}" class="menu-item-link active"><span>Cakes</span></a>
+                <ul class="sub-menu">
+                    @isset($category)
+                        @forelse($category as $cat)
+                            <li><a class="sub-item-link" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
+                        @empty
+                            <li><a class="sub-item-link" href="#"><span>Add Category</span></a></li>
+                        @endforelse
+                    @endisset
+                </ul>
             </li>
             <li class="position-static">
                 <a class="menu-item-link" href="{{route('about')}}"><span>About-Us</span></a>
             </li>
-            <li><a class="menu-item-link" href="contact.html"><span>Contact</span></a></li>
+            <li><a class="menu-item-link" href="#"><span>Contact</span></a></li>
         </ul>
         <ul class="hotline-wrapper offcanvas-hotline">
             <li>
