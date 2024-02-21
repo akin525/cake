@@ -87,29 +87,23 @@
 
                 </div>
                 <div class="col-lg-6">
-
                     <!-- Product Summery Start -->
                     <div class="product-summery position-relative">
-
                         <!-- Product Head Start -->
                         <div class="product-head mb-3">
-
                             <!-- Price Start -->
-                            <span class="product-head-price">₦{{number_format(intval($product->price *1))}}</span>
+                            <span class="product-head-price">₦{{ number_format(intval($product->price * 1)) }}</span>
                             <!-- Price End -->
-
                             <!-- Rating Start -->
                             <div class="review-rating">
-                                <span class="review-rating-bg">
-                                    <span class="review-rating-active" style="width: 90%"></span>
-                                </span>
+                <span class="review-rating-bg">
+                    <span class="review-rating-active" style="width: 90%"></span>
+                </span>
                                 <a href="#/" class="review-rating-text">(1 Review)</a>
                             </div>
                             <!-- Rating End -->
-
                         </div>
                         <!-- Product Head End -->
-
                         <!-- Description Start -->
                         <p class="desc-content">{!! $product->description !!}</p>
                         <!-- Description End -->
@@ -117,7 +111,7 @@
                             <label for="colorBy">Color</label>
                             <div class="select-wrapper">
                                 <select name="color" id="colorBy">
-                                    <option value="manual">Chose an option</option>
+                                    <option value="manual">Choose an option</option>
                                     <option value="blue">Blue</option>
                                     <option value="red">Red</option>
                                     <option value="green">Green</option>
@@ -125,42 +119,69 @@
                                     <option value="yellow">Yellow</option>
                                 </select>
                             </div>
-                        </div><div class="product-color mb-2">
-                            <label for="colorBy">Flavour</label>
+                        </div>
+                        <div class="product-color mb-2">
+                            <label for="flavourBy">Flavour</label>
                             <div class="select-wrapper">
-                                <select name="Flavour" id="colorBy">
-                                    <option value="manual">Chose an option</option>
-                                    <option value="blue">Vanilla Only</option>
-                                    <option value="red">Chocolate Only</option>
-                                    <option value="green">Vanilla & Chogolate</option>
-                                    <option value="black">Vetuer Only</option>
-                                    <option value="yellow">Red Vetuer & Chocolate</option>
-                                    <option value="yellow">Vanilla & Red Vetuer</option>
+                                <select name="flavour" id="flavourBy">
+                                    <option value="manual">Choose an option</option>
+                                    <option value="vanilla">Vanilla Only</option>
+                                    <option value="chocolate">Chocolate Only</option>
+                                    <option value="vanilla_chocolate">Vanilla & Chocolate</option>
+                                    <option value="vetuer">Vetuer Only</option>
+                                    <option value="red_vetuer_chocolate">Red Vetuer & Chocolate</option>
+                                    <option value="vanilla_red_vetuer">Vanilla & Red Vetuer</option>
                                 </select>
                             </div>
                         </div>
                         <div class="product-color mb-2">
-                            <label >Text to Appear on the Cake</label>
-                            <input type="text" name="message" class="form-control" />
+                            <label for="topperBy">Topper</label>
+                            <div class="select-wrapper">
+                                <select name="topper" id="topperBy">
+                                    <option value="none">No Topper</option>
+                                    <option value="select">Select a Topper</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="product-color mb-2" id="topperTextSection" style="display: none;">
+                            <label for="topperText">Topper Text</label>
+                            <input type="text" name="topperText" id="topperText" class="form-control" />
+                        </div>
+{{--                        <div class="product-color mb-2">--}}
+{{--                            <label for="cakeMessage">Text to Appear on the Cake</label>--}}
+{{--                            <input type="text" name="cakeMessage" id="cakeMessage" class="form-control" />--}}
+{{--                        </div>--}}
+                        <div class="product-color mb-2">
+                            <label for="ekoCakesCard">Eko Cakes Card</label>
+                            <div class="select-wrapper">
+                                <select name="ekoCakesCard" id="ekoCakesCard">
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="product-color mb-2" id="ekoCakesMessageSection" style="display: none;">
+                            <label for="ekoCakesMessage">Eko Cakes Card Message</label>
+                            <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="form-control" />
                         </div>
                         <div class="product-size mb-5">
                             <label for="sizeBy">Size</label>
                             <div class="select-wrapper">
                                 <select name="size" id="sizeBy">
-                                    <option value="manual">Chose an option</option>
+                                    <option value="manual">Choose an option</option>
                                     <option value="large">Large</option>
                                     <option value="medium">Medium</option>
                                     <option value="small">Small</option>
                                 </select>
                             </div>
-                        </div> <div class="product-size mb-5">
-                            <label for="sizeBy">Layers</label>
+                        </div>
+                        <div class="product-size mb-5">
+                            <label for="layersBy">Layers</label>
                             <div class="select-wrapper">
-                                <select name="size" id="sizeBy">
-                                    <option value="manual">Chose an option</option>
-                                    <option value="large">Layer 1</option>
-                                    <option value="medium">Layer 2</option>
-                                    <option value="small">Layer 3</option>
+                                <select name="layers" id="layersBy">
+                                    <option value="1">Layer 1</option>
+                                    <option value="2">Layer 2</option>
+                                    <option value="3">Layer 3</option>
                                 </select>
                             </div>
                         </div>
@@ -196,7 +217,6 @@
                             </li>
                         </ul>
                         <!-- Product Quantity, Cart Button, Wishlist and Compare End -->
-
                         <!-- Product Meta Start -->
                         <ul class="product-meta">
                             <li class="product-meta-wrapper">
@@ -206,19 +226,18 @@
                             <li class="product-meta-wrapper">
                                 <span class="product-meta-name">category:</span>
                                 <span class="product-meta-detail">
-                                    <a href="#">Cake, </a>
-                                    <a href="#">New</a>
-                                </span>
+                    <a href="#">Cake, </a>
+                    <a href="#">New</a>
+                </span>
                             </li>
                             <li class="product-meta-wrapper">
                                 <span class="product-meta-name">Tags:</span>
                                 <span class="product-meta-detail">
-                                    <a href="#">Cake 1</a>
-                                </span>
+                    <a href="#">Cake 1</a>
+                </span>
                             </li>
                         </ul>
                         <!-- Product Meta End -->
-
                         <!-- Product Shear Start -->
                         <div class="product-share">
                             <a href="#"><i class="lastudioicon-b-facebook"></i></a>
@@ -227,10 +246,8 @@
                             <a href="#"><i class="lastudioicon-b-instagram"></i></a>
                         </div>
                         <!-- Product Shear End -->
-
                     </div>
                     <!-- Product Summery End -->
-
                 </div>
             </div>
 
@@ -467,5 +484,67 @@
             });
         });
     </script>
+        <script>
+            $(document).ready(function () {
+                // Function to update flavor options based on selected layers
+                function updateFlavourOptions() {
+                    const selectedLayers = parseInt($('#layersBy').val());
+
+                    // Disable all options first
+                    $('#flavourBy option').prop('disabled', true);
+
+                    // Enable options based on selected layers
+                    if (selectedLayers === 1) {
+                        $('#flavourBy option[value="vanilla"]').prop('disabled', false);
+                        $('#flavourBy option[value="chocolate"]').prop('disabled', false);
+                    } else if (selectedLayers === 2) {
+                        $('#flavourBy option[value="vanilla_chocolate"]').prop('disabled', false);
+                        $('#flavourBy option[value="vetuer"]').prop('disabled', false);
+                    } else if (selectedLayers === 3) {
+                        $('#flavourBy option[value="red_vetuer_chocolate"]').prop('disabled', false);
+                        $('#flavourBy option[value="vanilla_red_vetuer"]').prop('disabled', false);
+                    }
+                }
+
+                // Function to handle visibility of topper text input based on selected topper option
+                function handleTopperVisibility() {
+                    const selectedTopper = $('#topperBy').val();
+                    if (selectedTopper === 'select') {
+                        $('#topperTextSection').show();
+                    } else {
+                        $('#topperTextSection').hide();
+                        $('#topperText').val(''); // Clear the text input when not visible
+                    }
+                }
+
+                // Function to handle visibility of Eko Cakes card message input based on selected option
+                function handleEkoCakesCard() {
+                    const selectedOption = $('#ekoCakesCard').val();
+                    if (selectedOption === 'yes') {
+                        $('#ekoCakesMessageSection').show();
+                    } else {
+                        $('#ekoCakesMessageSection').hide();
+                        $('#ekoCakesMessage').val(''); // Clear the text input when not visible
+                    }
+                }
+
+                // Event listeners to call the functions when the user makes selections
+                $('#layersBy').on('change', function () {
+                    updateFlavourOptions();
+                });
+                $('#topperBy').on('change', function () {
+                    handleTopperVisibility();
+                });
+                $('#ekoCakesCard').on('change', function () {
+                    handleEkoCakesCard();
+                });
+
+                // Initial call to update flavor options, handle topper visibility, and handle Eko Cakes card visibility
+                updateFlavourOptions();
+                handleTopperVisibility();
+                handleEkoCakesCard();
+            });
+        </script>
+
 
 @endsection

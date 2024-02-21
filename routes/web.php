@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\ProductsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -53,6 +55,37 @@ Route::get('/cat/{filename}', function ($filename) {
     $response->header("Content-Type", $type);
     return $response;
 })->name('cat');
+Route::get('/cover/{filename}', function ($filename) {
+    $path = storage_path('app/cover/' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+    return $response;
+})->name('cover');
+
+Route::get('admin/login', [AuthController::class, 'loginadmin'])->name('admin/login');
+Route::post('admin/auth', [AuthController::class, 'authloginadmiin'])->name('admin/auth');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin/dashboard', [AuthController::class, 'dashboardadmin'])->name('admin/dashboard');
 
 
-require __DIR__.'/auth.php';
+    Route::get('admin/allproduct', [AuthController::class, 'allproduct'])->name('admin/allproduct');
+    Route::get('admin/addproduct', [ProductsController::class, 'addproductindex'])->name('admin/addproduct');
+    Route::get('admin/addproduct1', [ProductsController::class, 'addproductindex1'])->name('admin/addproduct1');
+    Route::post('admin/addproducts', [ProductsController::class, 'addproduct'])->name('admin/addproducts');
+    Route::post('admin/addproducts1', [ProductsController::class, 'addproduct1'])->name('admin/addproducts1');
+
+    Route::get('admin/editproduct/{id}', [ProductsController::class, 'editproduct'])->name('admin/editproduct');
+    Route::post('admin/updateproduct', [ProductsController::class, 'updateproduct'])->name('admin/updateproduct');
+
+    Route::get('admin/category', [AuthController::class, 'category'])->name('admin/category');
+
+});
+    require __DIR__.'/auth.php';
