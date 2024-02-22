@@ -1,47 +1,60 @@
 @extends('layouts.header')
 @section('tittle', 'Home')
 @section('content')
-    <div class="slider-section slider-active overflow-hidden">
-        <div class="swiper">
-            <div class="swiper-wrapper">
+    <!-- Slider Section Strat -->
+    <div class="custom-container-three container-fluid">
+        <div class="container-three-inner">
+            <div class="slider-section slider-active overflow-hidden">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
 
-                <!-- Single Slider Start -->
-                <div class="swiper-slide single-slider animation-style-01" style="background-image: url(assets/images/slider/slider-01.jpg);">
-                    <div class="container">
-
-                        <!-- Slider Content Start -->
-                        <div class="slider-content text-center mx-auto">
-                            <img class="slider-content__shape" width="95" height="108" src="assets/images/slider/shape-01.png" alt="Shape">
-                            <h1 class="slider-content__title text-white">Bring The Best Experience </h1>
-                            <a class="slider-content__btn btn btn-primary btn-hover-black" href="{{route('cakes')}}">Order Now </a>
+                        <!-- Single Slider Start -->
+                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(assets/images/slider/slider-5-1.jpg);">
+                            <!-- Slider Content Start -->
+                            <div class="slider-content-05">
+                                <h1 class="slider-content-05__title">Sweet classics.</h1>
+                                <span class="slider-content-05__subtitle">Génial</span>
+                                <a class="slider-content-05__btn btn slider-btn-01" href="{{route('cakes')}}">Shop Now</a>
+                            </div>
+                            <!-- Slider Content Start -->
                         </div>
-                        <!-- Slider Content Start -->
+                        <!-- Single Slider End -->
+
+                        <!-- Single Slider Start -->
+                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(assets/images/slider/slider-5-2.jpg);">
+                            <!-- Slider Content Start -->
+                            <div class="slider-content-05">
+                                <h1 class="slider-content-05__title">Eat it instead.</h1>
+                                <span class="slider-content-05__subtitle">Génial</span>
+                                <a class="slider-content-05__btn btn slider-btn-01" href="{{route('cakes')}}">Shop Now</a>
+                            </div>
+                            <!-- Slider Content Start -->
+                        </div>
+                        <!-- Single Slider End -->
+
+                        <!-- Single Slider Start -->
+                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(assets/images/slider/slider-5-3.jpg);">
+                            <!-- Slider Content Start -->
+                            <div class="slider-content-05">
+                                <h1 class="slider-content-05__title">Let’s Get Baked!</h1>
+                                <span class="slider-content-05__subtitle">Génial</span>
+                                <a class="slider-content-05__btn btn slider-btn-01" href="shop.html">Shop Now</a>
+                            </div>
+                            <!-- Slider Content Start -->
+                        </div>
+                        <!-- Single Slider End -->
 
                     </div>
-                </div>
-                <!-- Single Slider End -->
-
-                <!-- Single Slider Start -->
-                <div class="swiper-slide single-slider animation-style-01" style="background-image: url(assets/images/slider/slider-02.jpg);">
-                    <div class="container">
-
-                        <!-- Slider Content Start -->
-                        <div class="slider-content text-center custom-ms-01">
-                            <img class="slider-content__shape" width="95" height="62" src="assets/images/slider/shape-02.png" alt="Shape">
-                            <h1 class="slider-content__title text-white">Taste That Lasts Forever </h1>
-                            <a class="slider-content__btn btn btn-primary btn-hover-black" href="{{route('cakes')}}">Order Now </a>
-                        </div>
-                        <!-- Slider Content Start -->
-
+                    <div class="slider-arrow-two">
+                        <div class="swiper-button-next"><i class="lastudioicon-left-arrow"></i></div>
+                        <div class="swiper-button-prev"><i class="lastudioicon-right-arrow"></i></div>
                     </div>
                 </div>
-                <!-- Single Slider End -->
-
             </div>
-            <div class="swiper-pagination"></div>
         </div>
     </div>
     <!-- Slider Section End -->
+
     <!-- Brand Section Strat -->
     <div class="brand-section">
         <div class="container custom-container">
@@ -114,9 +127,9 @@
                             </a>
                             <ul class="product-item__meta meta-middle">
                                 <li class="product-item__meta-action"><a class="labtn-icon-quickview" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick View" data-product-id="{{$pro['id']}}" data-bs-toggle="modal" data-bs-target="#quickViewModal{{$pro['id']}}"></a></li>
-                                <li class="product-item__meta-action"><a class="labtn-icon-cart" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Select options" data-bs-toggle="modal" data-product-id="{{$pro['id']}}" data-bs-target="#modalCart1{{$pro['id']}}"></a></li>
-                                <li class="product-item__meta-action"><a class="labtn-icon-wishlist" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to wishlist" data-bs-toggle="modal" data-bs-target="#modalWishlist"></a></li>
-                                <li class="product-item__meta-action"><a class="labtn-icon-compare" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to compare" data-bs-toggle="modal" data-bs-target="#modalCompare"></a></li>
+{{--                                <li class="product-item__meta-action"><a class="labtn-icon-cart" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Select options" data-bs-toggle="modal" data-product-id="{{$pro['id']}}" data-bs-target="#modalCart1{{$pro['id']}}"></a></li>--}}
+{{--                                <li class="product-item__meta-action"><a class="labtn-icon-wishlist" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to wishlist" data-bs-toggle="modal" data-bs-target="#modalWishlist"></a></li>--}}
+{{--                                <li class="product-item__meta-action"><a class="labtn-icon-compare" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to compare" data-bs-toggle="modal" data-bs-target="#modalCompare"></a></li>--}}
                             </ul>
                         </div>
                         <div class="product-item__content px-0 pt-9 pb-4 px-0">
@@ -447,67 +460,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="product-color mb-2">
-                                                    <label for="flavourBy">Flavour</label>
-                                                    <div class="select-wrapper">
-                                                        <select name="flavour" id="flavourBy">
-                                                            <option value="manual">Choose an option</option>
-                                                            <option value="vanilla">Vanilla Only</option>
-                                                            <option value="chocolate">Chocolate Only</option>
-                                                            <option value="vanilla_chocolate">Vanilla & Chocolate</option>
-                                                            <option value="vetuer">Vetuer Only</option>
-                                                            <option value="red_vetuer_chocolate">Red Vetuer & Chocolate</option>
-                                                            <option value="vanilla_red_vetuer">Vanilla & Red Vetuer</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="product-color mb-2" id="topperSection">
-                                                    <label for="topperBy">Topper</label>
-                                                    <div class="select-wrapper">
-                                                        <select name="topper" id="topperBy">
-                                                            <option value="none">No Topper</option>
-                                                            <option value="select">Select a Topper</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="product-color mb-2" id="topperTextSection" style="display: none;">
-                                                    <label for="topperText">Topper Text</label>
-                                                    <input type="text" name="topperText" id="topperText" class="form-control" />
-                                                </div>
-                                                <div class="product-color mb-2" id="ekoCakesSection">
-                                                    <label for="ekoCakesCard">Eko Cakes Card</label>
-                                                    <div class="select-wrapper">
-                                                        <select name="ekoCakesCard" id="ekoCakesCard">
-                                                            <option value="no">No</option>
-                                                            <option value="yes">Yes</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="product-color mb-2" id="ekoCakesMessageSection" style="display: none;">
-                                                    <label for="ekoCakesMessage">Eko Cakes Card Message</label>
-                                                    <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="form-control" />
-                                                </div>
-                                                <div class="product-size mb-5">
-                                                    <label for="sizeBy">Size</label>
-                                                    <div class="select-wrapper">
-                                                        <select name="size" id="sizeBy">
-                                                            <option value="manual">Choose an option</option>
-                                                            <option value="large">Large</option>
-                                                            <option value="medium">Medium</option>
-                                                            <option value="small">Small</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="product-size mb-5">
-                                                    <label for="layersBy">Layers</label>
-                                                    <div class="select-wrapper">
-                                                        <select name="layers" id="layersBy">
-                                                            <option value="1">Layer 1</option>
-                                                            <option value="2">Layer 2</option>
-                                                            <option value="3">Layer 3</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+
                                                 <ul class="product-cta">
                                                     <li>
                                                         <div class="quantity">
@@ -517,7 +470,7 @@
                                                     <li>
                                                         <div class="cart-btn">
                                                             <div class="add-to_cart">
-                                                                <a class="btn btn-dark btn-hover-primary" href="/addcart1/${response.id}" >Add to cart</a>
+                                                                <a class="btn btn-dark btn-hover-primary" href="/cakedetail/${response.id}" >Add More Option</a>
                                                             </div>
                                                         </div>
                                                     </li>

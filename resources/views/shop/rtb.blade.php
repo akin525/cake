@@ -1,28 +1,28 @@
 @extends('layouts.header')
-@section('tittle', 'All-Cake')
+@section('tittle', 'Ready To Go Cakes')
 @section('content')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <script>
-            window.onload = function() {
-                setTimeout(function() {
-                    {{--var username = @json(Auth::user()->username);--}}
-                    var message = "Dear Ekosians. please note a minimum of 24 hours is required for all categories except the Ready to Go category. Cakes under the Ready to go Category can be available between 1-6 hours after order is placed";
+{{--    <script>--}}
+{{--        window.onload = function() {--}}
+{{--            setTimeout(function() {--}}
+{{--                --}}{{--var username = @json(Auth::user()->username);--}}
+{{--                var message = "Dear Ekosians. please note a minimum of 24 hours is required for all categories except the Ready to Go category. Cakes under the Ready to go Category can be available between 1-6 hours after order is placed";--}}
 
-                    Swal.fire({
-                        title: 'Note:',
-                        html: message,
-                        icon: 'info'
-                    });
-                }, 1000);
-            };
-        </script>
+{{--                Swal.fire({--}}
+{{--                    title: 'Note:',--}}
+{{--                    html: message,--}}
+{{--                    icon: 'info'--}}
+{{--                });--}}
+{{--            }, 1000);--}}
+{{--        };--}}
+{{--    </script>--}}
     <!-- Breadcrumb Section Start -->
     <div class="breadcrumb" data-bg-image="{{asset('assets/images/bg/breadcrumb-bg.jpg')}}">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="breadcrumb_title">All Cake</h1>
+                        <h1 class="breadcrumb_title">READY TO GO CAKES</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{route('home')}}">Home</a></li>
                             <li>Cakes</li>
@@ -33,9 +33,9 @@
         </div>
     </div>
     <!-- Breadcrumb Section End -->
-    <marquee><b>
-            Dear Ekosians. please note a minimum of 24 hours is required for all categories except the Ready to Go category. Cakes under the Ready to go Category can be available between 1-6 hours after order is placed
-        </b></marquee>
+{{--<marquee><b>--}}
+{{--        Dear Ekosians. please note a minimum of 24 hours is required for all categories except the Ready to Go category. Cakes under the Ready to go Category can be available between 1-6 hours after order is placed--}}
+{{--    </b></marquee>--}}
     <!-- Product Section Start -->
     <div class="shop-product-section sidebar-right overflow-hidden">
         <div class="container">
@@ -44,34 +44,34 @@
 
                     <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-sm-2 row-cols-1 mb-n50">
                         @forelse($product as $pro)
-                        <div class="col mb-50">
-                            <!-- Product Item Start -->
-                            <div class="product-item text-center">
-                                <div class="product-item__badge">Hot</div>
-                                <div class="product-item__image border w-100">
-                                    <a href="#"><img width="350" height="350" src="{{$pro['image']}}" alt="Product"></a>
-                                    <ul class="product-item__meta">
-                                        <li class="product-item__meta-action">
-                                            <a class="shadow-1 labtn-icon-quickview" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick View" data-product-id="{{$pro['id']}}" data-bs-toggle="modal" data-bs-target="#quickViewModal{{$pro['id']}}"></a>
-                                        </li>
-{{--                                        <li class="product-item__meta-action">--}}
-{{--                                            <a class="shadow-1 labtn-icon-cart" href="{{route('addcart1', $pro['id'])}}"></a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="product-item__meta-action">--}}
-{{--                                            <a class="shadow-1 labtn-icon-wishlist" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to wishlist" data-bs-toggle="modal" data-bs-target="#modalWishlist"></a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="product-item__meta-action">--}}
-{{--                                            <a class="shadow-1 labtn-icon-compare" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to compare" data-bs-toggle="modal" data-bs-target="#modalCompare"></a>--}}
-{{--                                        </li>--}}
-                                    </ul>
+                            <div class="col mb-50">
+                                <!-- Product Item Start -->
+                                <div class="product-item text-center">
+                                    <div class="product-item__badge">Hot</div>
+                                    <div class="product-item__image border w-100">
+                                        <a href="#"><img width="350" height="350" src="{{$pro['image']}}" alt="Product"></a>
+                                        <ul class="product-item__meta">
+                                            <li class="product-item__meta-action">
+                                                <a class="shadow-1 labtn-icon-quickview" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick View" data-product-id="{{$pro['id']}}" data-bs-toggle="modal" data-bs-target="#quickViewModal{{$pro['id']}}"></a>
+                                            </li>
+                                            <li class="product-item__meta-action">
+                                                <a class="shadow-1 labtn-icon-cart" href="{{route('addcart1', $pro['id'])}}"></a>
+                                            </li>
+                                            {{--                                        <li class="product-item__meta-action">--}}
+                                            {{--                                            <a class="shadow-1 labtn-icon-wishlist" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to wishlist" data-bs-toggle="modal" data-bs-target="#modalWishlist"></a>--}}
+                                            {{--                                        </li>--}}
+                                            {{--                                        <li class="product-item__meta-action">--}}
+                                            {{--                                            <a class="shadow-1 labtn-icon-compare" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to compare" data-bs-toggle="modal" data-bs-target="#modalCompare"></a>--}}
+                                            {{--                                        </li>--}}
+                                        </ul>
+                                    </div>
+                                    <div class="product-item__content pt-5">
+                                        <h5 class="product-item__title"><a href="#">{{$pro['name']}}</a></h5>
+                                        <span class="product-item__price">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                    </div>
                                 </div>
-                                <div class="product-item__content pt-5">
-                                    <h5 class="product-item__title"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
-                                    <span class="product-item__price">₦{{number_format(intval($pro['price'] *1))}}</span>
-                                </div>
+                                <!-- Product Item End -->
                             </div>
-                            <!-- Product Item End -->
-                        </div>
                             <div class="quickview-product-modal modal fade" id="quickViewModal{{$pro['id']}}" tabindex="-1" aria-labelledby="quickViewModalLabel{{$pro['id']}}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered mw-100">
                                     <div class="container">
@@ -97,7 +97,6 @@
                     <div class="shop-bottombar">
                         <ul class="pagination">
                             {{$product->links()}}
-
                         </ul>
                     </div>
                     <!-- Shop bottom Bar End -->
@@ -289,13 +288,55 @@
                                                                 <option value="yellow">Yellow</option>
                                                             </select>
                                                         </div>
+                                                    </div><div class="product-color mb-2">
+                                                        <label for="colorBy">Flavour</label>
+                                                        <div class="select-wrapper">
+                                                            <select name="Flavour" id="colorBy">
+                                                                <option value="manual">Chose an option</option>
+                                                                <option value="blue">Vanilla Only</option>
+                                                                <option value="red">Chocolate Only</option>
+                                                                <option value="green">Vanilla & Chogolate</option>
+                                                                <option value="black">Vetuer Only</option>
+                                                                <option value="yellow">Red Vetuer & Chocolate</option>
+                                                                <option value="yellow">Vanilla & Red Vetuer</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-color mb-2">
+<label >Text to Appear on the Cake</label>
+<input type="text" name="message" class="form-control" />
+</div>
+                                                    <div class="product-size mb-5">
+                                                        <label for="sizeBy">Size</label>
+                                                        <div class="select-wrapper">
+                                                            <select name="size" id="sizeBy">
+                                                                <option value="manual">Chose an option</option>
+                                                                <option value="large">Large</option>
+                                                                <option value="medium">Medium</option>
+                                                                <option value="small">Small</option>
+                                                            </select>
+                                                        </div>
+                                                    </div> <div class="product-size mb-5">
+                                                        <label for="sizeBy">Layers</label>
+                                                        <div class="select-wrapper">
+                                                            <select name="size" id="sizeBy">
+                                                                <option value="manual">Chose an option</option>
+                                                                <option value="large">Layer 1</option>
+                                                                <option value="medium">Layer 2</option>
+                                                                <option value="small">Layer 3</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                     <ul class="product-cta">
-
+                                                        <li>
+                                                            <div class="quantity">
+                                                                <div class="cart-plus-minus"></div>
+                                                            </div>
+                                                        </li>
                                                         <li>
                                                             <div class="cart-btn">
                                                                 <div class="add-to_cart">
-                                                                    <a class="btn btn-dark btn-hover-primary" href="/cakedetail/${response.id}">Add More Option</a>
+                                                                    <a class="btn btn-dark btn-hover-primary" href="/addcart1/${response.id}">Add to cart</a>
                                                                 </div>
                                                             </div>
                                                         </li>

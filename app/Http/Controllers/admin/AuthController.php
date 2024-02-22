@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Orders;
 use App\Models\Payments;
 use App\Models\Products;
+use App\Models\Rtb;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -85,4 +86,5 @@ function authloginadmiin(Request $request)
 
      return view('admin.category', compact('category'));
  }
+
 }

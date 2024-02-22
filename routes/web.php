@@ -29,6 +29,7 @@ Route::get('cart', [HomeController::class, 'mycart'])->name('cart');
 Route::get('cancelcart/{id}', [CartController::class, 'removefromcart'])->name('cancelcart');
 Route::get('clearcart', [CartController::class, 'clearcart'])->name('clearcart');
 Route::get('category/{id}', [HomeController::class, 'category'])->name('category');
+Route::get('ready', [HomeController::class, 'loadrtb'])->name('ready');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

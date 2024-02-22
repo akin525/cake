@@ -15,7 +15,7 @@
     <!-- Font CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Handlee&amp;family=Inter:wght@300;400;500;600;700&amp;family=Comfortaa:wght@300;400;500;600;700&amp;family=Montaga&amp;family=Pacifico&amp;family=Fredericka+the+Great&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Yellowtail&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS (Bootstrap & Icon Font) -->
     <link rel="stylesheet" href="{{asset('assets/css/vendor/bootstrap.min.css')}}">
@@ -66,61 +66,129 @@
 </style>
 
 <!-- Header Start -->
-<div class="header-section header-transparent header-sticky">
-    <div class="container position-relative">
+{{--<div class="header-section header-transparent header-sticky">--}}
+{{--    <div class="container position-relative">--}}
 
-        <div class="row align-items-center">
-            <div class="col-lg-3 col-7">
-                <!-- Header Logo Start -->
-                <div class="header-logo">
-                    <a href="{{url('/')}}"><img src="{{asset('assets/images/eko.png')}}" width="100"  alt="Logo"></a>
-                </div>
-                <!-- Header Logo End -->
-            </div>
-            <div class="col-lg-6 d-none d-lg-block">
-                <!-- Header Menu Start -->
-                <div class="header-menu">
-                    <ul class="header-primary-menu header-primary-menu-03 d-flex justify-content-center">
-                        <li>
-                            <a href="{{url('/')}}" class="menu-item-link active"><span>Home</span></a>
-                        </li>
-                        <li>
-                            <a href="{{route('cakes')}}" class="menu-item-link active"><span>Cakes</span></a>
-                            <ul class="sub-menu">
-                                @isset($category)
-                                @forelse($category as $cat)
-                                <li><a class="sub-item-link" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
-                                @empty
-                                    <li><a class="sub-item-link" href="#"><span>Add Category</span></a></li>
-                                @endforelse
-                                @endisset
-                            </ul>
-                        </li>
+{{--        <div class="row align-items-center">--}}
+{{--            <div class="col-lg-3 col-7">--}}
+{{--                <!-- Header Logo Start -->--}}
+{{--                <div class="header-logo">--}}
+{{--                    <a href="{{url('/')}}"><img src="{{asset('assets/images/eko.png')}}" width="100"  alt="Logo"></a>--}}
+{{--                </div>--}}
+{{--                <!-- Header Logo End -->--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-6 d-none d-lg-block">--}}
+{{--                <!-- Header Menu Start -->--}}
+{{--                <div class="header-menu">--}}
+{{--                    <ul class="header-primary-menu header-primary-menu-03 d-flex justify-content-center">--}}
+{{--                        <li>--}}
+{{--                            <a href="{{url('/')}}" class="menu-item-link active"><span>Home</span></a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="{{route('cakes')}}" class="menu-item-link active"><span>Cakes</span></a>--}}
+{{--                            <ul class="sub-menu">--}}
+{{--                                @isset($category)--}}
+{{--                                @forelse($category as $cat)--}}
+{{--                                <li><a class="sub-item-link" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>--}}
+{{--                                @empty--}}
+{{--                                    <li><a class="sub-item-link" href="#"><span>Add Category</span></a></li>--}}
+{{--                                @endforelse--}}
+{{--                                @endisset--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
 
-                        <li class="position-static">
-                            <a class="menu-item-link active" href="{{route('about')}}"><span>About</span></a>
-                        </li>
-                        <li class="position-static">
-                            <a class="menu-item-link active" href="{{route('cart')}}"><span>Cart</span></a>
-                        </li>
-                        <li><a class="menu-item-link active" href="#"><span>Contact</span></a></li>
-                    </ul>
-                </div>
-                <!-- Header Menu End -->
-            </div>
-            <div class="col-lg-3 col-5">
-                <!-- Header Meta Start -->
-                <div class="header-meta">
-                    <ul class="header-meta__action d-flex justify-content-end">
-                        <li><button class="action search-open"><i class="lastudioicon-zoom-1"></i></button></li>
-                        <li><a class="action" href="{{route('cart')}}"><i class="lastudioicon-shopping-cart-2"></i></a></li>
+{{--                        <li class="position-static">--}}
+{{--                            <a class="menu-item-link active" href="{{route('about')}}"><span>About</span></a>--}}
+{{--                        </li>--}}
+{{--                        <li class="position-static">--}}
+{{--                            <a class="menu-item-link active" href="{{route('cart')}}"><span>Cart</span></a>--}}
+{{--                        </li>--}}
+{{--                        <li><a class="menu-item-link active" href="#"><span>Contact</span></a></li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--                <!-- Header Menu End -->--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-3 col-5">--}}
+{{--                <!-- Header Meta Start -->--}}
+{{--                <div class="header-meta">--}}
+{{--                    <ul class="header-meta__action d-flex justify-content-end">--}}
+{{--                        <li><button class="action search-open"><i class="lastudioicon-zoom-1"></i></button></li>--}}
+{{--                        <li><a class="action" href="{{route('cart')}}"><i class="lastudioicon-shopping-cart-2"></i></a></li>--}}
 
-                        {{--                        <li>--}}
+{{--                        --}}{{--                        <li>--}}
 {{--                            <button class="action" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart">--}}
 {{--                                <i class="lastudioicon-shopping-cart-2"></i>--}}
 {{--                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"></span>--}}
 {{--                            </button>--}}
 {{--                        </li>--}}
+{{--                        <li><a class="action" href="{{route('dashboard')}}"><i class="lastudioicon-single-01-2"></i></a></li>--}}
+{{--                        <li class="d-lg-none">--}}
+{{--                            <button class="action" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"><i class="lastudioicon-menu-8-1"></i></button>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--                <!-- Header Meta End -->--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+{{--    </div>--}}
+{{--</div>--}}
+<!-- Header End -->
+<!-- Header Start -->
+<div class="header-section header-sticky-05">
+    <div class="container custom-container-two position-relative">
+
+        <div class="headertop">
+            <div class="headertop-left">
+                <ul class="hotline-wrapper">
+                    <li>
+                        <div class="hotline">
+                            <i class="lastudioicon lastudioicon-support248"></i>
+                            <div class="hotline-content">
+                                <span class="hotline-text">Hotline</span>
+                                <a class="hotline-link" href="tel:08162300183">08162300183</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hotline">
+                            <i class="lastudioicon lastudioicon-pin-check"></i>
+                            <div class="hotline-content">
+                                <span class="hotline-text">Location</span>
+                                <a class="hotline-link" href="#/"> Gbagada 100234 Lagos</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="headertop-center">
+                <!-- Header Logo Start -->
+                <div class="header-logo">
+                    <a href="{{url('/')}}"><img src="{{asset('assets/images/eko.png')}}" width="100" alt="Logo"></a>
+                </div>
+                <!-- Header Logo End -->
+            </div>
+            <div class="headertop-right">
+                <!-- Header Meta Start -->
+                <div class="header-meta">
+                    <ul class="header-meta__action header-meta__action-02 d-flex justify-content-end">
+                        <li class="d-sm-block d-none">
+                            <form action="#" class="search-form">
+                                <input type="search" class="search-form-field" placeholder="Search Product...">
+                                <button class="search-form-btn"><i class="lastudioicon-zoom-1"></i></button>
+                            </form>
+                        </li>
+                        <li class="d-block d-sm-none">
+                            <button class="action search-open">
+                                <i class="lastudioicon-zoom-1"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <a href="{{route('cart')}}" class="action" >
+                                <i class="lastudioicon-shopping-cart-2"></i>
+{{--                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">3</span>--}}
+                            </a>
+                        </li>
                         <li><a class="action" href="{{route('dashboard')}}"><i class="lastudioicon-single-01-2"></i></a></li>
                         <li class="d-lg-none">
                             <button class="action" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"><i class="lastudioicon-menu-8-1"></i></button>
@@ -131,9 +199,60 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-12">
+                <!-- Header Menu Start -->
+                <div class="header-menu d-none d-lg-block">
+                    <ul class="header-primary-menu header-primary-menu-05 d-flex justify-content-center">
+                        <li>
+                            <a href="{{url('/')}}" class="menu-item-link active"><span>Home</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="menu-item-link active"><span>Cakes</span></a>
+                                                    <ul class="sub-menu">
+                                                        <li><a class="sub-item-link" href="{{route('cakes')}}"><span>All Cake</span></a></li>
+                                                    @isset($category)
+                                                        @forelse($category as $cat)
+                                                        <li><a class="sub-item-link" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
+                                                        @empty
+                                                            <li><a class="sub-item-link" href="#"><span>Add Category</span></a></li>
+                                                        @endforelse
+                                                        @endisset
+                                                    </ul>
+                                                </li>
+
+                                                <li class="position-static">
+                                                    <a class="menu-item-link active" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>
+                                                </li>
+                                                <li class="position-static">
+                                                    <a class="menu-item-link active" href="{{route('about')}}"><span>About</span></a>
+                                                </li>
+                                                <li class="position-static">
+                                                    <a class="menu-item-link active" href="{{route('cart')}}"><span>Cart</span></a>
+                                                </li>
+                                                <li><a class="menu-item-link active" href="#"><span>Contact</span></a></li>
+                    </ul>
+                </div>
+                <!-- Header Menu End -->
+            </div>
+        </div>
+
     </div>
 </div>
 <!-- Header End -->
+
+
+<!-- Search Start  -->
+<div class="search-popup position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-6 bg-black bg-opacity-75">
+    <div class="search-popup__form position-relative">
+        <form action="#">
+            <input class="search-popup__field border-0 border-bottom bg-transparent text-white w-100 tra py-3" type="text" placeholder="Search…">
+            <button class="search-popup__icon text-white border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y"><i class="lastudioicon-zoom-1"></i></button>
+        </form>
+    </div>
+    <button class="search-popup__close position-absolute top-0 end-0 m-8 p-3 lh-1 border-0 text-white fs-4"><i class="lastudioicon-e-remove"></i></button>
+</div>
+<!-- Search End -->
 
 
 <!-- Search Start  -->
@@ -160,9 +279,10 @@
             </li>
 
             <li>
-                <a href="{{route('cakes')}}" class="menu-item-link active"><span>Cakes</span></a>
+                <a href="#" class="menu-item-link active"><span>Cakes</span></a>
                 <ul class="sub-menu">
-                    @isset($category)
+                    <li><a class="sub-item-link" href="{{route('cakes')}}"><span>All Cake</span></a></li>
+                @isset($category)
                         @forelse($category as $cat)
                             <li><a class="sub-item-link" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
                         @empty
@@ -172,8 +292,12 @@
                 </ul>
             </li>
             <li class="position-static">
+                <a class="menu-item-link active" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>
+            </li>
+            <li class="position-static">
                 <a class="menu-item-link" href="{{route('about')}}"><span>About-Us</span></a>
             </li>
+
             <li><a class="menu-item-link" href="#"><span>Contact</span></a></li>
         </ul>
         <ul class="hotline-wrapper offcanvas-hotline">

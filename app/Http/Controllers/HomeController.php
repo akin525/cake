@@ -8,6 +8,7 @@ use App\Models\Categories;
 use App\Models\Cheff;
 use App\Models\Orders;
 use App\Models\Products;
+use App\Models\Rtb;
 use App\Models\Settings;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -249,4 +250,10 @@ function dashboard()
     $order=Orders::where('user_id', Auth::user()->id)->get();
     return view('dashboard', compact('address', 'cart', 'order'));
 }
+    function loadrtb()
+    {
+        $product= Rtb::orderBy('id', 'DESC')->paginate('9');
+        $category=Categories::all();
+        return view('shop.rtb', compact('product', 'category'));
+    }
 }
