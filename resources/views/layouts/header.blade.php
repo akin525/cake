@@ -78,7 +78,7 @@
     }
 </style>
 
-<!-- Header Start -->
+{{--<!-- Header Start -->--}}
 {{--<div class="header-section header-transparent header-sticky">--}}
 {{--    <div class="container position-relative">--}}
 
@@ -128,7 +128,7 @@
 {{--                        <li><button class="action search-open"><i class="lastudioicon-zoom-1"></i></button></li>--}}
 {{--                        <li><a class="action" href="{{route('cart')}}"><i class="lastudioicon-shopping-cart-2"></i></a></li>--}}
 
-{{--                        --}}{{--                        <li>--}}
+{{--                        --}}{{----}}{{--                        <li>--}}
 {{--                            <button class="action" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart">--}}
 {{--                                <i class="lastudioicon-shopping-cart-2"></i>--}}
 {{--                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"></span>--}}

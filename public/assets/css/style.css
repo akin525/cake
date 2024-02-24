@@ -301,7 +301,7 @@ textarea.form-field:focus {
   }
 }
 .custom-container-three .container-three-inner {
-  max-width: 1640px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
@@ -3402,14 +3402,14 @@ textarea.form-control {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .single-slider-05 {
-    padding-top: 40px;
+    padding-top: 30px;
     height: 500px;
   }
 }
 @media only screen and (max-width: 767px) {
   .single-slider-05 {
     padding-top: 40px;
-    height: 400px;
+    height: 500px;
   }
 }
 @media only screen and (max-width: 479px) {
