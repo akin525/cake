@@ -21,7 +21,7 @@
                         <!-- Single Slider End -->
 
                         <!-- Single Slider Start -->
-                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);">
+                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat;">
                             <!-- Slider Content Start -->
                             <div class="slider-content-05">
 {{--                                <h1 class="slider-content-05__title">Eat it instead.</h1>--}}
@@ -33,7 +33,7 @@
                         <!-- Single Slider End -->
 
                         <!-- Single Slider Start -->
-                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);">
+                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat;">
                             <!-- Slider Content Start -->
                             <div class="slider-content-05">
 {{--                                <h1 class="slider-content-05__title">Let’s Get Baked!</h1>--}}
