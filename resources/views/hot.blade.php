@@ -63,7 +63,7 @@
         </div>
         <div class="boxbanner-wrapper order-1">
             <!-- Ad Banner Start -->
-            <a href="{{route('cakes')}}" class="boxbanner-bg boxbanner" data-bg-image="{{asset('assets/images/banner/add-banner-two.jpg')}}">
+            <a href="{{route('cakes')}}" class="boxbanner-bg boxbanner" data-bg-image="{{asset('ca.jpeg')}}">
                 <div class="boxbanner-two">
                     <span class="boxbanner-title">a new cookie</span>
                     <span class="boxbanner-discount-two">from Eko-Cake</span>
