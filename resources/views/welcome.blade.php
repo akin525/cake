@@ -14,7 +14,7 @@
                             <div class="slider-content-05">
 {{--                                <h1 class="slider-content-05__title">Sweet classics.</h1>--}}
 {{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
-                                <a class="slider-content-05__btn btn slider-btn-01" href="{{route('cakes')}}">Shop Now</a>
+                                <a class="slider-content-05__btn btn slider-btn-01" style="background-color: white" href="{{route('cakes')}}">Shop Now</a>
                             </div>
                             <!-- Slider Content Start -->
                         </div>
@@ -26,7 +26,7 @@
                             <div class="slider-content-05">
 {{--                                <h1 class="slider-content-05__title">Eat it instead.</h1>--}}
 {{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
-                                <a class="slider-content-05__btn btn slider-btn-01" href="{{route('cakes')}}">Shop Now</a>
+                                <a class="slider-content-05__btn btn slider-btn-01 " style="background-color: #ffffff " href="{{route('cakes')}}">Shop Now</a>
                             </div>
                             <!-- Slider Content Start -->
                         </div>
@@ -38,7 +38,7 @@
                             <div class="slider-content-05">
 {{--                                <h1 class="slider-content-05__title">Let’s Get Baked!</h1>--}}
 {{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
-                                <a class="slider-content-05__btn btn slider-btn-01" href="{{route('cakes')}}">Shop Now</a>
+                                <a class="slider-content-05__btn btn slider-btn-01" style="background-color: white" href="{{route('cakes')}}">Shop Now</a>
                             </div>
                             <!-- Slider Content Start -->
                         </div>
