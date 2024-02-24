@@ -11,7 +11,11 @@
             </div>
         </div>
     </div>
-        @if (session('errors'))
+    <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    @if (session('errors'))
             <div class="alert alert-danger">
                 {{ session('errors') }}
             </div>
@@ -25,7 +29,8 @@
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-md-3">
-                    <form>
+                    <form id="cat">
+                        @csrf
                         <div class="mb-8">
                             <label for="product_name" class="mb-5 fs-13px ls-1 fw-semibold text-uppercase">Name</label>
                             <input type="text" name="name" placeholder="Type here" class="form-control" id="product_name">
@@ -36,7 +41,7 @@
                         </div>
                         <div class="mb-8">
                             <label class="mb-5 fs-13px ls-1 fw-semibold text-uppercase">Description</label>
-                            <textarea placeholder="Type here" name="content" class="form-control"></textarea>
+                            <textarea placeholder="Type here" name="description" class="form-control"></textarea>
                         </div>
                         <div class="d-grid">
                             <button class="btn btn-primary">Create category</button>
@@ -106,5 +111,62 @@
     </div>
 
 
+    <script>
+        $(document).ready(function() {
+
+
+            // Send the AJAX request
+            $('#cat').submit(function(e) {
+                e.preventDefault();
+
+                var formData = $(this).serialize();
+
+                $('#loadingSpinner').show();
+
+                $.ajax({
+                    url: "{{ route('admin/addcat') }}",
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        // Handle the success response here
+                        $('#loadingSpinner').hide();
+
+                        console.log(response);
+                        // Update the page or perform any other actions based on the response
+
+                        if (response.status == 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: response.message
+                            }).then(() => {
+                                location.reload(); // Reload the page
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'info',
+                                title: 'Pending',
+                                text: response.message
+                            });
+                            // Handle any other response status
+                        }
+
+                    },
+                    error: function(xhr) {
+                        $('#loadingSpinner').hide();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'fail',
+                            text: xhr.responseText
+                        });
+                        // Handle any errors
+                        console.log(xhr.responseText);
+
+                    }
+                });
+            });
+        });
+
+    </script>
 
 @endsection

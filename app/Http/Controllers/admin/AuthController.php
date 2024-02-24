@@ -86,5 +86,10 @@ function authloginadmiin(Request $request)
 
      return view('admin.category', compact('category'));
  }
-
+function allrtg()
+{
+    $product=Rtb::paginate('10');
+    $category=Categories::all();
+    return view('admin.products1', compact('product', 'category'));
+}
 }

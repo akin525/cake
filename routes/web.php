@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProductsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -87,6 +88,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('admin/updateproduct', [ProductsController::class, 'updateproduct'])->name('admin/updateproduct');
 
     Route::get('admin/category', [AuthController::class, 'category'])->name('admin/category');
+    Route::post('admin/addcat', [CategoryController::class, 'createcategory'])->name('admin/addcat');
+
+    Route::get('admin/allrtg', [AuthController::class, 'allrtg'])->name('admin/allrtg');
+    Route::get('admin/addrtg', [ProductsController::class, 'addproductindex2'])->name('admin/addrtg');
 
 });
     require __DIR__.'/auth.php';

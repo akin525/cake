@@ -19,6 +19,35 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('style')
 </head>
+<style>
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+
 <div class="wrapper dashboard-wrapper">
     <div class="d-flex flex-wrap flex-xl-nowrap">
         <div class="db-sidebar bg-body">
@@ -115,6 +144,24 @@
                                         </li>
                                         <li class="sidebar-item">
                                             <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/category')}}" title="Product Grid">Category<span class="badge badge-soft-danger">Hots</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-group-item px-0 py-0 sidebar-item mb-3 has-children border-0">
+                                <a href="#rtg" class="text-heading text-decoration-none lh-1 d-flex sidebar-link align-items-center py-5 px-6 position-relative" data-bs-toggle="collapse" aria-expanded="false" title="Products">
+<span class="sidebar-item-icon d-inline-block w-40px text-muted">
+<i class="fas fa-shopping-bag"></i>
+</span>
+                                    <span class="sidebar-item-text fs-14px fw-semibold">RTG</span>
+                                    <span class="position-absolute top-50 end-5 translate-middle-y"><i class="far fa-angle-down"></i></span>
+                                </a>
+                                <div class="collapse menu-collapse" id="rtg">
+                                    <ul class="sub-menu list-unstyled"><li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/allrtg')}}" title="Product List">All RTG</a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/addproduct')}}" title="Product Grid">Add RTG</a>
                                         </li>
                                     </ul>
                                 </div>

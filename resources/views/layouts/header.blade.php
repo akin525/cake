@@ -37,6 +37,19 @@
 </head>
 <body>
 <style>
+    * {
+        font-family: "Lato",sans-serif;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        outline: none;
+    }
+    .leftBox h1 {
+        font-weight: 700;
+        font-family: "Skylar Sans",sans-serif;
+        margin-bottom: 24px;
+    }
+</style>
+<style>
     .loading-overlay {
         position: fixed;
         top: 0;
@@ -166,8 +179,10 @@
                 <div class="header-logo">
                     <a href="{{url('/')}}"><img src="{{asset('assets/images/eko.png')}}" width="100" alt="Logo"></a>
                 </div>
+
                 <!-- Header Logo End -->
             </div>
+
             <div class="headertop-right">
                 <!-- Header Meta Start -->
                 <div class="header-meta">
@@ -198,7 +213,12 @@
                 <!-- Header Meta End -->
             </div>
         </div>
+        <div class="leftBox text-center">
+            <h6>
+                MAKING CAKE IS ART<br>
+            </h6>
 
+        </div>
         <div class="row">
             <div class="col-12">
                 <!-- Header Menu Start -->

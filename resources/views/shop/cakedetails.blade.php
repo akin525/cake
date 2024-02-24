@@ -174,6 +174,23 @@
                                     <option value="small">Small</option>
                                 </select>
                             </div>
+{{--                            <ul>--}}
+{{--                                <li class="active" data-id="138">--}}
+{{--                                    <a href="javascript:void(0);" aria-label="Size">S</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="" data-id="139">--}}
+{{--                                    <a href="javascript:void(0);" aria-label="Size">M</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="" data-id="140">--}}
+{{--                                    <a href="javascript:void(0);" aria-label="Size">L</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="" data-id="141">--}}
+{{--                                    <a href="javascript:void(0);" aria-label="Size">XL</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="" data-id="142">--}}
+{{--                                    <a href="javascript:void(0);" aria-label="Size">XXL</a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
                         </div>
                         <div class="product-size mb-5">
                             <label for="layersBy">Layers</label>

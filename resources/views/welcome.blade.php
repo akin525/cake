@@ -9,11 +9,11 @@
                     <div class="swiper-wrapper">
 
                         <!-- Single Slider Start -->
-                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(assets/images/slider/slider-5-1.jpg);">
+                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);">
                             <!-- Slider Content Start -->
                             <div class="slider-content-05">
-                                <h1 class="slider-content-05__title">Sweet classics.</h1>
-                                <span class="slider-content-05__subtitle">Génial</span>
+{{--                                <h1 class="slider-content-05__title">Sweet classics.</h1>--}}
+{{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
                                 <a class="slider-content-05__btn btn slider-btn-01" href="{{route('cakes')}}">Shop Now</a>
                             </div>
                             <!-- Slider Content Start -->
@@ -21,11 +21,11 @@
                         <!-- Single Slider End -->
 
                         <!-- Single Slider Start -->
-                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(assets/images/slider/slider-5-2.jpg);">
+                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);">
                             <!-- Slider Content Start -->
                             <div class="slider-content-05">
-                                <h1 class="slider-content-05__title">Eat it instead.</h1>
-                                <span class="slider-content-05__subtitle">Génial</span>
+{{--                                <h1 class="slider-content-05__title">Eat it instead.</h1>--}}
+{{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
                                 <a class="slider-content-05__btn btn slider-btn-01" href="{{route('cakes')}}">Shop Now</a>
                             </div>
                             <!-- Slider Content Start -->
@@ -33,12 +33,12 @@
                         <!-- Single Slider End -->
 
                         <!-- Single Slider Start -->
-                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(assets/images/slider/slider-5-3.jpg);">
+                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);">
                             <!-- Slider Content Start -->
                             <div class="slider-content-05">
-                                <h1 class="slider-content-05__title">Let’s Get Baked!</h1>
-                                <span class="slider-content-05__subtitle">Génial</span>
-                                <a class="slider-content-05__btn btn slider-btn-01" href="shop.html">Shop Now</a>
+{{--                                <h1 class="slider-content-05__title">Let’s Get Baked!</h1>--}}
+{{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
+                                <a class="slider-content-05__btn btn slider-btn-01" href="{{route('cakes')}}">Shop Now</a>
                             </div>
                             <!-- Slider Content Start -->
                         </div>
@@ -53,55 +53,12 @@
             </div>
         </div>
     </div>
-    <!-- Slider Section End -->
 
-    <!-- Brand Section Strat -->
-    <div class="brand-section">
-        <div class="container custom-container">
 
-            <!-- Brand Action Strat -->
-            <div class="brand-active">
-                <div class="swiper">
-                    <div class="swiper-wrapper align-items-center">
+    <br>
+    <br>
 
-                        <!-- Brand Item Strat -->
-                        <div class="swiper-slide brand-item">
-                            <img src="assets/images/brand/partner-1.png" alt="Brand">
-                        </div>
-                        <!-- Brand Item End -->
-
-                        <!-- Brand Item Strat -->
-                        <div class="swiper-slide brand-item">
-                            <img src="assets/images/brand/partner-2.png" alt="Brand">
-                        </div>
-                        <!-- Brand Item End -->
-
-                        <!-- Brand Item Strat -->
-                        <div class="swiper-slide brand-item">
-                            <img src="assets/images/brand/partner-3.png" alt="Brand">
-                        </div>
-                        <!-- Brand Item End -->
-
-                        <!-- Brand Item Strat -->
-                        <div class="swiper-slide brand-item">
-                            <img src="assets/images/brand/partner-4.png" alt="Brand">
-                        </div>
-                        <!-- Brand Item End -->
-
-                        <!-- Brand Item Strat -->
-                        <div class="swiper-slide brand-item">
-                            <img src="assets/images/brand/partner-5.png" alt="Brand">
-                        </div>
-                        <!-- Brand Item End -->
-
-                    </div>
-                </div>
-            </div>
-            <!-- Brand Action End -->
-
-        </div>
-    </div>
-    <!-- Brand Section End -->
+    <br>
     @include('hot')
     <!-- Product Section Strat -->
     <div class="section-padding-01 bg-color-01" style="background-image: url({{asset('assets/images/bg-02.png')}});">
