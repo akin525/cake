@@ -295,7 +295,7 @@
                                                         <li>
                                                             <div class="cart-btn">
                                                                 <div class="add-to_cart">
-                                                                    <a class="btn btn-dark btn-hover-primary" href="/cakedetail/${response.id}">Add More Option</a>
+                                                                    <a class="btn btn-dark btn-hover-primary" href="/cakedetail/${response.id}">More Option</a>
                                                                 </div>
                                                             </div>
                                                         </li>

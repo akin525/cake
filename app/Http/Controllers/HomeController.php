@@ -10,6 +10,7 @@ use App\Models\Orders;
 use App\Models\Products;
 use App\Models\Rtb;
 use App\Models\Settings;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -104,43 +105,56 @@ function cakedetail($request)
     ));
 
 }
-    function addCart($request)
+    function addCart(Request  $request)
     {
-        $product = Products::where('id', $request)->first();
+//
+        $validate=$request->validate([
+            'id'=>'required',
+            'color'=>'required',
+            'flavour'=>'required',
+            'size'=>'required',
+            'layers'=>'required',
+        ]);
+        $product = Products::where('id', $request->id)->first();
 
         if (Auth::check()) {
             $insert = Cart::create([
                 'user_id' => Auth::user()->id,
-                'product_id' => $request,
+                'product_id' => $request->id,
                 'quantity' => 1,
                 'name' => $product->name,
                 'amount' => $product->price,
                 'image' => $product->image,
+                'color'=>$request->color,
+                'aize'=>$request->size,
+                'flavour'=>$request->flavour,
+                'layer'=>$request->layers,
+                'card'=>$request->ekoCakesMessage ?? null,
+                'topper'=>$request->topperText ?? null,
             ]);
-
             $message = "Added To Cart Successfully!";
+            return redirect('cart')->with('status', $message);
+
+
         } else {
-            $productId = $request;
-            $quantity = 1; // Default quantity
 
-            $cart = session()->get('cart', []);
+//            $data = json_decode($request, true);
+//            unset($data['_token']);
+//
+//            session(['cart' => $data]);
 
-            if (isset($cart[$productId])) {
-                $cart[$productId] += $quantity;
-            } else {
-                $cart[$productId] = $quantity;
-            }
-
-            session()->put('cart', $cart);
             $message = "Added To Cart Successfully!";
-        }
 
-        return response()->json([
-            'status' => 'success',
-            'message' => $message,
-        ]);
+            return redirect('login');
+        }
+//        return response()->json([
+//            'status' => 'success',
+//            'message' => $message,
+//        ]);
+
+
     }
-    function addCart1($request)
+    function addCart1(Request $request)
     {
         $product = Products::where('id', $request)->first();
 
@@ -181,23 +195,26 @@ function mycart()
     }else{
         $cartsum=0;
         $cart = [];
-        $carts = session()->get('cart', []);
+//        $carts = session()->get('cart', []);
+        $cakeData = session('cart');
 
-        foreach ($carts as $productId => $quantity) {
-            $product = Products::find($productId);
-            if ($product) {
-                $cartsum += $product->price * $quantity;
-                $cart[] = [
-                    'id' => $product->id,
-                    'name' => $product->name,
-                    'quantity' => $quantity,
-                    'amount' => $product->price,
-                    'total' => $quantity * $product->price,
-                    'image' => $product->image,
-                ];
+//        foreach ($carts as $productId => $quantity) {
+//            $product = Products::find($productId);
+//            if ($product) {
+//                $cartsum += $product->price * $quantity;
+//                $cart[] = [
+//                    'id' => $product->id,
+//                    'name' => $product->name,
+//                    'quantity' => $quantity,
+//                    'amount' => $product->price,
+//                    'total' => $quantity * $product->price,
+//                    'image' => $product->image,
+//                ];
+//
+//            }
+//        }
 
-            }
-        }
+        return $cakeData;
 
     }
     $category=Categories::all();

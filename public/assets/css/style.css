@@ -3390,7 +3390,6 @@ textarea.form-control {
   background-color: white);
   position: relative;
 }
-
 @media only screen and (min-width: 1200px) and (max-width: 1599px) {
   .single-slider-05 {
     height: 600px;

@@ -348,6 +348,26 @@
 <!-- offcanvas Menu End -->
 @yield('content')
 
+@if(Session::has('errors'))
+    <script>
+        Swal.fire({
+            title: 'Ooops..',
+            text: '{{ Session::get('errors') }}',
+            icon: 'warning',
+            confirmButtonColor: '#3085d6',
+        })
+    </script>
+@endif
+@if(Session::has('status'))
+    <script>
+        Swal.fire({
+            title: 'Done',
+            text: '{{ Session::get('status') }}',
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+        })
+    </script>
+@endif
 <!-- Offcanvas Cart Start  -->
 {{--<div class="offcanvas offcanvas-end offcanvas-cart" id="offcanvasCart">--}}
 

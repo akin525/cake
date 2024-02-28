@@ -5,6 +5,9 @@
     @endif
 @endsection
 @section('content')
+    <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
     <!-- Breadcrumb Section Start -->
     <div class="breadcrumb" data-bg-image="{{asset('assets/images/bg/breadcrumb-bg.jpg')}}">
         <div class="container">
@@ -107,6 +110,8 @@
                         <!-- Description Start -->
                         <p class="desc-content">{!! $product->description !!}</p>
                         <!-- Description End -->
+                        <form method="post" action="{{route('addcart1')}}">
+                            @csrf
                         <div class="product-color mb-2">
                             <label for="colorBy">Color</label>
                             <div class="select-wrapper">
@@ -143,14 +148,11 @@
                                 </select>
                             </div>
                         </div>
+                            <input type="hidden" name="id" value="{{$product->id}}">
                         <div class="product-color mb-2" id="topperTextSection" style="display: none;">
                             <label for="topperText">Topper Text</label>
                             <input type="text" name="topperText" id="topperText" class="form-control" />
                         </div>
-{{--                        <div class="product-color mb-2">--}}
-{{--                            <label for="cakeMessage">Text to Appear on the Cake</label>--}}
-{{--                            <input type="text" name="cakeMessage" id="cakeMessage" class="form-control" />--}}
-{{--                        </div>--}}
                         <div class="product-color mb-2">
                             <label for="ekoCakesCard">Eko Cakes Card</label>
                             <div class="select-wrapper">
@@ -174,23 +176,6 @@
                                     <option value="small">Small</option>
                                 </select>
                             </div>
-{{--                            <ul>--}}
-{{--                                <li class="active" data-id="138">--}}
-{{--                                    <a href="javascript:void(0);" aria-label="Size">S</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="" data-id="139">--}}
-{{--                                    <a href="javascript:void(0);" aria-label="Size">M</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="" data-id="140">--}}
-{{--                                    <a href="javascript:void(0);" aria-label="Size">L</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="" data-id="141">--}}
-{{--                                    <a href="javascript:void(0);" aria-label="Size">XL</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="" data-id="142">--}}
-{{--                                    <a href="javascript:void(0);" aria-label="Size">XXL</a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
                         </div>
                         <div class="product-size mb-5">
                             <label for="layersBy">Layers</label>
@@ -204,35 +189,22 @@
                         </div>
                         <!-- Product Quantity, Cart Button, Wishlist and Compare Start -->
                         <ul class="product-cta">
-                            <li>
-                                <!-- Quantity Start -->
-                                <div class="quantity">
-                                    <div class="cart-plus-minus"></div>
-                                </div>
-                                <!-- Quantity End -->
-                            </li>
+
                             <li>
                                 <!-- Cart Button Start -->
                                 <div class="cart-btn">
                                     <div class="add-to_cart">
-                                        <a class="btn btn-dark btn-hover-primary labtn-icon-quickview" href="#"
-                                           data-bs-toggle="modal" data-product-id="{{$product['id']}}"
-                                           data-bs-target="#modalCart1{{$product['id']}}">
+                                        <button type="submit" class="btn btn-dark btn-hover-primary labtn-icon-quickview">
                                             Add to cart
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                                 <!-- Cart Button End -->
                             </li>
-                            <li>
-                                <!-- Action Button Start -->
-                                <div class="actions">
-                                    <a href="#/" title="Wishlist" class="action compare" data-bs-toggle="modal" data-bs-target="#modalWishlist"><i class="lastudioicon-heart-2"></i></a>
-                                    <a href="#/" title="Compare" class="action wishlist" data-bs-toggle="modal" data-bs-target="#modalCompare"><i class="lastudioicon-ic_compare_arrows_24px"></i></a>
-                                </div>
-                                <!-- Action Button End -->
-                            </li>
+
                         </ul>
+                        </form>
+
                         <!-- Product Quantity, Cart Button, Wishlist and Compare End -->
                         <!-- Product Meta Start -->
                         <ul class="product-meta">
@@ -462,45 +434,8 @@
     </div>
     <!-- Product Section End -->
 
-    <div class="quickview-product-modal modal fade" id="modalCart1{{$product['id']}}"
-          tabindex="-1" aria-labelledby="quickViewModalLabel{{$product['id']}}" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered mw-100">
-            <div class="custom-content">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <i class="lastudioicon lastudioicon-e-remove"></i>
-                </button>
-                <div class="modal-body">
-            <!-- Your modal content will be loaded dynamically via AJAX -->
-                </div>
-        </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.labtn-icon-quickview').click(function(e){
-                e.preventDefault();
-                var productId = $(this).data('product-id');
-                var modalBody = $('#modalCart1'+productId).find('.modal-body');
-
-                // Make AJAX request to fetch product details
-                $.ajax({
-                    url: '/addcart/' + productId, // Replace this with your API endpoint to fetch product details
-                    method: 'GET',
-                    success: function(response){
-                        // Populate modal with product details
-                        modalBody.html(`
-                                <i class="dlicon files_check"></i> ${response.message}
-                    `);
-                    },
-                    error: function(xhr, status, error){
-                        console.error(error);
-                        modalBody.html('<p>Please Kindly Login/Register.</p>');
-                    }
-                });
-            });
-        });
-    </script>
         <script>
             $(document).ready(function () {
                 // Function to update flavor options based on selected layers
@@ -563,5 +498,64 @@
             });
         </script>
 
+
+        <script>
+            $(document).ready(function() {
+
+
+                // Send the AJAX request
+                $('#postcart').submit(function(e) {
+                    e.preventDefault(); // Prevent the form from submitting traditionally
+
+                    // Get the form data
+                    var formData = $(this).serialize();
+
+                    $('#loadingSpinner').show();
+
+                            $.ajax({
+                                url: "{{ route('addcart1') }}",
+                                type: 'POST',
+                                data: formData,
+                                success: function(response) {
+                                    // Handle the success response here
+                                    $('#loadingSpinner').hide();
+
+                                    console.log(response);
+                                    // Update the page or perform any other actions based on the response
+
+                                    if (response.status == 'success') {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Success',
+                                            text: response.message
+                                        }).then(() => {
+                                            location.reload(); // Reload the page
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'info',
+                                            title: 'Pending',
+                                            text: response.message
+                                        });
+                                        // Handle any other response status
+                                    }
+
+                                },
+                                error: function(xhr) {
+                                    $('#loadingSpinner').hide();
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'fail',
+                                        text: xhr.responseText
+                                    });
+                                    // Handle any errors
+                                    console.log(xhr.responseText);
+
+                                }
+                            });
+                });
+            });
+
+        </script>
 
 @endsection

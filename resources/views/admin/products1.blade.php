@@ -68,7 +68,7 @@
                         <td>{{$products['created-at']}}</td>
                         <td class="text-center">
                             <div class="d-flex flex-nowrap justify-content-center">
-                                <a href="{{route('admin/editproduct', $products['id'])}}" class="btn btn-primary py-4 px-5 btn-xs fs-13px me-4"><i class="far fa-pen me-2"></i> Edit</a>
+                                <a href="{{route('admin/editproduct1', $products['id'])}}" class="btn btn-primary py-4 px-5 btn-xs fs-13px me-4"><i class="far fa-pen me-2"></i> Edit</a>
                                 <a href="#" class="btn btn-outline-primary btn-hover-bg-danger btn-hover-border-danger btn-hover-text-light py-4 px-5 fs-13px btn-xs me-4"><i class="far fa-trash me-2"></i> Delete</a>
                             </div>
                         </td>

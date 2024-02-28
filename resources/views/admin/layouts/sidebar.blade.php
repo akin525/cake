@@ -161,9 +161,61 @@
                                             <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/allrtg')}}" title="Product List">All RTG</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/addproduct')}}" title="Product Grid">Add RTG</a>
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/addproduct1')}}" title="Product Grid">Add RTG</a>
                                         </li>
                                     </ul>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item px-0 py-0 sidebar-item mb-3 has-children border-0">
+                                <a href="#order" class="text-heading text-decoration-none lh-1 d-flex sidebar-link align-items-center py-5 px-6 position-relative" data-bs-toggle="collapse" aria-expanded="false" title="Order">
+<span class="sidebar-item-icon d-inline-block w-40px text-muted">
+<i class="fas fa-shopping-cart"></i>
+</span>
+                                    <span class="sidebar-item-text fs-14px fw-semibold">Order</span>
+                                    <span class="position-absolute top-50 end-5 translate-middle-y"><i class="far fa-angle-down"></i></span>
+                                </a>
+                                <div class="collapse menu-collapse" id="order">
+                                    <ul class="sub-menu list-unstyled"><li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/orders')}}" title="Order List 1">All Oders</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item px-0 py-0 sidebar-item mb-3 has-children border-0">
+                                <a href="#sellers" class="text-heading text-decoration-none lh-1 d-flex sidebar-link align-items-center py-5 px-6 position-relative" data-bs-toggle="collapse" aria-expanded="false" title="Sellers">
+<span class="sidebar-item-icon d-inline-block w-40px text-muted">
+<i class="fas fa-users"></i>
+</span>
+                                    <span class="sidebar-item-text fs-14px fw-semibold">Customers</span>
+                                    <span class="position-absolute top-50 end-5 translate-middle-y"><i class="far fa-angle-down"></i></span>
+                                </a>
+                                <div class="collapse menu-collapse" id="sellers">
+                                    <ul class="sub-menu list-unstyled"><li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/customers')}}" title="Sellers Cards">All Customer</a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/searchuser')}}" title="Sellers List">Search Customer</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item px-0 py-0 sidebar-item mb-3 has-children border-0">
+                                <a href="#transaction" class="text-heading text-decoration-none lh-1 d-flex sidebar-link align-items-center py-5 px-6 position-relative" data-bs-toggle="collapse" aria-expanded="false" title="Transactions">
+<span class="sidebar-item-icon d-inline-block w-40px text-muted">
+<i class="fas fa-circle-dollar-to-slot"></i>
+</span>
+                                    <span class="sidebar-item-text fs-14px fw-semibold">Payments</span>
+                                    <span class="position-absolute top-50 end-5 translate-middle-y"><i class="far fa-angle-down"></i></span>
+                                </a>
+                                <div class="collapse menu-collapse" id="transaction">
+                                    <ul class="sub-menu list-unstyled"><li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/payments')}}" title="Transactions 1">All Payments </a>
+                                        </li><li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="#" title="Transactions 2">Search Payment</a>
+                                        </li></ul>
                                 </div>
                             </li>
 
