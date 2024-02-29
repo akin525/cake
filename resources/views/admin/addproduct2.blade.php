@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="mb-8">
                                     <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Full description</label>
-                                    <textarea placeholder="Type here" class="form-control" name="content" rows="4"></textarea>
+                                    <textarea placeholder="Type here" class="form-control" id="editor" name="content" rows="4"></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">

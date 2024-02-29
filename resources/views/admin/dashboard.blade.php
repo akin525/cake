@@ -21,6 +21,20 @@
         <div class="col-sm-6 col-xxl-3 mb-7">
             <div class="card rounded-4">
                 <div class="card-body p-7">
+                    <canvas id="transactionChart1" width="800" height="600"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xxl-3 mb-7">
+            <div class="card rounded-4">
+                <div class="card-body p-7">
+                    <canvas id="transactionChart" width="800" height="600"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xxl-3 mb-7">
+            <div class="card rounded-4">
+                <div class="card-body p-7">
                     <div class="d-flex">
                         <div class="me-6">
 <span class="square d-flex align-items-center justify-content-center fs-5 badge rounded-circle text-green bg-green-light" style="--square-size: 48px">
@@ -95,5 +109,64 @@
     </div>
 
 
+    <script>
+        fetch('/transactions')
+            .then(response => response.json())
+            .then(data => {
+                var ctx = document.getElementById('transactionChart').getContext('2d');
 
+                var chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.dates,
+                        datasets: [{
+                            label: 'All Payments',
+                            data: data.amounts,
+                            backgroundColor: 'rgb(4,108,181)',
+                            borderColor: 'rgb(4,108,181)',
+                            borderWidth: 1,
+                            fill: 'origin' // Fill the area below the line
+
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+    <script>
+        fetch('/transactions1')
+            .then(response => response.json())
+            .then(data => {
+                var ctx = document.getElementById('transactionChart1').getContext('2d');
+
+                var chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.dates,
+                        datasets: [{
+                            label: 'Orders Charts',
+                            data: data.amounts,
+                            backgroundColor: 'rgb(4,108,181)',
+                            borderColor: 'rgb(4,108,181)',
+                            borderWidth: 1,
+                            fill: 'origin' // Fill the area below the line
+
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
 @endsection

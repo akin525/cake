@@ -92,4 +92,35 @@ function allrtg()
     $category=Categories::all();
     return view('admin.products1', compact('product', 'category'));
 }
+    public function getTransactions()
+    {
+        $transactions = Payments::selectRaw('DATE(created_at) as date, SUM(amount) as total_amount')
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')->limit(10)
+            ->get();
+
+        $dates = $transactions->pluck('date')->toArray();
+        $amounts = $transactions->pluck('total_amount')->toArray();
+
+        return response()->json([
+            'dates' => $dates,
+            'amounts' => $amounts,
+        ]);
+    }
+    public function getTransactions1()
+    {
+        $transactions = Order::selectRaw('DATE(created_at) as date, SUM(price) as total_amount')
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')->limit(10)
+            ->get();
+
+        $dates = $transactions->pluck('date')->toArray();
+        $amounts = $transactions->pluck('total_amount')->toArray();
+
+        return response()->json([
+            'dates' => $dates,
+            'amounts' => $amounts,
+        ]);
+    }
+
 }

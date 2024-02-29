@@ -109,5 +109,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/payments', [PaymentController::class, 'allpayment'])->name('admin/payments');
     Route::get('admin/viewpay/{id}', [PaymentController::class, 'viewpayment']);
 
+
+    Route::get('/transactions', [AuthController::class, 'getTransactions']);
+    Route::get('/transactions1', [AuthController::class, 'getTransactions1']);
 });
     require __DIR__.'/auth.php';

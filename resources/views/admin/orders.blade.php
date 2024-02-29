@@ -2,7 +2,9 @@
 @section('tittle', 'Orders')
 @section('content')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="https://cdn.datatables.net/v/dt/dt-2.0.1/datatables.min.css" rel="stylesheet">
 
+    <script src="https://cdn.datatables.net/v/dt/dt-2.0.1/datatables.min.js"></script>
     <div class="row mb-9 align-items-center justify-content-between">
         <div class="col-sm-6 mb-8 mb-sm-0">
             <h2 class="fs-4 mb-0">Order List</h2>
@@ -41,7 +43,7 @@
         </div>
         <div class="card-body px-0 pt-7 pb-0">
             <div class="table-responsive">
-                <table class="table table-hover align-middle table-nowrap mb-0 table-borderless"><thead class="table-light">
+                <table id="example" class="table table-hover align-middle table-nowrap mb-0 table-borderless"><thead class="table-light">
                     <tr>
                         <th class="align-middle" scope="col">#ID
                         </th>

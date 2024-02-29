@@ -6,7 +6,7 @@
             window.onload = function() {
                 setTimeout(function() {
                     {{--var username = @json(Auth::user()->username);--}}
-                    var message = "Dear Ekosians. please note a minimum of 24 hours is required for all categories except the Ready to Go category. Cakes under the Ready to go Category can be available between 1-6 hours after order is placed";
+                    var message = "Dear Ekosians, please note a minimum of 24 hours is required for all categories except the Ready to Go category. Cakes under the Ready to go Category can be available between 1-6 hours after order is placed";
 
                     Swal.fire({
                         title: 'Note:',
@@ -34,7 +34,7 @@
     </div>
     <!-- Breadcrumb Section End -->
     <marquee><b>
-            Dear Ekosians. please note a minimum of 24 hours is required for all categories except the Ready to Go category. Cakes under the Ready to go Category can be available between 1-6 hours after order is placed
+            Dear Ekosians, please note a minimum of 24 hours is required for all categories except the Ready to Go category. Cakes under the Ready to go Category can be available between 1-6 hours after order is placed
         </b></marquee>
     <!-- Product Section Start -->
     <div class="shop-product-section sidebar-right overflow-hidden">
