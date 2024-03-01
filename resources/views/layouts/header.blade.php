@@ -163,7 +163,7 @@
             <div class="headertop-center">
                 <!-- Header Logo Start -->
                 <div class="header-logo">
-                    <a href="{{url('/')}}"><img src="{{asset('assets/images/eko.png')}}" width="100" alt="Logo"></a>
+                    <a href="{{url('/')}}"><img src="{{asset('assets/images/eko.png')}}" width="50" alt="Logo"></a>
                 </div>
 
                 <!-- Header Logo End -->
