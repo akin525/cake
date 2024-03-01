@@ -6,15 +6,15 @@
         <div class="swiper">
             <div class="swiper-wrapper">
                 <!-- Single Slider Start -->
-                <div class="swiper-slide single-slider-08 animation-style-08 movearea" style="background-image: url(assets/images/slider/slider-bg-8-1.jpg);">
+                <div class="swiper-slide single-slider-08 animation-style-08 movearea" style="background-image: url(cake.jpg); background-size: contain; background-position: center; background-repeat: no-repeat;">
                     <div class="image movex">
-                        <img class="img-center" src="{{asset('ct2.png')}}" alt="Slider-Image">
+{{--                        <img class="img-center" src="{{asset('ct2.png')}}" alt="Slider-Image">--}}
                     </div>
                     <div class="slider-content-08 container">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <span class="slider-content-08__subtitle">We deal with</span>
-                                <h2 class="slider-content-08__title text-global-color-12">Quality.</h2>
+{{--                                <span class="slider-content-08__subtitle">We deal with</span>--}}
+{{--                                <h2 class="slider-content-08__title text-global-color-12">Quality.</h2>--}}
                                 <a class="slider-content-08__btn btn slider-btn-01" href="{{route('cakes')}}">Shop Now</a>
                             </div>
                         </div>
