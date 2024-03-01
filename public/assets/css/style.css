@@ -71,9 +71,8 @@ html, body {
 }
 
 body {
-    /*font-family: 'Montserrat', sans-serif;*/
-    font-family: "Lato",sans-serif;
-    font-size: 1rem;
+  font-family: "Inter", sans-serif, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
   font-weight: 400;
   font-style: normal;
   line-height: 1.8;
@@ -85,8 +84,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Great Vibes', cursive;
-    font-weight: 400;
+  font-family: "Montaga", serif;
+  font-weight: 400;
   line-height: 1.2;
   margin-bottom: 0;
   color: #212121;
@@ -301,7 +300,7 @@ textarea.form-field:focus {
   }
 }
 .custom-container-three .container-three-inner {
-  max-width: 1500px;
+  max-width: 1640px;
   margin: 0 auto;
 }
 
@@ -2022,12 +2021,12 @@ textarea.form-control {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header-logo a img {
-    width: 50px;
+    width: 150px;
   }
 }
 @media only screen and (max-width: 767px) {
   .header-logo a img {
-    width: 50px;
+    width: 150px;
   }
 }
 
@@ -2225,7 +2224,7 @@ textarea.form-control {
 }
 
 .header-primary-menu-03 li > .menu-item-link {
-  color: #ffffff;
+  color: #858585;
 }
 .header-primary-menu-03 li:hover > .menu-item-link {
   color: #992100;
@@ -3387,7 +3386,7 @@ textarea.form-control {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: white);
+  background-color: #ffffff;
   position: relative;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1599px) {
@@ -3402,14 +3401,14 @@ textarea.form-control {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .single-slider-05 {
-    padding-top: 30px;
+    padding-top: 40px;
     height: 500px;
   }
 }
 @media only screen and (max-width: 767px) {
   .single-slider-05 {
     padding-top: 40px;
-    height: 500px;
+    height: 400px;
   }
 }
 @media only screen and (max-width: 479px) {

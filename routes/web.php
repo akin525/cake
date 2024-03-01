@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\OrdersController;
 use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\ProductsController;
+use App\Http\Controllers\admin\SetiingsController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -45,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('addcart1', [HomeController::class, 'addcart'])->name('addcart1');
+    Route::get('cart', [HomeController::class, 'mycart'])->name('cart');
 
 });
 
@@ -112,5 +114,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/transactions', [AuthController::class, 'getTransactions']);
     Route::get('/transactions1', [AuthController::class, 'getTransactions1']);
+
+    Route::get('admin/settings', [SetiingsController::class, 'loadsettings'])->name('admin/settings');
+    Route::post('admin/savepage', [SetiingsController::class, 'changepage'])->name('admin/savepage');
 });
     require __DIR__.'/auth.php';
+
+

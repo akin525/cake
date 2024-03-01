@@ -203,9 +203,9 @@
                         <!-- Payment Method Start -->
                         <div class="checkout-box">
                             <h4 class="mb-4">Payment Method</h4>
-                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Direct Bank Transfer</a>
-                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Cash on Delivery</a>
-                            <button class="btn btn-dark btn-primary-hover rounded-0 mt-6" onclick="processPayment()">Pay With Card</button>
+{{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Direct Bank Transfer</a>--}}
+{{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Cash on Delivery</a>--}}
+                            <button class="btn btn-dark btn-primary-hover rounded-0 mt-6" >Place Order</button>
                         </div>
                         <!-- Payment Method End -->
 

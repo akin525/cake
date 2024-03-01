@@ -12,10 +12,9 @@
 
     <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
 
-    <!-- Font CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Handlee&amp;family=Inter:wght@300;400;500;600;700&amp;family=Comfortaa:wght@300;400;500;600;700&amp;family=Montaga&amp;family=Pacifico&amp;family=Fredericka+the+Great&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Yellowtail&amp;display=swap" rel="stylesheet">
 
     <!-- Vendor CSS (Bootstrap & Icon Font) -->
     <link rel="stylesheet" href="{{asset('assets/css/vendor/bootstrap.min.css')}}">
@@ -36,19 +35,6 @@
 @yield('style')
 </head>
 <body>
-<style>
-    * {
-        font-family: "Lato",sans-serif;
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-        outline: none;
-    }
-    .leftBox h1 {
-        font-weight: 700;
-        font-family: "Skylar Sans",sans-serif;
-        margin-bottom: 24px;
-    }
-</style>
 <style>
     .loading-overlay {
         position: fixed;
@@ -128,7 +114,7 @@
 {{--                        <li><button class="action search-open"><i class="lastudioicon-zoom-1"></i></button></li>--}}
 {{--                        <li><a class="action" href="{{route('cart')}}"><i class="lastudioicon-shopping-cart-2"></i></a></li>--}}
 
-{{--                        --}}{{----}}{{--                        <li>--}}
+{{--                                                <li>--}}
 {{--                            <button class="action" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart">--}}
 {{--                                <i class="lastudioicon-shopping-cart-2"></i>--}}
 {{--                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"></span>--}}
@@ -201,7 +187,7 @@
                         <li>
                             <a href="{{route('cart')}}" class="action" >
                                 <i class="lastudioicon-shopping-cart-2"></i>
-{{--                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">3</span>--}}
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">3</span>
                             </a>
                         </li>
                         <li><a class="action" href="{{route('dashboard')}}"><i class="lastudioicon-single-01-2"></i></a></li>

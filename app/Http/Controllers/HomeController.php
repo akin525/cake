@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Categories;
 use App\Models\Cheff;
+use App\Models\Homepage;
 use App\Models\Orders;
 use App\Models\Products;
 use App\Models\Rtb;
@@ -21,7 +22,10 @@ function landingpage()
 {
     $product=Products::where('status', 1)
         ->orderBy('id', 'DESC')
-        ->limit(10)->get();
+        ->limit(12)->get();
+
+    $latest=Products::where('status', 1)
+        ->orderBy('id', 'DESC')->first();
 
         $product1=Products::where('status', 1)
             ->orderBy('id', 'DESC')
@@ -45,8 +49,19 @@ function landingpage()
 //            return $cartsum;
             $setting=Settings::first();
             $hot=Products::where('cool', 'hots')->get();
-            return view('welcome', compact('product',
-                'product1', 'setting', 'hot', 'category', 'cartsum', 'cart'));
+
+            $page=Homepage::where('status', 1)->first();
+            if ($page->page == 01){
+                return view('welcome', compact('product',
+                    'product1', 'setting', 'hot', 'latest', 'category', 'cartsum', 'cart'));
+            }elseif ($page->page == 02){
+                return view('homepage1', compact('product',
+                    'product1', 'setting', 'hot', 'latest', 'category', 'cartsum', 'cart'));
+            }elseif ($page->page == 03){
+                return view('homepage2', compact('product',
+                    'product1', 'setting', 'hot', 'latest', 'category', 'cartsum', 'cart'));
+            }
+
 }
 function aboutus()
 {
