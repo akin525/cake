@@ -2,50 +2,61 @@
 @section('tittle', 'Home')
 @section('content')
     <!-- Slider Section Strat -->
-    <div class="slider-section-eight slider-active overflow-hidden">
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <!-- Single Slider Start -->
-                <div class="swiper-slide single-slider-08 animation-style-08 movearea" style="background-image: url(cake.jpg); background-size: contain; background-position: center; background-repeat: no-repeat;">
-                    <div class="image movex">
-{{--                        <img class="img-center" src="{{asset('ct2.png')}}" alt="Slider-Image">--}}
-                    </div>
-                    <div class="slider-content-08 container">
-                        <div class="row">
-                            <div class="col-12 text-center">
-{{--                                <span class="slider-content-08__subtitle">We deal with</span>--}}
-{{--                                <h2 class="slider-content-08__title text-global-color-12">Quality.</h2>--}}
-                                <a class="slider-content-08__btn btn slider-btn-01" href="{{route('cakes')}}">Shop Now</a>
+    <div class="custom-container-three container-fluid">
+        <div class="container-three-inner">
+            <div class="slider-section slider-active overflow-hidden">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+
+                        <!-- Single Slider Start -->
+                        <div class=" swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat;">
+                            <!-- Slider Content Start -->
+                            <div class="slider-content-05">
+                                {{--                                <h1 class="slider-content-05__title">Sweet classics.</h1>--}}
+                                {{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
+                                <a class="slider-content-05__btn btn slider-btn-01" style="background-color: white" href="{{route('cakes')}}">Shop Now</a>
                             </div>
+                            <!-- Slider Content Start -->
                         </div>
+                        <!-- Single Slider End -->
+
+                        <!-- Single Slider Start -->
+                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat;">
+                            <!-- Slider Content Start -->
+                            <div class="slider-content-05">
+                                {{--                                <h1 class="slider-content-05__title">Eat it instead.</h1>--}}
+                                {{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
+                                <a class="slider-content-05__btn btn slider-btn-01 " style="background-color: #ffffff " href="{{route('cakes')}}">Shop Now</a>
+                            </div>
+                            <!-- Slider Content Start -->
+                        </div>
+                        <!-- Single Slider End -->
+
+                        <!-- Single Slider Start -->
+                        <div class="swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat;">
+                            <!-- Slider Content Start -->
+                            <div class="slider-content-05">
+                                {{--                                <h1 class="slider-content-05__title">Let’s Get Baked!</h1>--}}
+                                {{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
+                                <a class="slider-content-05__btn btn slider-btn-01" style="background-color: white" href="{{route('cakes')}}">Shop Now</a>
+                            </div>
+                            <!-- Slider Content Start -->
+                        </div>
+                        <!-- Single Slider End -->
+
+                    </div>
+                    <div class="slider-arrow-two">
+                        <div class="swiper-button-next"><i class="lastudioicon-left-arrow"></i></div>
+                        <div class="swiper-button-prev"><i class="lastudioicon-right-arrow"></i></div>
                     </div>
                 </div>
-                <!-- Single Slider End -->
-                <!-- Single Slider Start -->
-                <div class="swiper-slide single-slider-08 animation-style-08 movearea" style="background-image: url(assets/images/slider/slider-bg-8-2.jpg);">
-                    <div class="image movex">
-                        <img class="img-center" src="assets/images/slider/slider-8-shape2.png" alt="Slider-Image">
-                    </div>
-                    <div class="slider-content-08 container">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <span class="slider-content-08__subtitle">Taste the</span>
-                                <h2 class="slider-content-08__title text-white">Charms</h2>
-                                <a class="slider-content-08__btn btn slider-btn-01" href="shop.html">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Slider End -->
             </div>
-            <div class="swiper-pagination swiper-pagination-two container"></div>
         </div>
     </div>
-    <!-- Slider Section End -->
 
 
     <!-- Category Section Start -->
-    <div class="category-four category-four_bg section-padding-03" data-bg-image="assets/images/bg/category-four-bg.jpg">
+    <div class="category-four category-four_bg section-padding-03" data-bg-image="">
         <div class="container custom-container-five">
             <div class="row row-cols-2 row-cols-lg-4 category-four_wrapper mb-n60">
                 <div class="col mb-60">
@@ -106,7 +117,7 @@
     <!-- Category Section End -->
 
     <!-- Product Section Start -->
-    <div class="section-padding-03 bg-gray-100 position-relative">
+    <div class="section-padding-03  position-relative">
         <div class="container custom-container-five">
             <div class="row">
                 <div class="col-12 text-center">
@@ -201,7 +212,7 @@
 
 
     <!-- Contact form section Start -->
-    <div class="section-padding-03 contact-section contact-section_bg" data-bg-image="assets/images/bg/contact-bg.jpg">
+    <div class="section-padding-03 contact-section contact-section_bg" data-bg-image="">
         <div class="container custom-container-five">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -224,7 +235,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="contact-section_formbg" data-bg-image="assets/images/bg/contact-form-bg.jpg">
+                    <div class="contact-section_formbg" data-bg-image="">
                         <h2 class="contact-section_form__title">Get in touch.</h2>
                         <form class="contact-section_form" id="contact-form" action="http://whizthemes.com/mail-php/raju/arden/mail.php" method="post">
                             <div class="row">
