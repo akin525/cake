@@ -45,10 +45,10 @@
                         <!-- Single Slider End -->
 
                     </div>
-                    <div class="slider-arrow-two">
-                        <div class="swiper-button-next"><i class="lastudioicon-left-arrow"></i></div>
-                        <div class="swiper-button-prev"><i class="lastudioicon-right-arrow"></i></div>
-                    </div>
+{{--                    <div class="slider-arrow-two">--}}
+{{--                        <div class="swiper-button-next"><i class="lastudioicon-left-arrow"></i></div>--}}
+{{--                        <div class="swiper-button-prev"><i class="lastudioicon-right-arrow"></i></div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
