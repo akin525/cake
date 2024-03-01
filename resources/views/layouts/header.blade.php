@@ -187,7 +187,7 @@
                         <li>
                             <a href="{{route('cart')}}" class="action" >
                                 <i class="lastudioicon-shopping-cart-2"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">3</span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"></span>
                             </a>
                         </li>
                         <li><a class="action" href="{{route('dashboard')}}"><i class="lastudioicon-single-01-2"></i></a></li>
