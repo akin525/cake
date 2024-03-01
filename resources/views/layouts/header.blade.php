@@ -162,7 +162,7 @@
             </div>
             <div class="headertop-center">
                 <!-- Header Logo Start -->
-                <div class="header-logo">
+                <div class="">
                     <a href="{{url('/')}}"><img src="{{asset('assets/images/eko.png')}}" width="50" alt="Logo"></a>
                 </div>
 
@@ -425,8 +425,8 @@
                 <div class="col-md-4">
                     <!-- Footer Widget Section Strat -->
                     <div class="footer-widget">
-                        <div class="footer-widget__logo">
-                            <a href="/"><img width="100" src="{{asset('assets/images/eko.png')}}" alt="Logo"></a>
+                        <div class="">
+                            <a href="/"><img width="50" src="{{asset('assets/images/eko.png')}}" alt="Logo"></a>
                         </div>
                         <div class="footer-widget__social">
                             <a href="#"><i class="lastudioicon-b-facebook"></i></a>
