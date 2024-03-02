@@ -9,7 +9,7 @@
                     <div class="swiper-wrapper">
 
                         <!-- Single Slider Start -->
-                        <div class=" swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <div class=" swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                             <!-- Slider Content Start -->
                             <div class="slider-content-05">
                                 {{--                                <h1 class="slider-content-05__title">Sweet classics.</h1>--}}
@@ -131,9 +131,9 @@
             </div>
             <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 mb-n30">
                 @forelse($product as $pro)
-                <div class="col mb-30 z-4">
+                <div class="col mb-30 z-4" >
                     <!-- Product Item Start -->
-                    <div class="product-item product-item-09 text-center">
+                    <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
                             <h5 class="product-item__title"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
                             <span class="product-item__price ">₦{{number_format(intval($pro['price'] *1))}}</span>
