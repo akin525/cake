@@ -35,7 +35,8 @@
     <div class="section section-margin-top section-padding-03">
         <div class="container">
 
-            <div class="row">
+            <div class="row" style="border-radius: 40px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
+
                 <div class="col-lg-6 offset-lg-0 col-md-10 offset-md-1">
 
                     <!-- Product Details Image Start -->
@@ -45,7 +46,7 @@
                         <div class="single-product-vertical-tab swiper-container order-2">
 
                             <div class="swiper-wrapper popup-gallery" id="popup-gallery">
-                                <a class="swiper-slide h-auto" href="{{url($product->image)}}">
+                                <a class="swiper-slide h-auto image-container" href="{{url($product->image)}}">
                                     <img class="w-100" src="{{url($product->image)}}" alt="Product">
                                 </a>
                             </div>
@@ -257,7 +258,7 @@
                     <div class="tab-content mb-text" id="myTabContent">
                         <div class="tab-pane fade show active" id="connect-1" role="tabpanel" aria-labelledby="home-tab">
                             <div class="product-desc-row">
-                                <div class="product-desc-img">
+                                <div class="product-desc-img image-container">
                                     <img src="{{asset('assets/images/product/product-tab.jpg')}}" alt="Image">
                                 </div>
                                 <div class="product-desc-content">
