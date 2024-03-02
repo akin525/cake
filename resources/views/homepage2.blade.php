@@ -9,7 +9,7 @@
                     <div class="swiper-wrapper">
 
                         <!-- Single Slider Start -->
-                        <div class=" swiper-slide single-slider-05 animation-style-05" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
+                        <div class=" swiper-slide single-slider-05 animation-style-05 image-container" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                             <!-- Slider Content Start -->
                             <div class="slider-content-05">
                                 {{--                                <h1 class="slider-content-05__title">Sweet classics.</h1>--}}
@@ -138,8 +138,8 @@
                             <h5 class="product-item__title"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
                             <span class="product-item__price ">₦{{number_format(intval($pro['price'] *1))}}</span>
                         </div>
-                        <div class="product-item__image">
-                            <a class="item-img" href="#">
+                        <div class="product-item__image ">
+                            <a class="item-img image-container" href="#">
                                 <img src="{{url($pro['image'])}}" alt="Product">
                             </a>
                             <ul class="product-item__meta meta-bottom">

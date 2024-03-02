@@ -62,6 +62,17 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
+
+    .image-container {
+        border-radius: 40px; /* Same border-radius as the card */
+        overflow: hidden; /* Ensures the image conforms to the border-radius */
+    }
+
+    .image-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 </style>
 
 {{--<!-- Header Start -->--}}
