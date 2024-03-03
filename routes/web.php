@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\ProductsController;
 use App\Http\Controllers\admin\SetiingsController;
 use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\admin\VariationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -117,6 +118,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('admin/settings', [SetiingsController::class, 'loadsettings'])->name('admin/settings');
     Route::post('admin/savepage', [SetiingsController::class, 'changepage'])->name('admin/savepage');
+
+    Route::get('admin/size', [VariationController::class, 'sizeindex'])->name('admin/size');
+    Route::post('admin/psize', [VariationController::class, 'createsize'])->name('admin/psize');
+
+    Route::get('admin/layers', [VariationController::class, 'layersindex'])->name('admin/layers');
+    Route::post('admin/players', [VariationController::class, 'createlayers'])->name('admin/players');
+
+    Route::get('admin/flavour', [VariationController::class, 'flavourindex'])->name('admin/flavour');
+    Route::post('admin/pflavour', [VariationController::class, 'createflavour'])->name('admin/pflavour');
 });
     require __DIR__.'/auth.php';
 

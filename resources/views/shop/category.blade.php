@@ -47,7 +47,7 @@
                         @forelse($product as $pro)
                             <div class="col mb-50">
                                 <!-- Product Item Start -->
-                                <div class="product-item text-center">
+                                <div class="product-item text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                                     <div class="product-item__badge">Hot</div>
                                     <div class="product-item__image border w-100">
                                         <a href="#"><img width="350" height="350" src="{{$pro['image']}}" alt="Product"></a>
