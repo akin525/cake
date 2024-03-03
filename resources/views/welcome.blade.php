@@ -77,7 +77,7 @@
                 @forelse($product1 as $pro)
                 <div class="col-lg-4 col-sm-6">
                     <!-- Product Item Start -->
-                    <div class="product-item product-item-03 bg-white p-4 p-md-6 text-center">
+                    <div class="product-item product-item-03 bg-white p-4 p-md-6 text-center" style="border-radius: 30px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__image">
                             <a href="#">
                                 <img width="310" height="310" src="{{url($pro['image'])}}" alt="Product">

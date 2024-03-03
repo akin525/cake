@@ -17,7 +17,7 @@
                         @forelse($hot as $hots)
                         <div class="swiper-slide">
                             <!-- Product Item Start -->
-                            <div class="product-item product-item-05 border text-center">
+                            <div class="product-item product-item-05 border text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                                 <div class="product-item__image">
                                     <a href="{{route('cakes')}}"><img width="250" height="250" src="{{url($hots['image'])}}" alt="Product"></a>
                                 </div>
