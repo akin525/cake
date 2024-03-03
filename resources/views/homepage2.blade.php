@@ -149,7 +149,7 @@
                             </ul>
                             <br>
                             <br>
-                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn" data-bs-toggle="modal" data-bs-target="#modalCart">Add to cart</a>
+                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn" >Add to cart</a>
                         </div>
                     </div>
                     <!-- Product Item End -->
