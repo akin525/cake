@@ -504,7 +504,7 @@
         <div class="container">
             <!-- Footer Copyright Text Strat -->
             <div class="footer-copyright-text text-center">
-                <p>&copy; 2024 <strong> Eko Cake </strong> Made with <i class="lastudioicon-heart-1"></i> by <a href="https://pay.sammighty.com.ng/">Sammighty</a></p>
+                <p>&copy; 2024 <strong> All right reserved </strong> <i class="lastudioicon-heart-1"></i> by <a href="#">Eko Cakes</a></p>
             </div>
             <!-- Footer Copyright Text End -->
         </div>

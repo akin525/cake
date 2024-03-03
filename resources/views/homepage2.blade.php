@@ -9,7 +9,7 @@
                     <div class="swiper-wrapper">
 
                         <!-- Single Slider Start -->
-                        <div class=" swiper-slide single-slider-05 animation-style-05 image-container" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
+                        <div class=" swiper-slide single-slider-05 animation-style-05 image-container" style="background-image: url(cake.jpg);  background-size: contain; background-position: center; background-repeat: no-repeat;">
                             <!-- Slider Content Start -->
                             <div class="slider-content-05">
                                 {{--                                <h1 class="slider-content-05__title">Sweet classics.</h1>--}}
