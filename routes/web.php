@@ -121,12 +121,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('admin/size', [VariationController::class, 'sizeindex'])->name('admin/size');
     Route::post('admin/psize', [VariationController::class, 'createsize'])->name('admin/psize');
+    Route::post('admin/editsize', [VariationController::class, 'editsizes'])->name('admin/editsize');
 
     Route::get('admin/layers', [VariationController::class, 'layersindex'])->name('admin/layers');
     Route::post('admin/players', [VariationController::class, 'createlayers'])->name('admin/players');
+    Route::post('admin/editlayer', [VariationController::class, 'editlayers'])->name('admin/editlayer');
 
     Route::get('admin/flavour', [VariationController::class, 'flavourindex'])->name('admin/flavour');
     Route::post('admin/pflavour', [VariationController::class, 'createflavour'])->name('admin/pflavour');
+    Route::post('admin/editflavour', [VariationController::class, 'editflavour'])->name('admin/editflavour');
 });
     require __DIR__.'/auth.php';
 

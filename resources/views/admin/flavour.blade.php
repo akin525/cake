@@ -81,14 +81,9 @@
                                     <td class="text-body-emphasis">{{$cat['amount']}}</td>
                                     <td class="text-center">
                                         <div class="d-flex flex-nowrap justify-content-center">
-                                            <div class="dropdown no-caret">
-                                                <a href="#" data-bs-toggle="dropdown" class="dropdown-toggle btn btn-outline-primary btn-xs hover-white btn-hover-bg-primary py-4 px-5">
-                                                    <i class="far fa-ellipsis-h"></i> </a>
-                                                <div class="dropdown-menu dropdown-menu-end m-0">
-                                                    <a class="dropdown-item" href="#">Edit info</a>
-                                                    <a class="dropdown-item text-danger" href="#">Delete</a>
-                                                </div>
-                                            </div>
+                                            <button  type="button" class="btn btn-primary" onclick="openModal(this)" data-user-id="{{$cat->id}}" data-user-amount="{{$cat->amount}}" data-user-name="{{$cat->name}}" >
+                                                <i class="fa fa-edit"></i>Edit
+                                            </button>
                                         </div>
                                     </td>
                                     @empty
@@ -97,12 +92,156 @@
                                 @endforelse
                                 </tbody>
                             </table>
+                            <style>
+                                /* Add your CSS styles here */
+                                .modal {
+                                    display: none;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    background-color: rgba(0, 0, 0, 0.5);
+                                }
+                                .modal-content {
+                                    background-color: white;
+                                    width: 60%;
+                                    max-width: 400px;
+                                    margin: 100px auto;
+                                    padding: 20px;
+                                    border-radius: 5px;
+                                }
+                            </style>
+                            <div class="modal" id="editModal">
+                                <div class="modal-content">
+                                    <form id="dataForm" >
+                                        @csrf
+                                        <div class="card card-body">
+                                            <div class="card"style="border-radius: 30px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
+                                                <p class="text-center" >EDIT FLAVOUR</p>
+                                            </div>
+                                            {{--                       <input placeholder="Your e-mail" class="subscribe-input" name="email" type="email">--}}
+                                            <br/>
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" id="plan"  name="name" value="" readonly />
+                                                <input type="hidden" class="form-control" id="id" name="id" value="" required />
+                                            </div>
+                                            <br/>
+                                            <div id="div_id_network" >
+                                                <label for="network" class=" requiredField">
+                                                    Amount<span class="asteriskField">*</span>
+                                                </label>
+                                                <div class="">
+                                                    <input type="number" id="amount" name="amount"  class="text-success form-control" required>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <button type="submit" class="btn btn-outline-success">Update</button>
+                                        </div>
+                                    </form>
+                                    <button class="btn btn-outline-danger" onclick="closeModal()">Cancel</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function openModal(element) {
+            const modal = document.getElementById('editModal');
+            const newNameInput = document.getElementById('id');
+            const net = document.getElementById('plan');
+            const userId =element.getAttribute('data-user-id');
+            const amount =element.getAttribute('data-user-amount');
+            const userName = element.getAttribute('data-user-name');
+
+
+
+            newNameInput.value = userId;
+            net.value = userName;
+
+            console.log(newNameInput);
+            console.log(net);
+            modal.style.display = 'block';
+            // You can fetch user data using the userId and populate the input fields in the modal if needed
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('editModal');
+            modal.style.display = 'none';
+        }
+
+        function saveChanges() {
+            // Add code here to save the changes and update the table
+            closeModal();
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+
+            // Send the AJAX request
+            $('#dataForm').submit(function(e) {
+                e.preventDefault(); // Prevent the form from submitting traditionally
+
+                // Get the form data
+                var formData = $(this).serialize();
+                // The user clicked "Yes", proceed with the action
+                // Add your jQuery code here
+                // For example, perform an AJAX request or update the page content
+                $('#loadingSpinner').show();
+
+
+
+                $.ajax({
+                    url: "{{route('admin/editflavour')}}",
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        // Handle the success response here
+                        $('#loadingSpinner').hide();
+
+                        console.log(response);
+                        // Update the page or perform any other actions based on the response
+
+                        if (response.status == 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: response.message
+                            }).then(() => {
+                                location.reload(); // Reload the page
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'info',
+                                title: 'Pending',
+                                text: response.message
+                            });
+                            // Handle any other response status
+                        }
+
+                    },
+                    error: function(xhr) {
+                        $('#loadingSpinner').hide();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'fail',
+                            text: xhr.responseText
+                        });
+                        // Handle any errors
+                        console.log(xhr.responseText);
+
+                    }
+                });
+            });
+        });
+
+    </script>
 
 
     <script>
