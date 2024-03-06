@@ -5,6 +5,69 @@
     @endif
 @endsection
 @section('content')
+    <style>
+        .size-selector {
+            display: flex;
+            align-items: center;
+        }
+
+        .size-selector label {
+            margin-right: 10px;
+        }
+
+        .size-options {
+            display: flex;
+        }
+
+        .size-options input[type="radio"] {
+            display: none;
+        }
+
+        .size-options label {
+            display: block;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            margin-right: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .size-options input[type="radio"]:checked + label {
+            background-color: #ccc;
+        }
+
+        .color-selector {
+            display: flex;
+            align-items: center;
+        }
+
+        .color-selector label {
+            margin-right: 10px;
+        }
+
+        .color-options {
+            display: flex;
+        }
+
+        .color-options input[type="radio"] {
+            display: none;
+        }
+
+        .color-options label {
+            display: block;
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+        }
+
+        .color-options input[type="radio"]:checked + label {
+            border-color: #000; /* Change border color when selected */
+        }
+
+    </style>
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
         <div class="loading-spinner"></div>
     </div>
@@ -113,19 +176,54 @@
                         <!-- Description End -->
                         <form method="post" action="{{route('addcart1')}}">
                             @csrf
-                        <div class="product-color mb-2">
-                            <label for="colorBy">Color</label>
-                            <div class="select-wrapper">
-                                <select name="color" id="colorBy">
-                                    <option value="manual">Choose an option</option>
-                                    <option value="blue">Blue</option>
-                                    <option value="red">Red</option>
-                                    <option value="green">Green</option>
-                                    <option value="black">Black</option>
-                                    <option value="yellow">Yellow</option>
-                                </select>
+
+
+
+                        <div class="product-color mb-2 ">
+                            <div class="size-selector">
+                                <label for="size">Select Size:</label>
+                                <div class="size-options">
+                                    <input type="radio" id="size-s" name="size" value="S">
+                                    <label for="size-s">S</label>
+
+                                    <input type="radio" id="size-m" name="size" value="M">
+                                    <label for="size-m">M</label>
+
+                                    <input type="radio" id="size-l" name="size" value="L">
+                                    <label for="size-l">L</label>
+
+                                    <input type="radio" id="size-xl" name="size" value="XL">
+                                    <label for="size-xl">XL</label>
+
+                                    <input type="radio" id="size-xxl" name="size" value="XXL">
+                                    <label for="size-xxl">XXL</label>
+                                </div>
                             </div>
+
                         </div>
+                        <div class="">
+                            <div class="color-selector">
+                                <label for="color">Select Color:</label>
+                                <div class="color-options">
+                                    <input type="radio" id="color-red" name="color" value="Red">
+                                    <label for="color-red" style="background-color: red;"></label>
+
+                                    <input type="radio" id="color-blue" name="color" value="Blue">
+                                    <label for="color-blue" style="background-color: blue;"></label>
+
+                                    <input type="radio" id="color-green" name="color" value="Green">
+                                    <label for="color-green" style="background-color: green;"></label>
+
+                                    <input type="radio" id="color-black" name="color" value="Black">
+                                    <label for="color-black" style="background-color: black;"></label>
+
+                                    <input type="radio" id="color-yellow" name="color" value="Yellow">
+                                    <label for="color-yellow" style="background-color: yellow;"></label>
+                                </div>
+                            </div>
+
+                        </div>
+                            <br>
                         <div class="product-color mb-2">
                             <label for="flavourBy">Flavour</label>
                             <div class="select-wrapper">
@@ -167,17 +265,17 @@
                             <label for="ekoCakesMessage">Eko Cakes Card Message</label>
                             <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="form-control" />
                         </div>
-                        <div class="product-size mb-5">
-                            <label for="sizeBy">Size</label>
-                            <div class="select-wrapper">
-                                <select name="size" id="sizeBy">
-                                    <option value="manual">Choose an option</option>
-                                    <option value="large">Large</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="small">Small</option>
-                                </select>
-                            </div>
-                        </div>
+{{--                        <div class="product-size mb-5">--}}
+{{--                            <label for="sizeBy">Size</label>--}}
+{{--                            <div class="select-wrapper">--}}
+{{--                                <select name="size" id="sizeBy">--}}
+{{--                                    <option value="manual">Choose an option</option>--}}
+{{--                                    <option value="large">Large</option>--}}
+{{--                                    <option value="medium">Medium</option>--}}
+{{--                                    <option value="small">Small</option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="product-size mb-5">
                             <label for="layersBy">Layers</label>
                             <div class="select-wrapper">
