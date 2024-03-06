@@ -270,19 +270,19 @@
                             <div class="flavor-selector">
                                 <label for="flavor">Select Flavor:</label>
                                 <div class="flavor-options">
-                                    <input type="radio"  id="flavourBy" name="flavor" value="Chocolate">
+                                    <input type="radio" id="flavor-chocolate" name="flavor" value="Chocolate">
                                     <label for="flavor-chocolate"><img src="https://baqers.com/storage/flavors/18/9R4S9h9U69Le9Df3HmBUktCDgZp0sM1vi9FI3aYG.svg" alt="Chocolate"></label>
 
-                                    <input type="radio"  id="flavourBy" name="flavor" value="Vanilla">
+                                    <input type="radio" id="flavor-vanilla" name="flavor" value="Vanilla">
                                     <label for="flavor-vanilla"><img src="https://baqers.com/storage/flavors/2/cuZCxdDzI7PaDTM3vlS1ETgCR8Bt6Brf65aJFWW8.svg" alt="Vanilla"></label>
 
-                                    <input type="radio"  id="flavourBy" name="flavor" value="Strawberry">
+                                    <input type="radio" id="flavor-strawberry" name="flavor" value="Strawberry">
                                     <label for="flavor-strawberry"><img src="https://baqers.com/storage/flavors/7/g0rGxrqIzQvjKl21aVDlpBiI8otmfiH6frlqWuxT.svg" alt="Strawberry"></label>
 
-                                    <input type="radio"  id="flavourBy" name="flavor" value="Red Velvet">
+                                    <input type="radio" id="flavor-mint" name="flavor" value="Red Velvet">
                                     <label for="flavor-mint"><img src="https://baqers.com/storage/flavors/13/x2bTzbPPfFlyocFFM77csdztaw1JjQCZWaaN9Jr5.svg" alt="Red Velvet"></label>
 
-                                    <input type="radio"  id="flavourBy" name="flavor" value="Coconut">
+                                    <input type="radio" id="flavor-caramel" name="flavor" value="Coconut">
                                     <label for="flavor-caramel"><img src="https://baqers.com/storage/flavors/23/idCS85iSKvb89gOgQZH8hnFt3GPcWZC7QXX6BYbs.svg" alt="Coconut"></label>
                                 </div>
                             </div>
