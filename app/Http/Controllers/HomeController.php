@@ -126,7 +126,7 @@ function cakedetail($request)
         $validate=$request->validate([
             'id'=>'required',
             'color'=>'required',
-            'flavour'=>'required',
+            'flavor'=>'required',
             'size'=>'required',
             'layers'=>'required',
         ]);
@@ -142,7 +142,7 @@ function cakedetail($request)
                 'image' => $product->image,
                 'color'=>$request->color,
                 'aize'=>$request->size,
-                'flavour'=>$request->flavour,
+                'flavour'=>$request->flavor,
                 'layer'=>$request->layers,
                 'card'=>$request->ekoCakesMessage ?? null,
                 'topper'=>$request->topperText ?? null,
