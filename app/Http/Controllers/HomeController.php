@@ -141,7 +141,7 @@ function cakedetail($request)
                 'amount' => $product->price,
                 'image' => $product->image,
                 'color'=>$request->color,
-                'aize'=>$request->size,
+                'size'=>$request->size,
                 'flavour'=>$request->flavor,
                 'layer'=>$request->layers,
                 'card'=>$request->ekoCakesMessage ?? null,
