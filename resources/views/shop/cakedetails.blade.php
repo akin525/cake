@@ -66,6 +66,38 @@
         .color-options input[type="radio"]:checked + label {
             border-color: #000; /* Change border color when selected */
         }
+        .flavor-selector {
+            display: flex;
+            align-items: center;
+        }
+
+        .flavor-selector label {
+            margin-right: 10px;
+        }
+
+        .flavor-options {
+            display: flex;
+        }
+
+        .flavor-options input[type="radio"] {
+            display: none;
+        }
+
+        .flavor-options label {
+            display: inline-block;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .flavor-options label img {
+            width: 50px; /* Adjust image width as needed */
+            height: 50px; /* Adjust image height as needed */
+            border-radius: 50%; /* Rounded corners for circular images */
+        }
+
+        .flavor-options input[type="radio"]:checked + label {
+            border: 2px solid #000; /* Add border when selected */
+        }
 
     </style>
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
@@ -224,20 +256,52 @@
 
                         </div>
                             <br>
-                        <div class="product-color mb-2">
-                            <label for="flavourBy">Flavour</label>
-                            <div class="select-wrapper">
-                                <select name="flavour" id="flavourBy">
-                                    <option value="manual">Choose an option</option>
-                                    <option value="vanilla">Vanilla Only</option>
-                                    <option value="chocolate">Chocolate Only</option>
-                                    <option value="vanilla_chocolate">Vanilla & Chocolate</option>
-                                    <option value="vetuer">Vetuer Only</option>
-                                    <option value="red_vetuer_chocolate">Red Vetuer & Chocolate</option>
-                                    <option value="vanilla_red_vetuer">Vanilla & Red Vetuer</option>
-                                </select>
+                            <div class="product-size mb-5">
+                                <label for="layersBy">Layers</label>
+                                <div class="select-wrapper">
+                                    <select name="layers" id="layersBy">
+                                        <option value="1">Layer 1</option>
+                                        <option value="2">Layer 2</option>
+                                        <option value="3">Layer 3</option>
+                                    </select>
+                                </div>
                             </div>
+                        <div class="product-color mb-2">
+                            <div class="flavor-selector">
+                                <label for="flavor">Select Flavor:</label>
+                                <div class="flavor-options">
+                                    <input type="radio"  id="flavourBy" name="flavor" value="Chocolate">
+                                    <label for="flavor-chocolate"><img src="https://baqers.com/storage/flavors/18/9R4S9h9U69Le9Df3HmBUktCDgZp0sM1vi9FI3aYG.svg" alt="Chocolate"></label>
+
+                                    <input type="radio"  id="flavourBy" name="flavor" value="Vanilla">
+                                    <label for="flavor-vanilla"><img src="https://baqers.com/storage/flavors/2/cuZCxdDzI7PaDTM3vlS1ETgCR8Bt6Brf65aJFWW8.svg" alt="Vanilla"></label>
+
+                                    <input type="radio"  id="flavourBy" name="flavor" value="Strawberry">
+                                    <label for="flavor-strawberry"><img src="https://baqers.com/storage/flavors/7/g0rGxrqIzQvjKl21aVDlpBiI8otmfiH6frlqWuxT.svg" alt="Strawberry"></label>
+
+                                    <input type="radio"  id="flavourBy" name="flavor" value="Red Velvet">
+                                    <label for="flavor-mint"><img src="https://baqers.com/storage/flavors/13/x2bTzbPPfFlyocFFM77csdztaw1JjQCZWaaN9Jr5.svg" alt="Red Velvet"></label>
+
+                                    <input type="radio"  id="flavourBy" name="flavor" value="Coconut">
+                                    <label for="flavor-caramel"><img src="https://baqers.com/storage/flavors/23/idCS85iSKvb89gOgQZH8hnFt3GPcWZC7QXX6BYbs.svg" alt="Coconut"></label>
+                                </div>
+                            </div>
+
                         </div>
+{{--                            <div class="product-color mb-2">--}}
+{{--                            <label for="flavourBy">Flavour</label>--}}
+{{--                            <div class="select-wrapper">--}}
+{{--                                <select name="flavour" id="flavourBy">--}}
+{{--                                    <option value="manual">Choose an option</option>--}}
+{{--                                    <option value="vanilla">Vanilla Only</option>--}}
+{{--                                    <option value="chocolate">Chocolate Only</option>--}}
+{{--                                    <option value="vanilla_chocolate">Vanilla & Chocolate</option>--}}
+{{--                                    <option value="vetuer">Vetuer Only</option>--}}
+{{--                                    <option value="red_vetuer_chocolate">Red Vetuer & Chocolate</option>--}}
+{{--                                    <option value="vanilla_red_vetuer">Vanilla & Red Vetuer</option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="product-color mb-2">
                             <label for="topperBy">Topper</label>
                             <div class="select-wrapper">
@@ -276,16 +340,7 @@
 {{--                                </select>--}}
 {{--                            </div>--}}
 {{--                        </div>--}}
-                        <div class="product-size mb-5">
-                            <label for="layersBy">Layers</label>
-                            <div class="select-wrapper">
-                                <select name="layers" id="layersBy">
-                                    <option value="1">Layer 1</option>
-                                    <option value="2">Layer 2</option>
-                                    <option value="3">Layer 3</option>
-                                </select>
-                            </div>
-                        </div>
+
                         <!-- Product Quantity, Cart Button, Wishlist and Compare Start -->
                         <ul class="product-cta">
 
