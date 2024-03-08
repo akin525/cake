@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Categories;
 use App\Models\Cheff;
+use App\Models\Colors;
 use App\Models\Homepage;
 use App\Models\Orders;
 use App\Models\Products;
@@ -105,6 +106,7 @@ function cakedetail($request)
 {
     $product=Products::where('id', $request)->first();
     $product1=Products::where('status', 1)->limit(9)->get();
+    $color=Colors::all();
     if (Auth::user()) {
         $cartsum = Cart::where('user_id', Auth::user()->id)->sum('amount');
         $cart=Cart::where('user_id', Auth::user()->id)->get();
@@ -116,7 +118,7 @@ function cakedetail($request)
     $category=Categories::all();
 
     return view('shop.cakedetails', compact('product', 'product1',
-    'cart', 'cartsum', 'category'
+    'cart', 'cartsum', 'category', 'color'
     ));
 
 }

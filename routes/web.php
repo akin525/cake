@@ -130,6 +130,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/flavour', [VariationController::class, 'flavourindex'])->name('admin/flavour');
     Route::post('admin/pflavour', [VariationController::class, 'createflavour'])->name('admin/pflavour');
     Route::post('admin/editflavour', [VariationController::class, 'editflavour'])->name('admin/editflavour');
+
+    Route::get('admin/color', [VariationController::class, 'indexcolor'])->name('admin/color');
+    Route::post('admin/colour', [VariationController::class, 'createcolor'])->name('admin/colour');
+
 });
     require __DIR__.'/auth.php';
 

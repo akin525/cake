@@ -136,7 +136,11 @@
                                     <span class="position-absolute top-50 end-5 translate-middle-y"><i class="far fa-angle-down"></i></span>
                                 </a>
                                 <div class="collapse menu-collapse" id="var">
-                                    <ul class="sub-menu list-unstyled"><li class="sidebar-item">
+                                    <ul class="sub-menu list-unstyled">
+                                        <li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/color')}}" title="Product List">Color</a>
+                                        </li>
+                                        <li class="sidebar-item">
                                             <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/size')}}" title="Product List">Sizes</a>
                                         </li>
                                         <li class="sidebar-item">

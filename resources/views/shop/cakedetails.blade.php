@@ -237,20 +237,11 @@
                             <div class="color-selector">
                                 <label for="color">Select Color:</label>
                                 <div class="color-options">
-                                    <input type="radio" id="color-red" name="color" value="Red">
-                                    <label for="color-red" style="background-color: red;"></label>
+                                    @foreach($color as $co)
+                                    <input type="radio" id="{{$co['label']}}" name="color" value="{{$co['label']}}">
+                                    <label for="color-red" style="background-color: {{$co['name']}};"></label>
+                                    @endforeach
 
-                                    <input type="radio" id="color-blue" name="color" value="Blue">
-                                    <label for="color-blue" style="background-color: blue;"></label>
-
-                                    <input type="radio" id="color-green" name="color" value="Green">
-                                    <label for="color-green" style="background-color: green;"></label>
-
-                                    <input type="radio" id="color-black" name="color" value="Black">
-                                    <label for="color-black" style="background-color: black;"></label>
-
-                                    <input type="radio" id="color-yellow" name="color" value="Yellow">
-                                    <label for="color-yellow" style="background-color: yellow;"></label>
                                 </div>
                             </div>
 
@@ -266,42 +257,42 @@
                                     </select>
                                 </div>
                             </div>
-                        <div class="product-color mb-2">
-                            <div class="flavor-selector">
-                                <label for="flavor">Select Flavor:</label>
-                                <div class="flavor-options">
-                                    <input type="radio" id="flavor-chocolate" name="flavor" value="Chocolate">
-                                    <label for="flavor-chocolate"><img src="https://baqers.com/storage/flavors/18/9R4S9h9U69Le9Df3HmBUktCDgZp0sM1vi9FI3aYG.svg" alt="Chocolate"></label>
+{{--                        <div class="product-color mb-2">--}}
+{{--                            <div class="flavor-selector">--}}
+{{--                                <label for="flavor">Select Flavor:</label>--}}
+{{--                                <div class="flavor-options">--}}
+{{--                                    <input type="radio" id="flavor-chocolate" name="flavor" value="Chocolate">--}}
+{{--                                    <label for="flavor-chocolate"><img src="https://baqers.com/storage/flavors/18/9R4S9h9U69Le9Df3HmBUktCDgZp0sM1vi9FI3aYG.svg" alt="Chocolate"></label>--}}
 
-                                    <input type="radio" id="flavor-vanilla" name="flavor" value="Vanilla">
-                                    <label for="flavor-vanilla"><img src="https://baqers.com/storage/flavors/2/cuZCxdDzI7PaDTM3vlS1ETgCR8Bt6Brf65aJFWW8.svg" alt="Vanilla"></label>
+{{--                                    <input type="radio" id="flavor-vanilla" name="flavor" value="Vanilla">--}}
+{{--                                    <label for="flavor-vanilla"><img src="https://baqers.com/storage/flavors/2/cuZCxdDzI7PaDTM3vlS1ETgCR8Bt6Brf65aJFWW8.svg" alt="Vanilla"></label>--}}
 
-                                    <input type="radio" id="flavor-strawberry" name="flavor" value="Strawberry">
-                                    <label for="flavor-strawberry"><img src="https://baqers.com/storage/flavors/7/g0rGxrqIzQvjKl21aVDlpBiI8otmfiH6frlqWuxT.svg" alt="Strawberry"></label>
+{{--                                    <input type="radio" id="flavor-strawberry" name="flavor" value="Strawberry">--}}
+{{--                                    <label for="flavor-strawberry"><img src="https://baqers.com/storage/flavors/7/g0rGxrqIzQvjKl21aVDlpBiI8otmfiH6frlqWuxT.svg" alt="Strawberry"></label>--}}
 
-                                    <input type="radio" id="flavor-mint" name="flavor" value="Red Velvet">
-                                    <label for="flavor-mint"><img src="https://baqers.com/storage/flavors/13/x2bTzbPPfFlyocFFM77csdztaw1JjQCZWaaN9Jr5.svg" alt="Red Velvet"></label>
+{{--                                    <input type="radio" id="flavor-mint" name="flavor" value="Red Velvet">--}}
+{{--                                    <label for="flavor-mint"><img src="https://baqers.com/storage/flavors/13/x2bTzbPPfFlyocFFM77csdztaw1JjQCZWaaN9Jr5.svg" alt="Red Velvet"></label>--}}
 
-                                    <input type="radio" id="flavor-caramel" name="flavor" value="Coconut">
-                                    <label for="flavor-caramel"><img src="https://baqers.com/storage/flavors/23/idCS85iSKvb89gOgQZH8hnFt3GPcWZC7QXX6BYbs.svg" alt="Coconut"></label>
-                                </div>
-                            </div>
-
-                        </div>
-{{--                            <div class="product-color mb-2">--}}
-{{--                            <label for="flavourBy">Flavour</label>--}}
-{{--                            <div class="select-wrapper">--}}
-{{--                                <select name="flavour" id="flavourBy">--}}
-{{--                                    <option value="manual">Choose an option</option>--}}
-{{--                                    <option value="vanilla">Vanilla Only</option>--}}
-{{--                                    <option value="chocolate">Chocolate Only</option>--}}
-{{--                                    <option value="vanilla_chocolate">Vanilla & Chocolate</option>--}}
-{{--                                    <option value="vetuer">Vetuer Only</option>--}}
-{{--                                    <option value="red_vetuer_chocolate">Red Vetuer & Chocolate</option>--}}
-{{--                                    <option value="vanilla_red_vetuer">Vanilla & Red Vetuer</option>--}}
-{{--                                </select>--}}
+{{--                                    <input type="radio" id="flavor-caramel" name="flavor" value="Coconut">--}}
+{{--                                    <label for="flavor-caramel"><img src="https://baqers.com/storage/flavors/23/idCS85iSKvb89gOgQZH8hnFt3GPcWZC7QXX6BYbs.svg" alt="Coconut"></label>--}}
+{{--                                </div>--}}
 {{--                            </div>--}}
+
 {{--                        </div>--}}
+                            <div class="product-color mb-2">
+                            <label for="flavourBy">Flavour</label>
+                            <div class="select-wrapper">
+                                <select name="flavour" id="flavourBy">
+                                    <option value="manual">Choose an option</option>
+                                    <option value="vanilla">Vanilla Only</option>
+                                    <option value="chocolate">Chocolate Only</option>
+                                    <option value="vanilla_chocolate">Vanilla & Chocolate</option>
+                                    <option value="vetuer">Vetuer Only</option>
+                                    <option value="red_vetuer_chocolate">Red Vetuer & Chocolate</option>
+                                    <option value="vanilla_red_vetuer">Vanilla & Red Vetuer</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="product-color mb-2">
                             <label for="topperBy">Topper</label>
                             <div class="select-wrapper">
