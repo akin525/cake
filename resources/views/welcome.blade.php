@@ -137,6 +137,40 @@
     </div>
     <!-- Product Section End -->
 
+
+    <div class="faq">
+        <div class="container custom-container">
+            <div class="row" id="exampleOne">
+
+                <div class="">
+                    <div class="faq-head align-content-center">
+                        <h4 class="faq-head__title text-center">FREQUENTLY ASKED QUESTIONS</h4>
+                        <span class="faq-head__border"></span>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="accordion">
+                        @foreach($fq as $fa)
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$fa['id']}}" aria-expanded="true" aria-controls="collapseOne">
+                                    <span>{{$fa['heading']}}</span>
+                                    <i class="lastudioicon lastudioicon-down-arrow"></i>
+                                </button>
+                            </h2>
+                            <div id="collapse{{$fa['id']}}" class="accordion-collapse collapse" data-bs-parent="#exampleOne">
+                                <div class="accordion-body">{!! $fa['content'] !!}</div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
     <!-- Features Section Strat -->
     <div class="features-section section-padding-01">
         <div class="container custom-container">

@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailCart;
+use App\Mail\register;
 use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Categories;
 use App\Models\Cheff;
 use App\Models\Colors;
+use App\Models\FQ;
 use App\Models\Homepage;
+use App\Models\Layers;
 use App\Models\Orders;
 use App\Models\Products;
 use App\Models\Rtb;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class HomeController
@@ -50,23 +55,25 @@ function landingpage()
 //            return $cartsum;
             $setting=Settings::first();
             $hot=Products::where('cool', 'hots')->get();
-
+            $fq=FQ::all();
             $page=Homepage::where('status', 1)->first();
             if ($page->page == 01){
                 return view('welcome', compact('product',
-                    'product1', 'setting', 'hot', 'latest', 'category', 'cartsum', 'cart'));
+                    'product1', 'setting', 'fq', 'hot', 'latest', 'category', 'cartsum', 'cart'));
             }elseif ($page->page == 02){
                 return view('homepage1', compact('product',
-                    'product1', 'setting', 'hot', 'latest', 'category', 'cartsum', 'cart'));
+                    'product1', 'setting', 'hot', 'fq', 'latest', 'category', 'cartsum', 'cart'));
             }elseif ($page->page == 03){
                 return view('homepage2', compact('product',
-                    'product1', 'setting', 'hot', 'latest', 'category', 'cartsum', 'cart'));
+                    'product1', 'setting', 'hot', 'fq', 'latest', 'category', 'cartsum', 'cart'));
             }
 
 }
 function aboutus()
 {
     $setting=Settings::first();
+    $fq=FQ::all();
+
     if (Auth::user()) {
         $cartsum = Cart::where('user_id', Auth::user()->id)->sum('amount');
         $cart=Cart::where('user_id', Auth::user()->id)->get();
@@ -77,7 +84,7 @@ function aboutus()
     }
     $category=Categories::all();
 
-    return view('about', compact('setting', 'category', 'cartsum', 'cart'));
+    return view('about', compact('setting', 'fq',  'category', 'cartsum', 'cart'));
 }
 function getproduct($request)
 {
@@ -90,6 +97,8 @@ function allcake()
     $product=Products::where('status', 1)
         ->orderBy('id', 'DESC')
         ->paginate(12);
+    $fq=FQ::all();
+
     if (Auth::user()) {
         $cartsum = Cart::where('user_id', Auth::user()->id)->sum('amount');
         $cart=Cart::where('user_id', Auth::user()->id)->get();
@@ -100,13 +109,14 @@ function allcake()
     }
     $category=Categories::all();
 
-    return view('shop.cake', compact('product', 'category', 'cart', 'cartsum'));
+    return view('shop.cake', compact('product', 'fq', 'category', 'cart', 'cartsum'));
 }
 function cakedetail($request)
 {
     $product=Products::where('id', $request)->first();
     $product1=Products::where('status', 1)->limit(9)->get();
     $color=Colors::all();
+    $layer=Layers::all();
     if (Auth::user()) {
         $cartsum = Cart::where('user_id', Auth::user()->id)->sum('amount');
         $cart=Cart::where('user_id', Auth::user()->id)->get();
@@ -118,7 +128,7 @@ function cakedetail($request)
     $category=Categories::all();
 
     return view('shop.cakedetails', compact('product', 'product1',
-    'cart', 'cartsum', 'category', 'color'
+    'cart', 'cartsum', 'category', 'color', 'layer',
     ));
 
 }
@@ -149,6 +159,11 @@ function cakedetail($request)
                 'card'=>$request->ekoCakesMessage ?? null,
                 'topper'=>$request->topperText ?? null,
             ]);
+            $email=Auth::user()->email;
+            $input=Cart::where('user_id', Auth::user()->id)->get();
+            $amount=Cart::where('user_id', Auth::user()->id)->sum('amount');
+            Mail::to($email)->send(new MailCart($input,  $amount));
+
             $message = "Added To Cart Successfully!";
             return redirect('cart')->with('status', $message);
 
@@ -246,8 +261,9 @@ function category($request)
         ->orderBy('id', 'DESC')
         ->paginate('12');
     $category=Categories::all();
+    $fq=FQ::all();
 
-    return view('shop.category', compact('category','product'));
+    return view('shop.category', compact('category','product', 'fq'));
 }
 function checkout()
 {

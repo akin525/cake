@@ -238,9 +238,10 @@
                                 <label for="color">Select Color:</label>
                                 <div class="color-options">
                                     @foreach($color as $co)
-                                    <input type="radio" id="{{$co['label']}}" name="color" value="{{$co['label']}}">
-                                    <label for="color-red" style="background-color: {{$co['name']}};"></label>
+                                        <input type="radio" id="{{$co['label']}}" name="color" value="{{$co['label']}}" required>
+                                        <label for="{{$co['label']}}" style="background-color: {{$co['name']}};"></label>
                                     @endforeach
+
 
                                 </div>
                             </div>
@@ -282,7 +283,7 @@
                             <div class="product-color mb-2">
                             <label for="flavourBy">Flavour</label>
                             <div class="select-wrapper">
-                                <select name="flavour" id="flavourBy">
+                                <select name="flavor" id="flavourBy">
                                     <option value="manual">Choose an option</option>
                                     <option value="vanilla">Vanilla Only</option>
                                     <option value="chocolate">Chocolate Only</option>

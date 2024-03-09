@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\FqController;
 use App\Http\Controllers\admin\OrdersController;
 use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\ProductsController;
@@ -133,6 +134,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('admin/color', [VariationController::class, 'indexcolor'])->name('admin/color');
     Route::post('admin/colour', [VariationController::class, 'createcolor'])->name('admin/colour');
+
+
+    Route::get('admin/addfaq', [FqController::class, 'indexfq'])->name('admin/addfaq');
+    Route::post('admin/addfa', [FqController::class, 'createfq'])->name('admin/addfa');
 
 });
     require __DIR__.'/auth.php';
