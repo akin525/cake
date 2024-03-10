@@ -40,6 +40,39 @@
             </div>
         </form>
     </div>
+
+    <div class="card mb-4 rounded-4 p-7">
+        <div class="card-body px-0 pt-7 pb-0">
+            <div class="table-responsive">
+                <table id="example" class="table table-hover align-middle table-nowrap mb-0 table-borderless"><thead class="table-light">
+                    <tr>
+                        <th class="align-middle" scope="col">#ID
+                        </th>
+                        <th class="align-middle" scope="col">Heading
+                        </th>
+                        <th class="align-middle text-center" scope="col">Actions
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($faq as $fa)
+                        <tr>
+                            <td><a href="#">#{{$fa['id']}}</a></td>
+                            <td class="text-body-emphasis">{{$fa['heading']}}</td>
+                            <td class="text-center">
+                               <a href="#" class="badge badge-green"><i class="fa fa-pencil"></i>Edit</a>
+                            </td>
+                            @empty
+                                <b>No FAQ</b>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+{{--                {{$order->links()}}--}}
+            </div>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function() {
 

@@ -10,7 +10,8 @@ class FqController extends Controller
 {
 function indexfq()
 {
-    return view('admin.fq');
+    $faq=FQ::all();
+    return view('admin.fq', compact('faq'));
 }
 function createfq(Request $request)
 {
