@@ -145,6 +145,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/gateway', [SetiingsController::class, 'gatewayindex'])->name('admin/gateway');
     Route::post('admin/gat', [SetiingsController::class, 'updategateway'])->name('admin/gat');
 
+    Route::get('admin/about', [SetiingsController::class, 'aboutindex'])->name('admin/about');
+    Route::post('admin/ab', [SetiingsController::class, 'updateabout'])->name('admin/ab');
+
 });
     require __DIR__.'/auth.php';
 

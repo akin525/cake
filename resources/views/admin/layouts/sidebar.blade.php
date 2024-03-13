@@ -57,7 +57,7 @@
             <aside class="navbar navbar-expand-xl navbar-light d-block px-0 header-sticky dashboard-nav py-0">
                 <div class="sticky-area border-right">
                     <div class="d-flex px-6 px-xl-10 w-100 border-bottom py-7 justify-content-between">
-                        <a href="https://templates.g5plus.net/glowing-bootstrap-5/" class="navbar-brand py-4">
+                        <a href="{{route('admin/dashboard')}}" class="navbar-brand py-4">
                             <img class="light-mode-img" src="{{asset('assets/images/eko.png')}}" width="50" alt="Glowing - Bootstrap 5 HTML Templates">
                             <img class="dark-mode-img" src="{{asset('assets/images/eko.png')}}" width="50" alt="Glowing - Bootstrap 5 HTML Templates"></a>
                         <div class="ml-auto d-flex align-items-center ">
@@ -224,6 +224,14 @@
 <i class="fas fa-money-bill alt"></i>
 </span>
                                     <span class="sidebar-item-text fs-14px fw-semibold">Gateway</span>
+                                </a>
+                            </li>
+                            <li class="list-group-item px-0 py-0 sidebar-item mb-3 border-0">
+                                <a href="{{route('admin/about')}}" class="text-heading text-decoration-none lh-1 sidebar-link py-5 px-6 d-flex align-items-center" title="Dashboard">
+<span class="sidebar-item-icon w-40px d-inline-block text-muted">
+<i class="fas fa-book-bookmark alt"></i>
+</span>
+                                    <span class="sidebar-item-text fs-14px fw-semibold">About</span>
                                 </a>
                             </li>
                             <li class="list-group-item px-0 py-0 sidebar-item mb-3 has-children border-0">

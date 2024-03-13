@@ -60,4 +60,24 @@ function updategateway(Request $request)
         'message'=>'Paystack updated',
     ]);
 }
+
+function aboutindex()
+{
+    $abouts=Settings::where('id', 1)->first();
+    $about=$abouts->about;
+    return view('admin.about', compact('about'));
+}
+function updateabout(Request $request){
+    $request->validate([
+        'contents'=>'required',
+    ]);
+
+    $abouts=Settings::where('id', 1)->first();
+    $abouts->about= $request->contents;
+    $abouts->save();
+    return response()->json([
+        'status'=>'success',
+        'message'=>'About-us updated',
+    ]);
+}
 }
