@@ -59,7 +59,7 @@
                 $('#loadingSpinner').show();
 
                 $.ajax({
-                    url: "{{ route('admin/addfa') }}",
+                    url: "{{ route('admin/gat') }}",
                     type: 'POST',
                     data: formData,
                     success: function(response) {

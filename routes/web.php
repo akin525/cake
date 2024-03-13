@@ -143,6 +143,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('admin/addfa', [FqController::class, 'createfq'])->name('admin/addfa');
 
     Route::get('admin/gateway', [SetiingsController::class, 'gatewayindex'])->name('admin/gateway');
+    Route::post('admin/gat', [SetiingsController::class, 'updategateway'])->name('admin/gat');
 
 });
     require __DIR__.'/auth.php';

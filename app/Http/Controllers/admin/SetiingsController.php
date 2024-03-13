@@ -42,4 +42,22 @@ function gatewayindex()
     $gateway=Gateways::where('name', 'paystack')->first();
 return view('admin.gateway', compact( 'gateway'));
 }
+function updategateway(Request $request)
+{
+    $request->validate([
+        'sk'=>'required',
+        'pk'=>'required',
+    ]);
+
+    $gateway=Gateways::where('name', 'paystack')->first();
+
+    $gateway->skey=$request->sk;
+    $gateway->pkey=$request->pk;
+    $gateway->save();
+
+    return response()->json([
+        'status'=>'success',
+        'message'=>'Paystack updated',
+    ]);
+}
 }

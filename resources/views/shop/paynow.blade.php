@@ -48,8 +48,8 @@
                         alert('Window closed.');
                     },
                     callback: function (response) {
-                        let message = 'Payment complete! Reference: ' + response.reference;
-                        alert(message);
+                        // let message = 'Payment complete! Reference: ' + response.reference;
+                        // alert(message);
 
                         window.location = '{{ url('tran', ['reference' => '']) }}/' + response.reference + '/' + secondS;
 
