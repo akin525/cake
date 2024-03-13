@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Gateways;
 use App\Models\Homepage;
 use App\Models\Settings;
 use Illuminate\Http\Request;
@@ -35,5 +36,10 @@ function changepage(Request $request)
          'status'=>'success',
          'message'=>$msg,
      ]);
+}
+function gatewayindex()
+{
+    $gateway=Gateways::where('name', 'paystack')->first();
+return view('admin.gateway', compact( 'gateway'));
 }
 }

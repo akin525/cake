@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\admin\VariationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('addcart1', [HomeController::class, 'addcart'])->name('addcart1');
     Route::get('cart', [HomeController::class, 'mycart'])->name('cart');
+    Route::post('check', [OrderController::class, 'postorder'])->name('check');
+    Route::get('tran/{reference}/{secondS}', [OrderController::class, 'confirmpayment'])->name('tran');
 
 });
 
@@ -138,6 +141,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('admin/addfaq', [FqController::class, 'indexfq'])->name('admin/addfaq');
     Route::post('admin/addfa', [FqController::class, 'createfq'])->name('admin/addfa');
+
+    Route::get('admin/gateway', [SetiingsController::class, 'gatewayindex'])->name('admin/gateway');
 
 });
     require __DIR__.'/auth.php';

@@ -2,7 +2,9 @@
 @section('tittle', 'Checkout')
 @section('content')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
     <!-- Breadcrumb Section Start -->
     <div class="breadcrumb" data-bg-image="{{asset('assets/images/bg/breadcrumb-bg.jpg')}}">
         <div class="container">
@@ -23,7 +25,8 @@
     <!-- Product Section Start -->
     <div class="shop-product-section section section-padding-03">
         <div class="container custom-container">
-            <form id="paymentForm" class="checkout-form">
+            <form class="checkout-form" method="post" action="{{route('check')}}">
+                @csrf
                 <div class="row g-8">
 
                     <div class="col-lg-7">
@@ -34,7 +37,9 @@
                             <div class="row row-cols-sm-2 row-cols-1 g-4">
                                 <div class="col">
                                     <label>Full Name*</label>
-                                    <input class="form-field" type="text">
+                                    <input class="form-field" name="name" value="{{Auth::user()->name}}" type="text" required>
+                                    <input type="hidden" name="checkout" value="{{$checkout}}">
+
                                 </div>
 {{--                                <div class="col">--}}
 {{--                                    <label>Last Name*</label>--}}
@@ -42,11 +47,11 @@
 {{--                                </div>--}}
                                 <div class="col">
                                     <label>Email Address*</label>
-                                    <input class="form-field" id="email" type="email" required>
+                                    <input class="form-field" id="email" name="email" type="email" value="{{Auth::user()->email}}" required>
                                 </div>
                                 <div class="col">
                                     <label>Phone no*</label>
-                                    <input class="form-field" type="text" name="phone" required>
+                                    <input class="form-field" type="text"  name="phone" required>
                                 </div>
 {{--                                <div class="col-sm-12">--}}
 {{--                                    <label>Company Name</label>--}}
@@ -60,104 +65,49 @@
                                     <input class="form-field" type="text" placeholder="Address line 2">
                                 </div>
                                 <div class="col">
-                                    <label>Country*</label>
+                                    <label>Location</label>
                                     <div class="select-wrapper">
-                                        <select class="form-field" id="countrySelect">
-                                            <option value="">Select Country</option>
+                                        <select class="form-field" name="country" required>
+                                            <option value=Eko"">Eko(Lagos)</option>
+                                            <option value="ibadan">Ibadan</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <label>State*</label>
-                                    <div class="select-wrapper">
-                                        <select class="form-field" id="stateSelect">
-                                            <option value="">Select State</option>
-                                        </select>
-                                    </div>
+{{--                                <div class="col">--}}
+{{--                                    <label>State*</label>--}}
+{{--                                    <div class="select-wrapper">--}}
+{{--                                        <select class="form-field" id="stateSelect" name="state" required>--}}
+{{--                                            <option value="">Select State</option>--}}
+{{--                                            @foreach($state as $st)--}}
+{{--                                            <option value="{{$st['name']}}">{{$st['name']}}</option>--}}
+{{--                                            @endforeach--}}
+
+{{--                                        </select>--}}
+{{--                                    </div>--}}
                                 </div>
                                 <div class="col">
                                     <label>City/Town*</label>
                                     <div class="select-wrapper">
-                                        <select class="form-field" id="city">
-                                            <option value="">Select City</option>
-                                        </select>
+                                        <input type="text" class="form-field" name="city" required>
                                     </div>
                                 </div>
 
                                 <div class="col">
                                     <label>Zip Code*</label>
-                                    <input class="form-field" type="text">
+                                    <input class="form-field" type="text" name="postal_code" required>
                                 </div>
-                                <div class="col-sm-12 d-flex flex-wrap gap-6">
-                                    <div class="form-check m-0">
-                                        <input class="form-check-input" type="checkbox" id="create_account">
-                                        <label class="form-check-label" for="create_account">Create an Acount?</label>
-                                    </div>
-                                    <div class="form-check m-0">
-                                        <input class="form-check-input" type="checkbox" id="shiping_address" data-toggle-shipping="#shipping-form">
-                                        <label class="form-check-label" for="shiping_address">Ship to Different Address</label>
-                                    </div>
-                                </div>
+{{--                                <div class="col-sm-12 d-flex flex-wrap gap-6">--}}
+{{--                                    <div class="form-check m-0">--}}
+{{--                                        <input class="form-check-input" type="checkbox" id="create_account">--}}
+{{--                                        <label class="form-check-label" for="create_account">Create an Acount?</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-check m-0">--}}
+{{--                                        <input class="form-check-input" type="checkbox" id="shiping_address" data-toggle-shipping="#shipping-form">--}}
+{{--                                        <label class="form-check-label" for="shiping_address">Ship to Different Address</label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
 
-                        </div>
-
-                        <!-- Shipping Address -->
-                        <div id="shipping-form" class="mt-md-8 mt-6">
-                            <h4 class="mb-4">Shipping Address</h4>
-                            <div class="row row-cols-sm-2 row-cols-1 g-4">
-                                <div class="col">
-                                    <label>First Name*</label>
-                                    <input class="form-field" type="text">
-                                </div>
-                                <div class="col">
-                                    <label>Last Name*</label>
-                                    <input class="form-field" type="text">
-                                </div>
-                                <div class="col">
-                                    <label>Email Address*</label>
-                                    <input class="form-field" type="email">
-                                </div>
-                                <div class="col">
-                                    <label>Phone no*</label>
-                                    <input class="form-field" type="text">
-                                </div>
-                                <div class="col-sm-12">
-                                    <label>Company Name</label>
-                                    <input class="form-field" type="text">
-                                </div>
-                                <div class="col-sm-12">
-                                    <label>Address*</label>
-                                    <input class="form-field" type="text" placeholder="Address line 1">
-                                </div>
-                                <div class="col-sm-12">
-                                    <input class="form-field" type="text" placeholder="Address line 2">
-                                </div>
-                                <div class="col">
-                                    <label>Country*</label>
-                                    <div class="select-wrapper">
-                                        <select class="form-field">
-                                            <option>Bangladesh</option>
-                                            <option>China</option>
-                                            <option>country</option>
-                                            <option>India</option>
-                                            <option>Japan</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <label>Town/City*</label>
-                                    <input class="form-field" type="text">
-                                </div>
-                                <div class="col">
-                                    <label>State*</label>
-                                    <input class="form-field" type="text">
-                                </div>
-                                <div class="col">
-                                    <label>Zip Code*</label>
-                                    <input class="form-field" type="text">
-                                </div>
-                            </div>
                         </div>
 
                     </div>
@@ -203,9 +153,10 @@
                         <!-- Payment Method Start -->
                         <div class="checkout-box">
                             <h4 class="mb-4">Payment Method</h4>
+                            <input type="hidden" name="amount" value="{{$checkout}}">
 {{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Direct Bank Transfer</a>--}}
 {{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Cash on Delivery</a>--}}
-                            <button class="btn btn-dark btn-primary-hover rounded-0 mt-6" >Place Order</button>
+                            <button type="submit" class="btn btn-dark btn-primary-hover rounded-0 mt-6" >Place Order</button>
                         </div>
                         <!-- Payment Method End -->
 
@@ -281,4 +232,8 @@
             handler.openIframe();
         }
     </script>
+
+
+
+
 @endsection
