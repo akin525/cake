@@ -107,6 +107,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/addrtg', [ProductsController::class, 'addproductindex2'])->name('admin/addrtg');
 
     Route::get('admin/orders', [OrdersController::class, 'loadorders'])->name('admin/orders');
+    Route::get('admin/vieworder/{id}', [OrdersController::class, 'vieworders'])->name('admin/vieworder');
 
     Route::get('admin/customers', [UsersController::class, 'allcustomer'])->name('admin/customers');
     Route::get('admin/edituser/{id}', [UsersController::class, 'editcustomer'])->name('admin/edituser');

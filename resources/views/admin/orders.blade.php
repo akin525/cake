@@ -82,16 +82,8 @@
                         <td>{{$orders['created_at']}}</td>
                         <td class="text-center">
                             <div class="d-flex flex-nowrap justify-content-center">
-                                <a href="#" class="btn btn-primary py-4 fs-13px btn-xs me-4">Detail</a>
-                                <div class="dropdown no-caret">
-                                    <a href="#" data-bs-toggle="dropdown" class="dropdown-toggle btn btn-outline-primary btn-xs hover-white btn-hover-bg-primary py-4 px-5">
-                                        <i class="far fa-ellipsis-h"></i> </a>
-                                    <div class="dropdown-menu dropdown-menu-end m-0">
-                                        <a class="dropdown-item" href="#">View detail</a>
-                                        <a class="dropdown-item" href="#">Edit info</a>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                </div>
+                                <a href="{{route('admin/vieworder', $orders['id'])}}" class="btn btn-primary py-4 fs-13px btn-xs me-4"><i class="fa fa-eye"></i> </a>
+
                             </div>
                         </td>
                         @empty
