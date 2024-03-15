@@ -237,7 +237,7 @@
                             <div class="product-size mb-5">
                                 <label for="layersBy">Sizes</label>
                                 <div class="select-wrapper">
-                                    <select name="layers" id="layersBy">
+                                    <select name="size" id="layersBy">
                                         @foreach($size as $la)
                                             <option value="{{$la['name']}}">{{$la['name']}}</option>
                                         @endforeach
