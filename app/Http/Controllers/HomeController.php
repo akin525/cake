@@ -16,6 +16,7 @@ use App\Models\Orders;
 use App\Models\Products;
 use App\Models\Rtb;
 use App\Models\Settings;
+use App\Models\Sizes;
 use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -118,6 +119,7 @@ function cakedetail($request)
     $product1=Products::where('status', 1)->limit(9)->get();
     $color=Colors::all();
     $layer=Layers::all();
+    $size=Sizes::all();
     if (Auth::user()) {
         $cartsum = Cart::where('user_id', Auth::user()->id)->sum('amount');
         $cart=Cart::where('user_id', Auth::user()->id)->get();
@@ -129,7 +131,7 @@ function cakedetail($request)
     $category=Categories::all();
 
     return view('shop.cakedetails', compact('product', 'product1',
-    'cart', 'cartsum', 'category', 'color', 'layer',
+    'cart', 'cartsum', 'category', 'color', 'layer', 'size'
     ));
 
 }

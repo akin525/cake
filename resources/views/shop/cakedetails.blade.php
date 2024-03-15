@@ -211,28 +211,39 @@
 
 
 
-                        <div class="product-color mb-2 ">
-                            <div class="size-selector">
-                                <label for="size">Select Size:</label>
-                                <div class="size-options">
-                                    <input type="radio" id="size-s" name="size" value="S">
-                                    <label for="size-s">S</label>
+{{--                        <div class="product-color mb-2 ">--}}
+{{--                            <div class="size-selector">--}}
+{{--                                <label for="size">Select Size:</label>--}}
+{{--                                <div class="size-options">--}}
+{{--                                    <input type="radio" id="size-s" name="size" value="S">--}}
+{{--                                    <label for="size-s">S</label>--}}
 
-                                    <input type="radio" id="size-m" name="size" value="M">
-                                    <label for="size-m">M</label>
+{{--                                    <input type="radio" id="size-m" name="size" value="M">--}}
+{{--                                    <label for="size-m">M</label>--}}
 
-                                    <input type="radio" id="size-l" name="size" value="L">
-                                    <label for="size-l">L</label>
+{{--                                    <input type="radio" id="size-l" name="size" value="L">--}}
+{{--                                    <label for="size-l">L</label>--}}
 
-                                    <input type="radio" id="size-xl" name="size" value="XL">
-                                    <label for="size-xl">XL</label>
+{{--                                    <input type="radio" id="size-xl" name="size" value="XL">--}}
+{{--                                    <label for="size-xl">XL</label>--}}
 
-                                    <input type="radio" id="size-xxl" name="size" value="XXL">
-                                    <label for="size-xxl">XXL</label>
+{{--                                    <input type="radio" id="size-xxl" name="size" value="XXL">--}}
+{{--                                    <label for="size-xxl">XXL</label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+
+                            <div class="product-size mb-5">
+                                <label for="layersBy">Sizes</label>
+                                <div class="select-wrapper">
+                                    <select name="layers" id="layersBy">
+                                        @foreach($size as $la)
+                                            <option value="{{$la['name']}}">{{$la['name']}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-
-                        </div>
                         <div class="">
                             <div class="color-selector">
                                 <label for="color">Input Color:</label>
@@ -253,9 +264,9 @@
                                 <label for="layersBy">Layers</label>
                                 <div class="select-wrapper">
                                     <select name="layers" id="layersBy">
-                                        <option value="1">Layer 1</option>
-                                        <option value="2">Layer 2</option>
-                                        <option value="3">Layer 3</option>
+                                        @foreach($layer as $la)
+                                        <option value="{{$la['id']}}">{{$la['name']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
