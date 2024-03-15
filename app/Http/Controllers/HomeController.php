@@ -271,7 +271,7 @@ function checkout()
     if (Auth::user()){
         $checkout=Cart::where('user_id', Auth::user()->id)->sum('amount');
         $cart=Cart::where('user_id', Auth::user()->id)->get();
-        $state=State::all();
+//        $state=State::all();
 
     }else{
         $checkout=0;
@@ -292,11 +292,11 @@ function checkout()
                 'image' => $product->image,
             ];
         }
-        $state=State::all();
+//        $state=State::all();
 
     }
 
-    return view('shop.checkout', compact('checkout', 'cart', 'state'));
+    return view('shop.checkout', compact('checkout', 'cart'));
 }
 function dashboard()
 {
