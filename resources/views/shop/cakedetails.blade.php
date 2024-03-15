@@ -235,15 +235,16 @@
                         </div>
                         <div class="">
                             <div class="color-selector">
-                                <label for="color">Select Color:</label>
-                                <div class="color-options">
-                                    @foreach($color as $co)
-                                        <input type="radio" id="{{$co['label']}}" name="color" value="{{$co['label']}}" required>
-                                        <label for="{{$co['label']}}" style="background-color: {{$co['name']}};"></label>
-                                    @endforeach
+                                <label for="color">Input Color:</label>
+{{--                                <div class="color-options">--}}
+{{--                                    @foreach($color as $co)--}}
+{{--                                        <input type="radio" id="{{$co['label']}}" name="color" value="{{$co['label']}}" required>--}}
+{{--                                        <label for="{{$co['label']}}" style="background-color: {{$co['name']}};"></label>--}}
+{{--                                    @endforeach--}}
 
 
-                                </div>
+{{--                                </div>--}}
+                                <input type="text" class="form-control" name="color" />
                             </div>
 
                         </div>
