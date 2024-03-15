@@ -97,6 +97,11 @@
                             <tr>
                                 <th>Product</th>
                                 <th>Unit Price</th>
+                                <th>Color</th>
+                                <th>Layer</th>
+                                <th>Flavour</th>
+                                <th>Topper</th>
+                                <th>Card</th>
                                 <th>Quantity</th>
                                 <th class="text-end">Total</th>
                             </tr>
@@ -113,6 +118,10 @@
                                     </div>
                                 </td>
                                 <td>₦{{ number_format(intval($order->price * 1)) }}</td>
+                                <td>{{$order->color}}</td>
+                                <td>{{$order->layer}}</td>
+                                <td>{{$order->flavour}}</td>
+                                <td>{{$order->card}}</td>
                                 <td>1</td>
                                 <td class="text-end">₦{{ number_format(intval($order->price * 1)) }}</td>
                             </tr>
