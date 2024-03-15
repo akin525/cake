@@ -265,7 +265,7 @@
                                 <div class="select-wrapper">
                                     <select name="layers" id="layersBy">
                                         @foreach($layer as $la)
-                                        <option value="{{$la['id']}}">{{$la['name']}}</option>
+                                        <option value="{{$la['name']}}">{{$la['name']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -295,7 +295,7 @@
                             <div class="product-color mb-2">
                             <label for="flavourBy">Flavour</label>
                             <div class="select-wrapper">
-                                <select name="flavor" id="flavourBy">
+                                <select name="flavor" id="flavourBy11">
                                     <option value="manual">Choose an option</option>
                                     <option value="vanilla">Vanilla Only</option>
                                     <option value="chocolate">Chocolate Only</option>
