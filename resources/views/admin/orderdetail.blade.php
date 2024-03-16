@@ -109,10 +109,10 @@
                             <tbody><tr>
                                 <td>
                                     <div class="d-flex align-items-center flex-nowrap">
-                                        <a href="https://templates.g5plus.net/glowing-bootstrap-5/shop/product-details-v1.html" title="Flowers cotton dress">
-                                            <img src="#" data-src="../assets/images/products/product-03-75x100.jpg" alt="Flowers cotton dress" class="lazy-image" width="60" height="80">
+                                        <a href="#" title="Flowers cotton dress">
+                                            <img src="#" data-src="{{url($order->image)}}" alt="Flowers cotton dress" class="lazy-image" width="60" height="80">
                                         </a>
-                                        <a href="https://templates.g5plus.net/glowing-bootstrap-5/shop/product-details-v1.html" title="Flowers cotton dress" class="ms-6">
+                                        <a href="#" title="Flowers cotton dress" class="ms-6">
                                             <p class="fw-semibold text-body-emphasis mb-0">{{$product->name}}</p>
                                         </a>
                                     </div>
