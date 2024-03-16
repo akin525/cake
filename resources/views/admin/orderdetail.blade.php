@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-7">
+                <div class="">
                     <div class="table-responsive">
                         <table class="table table-borderless">
                             <thead>
@@ -121,6 +121,8 @@
                                 <td>{{$order->color}}</td>
                                 <td>{{$order->layer}}</td>
                                 <td>{{$order->flavour}}</td>
+                                <td>{{$order->topper}}</td>
+                                <td>{{$order->card}}</td>
                                 <td>{{$order->card}}</td>
                                 <td>1</td>
                                 <td class="text-end">₦{{ number_format(intval($order->price * 1)) }}</td>
