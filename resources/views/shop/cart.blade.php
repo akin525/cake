@@ -20,7 +20,7 @@
     </div>
     <!-- Breadcrumb Section End -->
     <!-- Shop Cart Section Start -->
-    <div class="section section-padding-03">
+    <div class="section section-padding-03" style="background-color: mintcream">
         <div class="container custom-container">
             <div class="row mb-n30">
 

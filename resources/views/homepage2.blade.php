@@ -56,7 +56,7 @@
 
 
     <!-- Category Section Start -->
-    <div class="category-four category-four_bg section-padding-03" data-bg-image="">
+    <div class="category-four category-four_bg section-padding-03" data-bg-image="" style="background-color: mintcream">
         <div class="container custom-container-five">
             <div class="row row-cols-2 row-cols-lg-4 category-four_wrapper mb-n60">
                 <div class="col mb-60">
@@ -117,7 +117,7 @@
     <!-- Category Section End -->
 
     <!-- Product Section Start -->
-    <div class="section-padding-03  position-relative">
+    <div class="section-padding-03  position-relative" style="background-color: mintcream">
         <div class="container custom-container-five">
             <div class="row">
                 <div class="col-12 text-center">

@@ -36,6 +36,20 @@
 </head>
 <body>
 <style>
+    /*body {*/
+    /*    margin: 0;*/
+    /*    padding: 0;*/
+    /*}*/
+
+    /*.container {*/
+    /*    width: 80%; !* Adjust the width as needed *!*/
+    /*    margin: 0 auto; !* Center the container horizontally *!*/
+    /*    padding: 20px; !* Add padding to create space between content and edges *!*/
+    /*    border: 1px solid #ccc; !* Add a border around the container *!*/
+    /*    border-radius: 10px; !* Optionally, add border radius for rounded corners *!*/
+    /*    background-color: #fff; !* Optionally, set background color *!*/
+    /*}*/
+
     .loading-overlay {
         position: fixed;
         top: 0;
