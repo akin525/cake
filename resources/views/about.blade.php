@@ -24,8 +24,8 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="section-title-10 justify-content-start text-start align-items-start">
-                        <span class="section-title-10__subtitle" style="font-family: Great Vibes, cursive;">Welcome to Eko Cakes</span>
-                        <h4 class="section-title-10__title">WHO WE ARE</h4>
+                        <span class="section-title-10__subtitle" style="font-family: Great Vibes, cursive; font-size: 40px;">Welcome to Eko Cakes</span>
+                        <h5 class="section-title-10__title">WHO WE ARE</h5>
                         <p class="section-title-10__text">{!! $setting->about !!}</p>
 {{--                        <p class="section-title-10__text">Vestibulum eu tristique tellus. Praesent at varius nisi, ut dignissim lectus. Praesent venenatis ipsum in arcu ullamcorper tristique. Aliquam et gravida magna, ut tincidunt massa.</p>--}}
 {{--                        <img src="assets/images/singnecher-2.png" alt="Signature-Image">--}}
