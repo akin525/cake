@@ -225,9 +225,9 @@
             </div>
         </div>
         <div class="leftBox text-center">
-{{--            <h6>--}}
-{{--                MAKING CAKE IS ART<br>--}}
-{{--            </h6>--}}
+            <h6>
+                CAKES FOR EVERY LAGOSIAN. CAKES FOR LAGOS<br>
+            </h6>
 
         </div>
         <div class="row">
