@@ -267,8 +267,10 @@ function category($request)
         ->paginate('12');
     $category=Categories::all();
     $fq=FQ::all();
-
-    return view('shop.category', compact('category','product', 'fq'));
+    $pop=Products::where('cool', 'hots')->orderBy('id', 'DESC')
+        ->limit(4)
+        ->get();
+    return view('shop.category', compact('category','product', 'fq', 'pop'));
 }
 function checkout()
 {
@@ -313,6 +315,9 @@ function dashboard()
     {
         $product= Rtb::orderBy('id', 'DESC')->paginate('9');
         $category=Categories::all();
-        return view('shop.rtb', compact('product', 'category'));
+        $pop=Products::where('cool', 'hots')->orderBy('id', 'DESC')
+            ->limit(4)
+            ->get();
+        return view('shop.rtb', compact('product', 'category', 'pop'));
     }
 }

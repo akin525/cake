@@ -125,98 +125,30 @@
                             </div>
                             <!-- Category Widget End -->
 
-                            <!-- Price Filter Widget Start -->
-                            <div class="sidebars_widget">
-                                <h3 class="sidebars_widget__title">Price Filter</h3>
-                                <div class="range-slider">
-                                    <input type="text" class="js-range-slider" value="" />
-                                </div>
-                                <div class="extra-controls">
-                                    <button class="extra-controls_btn">Filter</button>
-                                    <div class="extra-controls_filter">
-                                        <label>Price: </label>
-                                        <input type="text" class="js-input-from" value="0" /> - <input type="text" class="js-input-to" value="0" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Price Filter Widget End -->
+
 
                             <!-- Popular Product Widget Start -->
                             <div class="sidebars_widget">
                                 <h3 class="sidebars_widget__title">Popular products</h3>
                                 <ul class="sidebars_widget__product">
                                     <!-- Single Product Start -->
-                                    <li class="single-product">
-                                        <a href="#" class="single-product_thumb">
-                                            <img src="{{asset('assets/images/product/sidebar-1.png')}}" alt="Sidebar-Image">
-                                        </a>
-                                        <div class="single-product_content">
-                                            <a href="#" class="single-product_content__title">Brownie</a>
-                                            <span class="single-product_content__price">$4.99</span>
-                                        </div>
-                                    </li>
+                                @foreach($pop as $pu)
+                                    <!-- Single Product Start -->
+                                        <li class="single-product">
+                                            <a href="{{route('cakedetail', $pu['id'])}}" class="single-product_thumb">
+                                                <img width="50" src="{{$pu['image']}}" alt="Sidebar-Image">
+                                            </a>
+                                            <div class="single-product_content">
+                                                <a href="#" class="single-product_content__title">{{$pu['name']}}</a>
+                                                <span class="single-product_content__price">₦{{number_format(intval($pu['price'] *1))}}</span>
+                                            </div>
+                                        </li>
+                                    @endforeach
 
                                 </ul>
                             </div>
                             <!-- Popular Product Widget End -->
 
-                            <!-- Instagram Widget Start -->
-                            <div class="sidebars_widget">
-                                <h3 class="sidebars_widget__title">Instagram</h3>
-                                <ul class="sidebars_widget__instagram">
-                                    <li>
-                                        <a class="instagram-thumb" href="#">
-                                            <img src="{{asset('assets/images/instagram/widget-insta-1.jpg')}}" alt="Image">
-                                            <i class="lastudioicon lastudioicon-b-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="instagram-thumb" href="#">
-                                            <img src="{{asset('assets/images/instagram/widget-insta-2.jpg')}}" alt="Image">
-                                            <i class="lastudioicon lastudioicon-b-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="instagram-thumb" href="#">
-                                            <img src="{{asset('assets/images/instagram/widget-insta-3.jpg')}}" alt="Image">
-                                            <i class="lastudioicon lastudioicon-b-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="instagram-thumb" href="#">
-                                            <img src="{{asset('assets/images/instagram/widget-insta-4.jpg')}}" alt="Image">
-                                            <i class="lastudioicon lastudioicon-b-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Instagram Widget End -->
-
-                            <!-- Tags Widget Start -->
-                            <div class="sidebars_widget">
-                                <h3 class="sidebars_widget__title">Tags</h3>
-                                <ul class="sidebars_widget__tags">
-                                    <li><a href="#">Cake, </a></li>
-                                    <li><a href="#">Cupcake, </a></li>
-                                    <li><a href="#">Donut, </a></li>
-                                    <li><a href="#">Muffin, </a></li>
-                                    <li><a href="#">New, </a></li>
-                                    <li><a href="#">Waffle</a></li>
-                                </ul>
-                            </div>
-                            <!-- Tags Widget End -->
-
-                            <!-- Banner Widget Start -->
-                            <div class="sidebars_widget">
-                                <a href="#" class="sidebars_widget__banner">
-                                    <img src="{{asset('assets/images/banner/sidebarbanner.jpg')}}" alt="banner-Image">
-
-                                    <div class="banner-content">
-                                        <span class="banner-content_title">Check it now</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- Banner Widget End -->
 
                         </div>
                     </div>
