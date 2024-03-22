@@ -54,6 +54,11 @@
         </div>
     </div>
 
+    <br/>
+    <h3 class="section-title-10__subtitle text-center" style="font-family: Great Vibes, cursive; font-size: 40px;">We now that</h3>
+    <h5 class="section-title-10__title text-center">MAKING CAKE IS ART</h5>
+    <hr/>
+
 
     <!-- Category Section Start -->
     <div class="category-four category-four_bg section-padding-03" data-bg-image="" style="background-color: mintcream">
