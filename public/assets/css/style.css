@@ -71,7 +71,7 @@ html, body {
 }
 
 body {
-  font-family: "Inter", sans-serif, Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-sans-serif, Arial, Helvetica, sans-sans-serif;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -84,7 +84,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: 0;
@@ -509,7 +509,7 @@ textarea.form-field:focus {
 .section-title p {
   color: #858585;
   font-size: 19px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   margin-top: 10px;
   margin-bottom: -5px;
 }
@@ -541,7 +541,7 @@ textarea.form-field:focus {
 .section-title-02__sub-title {
   font-size: 16px;
   font-weight: 700;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: 1px;
@@ -656,7 +656,7 @@ textarea.form-field:focus {
 }
 .section-title-04__sub-title {
   color: #F6F6F6;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 64px;
   font-weight: 700;
   text-transform: uppercase;
@@ -692,7 +692,7 @@ textarea.form-field:focus {
 }
 .section-title-04__title {
   color: #212121;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 36px;
   font-weight: 700;
   text-transform: uppercase;
@@ -727,7 +727,7 @@ textarea.form-field:focus {
 }
 .section-title-05__title {
   color: #212121;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 30px;
   font-weight: 700;
   text-transform: capitalize;
@@ -780,7 +780,7 @@ textarea.form-field:focus {
   background-color: white;
   font-size: 16px;
   color: #212121;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -808,7 +808,7 @@ textarea.form-field:focus {
 }
 .section-title-06__subtitle {
   color: #212121;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 22px;
   font-weight: 400;
   text-transform: capitalize;
@@ -879,7 +879,7 @@ textarea.form-field:focus {
 }
 .section-title-07__subtitle {
   color: #F8A969;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
@@ -916,7 +916,7 @@ textarea.form-field:focus {
 
 .section-title-08__title {
   color: #000000;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-size: 60px;
   font-weight: 700;
   text-transform: capitalize;
@@ -946,7 +946,7 @@ textarea.form-field:focus {
 }
 .section-title-09__subtitle {
   color: #FF9457;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
@@ -954,7 +954,7 @@ textarea.form-field:focus {
   margin-bottom: 10px;
 }
 .section-title-09__title {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 64px;
   font-weight: 400;
   text-transform: uppercase;
@@ -995,7 +995,7 @@ textarea.form-field:focus {
   text-transform: uppercase;
   line-height: 60px;
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 600;
   height: auto;
   text-align: center;
@@ -1042,16 +1042,15 @@ textarea.form-field:focus {
   z-index: 9;
 }
 .section-title-10__subtitle {
-  color: #BC8157;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
+  color: #000000;font-family: "Lato", sans-serif;
+  font-size: 40px;
   font-weight: 400;
   text-transform: capitalize;
   line-height: 1;
   margin-bottom: 15px;
 }
 .section-title-10__title {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 36px;
   font-weight: 400;
   text-transform: uppercase;
@@ -1076,11 +1075,12 @@ textarea.form-field:focus {
   }
 }
 .section-title-10__text {
+    font-family: "Lato", sans-serif;
   font-size: 18px;
   font-weight: 400;
   max-width: 500px;
   width: 100%;
-  color: #858585;
+  color: #000000;
   margin-bottom: 20px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
@@ -1208,7 +1208,7 @@ textarea.form-field:focus {
   color: #212121;
 }
 .more-btn_two {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
@@ -1244,7 +1244,7 @@ textarea.form-field:focus {
 }
 .more-btn_three__content .more-btn-text {
   color: #B7A696;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-size: 22px;
   font-weight: 700;
   text-transform: uppercase;
@@ -1393,7 +1393,7 @@ textarea.form-field:focus {
 }
 
 .btn {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
@@ -1431,7 +1431,7 @@ textarea.form-field:focus {
 
 .btn-arrow {
   font-size: 37px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   height: 52px;
   width: 120px;
   font-weight: 400;
@@ -2198,7 +2198,7 @@ textarea.form-control {
 }
 .header-primary-menu .sub-menu-mega .mega-menu-item-title {
   font-size: 18px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 600;
   margin-bottom: 15px;
   padding-left: 10px;
@@ -2712,7 +2712,7 @@ textarea.form-control {
 }
 .mini-cart-item__title {
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   color: #555555;
 }
 .mini-cart-item__quantity {
@@ -2936,7 +2936,7 @@ textarea.form-control {
 }
 .mobile-menu-two li > .menu-item-link {
   font-size: 36px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -3056,7 +3056,7 @@ textarea.form-control {
 }
 .footer-widget__title-02 {
   font-size: 18px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   text-transform: uppercase;
   line-height: 2;
   margin-bottom: 10px;
@@ -4066,7 +4066,7 @@ textarea.form-control {
 .slider-content-05__title {
   font-size: 60px;
   font-weight: 600;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   line-height: 1;
   z-index: 3;
   position: relative;
@@ -4220,7 +4220,7 @@ textarea.form-control {
   width: 170px;
   line-height: 60px;
   font-size: 16px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-weight: 400;
   height: auto;
 }
@@ -4253,7 +4253,7 @@ textarea.form-control {
   border-color: #F8A969;
 }
 .slider-content-07__text {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   color: #ffffff;
   font-weight: 400;
   font-size: 14px;
@@ -4291,7 +4291,7 @@ textarea.form-control {
   transform: translate(-50%, -50%);
 }
 .slider-content-08__subtitle {
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-style: italic;
   font-weight: 400;
   font-size: 60px;
@@ -4321,7 +4321,7 @@ textarea.form-control {
   }
 }
 .slider-content-08__title {
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   text-transform: uppercase;
   font-weight: 900;
   font-size: 123px;
@@ -4359,7 +4359,7 @@ textarea.form-control {
   width: 180px;
   line-height: 70px;
   font-size: 20px;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   height: auto;
   text-transform: capitalize;
@@ -5168,7 +5168,7 @@ textarea.form-control {
   background-color: #BC8157;
   color: #fff;
   font-size: 12px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   text-transform: uppercase;
   min-width: 60px;
   text-align: center;
@@ -5414,7 +5414,7 @@ textarea.form-control {
 .product-item__price {
   color: #212121;
   font-size: 22px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   text-transform: uppercase;
   display: block;
   line-height: 1.4;
@@ -5449,12 +5449,12 @@ textarea.form-control {
   height: 310px;
 }
 .product-item.product-item-02 .product-item__title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 700;
   text-transform: uppercase;
 }
 .product-item.product-item-02 .product-item__price {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
 }
 .product-item.product-item-02:hover {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
@@ -5476,7 +5476,7 @@ textarea.form-control {
   }
 }
 .product-item.product-item-03 .product-item__title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -5488,7 +5488,7 @@ textarea.form-control {
   border-color: #992100;
 }
 .product-item.product-item-03 .product-item__price {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
 }
 .product-item.product-item-03:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
@@ -5514,7 +5514,7 @@ textarea.form-control {
 }
 .product-item.product-item-05 .product-item__title {
   font-size: 14px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1;
@@ -5523,7 +5523,7 @@ textarea.form-control {
   color: #C2943A;
 }
 .product-item.product-item-05 .product-item__price {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   color: #555555;
   font-size: 16px;
 }
@@ -5547,7 +5547,7 @@ textarea.form-control {
 }
 .product-item.product-item-06 .product-item__title {
   font-size: 21px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   line-height: 1.3;
@@ -5562,7 +5562,7 @@ textarea.form-control {
   margin-bottom: 20px;
 }
 .product-item.product-item-06 .product-item__price {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   color: #555555;
   font-size: 20px;
   margin-bottom: 20px;
@@ -5620,7 +5620,7 @@ textarea.form-control {
   color: #93622b;
   font-size: 26px;
   font-weight: 600;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   line-height: 1.2;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -5678,7 +5678,7 @@ textarea.form-control {
 }
 .product-item.product-item-08 .product-item__title {
   font-size: 24px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-weight: 400;
   text-transform: capitalize;
   line-height: 1.1;
@@ -5764,7 +5764,7 @@ textarea.form-control {
 }
 .product-item.product-item-09 .product-item__title {
   font-size: 25px;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
   color: #000000;
   text-transform: capitalize;
@@ -5792,7 +5792,7 @@ textarea.form-control {
 .product-item.product-item-09 .product-item__price {
   color: #000000;
   font-size: 26px;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
   line-height: 1.3;
 }
@@ -5814,7 +5814,7 @@ textarea.form-control {
 .product-item.product-item-09 .product-item__btn {
   font-size: 18px;
   font-weight: 700;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   text-transform: capitalize;
   padding: 12px 31px;
   line-height: 1.42;
@@ -5922,7 +5922,7 @@ textarea.form-control {
 }
 .product-tab-menu-two .nav li button {
   color: #ffffff;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 20px;
   font-weight: 400;
   text-transform: uppercase;
@@ -6042,7 +6042,7 @@ textarea.form-control {
   margin-bottom: 4px;
   font-size: 16px;
   font-weight: 600;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
 }
 .product-item-style-01__rating {
   overflow: hidden;
@@ -6184,7 +6184,7 @@ textarea.form-control {
 }
 .featured-product-item__title {
   margin-bottom: 15px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 24px;
   font-weight: 600;
 }
@@ -6278,7 +6278,7 @@ textarea.form-control {
 
 /* Product Item  */
 .product-list__title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 30px;
   font-weight: 700;
   position: relative;
@@ -6329,7 +6329,7 @@ textarea.form-control {
   background-color: #BC8157;
   color: #fff;
   font-size: 12px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   text-transform: uppercase;
   min-width: 60px;
   text-align: center;
@@ -6462,7 +6462,7 @@ textarea.form-control {
   }
 }
 .product-list-item__title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -6583,7 +6583,7 @@ textarea.form-control {
 }
 .deal-two_title {
   color: #F3E7E0;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-size: 46px;
   font-weight: 700;
   text-transform: capitalize;
@@ -6598,7 +6598,7 @@ textarea.form-control {
 }
 .deal-two_price {
   color: #F3E7E0;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-size: 70px;
   font-weight: 700;
   line-height: 1.3;
@@ -6717,7 +6717,7 @@ textarea.form-control {
   font-size: 40px;
   line-height: 1.2;
   font-weight: 500;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   color: #ee6d2c;
   display: flex;
   flex-direction: column;
@@ -6734,7 +6734,7 @@ textarea.form-control {
   font-weight: 400;
   color: #fff;
   font-size: 20px;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   text-transform: capitalize;
   line-height: 1;
 }
@@ -7027,7 +7027,7 @@ textarea.form-control {
 }
 .call-to-action-02-meta-item a {
   font-size: 20px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   display: flex;
   align-items: center;
 }
@@ -7110,7 +7110,7 @@ textarea.form-control {
   font-size: 22px;
   font-weight: 400;
   text-transform: uppercase;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1599px), only screen and (min-width: 992px) and (max-width: 1199px) {
   .callto-action-03__title {
@@ -7131,7 +7131,7 @@ textarea.form-control {
 }
 .callto-action-03__text {
   color: #ffffff;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 14px;
 }
 .callto-action-03:hover {
@@ -7338,7 +7338,7 @@ textarea.form-control {
 }
 .boxbanner-subtitle {
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   background-color: white;
   border-radius: 10px;
   color: #212121;
@@ -7399,7 +7399,7 @@ textarea.form-control {
   color: white;
   font-size: 12px;
   font-weight: 700;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   line-height: 0.8;
   transition: 0.4s;
 }
@@ -7474,7 +7474,7 @@ textarea.form-control {
 }
 .sell-banner_subtitle {
   color: #ffffff;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 24px;
   font-weight: 400;
   text-transform: uppercase;
@@ -7701,7 +7701,7 @@ textarea.form-control {
   margin-right: 50px;
   font-size: 14px;
   font-weight: 600;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
 }
 .shop-banner_social li a:hover {
   color: #FF9457;
@@ -8166,7 +8166,7 @@ textarea.form-control {
   }
 }
 .instagram-title__sub-title {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 16px;
 }
 @media only screen and (min-width: 1600px) {
@@ -8499,7 +8499,7 @@ textarea.form-control {
   height: 58px;
   padding: 0 30px;
   font-size: 22px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   color: #212121;
   transition: all 0.3s ease;
 }
@@ -8577,7 +8577,7 @@ textarea.form-control {
   height: 58px;
   padding: 0 30px;
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   color: #212121;
   transition: all 0.3s ease;
   font-weight: 700;
@@ -8656,7 +8656,7 @@ textarea.form-control {
   padding-right: 80px;
   color: #ffffff;
   font-size: 16px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   height: 58px;
   border: 0;
   width: 100%;
@@ -8837,7 +8837,7 @@ textarea.form-control {
   max-width: 260px;
 }
 .features-card-item-02__title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 22px;
   text-transform: uppercase;
   line-height: 1;
@@ -8875,7 +8875,7 @@ textarea.form-control {
 
 .hot-product-content-title {
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1em;
@@ -8911,13 +8911,13 @@ textarea.form-control {
 }
 .hot-product-content-item__heading-label {
   color: #212121;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 24px;
   line-height: 1;
 }
 .hot-product-content-item__heading-value {
   color: #830E0E;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 16px;
   text-transform: capitalize;
   line-height: 1;
@@ -9156,7 +9156,7 @@ textarea.form-control {
 }
 
 .counter-item__label {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 96px;
   font-weight: 400;
   line-height: 1;
@@ -9332,7 +9332,7 @@ textarea.form-control {
 
 .testimonial-item p {
   color: #858585;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 30px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
@@ -9386,7 +9386,7 @@ textarea.form-control {
   font-size: 30px;
   padding: 80px 0 10px;
   color: white;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 700;
   text-transform: capitalize;
   line-height: 1;
@@ -9685,7 +9685,7 @@ textarea.form-control {
 .testimonial-four_author {
   position: relative;
   color: #b1b1b1;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 30px;
   margin-top: 30px;
   display: inline-block;
@@ -9806,7 +9806,7 @@ textarea.form-control {
 }
 .testimonial-five_blockquote {
   color: #000000;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-size: 47px;
   font-weight: 400;
   font-style: italic;
@@ -9836,7 +9836,7 @@ textarea.form-control {
 .testimonial-five_author {
   position: relative;
   color: #ee6d2c;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 20px;
   font-weight: 600;
   margin-top: 30px;
@@ -10063,7 +10063,7 @@ textarea.form-control {
 }
 .blog-itemtwo__title {
   font-size: 18px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 500;
   margin-bottom: 20px;
   color: #212121;
@@ -10205,7 +10205,7 @@ textarea.form-control {
   display: flex;
   justify-content: center;
   color: #ffffff;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 13px;
   font-weight: 500;
   flex-flow: row wrap;
@@ -10213,7 +10213,7 @@ textarea.form-control {
 }
 .blog-itemfour__title {
   font-size: 20px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -10309,7 +10309,7 @@ textarea.form-control {
   margin-right: 6px;
   color: #858585;
   font-size: 14px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 500;
 }
 .blog-post__meta li a {
@@ -10433,7 +10433,7 @@ textarea.form-control {
   margin-right: 6px;
   color: #858585;
   font-size: 14px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 500;
 }
 .blog-post-two__meta li a {
@@ -10503,7 +10503,7 @@ textarea.form-control {
      object-fit: cover;
 }
 .single-blog-title {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 28px;
   margin-bottom: 20px;
   line-height: 1;
@@ -10636,7 +10636,7 @@ textarea.form-control {
   }
 }
 .pricing-card__sub-title {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 12px;
   line-height: 10px;
   display: block;
@@ -10691,7 +10691,7 @@ textarea.form-control {
 }
 .pricing-card__price-value {
   font-size: 45px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   color: #fff;
   padding-right: 5px;
   line-height: 1.3;
@@ -10706,7 +10706,7 @@ textarea.form-control {
   vertical-align: top;
   display: inline-block;
   font-size: 18px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   line-height: 1;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (max-width: 767px) {
@@ -10829,7 +10829,7 @@ textarea.form-control {
   color: #212121;
   font-size: 15px;
   font-weight: 500;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   text-transform: uppercase;
   line-height: 1;
 }
@@ -10998,7 +10998,7 @@ textarea.form-control {
 }
 .about-two_subtitle {
   color: #F8A969;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
@@ -11038,7 +11038,7 @@ textarea.form-control {
 }
 .about-two_text {
   color: #ffffff;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 20px;
   max-width: 460px;
   width: 100%;
@@ -11062,7 +11062,7 @@ textarea.form-control {
   }
 }
 .about-two_more {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
@@ -11219,13 +11219,13 @@ textarea.form-control {
 }
 .about-schedule_name {
   font-size: 20px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-weight: 400;
   color: #212121;
 }
 .about-schedule_time {
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-style: italic;
   color: #858585;
 }
@@ -11376,7 +11376,7 @@ textarea.form-control {
 }
 .category-box-item__title {
   font-size: 20px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 700;
   color: #858585;
 }
@@ -11452,7 +11452,7 @@ textarea.form-control {
   }
 }
 .category-three_more {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
@@ -11527,7 +11527,7 @@ textarea.form-control {
 }
 .category-four_name {
   padding: 25px 20px;
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-size: 28px;
   font-weight: 700;
   font-style: italic;
@@ -11688,8 +11688,8 @@ textarea.form-control {
   position: relative;
 }
 .contact-section__title {
-  font-family: "Playfair Display", serif;
-  font-size: 60px;
+  font-family: "Lato", sans-serif;
+  font-size: 40px;
   font-weight: 700;
   text-transform: capitalize;
   line-height: 1.3;
@@ -11698,19 +11698,19 @@ textarea.form-control {
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .contact-section__title {
-    font-size: 40px;
+    font-size: 10px;
     margin-bottom: 40px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .contact-section__title {
-    font-size: 36px;
+    font-size: 10px;
     margin-bottom: 40px;
   }
 }
 @media only screen and (max-width: 767px) {
   .contact-section__title {
-    font-size: 36px;
+    font-size: 30px;
     margin-bottom: 20px;
   }
 }
@@ -11794,8 +11794,8 @@ textarea.form-control {
   padding: 3px;
 }
 .contact-section_form__title {
-  font-family: "Playfair Display", serif;
-  font-size: 42px;
+  font-family: "Lato", sans-serif;
+  font-size: 40px;
   font-weight: 700;
   color: #000000;
   line-height: 1.3;
@@ -11811,16 +11811,16 @@ textarea.form-control {
   }
 }
 .contact-section_form .form-control {
-  background-color: #F3E7E0;
+  background-color: #ffffff;
 }
 .contact-section_form .form-control.text-area {
   height: 215px;
 }
 .contact-section_form .btn-theme {
-  font-family: "Playfair Display", serif;
+  font-family: "Lato", sans-serif;
   font-size: 20px;
   font-weight: 700;
-  background-color: #ee6d2c;
+  background-color: #ffffff;
   color: #F3E7E0;
   display: block;
   padding: 10px 33px;
@@ -11869,7 +11869,7 @@ textarea.form-control {
   position: relative;
 }
 .contact-section2__title {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 36px;
   font-weight: 500;
   text-transform: capitalize;
@@ -11884,7 +11884,7 @@ textarea.form-control {
   }
 }
 .contact-section2__text {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 14px;
   color: #858585;
   margin-bottom: 50px;
@@ -11930,7 +11930,7 @@ textarea.form-control {
   }
 }
 .contact-section2_list__text {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #858585;
@@ -11963,7 +11963,7 @@ textarea.form-control {
   font-size: 14px;
 }
 .contact-section2_form__title {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 24px;
   font-weight: 500;
   color: #212121;
@@ -12030,7 +12030,7 @@ textarea.form-control {
   padding: 10px;
 }
 .contact-section3_form__title {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 36px;
   font-weight: 400;
   text-transform: capitalize;
@@ -12045,7 +12045,7 @@ textarea.form-control {
   }
 }
 .contact-section3_form__text {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 14px;
   color: #858585;
   margin-bottom: 50px;
@@ -12123,7 +12123,7 @@ textarea.form-control {
 }
 .contact-section3_content__title {
   font-size: 20px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   margin: 40px 0 20px;
@@ -12135,7 +12135,7 @@ textarea.form-control {
   }
 }
 .contact-section3_content__text {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #858585;
@@ -12259,7 +12259,7 @@ textarea.form-control {
 .best-service-item__title {
   margin: 15px 0 20px 0;
   color: #FF9D87;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 18px;
   font-weight: 800;
   text-transform: uppercase;
@@ -12338,7 +12338,7 @@ textarea.form-control {
 .event_subtitle {
   font-size: 18px;
   font-weight: 500;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   color: #858585;
   letter-spacing: 3px;
   margin-bottom: 20px;
@@ -12364,7 +12364,7 @@ textarea.form-control {
   }
 }
 .event_title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 72px;
   font-weight: 700;
   text-transform: uppercase;
@@ -12403,7 +12403,7 @@ textarea.form-control {
   }
 }
 .event_discount {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 36px;
   font-weight: 700;
   text-transform: uppercase;
@@ -12626,7 +12626,7 @@ textarea.form-control {
   align-items: center;
   box-shadow: none;
   color: #333333;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
 }
 .why-choose-content .accordion-button.collapsed {
   color: #858585;
@@ -12662,7 +12662,7 @@ textarea.form-control {
 }
 .why-choose-title {
   color: #333333;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 30px;
   font-weight: 700;
   text-transform: capitalize;
@@ -12742,7 +12742,7 @@ textarea.form-control {
   }
 }
 .team-name {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -12870,7 +12870,7 @@ textarea.form-control {
   }
 }
 .team-2-name {
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   font-size: 24px;
   font-weight: 400;
   margin-bottom: 5px;
@@ -12974,7 +12974,7 @@ textarea.form-control {
   }
 }
 .team-3-name {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 22px;
   font-weight: 600;
   line-height: 1.2;
@@ -13070,7 +13070,7 @@ textarea.form-control {
   max-width: 290px;
   color: white;
   font-size: 15px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   padding-right: 70px;
 }
 @media only screen and (max-width: 767px) {
@@ -13085,7 +13085,7 @@ textarea.form-control {
   max-width: 200px;
   color: white;
   font-size: 15px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
   .story-bg_btn {
@@ -13143,7 +13143,7 @@ textarea.form-control {
 }
 .breadcrumb_title {
   font-size: 48px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   color: #ffffff;
   margin-bottom: 15px;
 }
@@ -13169,7 +13169,7 @@ textarea.form-control {
   gap: 2px;
   position: relative;
   font-size: 14px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
 }
 .breadcrumb_list li:not(:last-child)::after {
   display: block;
@@ -13339,7 +13339,7 @@ textarea.form-control {
   padding: 40px 30px;
 }
 .cart-totals-inner .title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 20px;
@@ -13395,7 +13395,7 @@ textarea.form-control {
 }
 .cart-product-mobile-title {
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 500;
   margin-bottom: 15px;
 }
@@ -13785,7 +13785,7 @@ textarea.form-control {
 }
 .product-summery .product-head-price {
   font-size: 28px;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   color: #212121;
 }
 @media only screen and (max-width: 767px) {
@@ -13796,7 +13796,7 @@ textarea.form-control {
 }
 .product-summery .product-title {
   font-size: 30px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 600;
 }
 @media only screen and (max-width: 767px) {
@@ -13810,7 +13810,7 @@ textarea.form-control {
 }
 .product-summery .product-color label, .product-summery .product-size label {
   font-size: 16px;
-  font-size: "Inter", sans-serif;
+  font-size: "Inter", sans-sans-serif;
   color: #555555;
   max-width: 100px;
   width: 100%;
@@ -13845,8 +13845,9 @@ textarea.form-control {
   position: relative;
 }
 .product-summery .desc-content {
+    font-family: "Lato", sans-serif;
   font-size: 18px;
-  color: #858585;
+  color: #000000;
   margin-bottom: 50px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -13961,7 +13962,7 @@ textarea.form-control {
 .product-summery .product-group-content .title {
   font-size: 16px;
   line-height: 1.2;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 500;
 }
 .product-summery .product-group-content .price {
@@ -14258,7 +14259,7 @@ textarea.form-control {
 }
 .product-desc-img {
   max-width: 46%;
-  width: 100%;
+  /*width: 100%;*/
 }
 @media only screen and (max-width: 767px) {
   .product-desc-img {
@@ -14286,7 +14287,7 @@ textarea.form-control {
 }
 .product-desc-title {
   font-size: 36px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 500;
   color: #212121;
   margin-bottom: 20px;
@@ -14324,7 +14325,7 @@ textarea.form-control {
   font-size: 16px;
 }
 .review-title-date .title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 500;
 }
 .review_wrap {
@@ -14336,7 +14337,7 @@ textarea.form-control {
 }
 .comments-area .title {
   font-size: 24px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 500;
 }
 .comments-area_text {
@@ -14396,7 +14397,7 @@ textarea.form-control {
 }
 .product-accordion .accordion-button {
   font-size: 20px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 600;
   color: #212121;
   padding: 18px 40px 18px 40px;
@@ -14478,7 +14479,7 @@ textarea.form-control {
 
 .myaccount-content.address .title {
   font-size: 24px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 600;
 }
 .myaccount-content.address .title .edit-link {
@@ -14489,7 +14490,7 @@ textarea.form-control {
 }
 .myaccount-content.address .name {
   font-size: 18px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -14541,7 +14542,7 @@ textarea.form-control {
   }
 }
 .faq-top__title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 700;
   font-size: 48px;
   text-transform: uppercase;
@@ -14624,7 +14625,7 @@ textarea.form-control {
   }
 }
 .faq-head__title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 30px;
   font-weight: 500;
 }
@@ -14648,7 +14649,7 @@ textarea.form-control {
   margin-top: 20px;
 }
 .faq .accordion-button {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 400;
   font-size: 18px;
   display: flex;
@@ -14710,7 +14711,7 @@ textarea.form-control {
   }
 }
 .error-content__title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 38px;
   font-weight: 700;
   text-transform: uppercase;
@@ -14822,7 +14823,7 @@ textarea.form-control {
   }
 }
 .coming-title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 700;
   font-size: 70px;
   text-transform: uppercase;
@@ -14957,7 +14958,7 @@ textarea.form-control {
 .coming-wrapper .single-countdown .single-countdown_time {
   font-size: 42px;
   font-weight: 500;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   line-height: 1.6;
   color: #8f8f8f;
   background-color: #ffffff;
@@ -14989,7 +14990,7 @@ textarea.form-control {
 .coming-wrapper .single-countdown .single-countdown_text {
   font-size: 18px;
   font-weight: 700;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   line-height: 1;
   color: #BC8157;
 }
@@ -15094,7 +15095,7 @@ textarea.form-control {
 .sidebars_widget__title {
   font-size: 28px;
   font-weight: 400;
-  font-family: "Montaga", serif;
+  font-family: "Montaga", sans-serif;
   margin-bottom: 20px;
   color: #212121;
 }
@@ -15171,7 +15172,7 @@ textarea.form-control {
   text-align: center;
   font-size: 12px;
   color: #555555;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
 }
 .sidebars_widget__category li {
   margin-bottom: 15px;
@@ -15255,11 +15256,11 @@ textarea.form-control {
 .sidebars_widget__post .single-post_content__meta {
   color: #BC8157;
   font-size: 11px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-weight: 500;
 }
 .sidebars_widget__post .single-post_content__title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-sans-serif;
   font-size: 15px;
   font-weight: 500;
   line-height: 1.4;

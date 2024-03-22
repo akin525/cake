@@ -112,7 +112,7 @@
                         <h1 class="breadcrumb_title">Product Details</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{url('/')}}">Home</a></li>
-                            <li>
+                            <li style="font-family: Holipop, sans-serif">
                                 @if($product != null)
                                 {{$product->name}}
                                 @endif
@@ -408,15 +408,13 @@
                         <li class="nav-item">
                             <a class="nav-link" id="review-tab" data-bs-toggle="tab" href="#connect-4" role="tab" aria-selected="false">Additional information</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#connect-2" role="tab" aria-selected="false">Reviews (1)</a>
-                        </li>
+
                     </ul>
                     <div class="tab-content mb-text" id="myTabContent">
                         <div class="tab-pane fade show active" id="connect-1" role="tabpanel" aria-labelledby="home-tab">
                             <div class="product-desc-row">
-                                <div class="product-desc-img image-container">
-                                    <img src="{{asset('assets/images/product/product-tab.jpg')}}" alt="Image">
+                                <div class="product-desc-img ">
+                                    <img width="200" src="{{asset('assets/images/eko.png')}}" alt="Image">
                                 </div>
                                 <div class="product-desc-content">
                                     <h5 class="product-desc-title">We Love Cake</h5>
@@ -439,90 +437,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="connect-2" role="tabpanel" aria-labelledby="profile-tab">
-                            <!-- Start Single Content -->
-                            <div class="review">
-
-                                <!-- Review Top Start -->
-                                <div class="review-top d-flex mb-4 align-items-center">
-
-                                    <!-- Review Thumb Start -->
-                                    <div class="review_thumb">
-                                        <img alt="review images" src="assets/images/avatar/testimoial-1.png">
-                                    </div>
-                                    <!-- Review Thumb End -->
-
-                                    <!-- Review Details Start -->
-                                    <div class="review_details ms-3">
-                                        <!-- Rating Start -->
-                                        <div class="review-rating mb-2">
-                                            <span class="review-rating-bg">
-                                                <span class="review-rating-active" style="width: 90%"></span>
-                                            </span>
-                                        </div>
-                                        <!-- Rating End -->
-                                        <!-- Review Title & Date Start -->
-                                        <div class="review-title-date d-flex">
-                                            <h5 class="title me-1">Admin - </h5>
-                                            <span>January 19, 2021</span>
-                                        </div>
-                                        <!-- Review Title & Date End -->
-                                        <p>Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et.</p>
-                                    </div>
-                                    <!-- Review Details End -->
-
-                                </div>
-                                <!-- Review Top End -->
-
-                                <!-- Comments ans Replay Start -->
-                                <div class="comments-area comments-reply-area">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-custom">
-                                            <h5 class="title mb-2">Add a review</h5>
-                                            <p class="comments-area_text">Your email address will not be published. Required fields are marked *</p>
-                                            <!-- Comment form Start -->
-                                            <form action="#" class="comments-area_form">
-                                                <div class="row">
-
-                                                    <!-- Input Name Start -->
-                                                    <div class="col-md-6 mb-3">
-                                                        <label>Name <span class="required">*</span></label>
-                                                        <input class="comments-area_input" type="text" required="required" name="Name">
-                                                    </div>
-                                                    <!-- Input Name End -->
-
-                                                    <!-- Input Email Start -->
-                                                    <div class="col-md-6 mb-3">
-                                                        <label>Email <span class="required">*</span></label>
-                                                        <input class="comments-area_input" type="text" required="required" name="email">
-                                                    </div>
-                                                    <!-- Input Email End -->
-
-                                                </div>
-                                                <!-- Comment Texarea Start -->
-                                                <div class="mb-3">
-                                                    <label>Comment</label>
-                                                    <textarea class="comments-area_textarea" required="required"></textarea>
-                                                </div>
-                                                <!-- Comment Texarea End -->
-
-                                                <!-- Comment Submit Button Start -->
-                                                <div class="comment-form-submit">
-                                                    <button class="btn btn-dark btn-hover-primary">Submit</button>
-                                                </div>
-                                                <!-- Comment Submit Button End -->
-
-                                            </form>
-                                            <!-- Comment form End -->
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Comments ans Replay End -->
-
-                            </div>
-                            <!-- End Single Content -->
                         </div>
                     </div>
                 </div>

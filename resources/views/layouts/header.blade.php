@@ -241,7 +241,7 @@
                                                 <li>
                                                     <a href="#" class="menu-item-link active"><span>Cakes</span></a>
                                                     <ul class="sub-menu">
-                                                        <li><a class="sub-item-link" href="{{route('cakes')}}"><span>All Cake</span></a></li>
+                                                        <li><a class="sub-item-link" href="{{route('cakes')}}"><span>All Cakes</span></a></li>
                                                     @isset($category)
                                                         @forelse($category as $cat)
                                                         <li><a class="sub-item-link" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
@@ -312,7 +312,7 @@
             <li>
                 <a href="#" class="menu-item-link active"><span>Cakes</span></a>
                 <ul class="sub-menu">
-                    <li><a class="sub-item-link" href="{{route('cakes')}}"><span>All Cake</span></a></li>
+                    <li><a class="sub-item-link" href="{{route('cakes')}}"><span>All Cakes</span></a></li>
                 @isset($category)
                         @forelse($category as $cat)
                             <li><a class="sub-item-link" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>

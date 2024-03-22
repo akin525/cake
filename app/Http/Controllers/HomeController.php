@@ -100,7 +100,9 @@ function allcake()
         ->orderBy('id', 'DESC')
         ->paginate(12);
     $fq=FQ::all();
-
+    $pop=Products::where('cool', 'hots')->orderBy('id', 'DESC')
+        ->limit(4)
+        ->get();
     if (Auth::user()) {
         $cartsum = Cart::where('user_id', Auth::user()->id)->sum('amount');
         $cart=Cart::where('user_id', Auth::user()->id)->get();
@@ -111,7 +113,7 @@ function allcake()
     }
     $category=Categories::all();
 
-    return view('shop.cake', compact('product', 'fq', 'category', 'cart', 'cartsum'));
+    return view('shop.cake', compact('product', 'fq', 'category', 'cart', 'cartsum', 'pop'));
 }
 function cakedetail($request)
 {

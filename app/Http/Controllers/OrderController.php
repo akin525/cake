@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Mail\MailOrder;
 use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Gateways;
@@ -12,6 +13,7 @@ use App\Models\Payments;
 use Faker\Provider\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController
 {
@@ -84,7 +86,7 @@ function confirmpayment($reference, $secondS)
         CURLOPT_HTTPHEADER => array(
             "Authorization: Bearer ".$skey,
             "Cache-Control: no-cache",
-        ),0
+        ),
     ));
 
     $response = curl_exec($curl);
@@ -119,6 +121,13 @@ function confirmpayment($reference, $secondS)
             $cic->pay = 1;
             $cic->save();
         }
+
+        $move=Cart::where('user_id', Auth::user()->id)->delete();
+        $email=Auth::user()->email;
+        $or=Order::where('payid', $secondS)->first();
+        $order=Order::where('payid', $secondS)->get();
+        $total=Order::where('payid', $secondS)->sum('price');
+        Mail::to($email)->send(new MailOrder($order,  $total, $or));
 
         return  redirect('dashboard')->with('status', 'Payments Successful');
     }

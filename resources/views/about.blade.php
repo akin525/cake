@@ -25,15 +25,15 @@
                 <div class="col-md-6">
                     <div class="section-title-10 justify-content-start text-start align-items-start">
                         <span class="section-title-10__subtitle">We Are EkoCake</span>
-                        <h1 class="section-title-10__title">we love cake</h1>
+{{--                        <h1 class="section-title-10__title">we love cake</h1>--}}
                         <p class="section-title-10__text">{!! $setting->about !!}</p>
 {{--                        <p class="section-title-10__text">Vestibulum eu tristique tellus. Praesent at varius nisi, ut dignissim lectus. Praesent venenatis ipsum in arcu ullamcorper tristique. Aliquam et gravida magna, ut tincidunt massa.</p>--}}
-                        <img src="assets/images/singnecher-2.png" alt="Signature-Image">
+{{--                        <img src="assets/images/singnecher-2.png" alt="Signature-Image">--}}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="aboutus-image">
-                        <img src="assets/images/about/about.jpg" alt="About-Image">
+                        <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0834-600x600.jpg" alt="About-Image">
                     </div>
                 </div>
             </div>

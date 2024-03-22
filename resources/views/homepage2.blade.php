@@ -139,7 +139,7 @@
                             <span class="product-item__price ">₦{{number_format(intval($pro['price'] *1))}}</span>
                         </div>
                         <div class="product-item__image ">
-                            <a class="item-img image-container" href="#">
+                            <a class="item-img image-container" href="{{route('cakedetail', $pro['id'])}}">
                                 <img src="{{url($pro['image'])}}" alt="Product">
                             </a>
                             <ul class="product-item__meta meta-bottom">
@@ -191,7 +191,7 @@
             <div class="row">
                 <div class="more-btn_three">
                     <div class="more-btn_three__content">
-                        <span class="more-btn-text">#bakerfresh</span>
+                        <span class="more-btn-text">#Eko Cakes</span>
                         <a href="{{route('cakes')}}" class="more-btn-text text-dark-three">More Cakes</a>
                     </div>
                     <span class="more-btn_three__border"></span>
@@ -214,12 +214,12 @@
 
 
     <!-- Contact form section Start -->
-    <div class="section-padding-03 contact-section contact-section_bg" data-bg-image="">
+    <div class="section-padding-03 contact-section contact-section_bg" data-bg-image="" >
         <div class="container custom-container-five">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="contact-section_content">
-                        <h2 class="contact-section__title">Our Contact</h2>
+                        <h4 class="contact-section__title">Our Contact</h4>
                         <ul class="contact-section_list">
                             <li>
                                 <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-phone-2"></i></span>
@@ -239,7 +239,7 @@
                 <div class="col-md-6">
                     <div class="contact-section_formbg" data-bg-image="">
                         <h2 class="contact-section_form__title">Get in touch.</h2>
-                        <form class="contact-section_form" id="contact-form" action="http://whizthemes.com/mail-php/raju/arden/mail.php" method="post">
+                        <form class="contact-section_form" id="contact-form" action="" method="post" style="background-color: white">
                             <div class="row">
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
@@ -268,7 +268,7 @@
                                 </div>
                                 <div class="col-md-12 form-p">
                                     <div class="form-group mb-0">
-                                        <button class="btn btn-theme" type="submit">Send Message</button>
+                                        <button class="btn btn-black" type="submit">Send Message</button>
                                     </div>
                                 </div>
                             </div>
@@ -280,7 +280,7 @@
             </div>
         </div>
         <div class="contact-section_shape">
-            <img src="{{asset('ct2.png')}}" alt="Shape-Image">
+{{--            <img src="{{asset('ct2.png')}}" alt="Shape-Image">--}}
         </div>
     </div>
     <!-- Contact form section End -->
