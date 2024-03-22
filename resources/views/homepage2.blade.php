@@ -55,7 +55,7 @@
     </div>
 
     <br/>
-    <h3 class="section-title-10__subtitle text-center" style="font-family: Great Vibes, cursive; font-size: 40px;">We now that</h3>
+    <h3 class="section-title-10__subtitle text-center" style="font-family: Great Vibes, cursive; font-size: 40px;">We know that</h3>
     <h5 class="section-title-10__title text-center">MAKING CAKE IS ART</h5>
     <hr/>
 
