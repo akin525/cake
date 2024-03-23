@@ -71,7 +71,7 @@
                         <a href="{{url('cakes')}}" class="category-four_thumb">
                             <img width="100" src="{{asset('cc.jpeg')}}" alt="Category-Image">
                         </a>
-                        <div class="category-four_content">
+                        <div class="category-four_content" style="font: 24px cormorant, serif">
                             <a href="{{url('cakes')}}" class="category-four_name">All Cakes</a>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                         <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_thumb">
                             <img src="{{asset('ca.jpeg')}}" alt="Category-Image">
                         </a>
-                        <div class="category-four_content">
+                        <div class="category-four_content" style="font: 24px cormorant, serif">
                             <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_name">Cake For Him</a>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_thumb">
                             <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0837-600x608.jpg" alt="Category-Image">
                         </a>
-                        <div class="category-four_content">
+                        <div class="category-four_content" style="font: 24px cormorant, serif">
                             <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_name">Cake For Her</a>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                         <a href="{{url('ready')}}" class="category-four_thumb">
                             <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0703-600x591.jpg" alt="Category-Image">
                         </a>
-                        <div class="category-four_content">
+                        <div class="category-four_content" style="font: 24px cormorant, serif">
                             <a href="{{url('ready')}}" class="category-four_name">Ready To Go</a>
                         </div>
                     </div>
@@ -140,8 +140,8 @@
                     <!-- Product Item Start -->
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
-                            <h5 class="product-item__title"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
-                            <span class="product-item__price ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                            <h5 class="product-item__title" style="font: 18px Montserrat, sans-serif"> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
+                            <span class="product-item__price" style="font: 24px cormorant, serif">₦{{number_format(intval($pro['price'] *1))}}</span>
                         </div>
                         <div class="product-item__image ">
                             <a class="item-img image-container" href="{{route('cakedetail', $pro['id'])}}">
@@ -154,7 +154,7 @@
                             </ul>
                             <br>
                             <br>
-                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn" >Add to cart</a>
+                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn" style="font: 24px cormorant, serif" >Add to cart</a>
                         </div>
                     </div>
                     <!-- Product Item End -->
@@ -189,15 +189,15 @@
                         </div>
                     </div>
                 @empty
-                    <p class="text-center">No Product Available On Store</p>
+                    <p class="text-center" style="font: 24px cormorant, serif">No Product Available On Store</p>
                 @endforelse
 
             </div>
             <div class="row">
                 <div class="more-btn_three">
                     <div class="more-btn_three__content">
-                        <span class="more-btn-text">#Eko Cakes</span>
-                        <a href="{{route('cakes')}}" class="more-btn-text text-dark-three">More Cakes</a>
+                        <span class="more-btn-text" style="font: 24px cormorant, serif">#Eko Cakes</span>
+                        <a href="{{route('cakes')}}" class="more-btn-text text-dark-three" style="font: 24px cormorant, serif">More Cakes</a>
                     </div>
                     <span class="more-btn_three__border"></span>
                 </div>
@@ -224,55 +224,55 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="contact-section_content">
-                        <h4 class="contact-section__title">Our Contact</h4>
+                        <h4 class="contact-section__title" style="font: 18px Montserrat, sans-serif">Our Contact</h4>
                         <ul class="contact-section_list">
                             <li>
                                 <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-phone-2"></i></span>
-                                <span class="contact-section_list__text">Phone Number : <span>08162300183</span></span>
+                                <span class="contact-section_list__text" style="font: 21px cormorant, serif">Phone Number : <span style="font: 21px cormorant, serif">08162300183</span></span>
                             </li>
                             <li>
                                 <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-pin-3-2"></i></span>
-                                <span class="contact-section_list__text">Address : <span>Gbagada 100234 Lagos</span></span>
+                                <span class="contact-section_list__text" style="font: 21px cormorant, serif">Address : <span style="font: 21px cormorant, serif">Gbagada 100234 Lagos</span></span>
                             </li>
                             <li>
                                 <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-mail"></i></span>
-                                <span class="contact-section_list__text">Email Adress : <span>info@admin.com</span></span>
+                                <span class="contact-section_list__text" style="font: 21px cormorant, serif">Email Adress : <span style="font: 21px cormorant, serif">info@admin.com</span></span>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="contact-section_formbg" data-bg-image="">
-                        <h2 class="contact-section_form__title">Get in touch.</h2>
+                        <h2 class="contact-section_form__title" style="font: 18px Montserrat, sans-serif">Get in touch.</h2>
                         <form class="contact-section_form" id="contact-form" action="" method="post" style="background-color: white">
                             <div class="row">
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="con_name" placeholder="Name">
+                                        <input  style="font: 21px cormorant, serif" class="form-control" type="text" name="con_name" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input class="form-control" type="email" name="con_email" placeholder="Email">
+                                        <input style="font: 21px cormorant, serif" class="form-control" type="email" name="con_email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="con_phone" placeholder="Phone">
+                                        <input style="font: 21px cormorant, serif" class="form-control" type="text" name="con_phone" placeholder="Phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="con_address" placeholder="Address">
+                                        <input style="font: 21px cormorant, serif" class="form-control" type="text" name="con_address" placeholder="Address">
                                     </div>
                                 </div>
                                 <div class="col-md-12 form-p">
                                     <div class="form-group">
-                                        <textarea class="form-control text-area" name="con_message" placeholder="Message"></textarea>
+                                        <textarea style="font: 21px cormorant, serif" class="form-control text-area" name="con_message" placeholder="Message"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 form-p">
-                                    <div class="form-group mb-0">
+                                    <div class="form-group mb-0" style="font: 21px cormorant, serif">
                                         <button class="btn btn-black" type="submit">Send Message</button>
                                     </div>
                                 </div>
@@ -296,7 +296,7 @@
 
                 <div class="">
                     <div class="faq-head align-content-center">
-                        <h4 class="faq-head__title text-center">FREQUENTLY ASKED QUESTIONS</h4>
+                        <h4 class="faq-head__title text-center" style="font: 20px Montserrat, sans-serif">FREQUENTLY ASKED QUESTIONS</h4>
                         <span class="faq-head__border"></span>
                     </div>
                 </div>
@@ -306,12 +306,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$fa['id']}}" aria-expanded="true" aria-controls="collapseOne">
-                                        <span>{{$fa['heading']}}</span>
+                                        <span style="font: 18px Montserrat, sans-serif">{{$fa['heading']}}</span>
                                         <i class="lastudioicon lastudioicon-down-arrow"></i>
                                     </button>
                                 </h2>
                                 <div id="collapse{{$fa['id']}}" class="accordion-collapse collapse" data-bs-parent="#exampleOne">
-                                    <div class="accordion-body">{!! $fa['content'] !!}</div>
+                                    <div class="accordion-body" style="font: 21px cormorant, serif">{!! $fa['content'] !!}</div>
                                 </div>
                             </div>
                         @endforeach

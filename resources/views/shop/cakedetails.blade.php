@@ -130,7 +130,7 @@
     <div class="section section-margin-top section-padding-03">
         <div class="container">
 
-            <div class="row" style="border-radius: 40px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
+            <div class="row" style="background-color: #ffffff; ">
 
                 <div class="col-lg-6 offset-lg-0 col-md-10 offset-md-1">
 
@@ -191,7 +191,7 @@
                         <!-- Product Head Start -->
                         <div class="product-head mb-3">
                             <!-- Price Start -->
-                            <span class="product-head-price">₦{{ number_format(intval($product->price * 1)) }}</span>
+                            <span class="product-head-price" style="font: 24px cormorant, serif;">₦{{ number_format(intval($product->price * 1)) }}</span>
                             <!-- Price End -->
                             <!-- Rating Start -->
                             <div class="review-rating">
@@ -204,7 +204,7 @@
                         </div>
                         <!-- Product Head End -->
                         <!-- Description Start -->
-                        <p class="desc-content">{!! $product->description !!}</p>
+                        <p class="desc-content" style="font: 21px cormorant, serif">{!! $product->description !!}</p>
                         <!-- Description End -->
                         <form method="post" action="{{route('addcart1')}}">
                             @csrf
@@ -235,9 +235,9 @@
 {{--                        </div>--}}
 
                             <div class="product-size mb-5">
-                                <label for="layersBy">Sizes</label>
+                                <label for="layersBy" style="font: 21px cormorant, serif" >Sizes</label>
                                 <div class="select-wrapper">
-                                    <select name="size" id="layersBy">
+                                    <select name="size" id="layersBy" style="font: 21px cormorant, serif">
                                         @foreach($size as $la)
                                             <option value="{{$la['name']}}">{{$la['name']}}</option>
                                         @endforeach
@@ -246,7 +246,7 @@
                             </div>
                         <div class="">
                             <div class="color-selector">
-                                <label for="color">Input Color:</label>
+                                <label for="color" style="font: 21px cormorant, serif">Input Color:</label>
 {{--                                <div class="color-options">--}}
 {{--                                    @foreach($color as $co)--}}
 {{--                                        <input type="radio" id="{{$co['label']}}" name="color" value="{{$co['label']}}" required>--}}
@@ -255,15 +255,15 @@
 
 
 {{--                                </div>--}}
-                                <input type="text" class="form-control" name="color" />
+                                <input type="text" class="form-control" name="color"  style="font: 21px cormorant, serif"/>
                             </div>
 
                         </div>
                             <br>
                             <div class="product-size mb-5">
-                                <label for="layersBy">Layers</label>
+                                <label for="layersBy" style="font: 21px cormorant, serif">Layers</label>
                                 <div class="select-wrapper">
-                                    <select name="layers" id="layersBy">
+                                    <select name="layers" id="layersBy" style="font: 21px cormorant, serif">
                                         @foreach($layer as $la)
                                         <option value="{{$la['name']}}">{{$la['name']}}</option>
                                         @endforeach
@@ -293,9 +293,9 @@
 
 {{--                        </div>--}}
                             <div class="product-color mb-2">
-                            <label for="flavourBy">Flavour</label>
+                            <label for="flavourBy" style="font: 21px cormorant, serif">Flavour</label>
                             <div class="select-wrapper">
-                                <select name="flavor" id="flavourBy11">
+                                <select name="flavor" id="flavourBy11" style="font: 21px cormorant, serif">
                                     <option value="manual">Choose an option</option>
                                     <option value="vanilla">Vanilla Only</option>
                                     <option value="chocolate">Chocolate Only</option>
@@ -307,9 +307,9 @@
                             </div>
                         </div>
                         <div class="product-color mb-2">
-                            <label for="topperBy">Topper</label>
+                            <label for="topperBy" style="font: 21px cormorant, serif">Topper</label>
                             <div class="select-wrapper">
-                                <select name="topper" id="topperBy">
+                                <select name="topper" id="topperBy" style="font: 21px cormorant, serif">
                                     <option value="none">No Topper</option>
                                     <option value="select">Select a Topper</option>
                                 </select>
@@ -317,21 +317,21 @@
                         </div>
                             <input type="hidden" name="id" value="{{$product->id}}">
                         <div class="product-color mb-2" id="topperTextSection" style="display: none;">
-                            <label for="topperText">Topper Text</label>
-                            <input type="text" name="topperText" id="topperText" class="form-control" />
+                            <label for="topperText" style="font: 21px cormorant, serif">Topper Text</label>
+                            <input type="text" name="topperText" id="topperText" class="form-control" style="font: 21px cormorant, serif" />
                         </div>
                         <div class="product-color mb-2">
-                            <label for="ekoCakesCard">Eko Cakes Card</label>
+                            <label for="ekoCakesCard" style="font: 21px cormorant, serif">Eko Cakes Card</label>
                             <div class="select-wrapper">
-                                <select name="ekoCakesCard" id="ekoCakesCard">
+                                <select name="ekoCakesCard" id="ekoCakesCard" style="font: 21px cormorant, serif">
                                     <option value="no">No</option>
                                     <option value="yes">Yes</option>
                                 </select>
                             </div>
                         </div>
                         <div class="product-color mb-2" id="ekoCakesMessageSection" style="display: none;">
-                            <label for="ekoCakesMessage">Eko Cakes Card Message</label>
-                            <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="form-control" />
+                            <label for="ekoCakesMessage" style="font: 21px cormorant, serif">Eko Cakes Card Message</label>
+                            <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="form-control" style="font: 21px cormorant, serif" />
                         </div>
 {{--                        <div class="product-size mb-5">--}}
 {{--                            <label for="sizeBy">Size</label>--}}

@@ -33,10 +33,10 @@
                             <tr>
                                 <th></th>
                                 <th></th>
-                                <th class="title text-start">Product</th>
-                                <th class="price">Price</th>
-                                <th class="quantity">Quantity</th>
-                                <th class="total">Subtotal</th>
+                                <th class="title text-start" style="font: 21px cormorant, serif">Product</th>
+                                <th class="price" style="font: 21px cormorant, serif">Price</th>
+                                <th class="quantity" style="font: 21px cormorant, serif">Quantity</th>
+                                <th class="total" style="font: 21px cormorant, serif">Subtotal</th>
                             </tr>
                             </thead>
                             <tbody class="border-top-0">
