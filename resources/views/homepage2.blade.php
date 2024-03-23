@@ -1,6 +1,56 @@
 @extends('layouts.header')
 @section('tittle', 'Home')
 @section('content')
+    <style>
+        .head{
+            color: #000000;
+            /*margin: 0;*/
+            font-family: "Great Vibes", cursive;
+            font-size: 50px;
+            line-height: .8em;
+            /*color: #c19d56;*/
+            font-style: normal;
+            margin-bottom: 15px;
+        }
+        .sam{
+            font-family: Montserrat, sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            text-transform: uppercase; vertical-align: baseline;  font-size: 30px; line-height: 1.18em;
+            letter-spacing: .1em;
+        }
+        .cormorant-upright-light {
+            font-family: "Cormorant Upright", serif;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .cormorant-upright-regular {
+            font-family: "Cormorant Upright", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .cormorant-upright-medium {
+            font-family: "Cormorant Upright", serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .cormorant-upright-semibold {
+            font-family: "Cormorant Upright", serif;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .cormorant-upright-bold {
+            font-family: "Cormorant Upright", serif;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+    </style>
+
     <!-- Slider Section Strat -->
     <div class="custom-container-three container-fluid">
         <div class="container-three-inner">
@@ -55,9 +105,17 @@
     </div>
 
     <br/>
-    <h3 class="section-title-10__subtitle text-center" style="font-family: Great Vibes, cursive; font-size: 40px;">We know that</h3>
-    <h5 class="section-title-10__title text-center">MAKING CAKE IS ART</h5>
-    <hr/>
+    <h3 class="section-title-10__subtitle text-center"><b>We know that</b></h3>
+    <h2 class="text-center sam">MAKING CAKE IS ART</h2>
+    <hr style="font-weight: 300;"/>
+    <h6 class="text-center" style="font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;">PLEASE VIEW OUR PRODUCTS BELOW</h6>
+{{--    <h5  style="font-family: Great Vibes, cursive;--}}
+{{--    font-weight: 400;--}}
+{{--    font-style: normal;">PLEASE VIEW OUR PRODUCTS BELOW--}}
+{{--    </h5>--}}
 
 
     <!-- Category Section Start -->
@@ -128,7 +186,7 @@
                 <div class="col-12 text-center">
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
-                        <h5 class="section-title-08__title">The Best Cakes</h5>
+                        <h5 class="section-title-10__subtitle">The Best Cakes</h5>
                         <img src="assets/images/shape/title-shape.png" alt="Shape-Image">
                     </div>
                     <!-- Section Title End -->
@@ -140,8 +198,8 @@
                     <!-- Product Item Start -->
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
-                            <h5 class="product-item__title" style="font: 18px Montserrat, sans-serif"> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
-                            <span class="product-item__price" style="font: 24px cormorant, serif">₦{{number_format(intval($pro['price'] *1))}}</span>
+                            <h3 class="sam" style="font: 18px Montserrat, sans-serif"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
+                            <span class="cormorant-upright-bold" style="font-size: 24px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
                         </div>
                         <div class="product-item__image ">
                             <a class="item-img image-container" href="{{route('cakedetail', $pro['id'])}}">
@@ -154,7 +212,7 @@
                             </ul>
                             <br>
                             <br>
-                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn" style="font: 24px cormorant, serif" >Add to cart</a>
+                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn cormorant-upright-regular" style="font: 24px cormorant, serif" >Add to cart</a>
                         </div>
                     </div>
                     <!-- Product Item End -->
@@ -296,7 +354,7 @@
 
                 <div class="">
                     <div class="faq-head align-content-center">
-                        <h4 class="faq-head__title text-center" style="font: 20px Montserrat, sans-serif">FREQUENTLY ASKED QUESTIONS</h4>
+                        <h4 class="faq-head__title text-center sam" style="font-size: 30px">FREQUENTLY ASKED QUESTIONS</h4>
                         <span class="faq-head__border"></span>
                     </div>
                 </div>
@@ -306,12 +364,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$fa['id']}}" aria-expanded="true" aria-controls="collapseOne">
-                                        <span style="font: 18px Montserrat, sans-serif">{{$fa['heading']}}</span>
+                                        <span class="sam" style="font-size: 18px">{{$fa['heading']}}</span>
                                         <i class="lastudioicon lastudioicon-down-arrow"></i>
                                     </button>
                                 </h2>
                                 <div id="collapse{{$fa['id']}}" class="accordion-collapse collapse" data-bs-parent="#exampleOne">
-                                    <div class="accordion-body" style="font: 21px cormorant, serif">{!! $fa['content'] !!}</div>
+                                    <div class="accordion-body cormorant-upright-bold" style="font-size: 21px">{!! $fa['content'] !!}</div>
                                 </div>
                             </div>
                         @endforeach

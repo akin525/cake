@@ -16,6 +16,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Handlee&amp;family=Inter:wght@300;400;500;600;700&amp;family=Comfortaa:wght@300;400;500;600;700&amp;family=Montaga&amp;family=Pacifico&amp;family=Fredericka+the+Great&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Yellowtail&amp;display=swap" rel="stylesheet">
 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <!-- Vendor CSS (Bootstrap & Icon Font) -->
     <link rel="stylesheet" href="{{asset('assets/css/vendor/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/lastudioicons.css')}}">
@@ -87,6 +91,55 @@
         height: auto;
         display: block;
     }
+</style>
+<style>
+    .head{
+        color: #000000;
+        /*margin: 0;*/
+        font-family: "Great Vibes", cursive;
+        font-size: 50px;
+        line-height: .8em;
+        /*color: #c19d56;*/
+        font-style: normal;
+        margin-bottom: 15px;
+    }
+    .sam{
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        text-transform: uppercase; vertical-align: baseline;  font-size: 30px; line-height: 1.18em;
+        letter-spacing: .1em;
+    }
+    .cormorant-upright-light {
+        font-family: "Cormorant Upright", serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    .cormorant-upright-regular {
+        font-family: "Cormorant Upright", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .cormorant-upright-medium {
+        font-family: "Cormorant Upright", serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    .cormorant-upright-semibold {
+        font-family: "Cormorant Upright", serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .cormorant-upright-bold {
+        font-family: "Cormorant Upright", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
 </style>
 
 {{--<!-- Header Start -->--}}
@@ -169,8 +222,8 @@
                         <div class="hotline">
                             <i class="lastudioicon lastudioicon-support248"></i>
                             <div class="hotline-content">
-                                <span class="hotline-text">Hotline</span>
-                                <a class="hotline-link" href="tel:08162300183">08162300183</a>
+                                <span class="hotline-text sam">Hotline</span>
+                                <a class="hotline-link cormorant-upright-regular" href="tel:08162300183">08162300183</a>
                             </div>
                         </div>
                     </li>
@@ -178,8 +231,8 @@
                         <div class="hotline">
                             <i class="lastudioicon lastudioicon-pin-check"></i>
                             <div class="hotline-content">
-                                <span class="hotline-text">Location</span>
-                                <a class="hotline-link" href="#/"> Gbagada 100234 Lagos</a>
+                                <span class="hotline-text sam">Location</span>
+                                <a class="hotline-link cormorant-upright-regular" href="#/"> Gbagada 100234 Lagos</a>
                             </div>
                         </div>
                     </li>
@@ -225,7 +278,7 @@
             </div>
         </div>
         <div class="leftBox text-center">
-            <h6>
+            <h6 class="cormorant-upright-bold" style="font-size: 25px">
                 CAKES FOR EVERY LAGOSIAN. CAKES FOR LAGOS<br>
             </h6>
 
@@ -356,6 +409,7 @@
         </ul>
     </div>
 </div>
+
 <!-- offcanvas Menu End -->
 @yield('content')
 
@@ -468,9 +522,9 @@
 
                         <!-- Footer Widget Strat -->
                         <div class="footer-widget flex-grow-1">
-                            <h4 class="footer-widget__title">Categories</h4>
+                            <h4 class="footer-widget__title sam" style="font-size: 15px">Categories</h4>
 
-                            <ul class="footer-widget__link">
+                            <ul class="footer-widget__link cormorant-upright-bold">
                                 <li><a href="#">Cupcake</a></li>
                                 <li><a href="#">Pastry</a></li>
                                 <li><a href="#">Muffin</a></li>
@@ -481,9 +535,9 @@
 
                         <!-- Footer Widget Strat -->
                         <div class="footer-widget flex-grow-1">
-                            <h4 class="footer-widget__title">Services</h4>
+                            <h4 class="footer-widget__title sam" style="font-size: 15px">Services</h4>
 
-                            <ul class="footer-widget__link">
+                            <ul class="footer-widget__link cormorant-upright-bold">
                                 <li><a href="contact.html">Delivery</a></li>
                                 <li><a href="contact.html">Payment</a></li>
                                 <li><a href="contact.html">Returns</a></li>
@@ -494,9 +548,9 @@
 
                         <!-- Footer Widget Strat -->
                         <div class="footer-widget flex-grow-1">
-                            <h4 class="footer-widget__title">Information</h4>
+                            <h4 class="footer-widget__title sam" style="font-size: 15px">Information</h4>
 
-                            <ul class="footer-widget__link">
+                            <ul class="footer-widget__link cormorant-upright-bold">
                                 <li><a href="about.html">About Us</a></li>
                                 <li><a href="contact.html">Contact Us</a></li>
                                 <li><a href="blog-details.html">Latest Post</a></li>

@@ -1043,11 +1043,12 @@ textarea.form-field:focus {
 }
 .section-title-10__subtitle {
   color: #000000;
+    /*margin: 0;*/
     font-family: "Great Vibes", cursive;
-  font-size: 40px;
-  font-weight: 400;
-  text-transform: capitalize;
-  line-height: 1;
+    font-size: 50px;
+    line-height: .8em;
+    /*color: #c19d56;*/
+    font-style: normal;
   margin-bottom: 15px;
 }
 .mkdf-section-title-holder .mkdf-st-intro-text {
