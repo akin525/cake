@@ -36,36 +36,7 @@
             background-color: #ccc;
         }
 
-        .color-selector {
-            display: flex;
-            align-items: center;
-        }
 
-        .color-selector label {
-            margin-right: 10px;
-        }
-
-        .color-options {
-            display: flex;
-        }
-
-        .color-options input[type="radio"] {
-            display: none;
-        }
-
-        .color-options label {
-            display: block;
-            width: 30px;
-            height: 30px;
-            margin-right: 5px;
-            cursor: pointer;
-            border-radius: 50%;
-            border: 1px solid #ccc;
-        }
-
-        .color-options input[type="radio"]:checked + label {
-            border-color: #000; /* Change border color when selected */
-        }
         .flavor-selector {
             display: flex;
             align-items: center;
@@ -109,10 +80,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="breadcrumb_title">Product Details</h1>
+                        <h1 class="section-title-10__subtitle text-white">Product Details</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{url('/')}}">Home</a></li>
-                            <li style="font-family: Holipop, sans-serif">
+                            <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif">
                                 @if($product != null)
                                 {{$product->name}}
                                 @endif
@@ -144,6 +115,7 @@
                                 <a class="swiper-slide h-auto image-container" href="{{url($product->image)}}">
                                     <img class="w-100" src="{{url($product->image)}}" alt="Product">
                                 </a>
+
                             </div>
 
                             <!-- Swiper Pagination Start -->
@@ -165,6 +137,7 @@
                                 <div class="swiper-slide">
                                     <img src="{{url($product->image)}}" alt="Product">
                                 </div>
+
                             </div>
 
                             <!-- Swiper Pagination Start -->
@@ -189,9 +162,12 @@
                     <!-- Product Summery Start -->
                     <div class="product-summery position-relative">
                         <!-- Product Head Start -->
+                        <h5 class="sam">{{$product->name}}</h5>
+
                         <div class="product-head mb-3">
                             <!-- Price Start -->
-                            <span class="product-head-price" style="font: 24px cormorant, serif;">₦{{ number_format(intval($product->price * 1)) }}</span>
+
+                            <span class="product-head-price" style="font-size: 30px ">₦{{ number_format(intval($product->price * 1)) }}</span>
                             <!-- Price End -->
                             <!-- Rating Start -->
                             <div class="review-rating">
@@ -204,98 +180,74 @@
                         </div>
                         <!-- Product Head End -->
                         <!-- Description Start -->
-                        <p class="desc-content" style="font: 21px cormorant, serif">{!! $product->description !!}</p>
+                        <p class="desc-content cormorant-upright-regular" style="font-size: 21px">{!! $product->description !!}</p>
                         <!-- Description End -->
                         <form method="post" action="{{route('addcart1')}}">
                             @csrf
 
-
-
-{{--                        <div class="product-color mb-2 ">--}}
-{{--                            <div class="size-selector">--}}
-{{--                                <label for="size">Select Size:</label>--}}
-{{--                                <div class="size-options">--}}
-{{--                                    <input type="radio" id="size-s" name="size" value="S">--}}
-{{--                                    <label for="size-s">S</label>--}}
-
-{{--                                    <input type="radio" id="size-m" name="size" value="M">--}}
-{{--                                    <label for="size-m">M</label>--}}
-
-{{--                                    <input type="radio" id="size-l" name="size" value="L">--}}
-{{--                                    <label for="size-l">L</label>--}}
-
-{{--                                    <input type="radio" id="size-xl" name="size" value="XL">--}}
-{{--                                    <label for="size-xl">XL</label>--}}
-
-{{--                                    <input type="radio" id="size-xxl" name="size" value="XXL">--}}
-{{--                                    <label for="size-xxl">XXL</label>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
-{{--                        </div>--}}
-
                             <div class="product-size mb-5">
-                                <label for="layersBy" style="font: 21px cormorant, serif" >Sizes</label>
+                                <label for="layersBy" class="cormorant-upright-bold" style="font-size: 21px" >Size in Inches</label>
+                                <style>
+                                    .bo{
+                                        background-color: transparent;
+                                        border: 1px solid #e3e3e3;
+                                        border-radius: 0;
+                                        box-sizing: border-box;
+                                        color: inherit;
+                                        cursor: pointer;
+                                        display: block;
+                                        font-family: inherit;
+                                        font-size: inherit;
+                                        height: 58px;
+                                        line-height: 56px;
+                                        padding: 0;
+                                        user-select: none;
+                                        -webkit-user-select: none;
+                                    }
+                                    .tag {
+                                        background-color: #f0f0f0;
+                                        padding: 4px 8px;
+                                        border-radius: 4px;
+                                    }
+                                </style>
                                 <div class="select-wrapper">
-                                    <select name="size" id="layersBy" style="font: 21px cormorant, serif">
+                                    <select name="size" id="layersBy" class="bo cormorant-upright-light tag" style="font-size: 21px;">
+                                        <option>Choose an option</option>
                                         @foreach($size as $la)
                                             <option value="{{$la['name']}}">{{$la['name']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                        <div class="">
-                            <div class="color-selector">
-                                <label for="color" style="font: 21px cormorant, serif">Input Color:</label>
+{{--                        <div class="product-size mb-5">--}}
+{{--                                <label for="color" class="cormorant-upright-bold" style="font-size: 21px">Input Color:</label>--}}
 {{--                                <div class="color-options">--}}
-{{--                                    @foreach($color as $co)--}}
-{{--                                        <input type="radio" id="{{$co['label']}}" name="color" value="{{$co['label']}}" required>--}}
-{{--                                        <label for="{{$co['label']}}" style="background-color: {{$co['name']}};"></label>--}}
-{{--                                    @endforeach--}}
-
-
+{{--                                    <input type="text"  placeholder="Enter your color choice" name="color"  class="bo cormorant-upright-light tag" style="font-size: 21px;"/>--}}
 {{--                                </div>--}}
-                                <input type="text" class="form-control" name="color"  style="font: 21px cormorant, serif"/>
-                            </div>
+{{--                            </div>--}}
 
-                        </div>
-                            <br>
+{{--                        </div>--}}
                             <div class="product-size mb-5">
-                                <label for="layersBy" style="font: 21px cormorant, serif">Layers</label>
+                                <label for="layersBy" class="cormorant-upright-bold" style="font-size: 21px">Layers:</label>
                                 <div class="select-wrapper">
-                                    <select name="layers" id="layersBy" style="font: 21px cormorant, serif">
-                                        @foreach($layer as $la)
+                                    <select name="layers" id="layersBy" class="bo cormorant-upright-light tag" style="font-size: 21px;">
+                                        <option>Choose an option</option>
+                                    @foreach($layer as $la)
                                         <option value="{{$la['name']}}">{{$la['name']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-{{--                        <div class="product-color mb-2">--}}
-{{--                            <div class="flavor-selector">--}}
-{{--                                <label for="flavor">Select Flavor:</label>--}}
-{{--                                <div class="flavor-options">--}}
-{{--                                    <input type="radio" id="flavor-chocolate" name="flavor" value="Chocolate">--}}
-{{--                                    <label for="flavor-chocolate"><img src="https://baqers.com/storage/flavors/18/9R4S9h9U69Le9Df3HmBUktCDgZp0sM1vi9FI3aYG.svg" alt="Chocolate"></label>--}}
 
-{{--                                    <input type="radio" id="flavor-vanilla" name="flavor" value="Vanilla">--}}
-{{--                                    <label for="flavor-vanilla"><img src="https://baqers.com/storage/flavors/2/cuZCxdDzI7PaDTM3vlS1ETgCR8Bt6Brf65aJFWW8.svg" alt="Vanilla"></label>--}}
-
-{{--                                    <input type="radio" id="flavor-strawberry" name="flavor" value="Strawberry">--}}
-{{--                                    <label for="flavor-strawberry"><img src="https://baqers.com/storage/flavors/7/g0rGxrqIzQvjKl21aVDlpBiI8otmfiH6frlqWuxT.svg" alt="Strawberry"></label>--}}
-
-{{--                                    <input type="radio" id="flavor-mint" name="flavor" value="Red Velvet">--}}
-{{--                                    <label for="flavor-mint"><img src="https://baqers.com/storage/flavors/13/x2bTzbPPfFlyocFFM77csdztaw1JjQCZWaaN9Jr5.svg" alt="Red Velvet"></label>--}}
-
-{{--                                    <input type="radio" id="flavor-caramel" name="flavor" value="Coconut">--}}
-{{--                                    <label for="flavor-caramel"><img src="https://baqers.com/storage/flavors/23/idCS85iSKvb89gOgQZH8hnFt3GPcWZC7QXX6BYbs.svg" alt="Coconut"></label>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
-{{--                        </div>--}}
+                            <div class="alert alert-warning">
+                                <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>
+                                        Note: Selecting flavour will always base on the layer chosen by you!
+                                    </b></h4>
+                            </div>
                             <div class="product-color mb-2">
-                            <label for="flavourBy" style="font: 21px cormorant, serif">Flavour</label>
+                            <label for="flavourBy" class="cormorant-upright-bold" style="font-size: 21px" >Flavour</label>
                             <div class="select-wrapper">
-                                <select name="flavor" id="flavourBy11" style="font: 21px cormorant, serif">
+                                <select name="flavor" id="flavourBy11" class="bo cormorant-upright-light tag" style="font-size: 21px;">
                                     <option value="manual">Choose an option</option>
                                     <option value="vanilla">Vanilla Only</option>
                                     <option value="chocolate">Chocolate Only</option>
@@ -306,33 +258,66 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="product-color mb-2">
-                            <label for="topperBy" style="font: 21px cormorant, serif">Topper</label>
+{{--                            <div class="">--}}
+{{--                                <h3 class="cormorant-upright-bold" style="font-size: 21px">--}}
+{{--                                Text to Appear on the Cake--}}
+{{--                                </h3><br/>--}}
+{{--                                <input type="text"  placeholder="Enter your cake text" name="text"  class="bo cormorant-upright-light text-center" style="font-size: 21px;"/>--}}
+{{--                            </div>--}}
+{{--                            <div class="alert alert-warning">--}}
+{{--                                <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>--}}
+{{--                                        Please write a short message you would like to see on the cake--}}
+{{--                                    </b></h4>--}}
+{{--                            </div>--}}
+                            <br/>
+                            <div class="product-color mb-2">
+                            <label for="topperBy" class="cormorant-upright-bold" style="font-size: 21px">Topper</label>
                             <div class="select-wrapper">
                                 <select name="topper" id="topperBy" style="font: 21px cormorant, serif">
-                                    <option value="none">No Topper</option>
-                                    <option value="select">Select a Topper</option>
+                                    <option value="manual">Choose an option</option>
+                                    <option value="none">Inner Topper</option>
+                                    <option value="select">Outer  Topper</option>
                                 </select>
                             </div>
                         </div>
                             <input type="hidden" name="id" value="{{$product->id}}">
-                        <div class="product-color mb-2" id="topperTextSection" style="display: none;">
-                            <label for="topperText" style="font: 21px cormorant, serif">Topper Text</label>
-                            <input type="text" name="topperText" id="topperText" class="form-control" style="font: 21px cormorant, serif" />
+                        <div class="" id="topperTextSection" style="display: none;">
+                            <h3 class="cormorant-upright-bold" style="font-size: 21px">Topper Text</h3>
+                            <input type="text" name="topperText" id="topperText" class="bo cormorant-upright-light text-center" style="font-size: 21px;" />
+                            <br/>
+                            <div class="alert alert-warning">
+                                <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>
+                                        Please write a short message you would like to see on the Topper. E.g. I love you baby. Daddy Rocks @ 40
+                                    </b></h4>
+                            </div>
                         </div>
                         <div class="product-color mb-2">
-                            <label for="ekoCakesCard" style="font: 21px cormorant, serif">Eko Cakes Card</label>
+                            <label for="ekoCakesCard" class="cormorant-upright-bold" style="font-size: 21px">Add Eko Cakes Greeting Card?</label>
                             <div class="select-wrapper">
-                                <select name="ekoCakesCard" id="ekoCakesCard" style="font: 21px cormorant, serif">
+                                <select name="ekoCakesCard" id="ekoCakesCard" class=" cormorant-upright-light text-center" style="font-size: 21px;">
                                     <option value="no">No</option>
                                     <option value="yes">Yes</option>
                                 </select>
                             </div>
                         </div>
                         <div class="product-color mb-2" id="ekoCakesMessageSection" style="display: none;">
-                            <label for="ekoCakesMessage" style="font: 21px cormorant, serif">Eko Cakes Card Message</label>
-                            <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="form-control" style="font: 21px cormorant, serif" />
+                            <label for="ekoCakesMessage" class="cormorant-upright-bold" style="font-size: 21px">Eko Cakes Card Message</label>
+                            <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="cormorant-upright-light text-center" style="font-size: 21px;" />
                         </div>
+
+                                                    <div class="">
+                                                        <h3 class="cormorant-upright-bold" style="font-size: 21px">
+                                                            Additional Information
+                                                        </h3><br/>
+                                                        <input type="text"   name="addition"  class="form-control cormorant-upright-light text-center" style="font-size: 21px;"/>
+                                                    </div>
+
+                            <br/>
+                            <div class="alert alert-warning">
+                                <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>
+                                        Please write any additional information you would like us to know here. E.g. Gender of recipient, delivery notes, e.t.c
+                                    </b></h4>
+                            </div>
 {{--                        <div class="product-size mb-5">--}}
 {{--                            <label for="sizeBy">Size</label>--}}
 {{--                            <div class="select-wrapper">--}}
@@ -365,7 +350,7 @@
 
                         <!-- Product Quantity, Cart Button, Wishlist and Compare End -->
                         <!-- Product Meta Start -->
-                        <ul class="product-meta">
+                        <ul  class="product-met cormorant-upright-bold" style="font-size: 21px">
                             <li class="product-meta-wrapper">
                                 <span class="product-meta-name">SKU:</span>
                                 <span class="product-meta-detail">REF. LA-199</span>
@@ -403,10 +388,10 @@
                 <div class="col-lg-12 single-product-tab">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#connect-1" role="tab" aria-selected="true">Description</a>
+                            <a class="nav-link active sam" style="font-size: 21px" id="home-tab" data-bs-toggle="tab" href="#connect-1" role="tab" aria-selected="true">Description</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="review-tab" data-bs-toggle="tab" href="#connect-4" role="tab" aria-selected="false">Additional information</a>
+                            <a class="nav-link" id="review-tab sam" style="font-size: 21px" data-bs-toggle="tab" href="#connect-4" role="tab" aria-selected="false">Additional information</a>
                         </li>
 
                     </ul>
@@ -417,8 +402,8 @@
                                     <img width="200" src="{{asset('assets/images/eko.png')}}" alt="Image">
                                 </div>
                                 <div class="product-desc-content">
-                                    <h5 class="product-desc-title">We Love Cake</h5>
-                                    <p class="product-desc-text">{{$product->description}}</p>
+                                    <h5 class="section-title-10__subtitle">We Love Cake</h5>
+                                    <p class="product-desc-text cormorant-upright-bold">{{$product->description}}</p>
                                 </div>
                             </div>
                         </div>
@@ -456,7 +441,7 @@
                 <div class="col-12">
                     <!-- Section Title Strat -->
                     <div class="section-title">
-                        <h2 class="section-title__title">Related Product</h2>
+                        <h2 class="sam" style="font-size: 25px">Related Product</h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -469,7 +454,7 @@
                         <div class="swiper-slide">
                             <!-- Product Item Start -->
                             <div class="product-item text-center">
-                                <div class="product-item__badge">Hot</div>
+                                <div class="product-item__badge ">Hot</div>
                                 <div class="product-item__image border w-100">
                                     <a href="{{route('cakedetail', $pro['id'])}}"><img width="350" height="350" src="{{$pro['image']}}" alt="Product"></a>
                                     <ul class="product-item__meta">
@@ -485,8 +470,8 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h5 class="product-item__title"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
-                                    <span class="product-item__price ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                    <h5 class="sam" style="font-size: 21px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
+                                    <span class="cormorant-upright-regular" style="font-size: 30px">₦{{number_format(intval($pro['price'] *1))}}</span>
                                 </div>
                             </div>
                             <!-- Product Item End -->

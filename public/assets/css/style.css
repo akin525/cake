@@ -13806,7 +13806,6 @@ textarea.form-control {
 }
 .product-summery .product-title {
   font-size: 30px;
-  font-family: "Inter", sans-serif;
   font-weight: 600;
 }
 @media only screen and (max-width: 767px) {
@@ -13820,13 +13819,12 @@ textarea.form-control {
 }
 .product-summery .product-color label, .product-summery .product-size label {
   font-size: 16px;
-  font-size: "Inter", sans-serif;
-  color: #555555;
-  max-width: 100px;
+  color: #000000;
+  /*max-width: 100px;*/
   width: 100%;
 }
 .product-summery .product-color .select-wrapper, .product-summery .product-size .select-wrapper {
-  width: 100%;
+  /*width: 100%;*/
   position: relative;
 }
 .product-summery .product-color .select-wrapper::after, .product-summery .product-size .select-wrapper::after {
