@@ -241,7 +241,7 @@
 
                             <div class="alert alert-warning">
                                 <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>
-                                        Note: Selecting flavour will always base on the layer chosen by you!
+                                       {!! $layeralert->message !!}
                                     </b></h4>
                             </div>
                             <div class="product-color mb-2">
@@ -315,7 +315,8 @@
                             <br/>
                             <div class="alert alert-warning">
                                 <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>
-                                        Please write any additional information you would like us to know here. E.g. Gender of recipient, delivery notes, e.t.c
+                                        {!! $addalert->message !!}
+
                                     </b></h4>
                             </div>
 {{--                        <div class="product-size mb-5">--}}

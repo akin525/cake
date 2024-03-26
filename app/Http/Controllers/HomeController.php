@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\MailCart;
 use App\Mail\register;
 use App\Models\Address;
+use App\Models\Alert;
 use App\Models\Cart;
 use App\Models\Categories;
 use App\Models\Cheff;
@@ -122,6 +123,8 @@ function cakedetail($request)
     $color=Colors::all();
     $layer=Layers::all();
     $size=Sizes::all();
+    $layeralert=Alert::where('name', 'layers')->first();
+    $addalert=Alert::where('name', 'addition')->first();
     if (Auth::user()) {
         $cartsum = Cart::where('user_id', Auth::user()->id)->sum('amount');
         $cart=Cart::where('user_id', Auth::user()->id)->get();
@@ -133,7 +136,7 @@ function cakedetail($request)
     $category=Categories::all();
 
     return view('shop.cakedetails', compact('product', 'product1',
-    'cart', 'cartsum', 'category', 'color', 'layer', 'size'
+    'cart', 'cartsum', 'category', 'color', 'layer', 'size', 'layeralert', 'addalert'
     ));
 
 }

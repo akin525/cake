@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AlertController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\FqController;
@@ -148,6 +149,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('admin/about', [SetiingsController::class, 'aboutindex'])->name('admin/about');
     Route::post('admin/ab', [SetiingsController::class, 'updateabout'])->name('admin/ab');
+
+
+    Route::get('admin/alert', [AlertController::class, 'loadindex'])->name('admin/alert');
+    Route::post('admin/alertp', [AlertController::class, 'updatealert'])->name('admin/alertp');
 
 });
     require __DIR__.'/auth.php';
