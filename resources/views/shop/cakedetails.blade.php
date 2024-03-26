@@ -313,13 +313,13 @@
                         </div>
                             <input type="hidden" name="id" value="{{$product->id}}">
                         <div class="" id="topperTextSection" style="display: none;">
-                            <h3 class="cormorant-upright-bold" >Topper Text</h3>
+                            <h6 class="cormorant-upright-bold" >Topper Text</h6>
                             <input type="text" name="topperText" id="topperText" class="cormorant-upright-light text-center"  />
                             <br/>
                             <div class="alert alert-warning">
-                                <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>
+                                <h6 class="cormorant-upright-regular" style="font-size: 21px"><b>
                                         Please write a short message you would like to see on the Topper. E.g. I love you baby. Daddy Rocks @ 40
-                                    </b></h4>
+                                    </b></h6>
                             </div>
                         </div>
                         <div class="product-color mb-2">
