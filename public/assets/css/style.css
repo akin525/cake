@@ -13795,7 +13795,7 @@ textarea.form-control {
 }
 .product-summery .product-head-price {
   font-size: 28px;
-  font-family: "Montaga", serif;
+  /*font-family: "Montaga", serif;*/
   color: #212121;
 }
 @media only screen and (max-width: 767px) {
@@ -13830,10 +13830,9 @@ textarea.form-control {
 .product-summery .product-color .select-wrapper::after, .product-summery .product-size .select-wrapper::after {
   position: absolute;
   content: "\ea10";
-  font-family: LaStudioIcons;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  /*right: 10px;*/
+  /*top: 50%;*/
+  /*transform: translateY(-50%);*/
   font-size: 10px;
   z-index: 1;
   color: #858585;
@@ -13841,7 +13840,7 @@ textarea.form-control {
 .product-summery .product-color select, .product-summery .product-size select {
   border: 1px solid #dedede;
   border-radius: 0px;
-  min-height: 30px;
+  /*min-height: 30px;*/
   font-size: 14px;
   color: #555555;
   width: 100%;

@@ -185,8 +185,39 @@
                         <form method="post" action="{{route('addcart1')}}">
                             @csrf
 
+                            <style>
+                                /* Style for the select */
+                                .custom-select {
+                                    appearance: none; /* Remove default styles */
+                                    -webkit-appearance: none; /* For Safari/Chrome */
+                                    -moz-appearance: none; /* For Firefox */
+                                    background-color: #f1f1f1;
+                                    border: 1px solid #ccc;
+                                    padding: 8px 20px 8px 10px;
+                                    border-radius: 20px; /* Adjust the border-radius to get desired curve */
+                                    width: 200px;
+                                    outline: none; /* Remove focus outline */
+                                }
+
+                                /* Style for the arrow icon */
+                                .custom-select::after {
+                                    content: '\25BC'; /* Unicode character for down arrow */
+                                    position: absolute;
+                                    top: 50%;
+                                    right: 10px;
+                                    transform: translateY(-50%);
+                                    pointer-events: none; /* Ensure arrow doesn't interfere with select */
+                                }
+
+                                /* Style for hover and focus states */
+                                .custom-select:hover, .custom-select:focus {
+                                    background-color: #e0e0e0;
+                                }
+                            </style>
+
+
                             <div class="product-size mb-5">
-                                <label for="layersBy" class="cormorant-upright-bold" style="font-size: 21px" >Size in Inches</label>
+                                <label for="layersBy" class="cormorant-upright-bold"  >Size in Inches</label>
                                 <style>
                                     .bo{
                                         background-color: transparent;
@@ -211,7 +242,7 @@
                                     }
                                 </style>
                                 <div class="select-wrapper">
-                                    <select name="size" id="layersBy" class="bo cormorant-upright-light tag" style="font-size: 21px;">
+                                    <select name="size" id="layersBy" class="cormorant-upright-light" >
                                         <option>Choose an option</option>
                                         @foreach($size as $la)
                                             <option value="{{$la['name']}}">{{$la['name']}}</option>
@@ -228,9 +259,9 @@
 
 {{--                        </div>--}}
                             <div class="product-size mb-5">
-                                <label for="layersBy" class="cormorant-upright-bold" style="font-size: 21px">Layers:</label>
+                                <label for="layersBy" class="cormorant-upright-bold" >Layers:</label>
                                 <div class="select-wrapper">
-                                    <select name="layers" id="layersBy" class="bo cormorant-upright-light tag" style="font-size: 21px;">
+                                    <select name="layers" id="layersBy" class="cormorant-upright-light " >
                                         <option>Choose an option</option>
                                     @foreach($layer as $la)
                                         <option value="{{$la['name']}}">{{$la['name']}}</option>
@@ -239,17 +270,17 @@
                                 </div>
                             </div>
 
-                            <div class="alert alert-warning">
-                                <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>
-                                       {!! $layeralert->message !!}
-                                    </b></h4>
-                            </div>
+{{--                            <div class="alert alert-warning">--}}
+{{--                                <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>--}}
+{{--                                       {!! $layeralert->message !!}--}}
+{{--                                    </b></h4>--}}
+{{--                            </div>--}}
                             <div class="product-color mb-2">
-                            <label for="flavourBy" class="cormorant-upright-bold" style="font-size: 21px" >Flavour</label>
+                            <label for="flavourBy" class="cormorant-upright-bold">Flavour</label>
                             <div class="select-wrapper">
-                                <select name="flavor" id="flavourBy11" class="bo cormorant-upright-light tag" style="font-size: 21px;">
+                                <select name="flavor" id="flavourBy11" class=" cormorant-upright-light tag" >
                                     <option value="manual">Choose an option</option>
-                                    <option value="vanilla">Vanilla Only</option>
+                                    <option value="vanilla">Vanilla Only</option> n
                                     <option value="chocolate">Chocolate Only</option>
                                     <option value="vanilla_chocolate">Vanilla & Chocolate</option>
                                     <option value="vetuer">Vetuer Only</option>
@@ -271,9 +302,9 @@
 {{--                            </div>--}}
                             <br/>
                             <div class="product-color mb-2">
-                            <label for="topperBy" class="cormorant-upright-bold" style="font-size: 21px">Topper</label>
+                            <label for="topperBy" class="cormorant-upright-bold" >Topper</label>
                             <div class="select-wrapper">
-                                <select name="topper" id="topperBy" style="font: 21px cormorant, serif">
+                                <select name="topper" id="topperBy" >
                                     <option value="manual">Choose an option</option>
                                     <option value="none">Inner Topper</option>
                                     <option value="select">Outer  Topper</option>
@@ -282,8 +313,8 @@
                         </div>
                             <input type="hidden" name="id" value="{{$product->id}}">
                         <div class="" id="topperTextSection" style="display: none;">
-                            <h3 class="cormorant-upright-bold" style="font-size: 21px">Topper Text</h3>
-                            <input type="text" name="topperText" id="topperText" class="bo cormorant-upright-light text-center" style="font-size: 21px;" />
+                            <h3 class="cormorant-upright-bold" >Topper Text</h3>
+                            <input type="text" name="topperText" id="topperText" class="cormorant-upright-light text-center"  />
                             <br/>
                             <div class="alert alert-warning">
                                 <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>
@@ -292,32 +323,32 @@
                             </div>
                         </div>
                         <div class="product-color mb-2">
-                            <label for="ekoCakesCard" class="cormorant-upright-bold" style="font-size: 21px">Add Eko Cakes Greeting Card?</label>
+                            <label for="ekoCakesCard" class="cormorant-upright-bold" >Add Eko Cakes Greeting Card?</label>
                             <div class="select-wrapper">
-                                <select name="ekoCakesCard" id="ekoCakesCard" class=" cormorant-upright-light text-center" style="font-size: 21px;">
+                                <select name="ekoCakesCard" id="ekoCakesCard" class=" cormorant-upright-light text-center" >
                                     <option value="no">No</option>
                                     <option value="yes">Yes</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="product-color mb-2" id="ekoCakesMessageSection" style="display: none;">
-                            <label for="ekoCakesMessage" class="cormorant-upright-bold" style="font-size: 21px">Eko Cakes Card Message</label>
+                        <div class="product-color mb-2" id="ekoCakesMessageSection" >
+                            <label for="ekoCakesMessage" class="cormorant-upright-bold" >Eko Cakes Card Message</label>
                             <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="cormorant-upright-light text-center" style="font-size: 21px;" />
                         </div>
 
                                                     <div class="">
-                                                        <h3 class="cormorant-upright-bold" style="font-size: 21px">
+                                                        <h6 class="cormorant-upright-bold" >
                                                             Additional Information
-                                                        </h3><br/>
+                                                        </h6><br/>
                                                         <input type="text"   name="addition"  class="form-control cormorant-upright-light text-center" style="font-size: 21px;"/>
                                                     </div>
 
                             <br/>
                             <div class="alert alert-warning">
-                                <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>
+                                <h6 class="cormorant-upright-regular" ><b>
                                         {!! $addalert->message !!}
 
-                                    </b></h4>
+                                    </b></h6>
                             </div>
 {{--                        <div class="product-size mb-5">--}}
 {{--                            <label for="sizeBy">Size</label>--}}
@@ -330,6 +361,7 @@
 {{--                                </select>--}}
 {{--                            </div>--}}
 {{--                        </div>--}}
+
 
                         <!-- Product Quantity, Cart Button, Wishlist and Compare Start -->
                         <ul class="product-cta">
