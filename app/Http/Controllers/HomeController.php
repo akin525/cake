@@ -145,7 +145,6 @@ function cakedetail($request)
 //
         $validate=$request->validate([
             'id'=>'required',
-            'color'=>'required',
             'flavor'=>'required',
             'size'=>'required',
             'layers'=>'required',
@@ -160,7 +159,7 @@ function cakedetail($request)
                 'name' => $product->name,
                 'amount' => $product->price,
                 'image' => $product->image,
-                'color'=>$request->color,
+                'color'=>$request->color ??null,
                 'size'=>$request->size,
                 'flavour'=>$request->flavor,
                 'layer'=>$request->layers,
