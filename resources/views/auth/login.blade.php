@@ -89,7 +89,7 @@
                         <h1 class="breadcrumb_title">Login</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{url('/')}}">Home</a></li>
-                            <li>Login/Register</li>
+                            <li>Let Know You</li>
                         </ul>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
             <div class="container-fluid">
                 <br>
                 <div class="row">
-                    <h4>Log In</h4>
+{{--                    <h4>Log In</h4>--}}
                 </div>
                 <div class="row">
                     <x-auth-session-status class="mb-4" :status="session('status')" />
