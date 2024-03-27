@@ -187,14 +187,14 @@
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
                         <h5 class="section-title-10__subtitle">Browse Our Cakes</h5>
-                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">
+{{--                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">--}}
                     </div>
                     <!-- Section Title End -->
                 </div>
             </div>
-            <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 mb-n30">
+            <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 mb-n30 card-body">
                 @forelse($product as $pro)
-                <div class="col mb-30 z-4" >
+                <div class="col mb-30 z-4 card-body" >
                     <!-- Product Item Start -->
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">

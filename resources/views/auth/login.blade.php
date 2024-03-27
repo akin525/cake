@@ -1,6 +1,7 @@
 @extends('layouts.header')
 @section('tittle', 'Login Page')
 @section('content')
+
 <style>
     .main-content{
         width: 50%;
@@ -98,6 +99,8 @@
     </div>
     <!-- Breadcrumb Section End -->
 
+
+
 <!-- Main Content -->
 <div class="container-fluid">
     <div class="row main-content bg-success text-center">
@@ -146,5 +149,7 @@
         </div>
     </div>
 </div>
+
+
 
 @endsection
