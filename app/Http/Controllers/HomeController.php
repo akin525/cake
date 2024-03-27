@@ -159,12 +159,15 @@ function cakedetail($request)
                 'name' => $product->name,
                 'amount' => $product->price,
                 'image' => $product->image,
-                'color'=>$request->color ??null,
+                'color'=>$request->color ?? null,
                 'size'=>$request->size,
                 'flavour'=>$request->flavor,
                 'layer'=>$request->layers,
                 'card'=>$request->ekoCakesMessage ?? null,
-                'topper'=>$request->topperText ?? null,
+                'topper'=>$request->topper ?? null,
+                'topper_text'=>$request->topperText ?? null,
+                'addition'=>$request->addition ?? null,
+                'message'=>$request->message ?? null,
             ]);
             $email=Auth::user()->email;
             $input=Cart::where('user_id', Auth::user()->id)->get();

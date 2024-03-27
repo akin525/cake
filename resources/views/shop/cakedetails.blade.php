@@ -101,7 +101,7 @@
     <div class="section section-margin-top section-padding-03">
         <div class="container">
 
-            <div class="row" style="background-color: #ffffff; ">
+            <div class="row card-body" style="background-color: #ffffff; ">
 
                 <div class="col-lg-6 offset-lg-0 col-md-10 offset-md-1">
 
@@ -160,7 +160,7 @@
                 </div>
                 <div class="col-lg-6">
                     <!-- Product Summery Start -->
-                    <div class="product-summery position-relative">
+                    <div class="product-summery position-relative card-body">
                         <!-- Product Head Start -->
                         <h5 class="sam">{{$product->name}}</h5>
 
@@ -261,35 +261,88 @@
                             <div class="product-size mb-5">
                                 <label for="layersBy" class="cormorant-upright-bold" >Layers:</label>
                                 <div class="select-wrapper">
-                                    <select name="layers" id="layersBy" class="cormorant-upright-light " >
+                                    <select name="layers" id="layerSelect" class="cormorant-upright-light " >
                                         <option>Choose an option</option>
-                                    @foreach($layer as $la)
-                                        <option value="{{$la['name']}}">{{$la['name']}}</option>
-                                        @endforeach
+                                        <option value="1">1 Layer </option>
+                                        <option value="2">2 Layer </option>
+                                        <option value="3">3 Layer </option>
                                     </select>
                                 </div>
                             </div>
 
-{{--                            <div class="alert alert-warning">--}}
-{{--                                <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>--}}
-{{--                                       {!! $layeralert->message !!}--}}
-{{--                                    </b></h4>--}}
-{{--                            </div>--}}
-                            <div class="product-color mb-2">
+                            <div class="product-color mb-2" >
                             <label for="flavourBy" class="cormorant-upright-bold">Flavour</label>
                             <div class="select-wrapper">
-                                <select name="flavor" id="flavourBy11" class=" cormorant-upright-light tag" >
-                                    <option value="manual">Choose an option</option>
-                                    <option value="vanilla">Vanilla Only</option> n
-                                    <option value="chocolate">Chocolate Only</option>
-                                    <option value="vanilla_chocolate">Vanilla & Chocolate</option>
-                                    <option value="vetuer">Vetuer Only</option>
-                                    <option value="red_vetuer_chocolate">Red Vetuer & Chocolate</option>
-                                    <option value="vanilla_red_vetuer">Vanilla & Red Vetuer</option>
+                                <select name="flavor" id="flavorSelect" class=" cormorant-upright-light tag" >
+
                                 </select>
                             </div>
                         </div>
-{{--                            <div class="">--}}
+
+
+<script>
+    const layerSelect = document.getElementById('layerSelect');
+    const flavorSelect = document.getElementById('flavorSelect');
+
+    function updateFlavorOptions() {
+        const selectedLayers = layerSelect.value;
+        flavorSelect.disabled = false; // Enable flavor selection by default
+
+        // Clear existing options
+        flavorSelect.innerHTML = '';
+
+        // Add a default option
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.text = '-- Select Flavor(s) --';
+        flavorSelect.appendChild(defaultOption);
+
+        // Add flavor options based on selected layers
+        if (selectedLayers === "1") {
+            const flavors = ['Vanilla', 'Chocolate', 'Red Velvet' ]; // Add more flavors here if needed
+            flavors.forEach(flavor => {
+                const option = document.createElement('option');
+                option.value = flavor;
+                option.text = flavor;
+                flavorSelect.appendChild(option);
+            });
+        } else if(selectedLayers === "2"){
+            const flavors = ['Vanilla & Chocolate ', 'Vanilla and Red Velvet', 'Red Velvet and Chocolate']; // Add more flavors here if needed
+            flavors.forEach(flavor => {
+                const option = document.createElement('option');
+                option.value = flavor;
+                option.text = flavor;
+                flavorSelect.appendChild(option);
+            });
+        } else if(selectedLayers === "3"){
+            const flavors = ['Vanilla, Chocolate and Red Velvet']; // Add more flavors here if needed
+            flavors.forEach(flavor => {
+                const option = document.createElement('option');
+                option.value = flavor;
+                option.text = flavor;
+                flavorSelect.appendChild(option);
+            });
+        } else {
+            flavorSelect.disabled = true; // Disable if only 1 layer selected
+        }
+    }
+
+    layerSelect.addEventListener('change', updateFlavorOptions);
+
+    // Call updateFlavorOptions initially to set the disabled state
+    updateFlavorOptions();
+
+</script>
+
+
+                            <div class="product-size">
+                                <label for="layersBy" class="cormorant-upright-bold" ><span>Text to Appear on the Cake</span></label>
+                            </div>
+                            <input type="text" name="topperText" id="topperText" class="form-control cormorant-upright-light text-center"  />
+
+                            <div class="cormorant-upright-regular">Please write a short message you would like to see <br/>on the cake</div>
+
+                            {{--                            <div class="">--}}
 {{--                                <h3 class="cormorant-upright-bold" style="font-size: 21px">--}}
 {{--                                Text to Appear on the Cake--}}
 {{--                                </h3><br/>--}}
@@ -301,16 +354,24 @@
 {{--                                    </b></h4>--}}
 {{--                            </div>--}}
                             <br/>
-                            <div class="product-color mb-2">
-                            <label for="topperBy" class="cormorant-upright-bold" >Topper</label>
-                            <div class="select-wrapper">
-                                <select name="topper" id="topperBy" >
-                                    <option value="manual">Choose an option</option>
-                                    <option value="none">Inner Topper</option>
-                                    <option value="select">Outer  Topper</option>
-                                </select>
-                            </div>
+                            <div class="product-color">
+                                <label for="topperBy" class="cormorant-upright-bold" ><span>Topper</span></label>
                         </div>
+                            <select name="topper" id="topperBy" class="form-control cormorant-upright-light">
+                                <option value="">Choose an option</option>
+                                <option value="kqud9" data-wapf-price="4000" data-wapf-pricetype="fixed">Customized Topper (+₦4,000.00)</option>
+                                <option value="y7nvb" data-wapf-price="1000" data-wapf-pricetype="fixed">In-House Happy Birthday Topper (+₦1,000.00)</option>
+                            </select>
+                            <div class="cormorant-upright-regular">Please write a short message you would like to see on the Topper. e.g. Mummy at 60, Happy Birthday Baby</div>
+
+
+                            <div class="product-size">
+                                <label for="layersBy" class="cormorant-upright-bold" ><span>Base Colour of Cake</span></label>
+                            </div>
+                            <input type="text" name="color" id="color" class="form-control cormorant-upright-light text-center"  />
+
+                            <div class="cormorant-upright-regular">Would you like the Cake in a different colour? Please specify preferred colour and shade. We will try our best to meet your colour preference</div>
+
                             <input type="hidden" name="id" value="{{$product->id}}">
                         <div class="" id="topperTextSection" style="display: none;">
                             <h6 class="cormorant-upright-bold" >Topper Text</h6>
@@ -324,32 +385,38 @@
                         </div>
                         <div class="product-color mb-2">
                             <label for="ekoCakesCard" class="cormorant-upright-bold" >Add Eko Cakes Greeting Card?</label>
-                            <div class="select-wrapper">
-                                <select name="ekoCakesCard" id="ekoCakesCard" class=" cormorant-upright-light text-center" >
-                                    <option value="no">No</option>
-                                    <option value="yes">Yes</option>
-                                </select>
-                            </div>
+{{--                            <div class="select-wrapper">--}}
+{{--                                <select name="ekoCakesCard" id="ekoCakesCard" class=" cormorant-upright-light text-center" >--}}
+{{--                                    <option value="no">No</option>--}}
+{{--                                    <option value="yes">Yes</option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
                         </div>
-                        <div class="product-color mb-2" id="ekoCakesMessageSection" >
-                            <label for="ekoCakesMessage" class="cormorant-upright-bold" >Eko Cakes Card Message</label>
-                            <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="cormorant-upright-light text-center" style="font-size: 21px;" />
-                        </div>
+                            <select name="card"  class="form-control  cormorant-upright-light " >
+                            <option value="">Choose an option</option>
+                            <option value="3a1r6">No, please</option>
+                            <option value="zobj1" data-wapf-price="1500" data-wapf-pricetype="fixed">Yes, please (+₦1,500.00)</option>
+                            </select>
+{{--                        <div class="product-color mb-2" id="ekoCakesMessageSection" >--}}
+{{--                            <label for="ekoCakesMessage" class="cormorant-upright-bold" >Eko Cakes Card Message</label>--}}
+{{--                            <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="cormorant-upright-light text-center" style="font-size: 21px;" />--}}
+{{--                        </div>--}}
 
                                                     <div class="">
-                                                        <h6 class="cormorant-upright-bold" >
+                                                        <h6 class="cormorant-upright-regular" >
                                                             Additional Information
                                                         </h6><br/>
                                                         <input type="text"   name="addition"  class="form-control cormorant-upright-light text-center" style="font-size: 21px;"/>
                                                     </div>
 
                             <br/>
-                            <div class="alert alert-warning">
-                                <h6 class="cormorant-upright-regular" ><b>
+                            <div class="">
+                                <h6 class="cormorant-upright-regular" >
                                         {!! $addalert->message !!}
 
-                                    </b></h6>
+                                    </h6>
                             </div>
+                            <br/>
 {{--                        <div class="product-size mb-5">--}}
 {{--                            <label for="sizeBy">Size</label>--}}
 {{--                            <div class="select-wrapper">--}}
@@ -362,6 +429,55 @@
 {{--                            </div>--}}
 {{--                        </div>--}}
 
+{{--                            <div class="col-lg-5">--}}
+
+{{--                                <!-- Checkout Summary Start -->--}}
+{{--                                <div class="checkout-box">--}}
+
+{{--                                    <h4 class="mb-4">Cart Total</h4>--}}
+
+{{--                                    <table class="checkout-summary-table table table-borderless">--}}
+{{--                                        <thead>--}}
+{{--                                        <tr>--}}
+{{--                                            <th>Product</th>--}}
+{{--                                            <th>Total</th>--}}
+{{--                                        </tr>--}}
+{{--                                        </thead>--}}
+{{--                                        <tbody>--}}
+{{--                                        @forelse($cart as $cat)--}}
+{{--                                            <tr>--}}
+{{--                                                <td>{{$cat['name']}}</td>--}}
+{{--                                                <td>₦{{number_format(intval($cat['amount'] *1))}}</td>--}}
+{{--                                            </tr>--}}
+{{--                                        @empty--}}
+{{--                                            <tr>--}}
+{{--                                                <td>Empty</td>--}}
+{{--                                                <td>₦0.00</td>--}}
+{{--                                            </tr>--}}
+{{--                                        @endforelse--}}
+{{--                                        </tbody>--}}
+{{--                                        <tfoot>--}}
+{{--                                        <tr>--}}
+{{--                                            <th class="border-top">Grand Total</th>--}}
+{{--                                            <th class="border-top">₦{{number_format(intval($checkout *1))}}</th>--}}
+{{--                                        </tr>--}}
+{{--                                        </tfoot>--}}
+{{--                                    </table>--}}
+
+{{--                                </div>--}}
+{{--                                <!-- Checkout Summary End -->--}}
+
+{{--                                <!-- Payment Method Start -->--}}
+{{--                                <div class="checkout-box">--}}
+{{--                                    <h4 class="mb-4">Payment Method</h4>--}}
+{{--                                    <input type="hidden" name="amount" value="{{$checkout}}">--}}
+{{--                                    --}}{{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Direct Bank Transfer</a>--}}
+{{--                                    --}}{{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Cash on Delivery</a>--}}
+{{--                                    <button type="submit" class="btn btn-dark btn-primary-hover rounded-0 mt-6" >Place Order</button>--}}
+{{--                                </div>--}}
+{{--                                <!-- Payment Method End -->--}}
+
+{{--                            </div>--}}
 
                         <!-- Product Quantity, Cart Button, Wishlist and Compare Start -->
                         <ul class="product-cta">
@@ -529,24 +645,7 @@
         <script>
             $(document).ready(function () {
                 // Function to update flavor options based on selected layers
-                function updateFlavourOptions() {
-                    const selectedLayers = parseInt($('#layersBy').val());
 
-                    // Disable all options first
-                    $('#flavourBy option').prop('disabled', true);
-
-                    // Enable options based on selected layers
-                    if (selectedLayers === 1) {
-                        $('#flavourBy option[value="vanilla"]').prop('disabled', false);
-                        $('#flavourBy option[value="chocolate"]').prop('disabled', false);
-                    } else if (selectedLayers === 2) {
-                        $('#flavourBy option[value="vanilla_chocolate"]').prop('disabled', false);
-                        $('#flavourBy option[value="vetuer"]').prop('disabled', false);
-                    } else if (selectedLayers === 3) {
-                        $('#flavourBy option[value="red_vetuer_chocolate"]').prop('disabled', false);
-                        $('#flavourBy option[value="vanilla_red_vetuer"]').prop('disabled', false);
-                    }
-                }
 
                 // Function to handle visibility of topper text input based on selected topper option
                 function handleTopperVisibility() {
