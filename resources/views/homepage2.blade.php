@@ -186,7 +186,7 @@
                 <div class="col-12 text-center">
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
-                        <h5 class="section-title-10__subtitle">Browse Our Cakes</h5>
+                        <h6 class="section-title-10__subtitle">Browse Our Cakes</h6>
 {{--                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">--}}
                     </div>
                     <!-- Section Title End -->
