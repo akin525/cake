@@ -84,6 +84,12 @@
                         </div>
                     </div>
                 </div>
+                <style>
+                    #image-preview {
+                        max-width: 300px;
+                        max-height: 300px;
+                    }
+                </style>
                 <div class="col-lg-4">
                     <div class="card mb-8 rounded-4">
                         <div class="card-header p-7 bg-transparent">
@@ -94,8 +100,12 @@
                                 <div class="mb-7">
                                     <img src="https://templates.g5plus.net/glowing-bootstrap-5/assets/images/dashboard/upload.svg" width="102" class="d-block mx-auto" alt>
                                 </div>
-                                <input name="image" class="form-control" type="file">
+                                <input name="image" class="form-control" id="file-input" type="file">
                             </div>
+
+
+                            <div class="card card-body" id="image-preview"></div>
+
                         </div>
                     </div>
                     <div class="card mb-8 rounded-4">
@@ -130,6 +140,23 @@
             </form>
         </div>
     </div>
+    <script>
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
 
+            reader.onload = function(event) {
+                var img = new Image();
+                img.src = event.target.result;
+                img.onload = function() {
+                    var preview = document.getElementById('image-preview');
+                    preview.innerHTML = ''; // Clear previous preview
+                    preview.appendChild(img);
+                };
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
 
 @endsection
