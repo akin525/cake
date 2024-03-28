@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('logsp', [HomeController::class, 'logincheck'])->name('logsp');
+
 Route::get('/', [HomeController::class, 'landingpage'])->name('home');
 Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::get('product/{id}', [HomeController::class, 'getproduct']);

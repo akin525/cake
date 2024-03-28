@@ -87,7 +87,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="breadcrumb_title">Login</h1>
+{{--                        <h1 class="breadcrumb_title">Login</h1>--}}
                         <ul class="breadcrumb_list">
                             <li><a href="{{url('/')}}">Home</a></li>
                             <li>Let Know You</li>
@@ -120,31 +120,39 @@
                 <div class="row">
                     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                    <form class="form-group" action="{{route('login')}}" method="post">
+                    <form class="form-group" action="{{route('logsp')}}" method="post">
                         @csrf
                         <div class="row">
                             <input type="email" name="email" id="email" class="form__input" placeholder="email">
                             <x-input-error :messages="$errors->get('email')" class="alert alert-danger" />
                         </div>
                         <div class="row">
-                           <span class="fa fa-lock"></span>
-                            <input type="password" name="password" id="password" class="form__input" placeholder="Password">
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            <input type="number" name="number" id="number" class="form__input" placeholder="Phone Number">
+                            <x-input-error :messages="$errors->get('number')" class="alert alert-danger" />
                         </div>
                         <div class="row">
-                            <input type="checkbox" name="remember_me" id="remember_me" class="">
-                            <label for="remember_me">Remember Me!</label>
+                            <input type="text" name="name" id="name" class="form__input" placeholder="Name">
+                            <x-input-error :messages="$errors->get('name')" class="alert alert-danger" />
                         </div>
+{{--                        <div class="row">--}}
+{{--                           <span class="fa fa-lock"></span>--}}
+{{--                            <input type="password" name="password" id="password" class="form__input" placeholder="Password">--}}
+{{--                            <x-input-error :messages="$errors->get('password')" class="mt-2" />--}}
+{{--                        </div>--}}
+{{--                        <div class="row">--}}
+{{--                            <input type="checkbox" name="remember_me" id="remember_me" class="">--}}
+{{--                            <label for="remember_me">Remember Me!</label>--}}
+{{--                        </div>--}}
                         <div class="row">
                             <center>
-                            <input type="submit" value="Submit" class="btn">
+                            <input type="submit" value="Continue" class="btn">
                             </center>
                         </div>
                     </form>
                 </div>
-                <div class="row">
-                    <p>Don't have an account? <a href="{{route('register')}}">Register Here</a></p>
-                </div>
+{{--                <div class="row">--}}
+{{--                    <p>Don't have an account? <a href="{{route('register')}}">Register Here</a></p>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

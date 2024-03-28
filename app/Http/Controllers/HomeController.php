@@ -19,14 +19,48 @@ use App\Models\Rtb;
 use App\Models\Settings;
 use App\Models\Sizes;
 use App\Models\State;
+use App\Models\User;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class HomeController
 {
 
+    function logincheck(Request $request)
+    {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'number'=>'required',
+        ]);
+        $check=User::where('email', $request->email)->first();
+        if ($check){
+            Auth::login($check);
+
+            return redirect(RouteServiceProvider::HOME);
+        }
+        $user = User::create([
+            'name' => $request->name,
+            'number' => $request->number,
+            'address' => "check address",
+            'email' => $request->email,
+            'password' => Hash::make('12345678'),
+        ]);
+
+        $email=$request->email;
+        Mail::to($email)->send(new register($user));
+
+        event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect(RouteServiceProvider::HOME);
+    }
 function landingpage()
 {
     $product=Products::where('status', 1)

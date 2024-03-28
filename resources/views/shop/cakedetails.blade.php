@@ -335,6 +335,21 @@
 </script>
 
 
+                            <div class="">
+                                <h6 class="cormorant-upright-regular" >
+                                    Additional Information
+                                </h6><br/>
+                                <input type="text"   name="addition"  class="form-control cormorant-upright-light text-center" style="font-size: 21px;"/>
+                            </div>
+
+                            <br/>
+                            <div class="">
+                                <h6 class="cormorant-upright-regular" >
+                                    {!! $addalert->message !!}
+
+                                </h6>
+                            </div>
+                            <br/>
                             <div class="product-size">
                                 <label for="layersBy" class="cormorant-upright-bold" ><span>Text to Appear on the Cake</span></label>
                             </div>
@@ -402,20 +417,7 @@
 {{--                            <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="cormorant-upright-light text-center" style="font-size: 21px;" />--}}
 {{--                        </div>--}}
 
-                                                    <div class="">
-                                                        <h6 class="cormorant-upright-regular" >
-                                                            Additional Information
-                                                        </h6><br/>
-                                                        <input type="text"   name="addition"  class="form-control cormorant-upright-light text-center" style="font-size: 21px;"/>
-                                                    </div>
 
-                            <br/>
-                            <div class="">
-                                <h6 class="cormorant-upright-regular" >
-                                        {!! $addalert->message !!}
-
-                                    </h6>
-                            </div>
                             <br/>
 {{--                        <div class="product-size mb-5">--}}
 {{--                            <label for="sizeBy">Size</label>--}}

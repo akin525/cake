@@ -490,7 +490,7 @@
 
 <!-- Offcanvas Cart End -->
 <!-- Scroll Top Start -->
-<a href="#" class="scroll-top" id="scroll-top">
+<a href="#" class="scroll-top" id="scroll-top" style="color: #eda939; background-color: #eda939">
     <i class="lastudioicon-up-arrow"></i>
 </a>
 <!-- Scroll Top End -->

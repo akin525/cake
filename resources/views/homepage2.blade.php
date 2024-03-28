@@ -105,13 +105,10 @@
     </div>
 
     <br/>
-    <h3 class="section-title-10__subtitle text-center"><b>We know that</b></h3>
-    <h2 class="text-center sam">MAKING CAKE IS ART</h2>
+    <h3 class="section-title-10__subtitle text-center" style="color: #eda939"><b>We know that making cake is art</b></h3>
+{{--    <h3 class="text-center section-title-10__subtitle" style="color: #eda939">Making cake is art</h3>--}}
     <hr style="font-weight: 300;"/>
-    <h6 class="text-center" style="font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    text-transform: uppercase;">PLEASE VIEW OUR PRODUCTS BELOW</h6>
+    <h6 class="text-center cormorant-upright-regular" ><b>PLEASE VIEW OUR CATEGORY</b></h6>
 {{--    <h5  style="font-family: Great Vibes, cursive;--}}
 {{--    font-weight: 400;--}}
 {{--    font-style: normal;">PLEASE VIEW OUR PRODUCTS BELOW--}}
@@ -119,7 +116,7 @@
 
 
     <!-- Category Section Start -->
-    <div class="category-four category-four_bg section-padding-03" data-bg-image="" style="background-color: white">
+    <div class="category-four category-four_bg section-padding-03" data-bg-image="" style="background-color: mintcream">
         <div class="container custom-container-five">
             <div class="row row-cols-2 row-cols-lg-4 category-four_wrapper mb-n60">
                 <div class="col mb-60">
@@ -186,7 +183,7 @@
                 <div class="col-12 text-center">
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
-                        <h6 class="section-title-10__subtitle" style="font-size: 35px">Browse Our Cakes</h6>
+                        <h6 class="section-title-10__subtitle" style="font-size: 35px"><b>Browse Our Cakes</b></h6>
 {{--                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">--}}
                     </div>
                     <!-- Section Title End -->
