@@ -180,13 +180,13 @@
     <!-- Category Section End -->
 
     <!-- Product Section Start -->
-    <div class="section-padding-03  position-relative" style="background-color: mintcream">
+    <div class="section-padding-03  position-relative" style="background-color: white">
         <div class="container custom-container-five">
             <div class="row">
                 <div class="col-12 text-center">
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
-                        <h6 class="section-title-10__subtitle" style="font-size: 15px">Browse Our Cakes</h6>
+                        <h6 class="section-title-10__subtitle" style="font-size: 25px">Browse Our Cakes</h6>
 {{--                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">--}}
                     </div>
                     <!-- Section Title End -->
@@ -261,15 +261,15 @@
 {{--                </div>--}}
 {{--            </div>--}}
         </div>
-        <div class="product-shape-one">
-            <img src="assets/images/shape/shape-07.png" alt="Shape-Image">
-        </div>
-        <div class="product-shape-two">
-            <img src="assets/images/shape/shape-08.png" alt="Shape-Image">
-        </div>
-        <div class="product-shape-three">
-            <img src="assets/images/shape/shape-09.png" alt="Shape-Image">
-        </div>
+{{--        <div class="product-shape-one">--}}
+{{--            <img src="assets/images/shape/shape-07.png" alt="Shape-Image">--}}
+{{--        </div>--}}
+{{--        <div class="product-shape-two">--}}
+{{--            <img src="assets/images/shape/shape-08.png" alt="Shape-Image">--}}
+{{--        </div>--}}
+{{--        <div class="product-shape-three">--}}
+{{--            <img src="assets/images/shape/shape-09.png" alt="Shape-Image">--}}
+{{--        </div>--}}
     </div>
     <!-- Product Section End -->
 
