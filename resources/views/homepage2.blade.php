@@ -105,7 +105,7 @@
     </div>
 
     <br/>
-    <h6 class="section-title-10__subtitle text-center" style="color: black"><b>We know that making cake is art</b></h6>
+    <h5 class="section-title-10__subtitle text-center" style="color: black; font-weight: 200; font-size: 25px"><b>We know that making cake is art</b></h5>
 {{--    <h3 class="text-center section-title-10__subtitle" style="color: #eda939">Making cake is art</h3>--}}
     <hr style="font-weight: 300;"/>
     <h6 class="text-center cormorant-upright-regular " style="color: #eda939" ><b>PLEASE VIEW OUR CATEGORIES</b></h6>
@@ -116,7 +116,7 @@
 
 
     <!-- Category Section Start -->
-    <div class="category-four category-four_bg section-padding-03" data-bg-image="" style="background-color: #b5b7b7">
+    <div class="category-four category-four_bg section-padding-03" data-bg-image="" style="background-color: #eeeaea">
         <div class="container custom-container-five">
             <div class="row row-cols-2 row-cols-lg-4 category-four_wrapper mb-n60">
                 <div class="col mb-60">
