@@ -119,7 +119,7 @@
 
 
     <!-- Category Section Start -->
-    <div class="category-four category-four_bg section-padding-03" data-bg-image="" style="background-color: mintcream">
+    <div class="category-four category-four_bg section-padding-03" data-bg-image="" style="background-color: white">
         <div class="container custom-container-five">
             <div class="row row-cols-2 row-cols-lg-4 category-four_wrapper mb-n60">
                 <div class="col mb-60">
@@ -186,7 +186,7 @@
                 <div class="col-12 text-center">
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
-                        <h6 class="section-title-10__subtitle" style="font-size: 25px">Browse Our Cakes</h6>
+                        <h6 class="section-title-10__subtitle" style="font-size: 35px">Browse Our Cakes</h6>
 {{--                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">--}}
                     </div>
                     <!-- Section Title End -->
