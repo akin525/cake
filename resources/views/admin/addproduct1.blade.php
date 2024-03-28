@@ -60,7 +60,61 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="mb-8">
+
+                            <div class="card mb-8 rounded-4" id="layers">
+                                <div class="card-header p-7 bg-transparent">
+                                    <h4 class="fs-18px mb-0 font-weight-500">Add Layer</h4>
+                                </div>
+                                <div class="card-body p-7 layer">
+                                    <div class="form-border-1 ">
+                                        <div class="mb-8 ">
+                                            <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Layers</label>
+                                            <input type="text" name="layers[][name]"  class="form-control" placeholder="Layer Name" required>
+                                            <br/>
+                                            <input type="number" name="layers[][amount]"  class="form-control" placeholder="Price" min="0" step="0.01" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary" id="add-layer">Add layer</button>
+
+                            <script>
+                                document.getElementById('add-layer').addEventListener('click', function () {
+                                    var variationTemplate = document.querySelector('.layer').cloneNode(true);
+                                    document.getElementById('layers').appendChild(variationTemplate);
+                                });
+                            </script>
+                            <br/>
+                            <br/>
+
+
+
+                            <div class="card mb-8 rounded-4" id="sizes">
+                                <div class="card-header p-7 bg-transparent">
+                                    <h4 class="fs-18px mb-0 font-weight-500">Add Size</h4>
+                                </div>
+                                <div class="card-body p-7 size">
+                                    <div class="form-border-1 ">
+                                        <div class="mb-8 ">
+                                            <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Size</label>
+                                            <input type="text" name="sizes[][name]"  class="form-control" placeholder="size Name" required>
+                                            <br/>
+                                            <input type="number" name="sizes[][amount]"  class="form-control" placeholder="Price" min="0" step="0.01" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary" id="add-size">Add Size</button>
+
+                            <script>
+                                document.getElementById('add-size').addEventListener('click', function () {
+                                    var variationTemplate = document.querySelector('.size').cloneNode(true);
+                                    document.getElementById('sizes').appendChild(variationTemplate);
+                                });
+                            </script>
+                            <br/>
+
+                            <div class="mb-8">
                                     <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Addition Information</label>
                                     <textarea placeholder="Type here" class="form-control" name="addition" rows="4"></textarea>
                                 </div>

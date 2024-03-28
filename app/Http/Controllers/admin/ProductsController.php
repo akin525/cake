@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Categories;
+use App\Models\Layers;
 use App\Models\Products;
 use App\Models\Rtb;
+use App\Models\Sizes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,7 +37,8 @@ class ProductsController
          'cprice'=>'required',
          'fee'=>'required',
          'category'=>'required',
-         'image'=>'required',
+         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file validation rules as needed
+
      ]);
 
      $cover = Storage::put('cover', $request['image']);
@@ -51,6 +54,64 @@ class ProductsController
          'status'=>1,
          'fee'=>$request['fee'],
      ]);
+
+     $layers = [];
+     $layerName = null;
+     $layerAmount = null;
+
+     foreach ($request->layers as $item) {
+         if (isset($item['name'])) {
+             $layerName = $item['name'];
+         } elseif (isset($item['amount'])) {
+             $layerAmount = $item['amount'];
+             // Insert into database here
+             // For example:
+             $layers[] = ['name' => $layerName, 'amount' => $layerAmount];
+             // Reset variables for next iteration
+             $layerName = null;
+             $layerAmount = null;
+         }
+     }
+
+     foreach ($layers  as $layer) {
+
+//         return $layer;
+//         if (isset($layer['name']) && isset($layer['amount'])) {
+             Layers::create([
+                 'name' => $layer['name'],
+                 'amount' => $layer['amount'],
+                 'product_id' => $insert->id,
+             ]);
+//         }
+     }
+
+     $sizes = [];
+     $sizeName = null;
+     $sizeAmount = null;
+
+     foreach ($request->sizes as $item) {
+         if (isset($item['name'])) {
+             $sizesName = $item['name'];
+         } elseif (isset($item['amount'])) {
+             $sizesAmount = $item['amount'];
+             // Insert into database here
+             // For example:
+             $sizes[] = ['name' => $sizesName, 'amount' => $sizesAmount];
+             // Reset variables for next iteration
+             $sizesName = null;
+             $sizesAmount = null;
+         }
+     }
+
+     foreach ($sizes as $size) {
+//         if (isset($size['name']) && isset($size['amount'])) {
+             Sizes::create([
+                 'name' => $size['name'],
+                 'amount' => $size['amount'],
+                 'product_id' => $insert->id,
+             ]);
+//         }
+     }
 
      $mg="product post was Successful";
      return redirect('admin/addproduct')->with('success', $mg);
@@ -83,6 +144,64 @@ class ProductsController
          'status'=>1,
          'fee'=>$request['fee'],
      ]);
+
+     $layers = [];
+     $layerName = null;
+     $layerAmount = null;
+
+     foreach ($request->layers as $item) {
+         if (isset($item['name'])) {
+             $layerName = $item['name'];
+         } elseif (isset($item['amount'])) {
+             $layerAmount = $item['amount'];
+             // Insert into database here
+             // For example:
+             $layers[] = ['name' => $layerName, 'amount' => $layerAmount];
+             // Reset variables for next iteration
+             $layerName = null;
+             $layerAmount = null;
+         }
+     }
+
+     foreach ($layers  as $layer) {
+
+//         return $layer;
+//         if (isset($layer['name']) && isset($layer['amount'])) {
+         Layers::create([
+             'name' => $layer['name'],
+             'amount' => $layer['amount'],
+             'product_id' => $insert->id,
+         ]);
+//         }
+     }
+
+     $sizes = [];
+     $sizeName = null;
+     $sizeAmount = null;
+
+     foreach ($request->sizes as $item) {
+         if (isset($item['name'])) {
+             $sizesName = $item['name'];
+         } elseif (isset($item['amount'])) {
+             $sizesAmount = $item['amount'];
+             // Insert into database here
+             // For example:
+             $sizes[] = ['name' => $sizesName, 'amount' => $sizesAmount];
+             // Reset variables for next iteration
+             $sizesName = null;
+             $sizesAmount = null;
+         }
+     }
+
+     foreach ($sizes as $size) {
+//         if (isset($size['name']) && isset($size['amount'])) {
+         Sizes::create([
+             'name' => $size['name'],
+             'amount' => $size['amount'],
+             'product_id' => $insert->id,
+         ]);
+//         }
+     }
 
      $mg="product post was Successful";
      return redirect('admin/addproduct1')->with('success', $mg);

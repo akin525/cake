@@ -263,9 +263,9 @@
                                 <div class="select-wrapper">
                                     <select name="layers" id="layerSelect" class="cormorant-upright-light " >
                                         <option>Choose an option</option>
-                                        <option value="1">1 Layer </option>
-                                        <option value="2">2 Layer </option>
-                                        <option value="3">3 Layer </option>
+                                        @foreach($layer as $layers)
+                                            <option value="{{$layers['name']}}">{{$layers['name']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -298,7 +298,7 @@
         flavorSelect.appendChild(defaultOption);
 
         // Add flavor options based on selected layers
-        if (selectedLayers === "1") {
+        if (selectedLayers === "1 layer") {
             const flavors = ['Vanilla ', 'Chocolate', 'Red Velvet', 'Cookies and cream' ]; // Add more flavors here if needed
             flavors.forEach(flavor => {
                 const option = document.createElement('option');
@@ -306,7 +306,7 @@
                 option.text = flavor;
                 flavorSelect.appendChild(option);
             });
-        } else if(selectedLayers === "2"){
+        } else if(selectedLayers === "2 layer"){
             const flavors = ['Vanilla & Chocolate ', 'red velvet and cookies and cream', 'chocolate and cookies and cream', 'Vanilla and Red Velvet', 'Red Velvet and Chocolate', 'vanilla and cookies and cream']; // Add more flavors here if needed
             flavors.forEach(flavor => {
                 const option = document.createElement('option');
@@ -314,7 +314,7 @@
                 option.text = flavor;
                 flavorSelect.appendChild(option);
             });
-        } else if(selectedLayers === "3"){
+        } else if(selectedLayers === "3 layer"){
             const flavors = ['vanilla,chocolate and red velvet', 'chocolate,  red velvet and cookies and cream',  'vanilla, chocolate and cookies and cream', 'vanilla,  red velvet and cookies and cream']; // Add more flavors here if needed
             flavors.forEach(flavor => {
                 const option = document.createElement('option');

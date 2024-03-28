@@ -155,8 +155,8 @@ function cakedetail($request)
     $product=Products::where('id', $request)->first();
     $product1=Products::where('status', 1)->limit(9)->get();
     $color=Colors::all();
-    $layer=Layers::all();
-    $size=Sizes::all();
+    $layer=Layers::where('product_id', $product->id)->get();
+    $size=Sizes::where('product_id', $product->id)->get();
     $layeralert=Alert::where('name', 'layers')->first();
     $addalert=Alert::where('name', 'addition')->first();
     if (Auth::user()) {
