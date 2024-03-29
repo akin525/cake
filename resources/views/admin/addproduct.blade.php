@@ -71,7 +71,7 @@
                                             <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Layers</label>
                                             <input type="text" name="layers[][name]"  class="form-control" placeholder="Layer Name" required>
                                             <br/>
-                                            <input type="number" name="layers[][amount]"  class="form-control" placeholder="Price" min="0" step="0.01" required>
+                                            <input type="hidden" name="layers[][amount]" value="0"  class="form-control" placeholder="Price" min="0" step="0.01" required>
                                         </div>
                                     </div>
                                 </div>
