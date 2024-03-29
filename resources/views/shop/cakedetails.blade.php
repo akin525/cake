@@ -311,7 +311,7 @@
         flavorSelect.appendChild(defaultOption);
 
         // Add flavor options based on selected layers
-        if (selectedLayers === "layer 1") {
+        if (selectedLayers === "layer 1" || selectedLayers === "Layer 1" ) {
             const flavors = ['Vanilla ', 'Chocolate', 'Red Velvet', 'Cookies and cream' ]; // Add more flavors here if needed
             flavors.forEach(flavor => {
                 const option = document.createElement('option');
@@ -319,7 +319,7 @@
                 option.text = flavor;
                 flavorSelect.appendChild(option);
             });
-        } else if(selectedLayers === "layer 2"){
+        } else if(selectedLayers === "layer 2" || selectedLayers === "Layer 2"){
             const flavors = ['Vanilla & Chocolate ', 'red velvet and cookies and cream', 'chocolate and cookies and cream', 'Vanilla and Red Velvet', 'Red Velvet and Chocolate', 'vanilla and cookies and cream']; // Add more flavors here if needed
             flavors.forEach(flavor => {
                 const option = document.createElement('option');
@@ -327,7 +327,7 @@
                 option.text = flavor;
                 flavorSelect.appendChild(option);
             });
-        } else if(selectedLayers === "layer 3"){
+        } else if(selectedLayers === "layer 3" || selectedLayers === "Layer 3"){
             const flavors = ['vanilla,chocolate and red velvet', 'chocolate,  red velvet and cookies and cream',  'vanilla, chocolate and cookies and cream', 'vanilla,  red velvet and cookies and cream']; // Add more flavors here if needed
             flavors.forEach(flavor => {
                 const option = document.createElement('option');
