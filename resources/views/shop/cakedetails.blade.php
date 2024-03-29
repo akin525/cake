@@ -733,39 +733,39 @@
         });
 
     </script>
-    <script>
-        $(document).ready(function() {
-            $('#layerSelect').change(function() {
-                var selectedValue = $(this).val();
-                // Show the loading spinner
-                $('#loadingSpinner').show();
-                // Send the selected value to the '/getOptions' route
-                $.ajax({
-                    url: '{{ url('getlayer') }}/' + selectedValue,
-                    type: 'GET',
-                    success: function(response) {
-                        $('#loadingSpinner').hide();
+{{--    <script>--}}
+{{--        $(document).ready(function() {--}}
+{{--            $('#layerSelect').change(function() {--}}
+{{--                var selectedValue = $(this).val();--}}
+{{--                // Show the loading spinner--}}
+{{--                $('#loadingSpinner').show();--}}
+{{--                // Send the selected value to the '/getOptions' route--}}
+{{--                $.ajax({--}}
+{{--                    url: '{{ url('getlayer') }}/' + selectedValue,--}}
+{{--                    type: 'GET',--}}
+{{--                    success: function(response) {--}}
+{{--                        $('#loadingSpinner').hide();--}}
 
-                        // Handle the successful response
-                        var layerPrice = parseInt(response); // Get the selected layer price
-                        var defaultAmount = parseInt(document.getElementById('totalAmount').value);
-                        var totalAmount = defaultAmount + layerPrice; // Calculate the total amount
+{{--                        // Handle the successful response--}}
+{{--                        var layerPrice = parseInt(response); // Get the selected layer price--}}
+{{--                        var defaultAmount = parseInt(document.getElementById('totalAmount').value);--}}
+{{--                        var totalAmount = defaultAmount + layerPrice; // Calculate the total amount--}}
 
-                        console.log(totalAmount);
-                        console.log(defaultAmount);
-                        console.log(layerPrice);
-                        document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
+{{--                        console.log(totalAmount);--}}
+{{--                        console.log(defaultAmount);--}}
+{{--                        console.log(layerPrice);--}}
+{{--                        document.getElementById('totalAmount').value = totalAmount; // Update the total amount display--}}
 
-                    },
-                    error: function(xhr) {
-                        // Handle any errors
-                        console.log(xhr.responseText);
-                    }
-                });
-            });
-        });
+{{--                    },--}}
+{{--                    error: function(xhr) {--}}
+{{--                        // Handle any errors--}}
+{{--                        console.log(xhr.responseText);--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            });--}}
+{{--        });--}}
 
-    </script>
+{{--    </script>--}}
 
 
 
