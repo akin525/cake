@@ -40,6 +40,8 @@ Route::get('cancelcart/{id}', [CartController::class, 'removefromcart'])->name('
 Route::get('clearcart', [CartController::class, 'clearcart'])->name('clearcart');
 Route::get('category/{id}', [HomeController::class, 'category'])->name('category');
 Route::get('ready', [HomeController::class, 'loadrtb'])->name('ready');
+Route::get('getlayer/{id}', [HomeController::class, 'getlayer'])->name('getlayer');
+Route::get('getsize/{id}', [HomeController::class, 'getsize'])->name('getsize');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -182,16 +182,21 @@ function cakedetail($request)
             'flavor'=>'required',
             'size'=>'required',
             'layers'=>'required',
+            'amount'=>'required',
         ]);
         $product = Products::where('id', $request->id)->first();
 
+//        if ($product->price < $request->amount){
+//            $message = "error!";
+//            return back()->with('error', $message);
+//        }
         if (Auth::check()) {
             $insert = Cart::create([
                 'user_id' => Auth::user()->id,
                 'product_id' => $request->id,
                 'quantity' => 1,
                 'name' => $product->name,
-                'amount' => $product->price,
+                'amount' => $request->amount,
                 'image' => $product->image,
                 'color'=>$request->color ?? null,
                 'size'=>$request->size,
@@ -358,5 +363,15 @@ function dashboard()
             ->limit(4)
             ->get();
         return view('shop.rtb', compact('product', 'category', 'pop'));
+    }
+    function getlayer($id)
+    {
+        $find=Layers::where('name', $id)->first();
+        return response()->json($find->amount);
+    }
+    function getsize($id)
+    {
+        $find=Sizes::where('name', $id)->first();
+        return response()->json($find->amount);
     }
 }

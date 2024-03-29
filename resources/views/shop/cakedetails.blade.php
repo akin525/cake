@@ -166,8 +166,21 @@
 
                         <div class="product-head mb-3">
                             <!-- Price Start -->
+                            <style>
+                                .no-border-input {
+                                    border: none;
+                                    background: none;
+                                    font-size: 30px;
+                                    width: auto; /* Optionally adjust the width as needed */
+                                }
+                            </style>
 
-                            <span class="product-head-price" style="font-size: 30px ">₦{{ number_format(intval($product->price * 1)) }}</span>
+                            <span class="product-head-price"  style="font-size: 30px ">₦</span>
+                            <input type="text" id="total" class="no-border-input"  style="font-size: 30px "
+                                   value="{{ number_format(intval($product->price * 1))}}">
+                            <input type="hidden" id="defaultAmount"
+                                   value="{{$product->price}}">
+{{--                            <span class="product-head-price" id="defaultAmount" style="font-size: 30px ">₦{{ number_format(intval($product->price * 1)) }}</span>--}}
                             <!-- Price End -->
                             <!-- Rating Start -->
                             <div class="review-rating">
@@ -242,7 +255,7 @@
                                     }
                                 </style>
                                 <div class="select-wrapper">
-                                    <select name="size" id="layersBy" class="cormorant-upright-light" >
+                                    <select name="size" id="layersBy1" class="cormorant-upright-light" >
                                         <option>Choose an option</option>
                                         @foreach($size as $la)
                                             <option value="{{$la['name']}}">{{$la['name']}}</option>
@@ -407,15 +420,52 @@
 {{--                                </select>--}}
 {{--                            </div>--}}
                         </div>
-                            <select name="card"  class="form-control  cormorant-upright-light " >
-                            <option value="">Choose an option</option>
-                            <option value="3a1r6">No, please</option>
-                            <option value="zobj1" data-wapf-price="1500" data-wapf-pricetype="fixed">Yes, please (+₦1,500.00)</option>
+                            <select name="card"  class="form-control  cormorant-upright-light " id="ekoCakesCard" >
+                            <option >Choose an option</option>
+                            <option value="no">No, please</option>
+                            <option value="yes" data-wapf-price="1500" data-wapf-pricetype="fixed">Yes, please (+₦1,500.00)</option>
                             </select>
-{{--                        <div class="product-color mb-2" id="ekoCakesMessageSection" >--}}
-{{--                            <label for="ekoCakesMessage" class="cormorant-upright-bold" >Eko Cakes Card Message</label>--}}
-{{--                            <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="cormorant-upright-light text-center" style="font-size: 21px;" />--}}
-{{--                        </div>--}}
+                            <br/>
+                        <div  id="ekoCakesMessageSection" >
+                            <label for="ekoCakesMessage" class="cormorant-upright-bold" >Eko Cakes Card Message</label>
+                            <br/>
+                            <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="cormorant-upright-light form-control" style="font-size: 21px;" />
+                        </div>
+                            <script>
+                                $(document).ready(function () {
+                                    // Function to update flavor options based on selected layers
+
+
+                                    // Function to handle visibility of topper text input based on selected topper option
+                                    function handleTopperVisibility() {
+                                        const selectedTopper = $('#topperBy').val();
+                                        if (selectedTopper === 'select') {
+                                            $('#topperTextSection').show();
+                                        } else {
+                                            $('#topperTextSection').hide();
+                                            $('#topperText').val(''); // Clear the text input when not visible
+                                        }
+                                    }
+
+                                    // Function to handle visibility of Eko Cakes card message input based on selected option
+                                    function handleEkoCakesCard() {
+                                        const selectedOption = $('#ekoCakesCard').val();
+                                        if (selectedOption === 'yes') {
+                                            $('#ekoCakesMessageSection').show();
+                                        } else {
+                                            $('#ekoCakesMessageSection').hide();
+                                            $('#ekoCakesMessage').val(''); // Clear the text input when not visible
+                                        }
+                                    }
+
+                                    $('#ekoCakesCard').on('change', function () {
+                                        handleEkoCakesCard();
+                                    });
+
+                                    handleTopperVisibility();
+                                    handleEkoCakesCard();
+                                });
+                            </script>
 
 
                             <br/>
@@ -485,6 +535,11 @@
                         <ul class="product-cta">
 
                             <li>
+
+                                <h4 class="cormorant-upright-semibold">Total Price</h4>
+                                <span class="product-head-price"  style="font-size: 30px ">₦</span>
+                                <input type="text" id="totalAmount" class="no-border-input" name="amount" style="font-size: 30px "
+                                       value="">
                                 <!-- Cart Button Start -->
                                 <div class="cart-btn">
                                     <div class="add-to_cart">
@@ -644,53 +699,77 @@
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                // Function to update flavor options based on selected layers
 
+    <script>
+        $(document).ready(function() {
+            $('#layersBy1').change(function() {
+                var selectedValue = $(this).val();
+                // Show the loading spinner
+                $('#loadingSpinner').show();
+                // Send the selected value to the '/getOptions' route
+                $.ajax({
+                    url: '{{ url('getsize') }}/' + selectedValue,
+                    type: 'GET',
+                    success: function(response) {
+                        $('#loadingSpinner').hide();
 
-                // Function to handle visibility of topper text input based on selected topper option
-                function handleTopperVisibility() {
-                    const selectedTopper = $('#topperBy').val();
-                    if (selectedTopper === 'select') {
-                        $('#topperTextSection').show();
-                    } else {
-                        $('#topperTextSection').hide();
-                        $('#topperText').val(''); // Clear the text input when not visible
+                        // Handle the successful response
+                            var sizePrice = parseInt(response); // Get the selected layer price
+                            var defaultAmount = parseInt(document.getElementById('defaultAmount').value);
+                            var totalAmount = defaultAmount + sizePrice; // Calculate the total amount
+
+                        console.log(totalAmount);
+                        console.log(defaultAmount);
+                        console.log(sizePrice);
+                            document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
+
+                    },
+                    error: function(xhr) {
+                        // Handle any errors
+                        console.log(xhr.responseText);
                     }
-                }
-
-                // Function to handle visibility of Eko Cakes card message input based on selected option
-                function handleEkoCakesCard() {
-                    const selectedOption = $('#ekoCakesCard').val();
-                    if (selectedOption === 'yes') {
-                        $('#ekoCakesMessageSection').show();
-                    } else {
-                        $('#ekoCakesMessageSection').hide();
-                        $('#ekoCakesMessage').val(''); // Clear the text input when not visible
-                    }
-                }
-
-                // Event listeners to call the functions when the user makes selections
-                $('#layersBy').on('change', function () {
-                    updateFlavourOptions();
                 });
-                $('#topperBy').on('change', function () {
-                    handleTopperVisibility();
-                });
-                $('#ekoCakesCard').on('change', function () {
-                    handleEkoCakesCard();
-                });
-
-                // Initial call to update flavor options, handle topper visibility, and handle Eko Cakes card visibility
-                updateFlavourOptions();
-                handleTopperVisibility();
-                handleEkoCakesCard();
             });
-        </script>
+        });
+
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#layerSelect').change(function() {
+                var selectedValue = $(this).val();
+                // Show the loading spinner
+                $('#loadingSpinner').show();
+                // Send the selected value to the '/getOptions' route
+                $.ajax({
+                    url: '{{ url('getlayer') }}/' + selectedValue,
+                    type: 'GET',
+                    success: function(response) {
+                        $('#loadingSpinner').hide();
+
+                        // Handle the successful response
+                        var layerPrice = parseInt(response); // Get the selected layer price
+                        var defaultAmount = parseInt(document.getElementById('totalAmount').value);
+                        var totalAmount = defaultAmount + layerPrice; // Calculate the total amount
+
+                        console.log(totalAmount);
+                        console.log(defaultAmount);
+                        console.log(layerPrice);
+                        document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
+
+                    },
+                    error: function(xhr) {
+                        // Handle any errors
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+
+    </script>
 
 
-        <script>
+
+    <script>
             $(document).ready(function() {
 
 
