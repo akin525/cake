@@ -134,7 +134,7 @@ function confirmpayment($reference, $secondS)
         $total=Order::where('payid', $secondS)->sum('price');
 //        Mail::to($email)->send(new MailOrder($order,  $total, $or));
 
-        return  redirect('dashboard')->with('status', 'Payments Successful');
+        return  redirect('home')->with('status', 'Payments Successful');
     }
     return  redirect('dashboard')->with('errors', 'Please contact admin');
 
