@@ -66,6 +66,45 @@
                                         </select>
                                     </div>
                                 </div>
+
+
+                            @foreach($size as $sizes)
+                            <div class="card mb-8 rounded-4" id="sizes">
+                                <div class="card-header p-7 bg-transparent">
+                                    <h4 class="fs-18px mb-0 font-weight-500">Add Size</h4>
+                                </div>
+                                <div class="card-body p-7 size">
+                                    <div class="form-border-1 ">
+                                        <div class="mb-8 ">
+                                            <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Size</label>
+                                            <input type="text" name="sizes[][name]"  class="form-control" value="{{$sizes['name']}}" required>
+                                            <br/>
+                                            <input type="number" name="sizes[][amount]"  class="form-control" value="{{$sizes['amount']}}" min="0" step="0.01" required>
+                                            <input type="hidden" name="sizes[][id]"  class="form-control" value="{{$sizes['id']}}" min="0" step="0.01" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+
+                            @foreach($layer as $layers)
+                            <div class="card mb-8 rounded-4" id="layers">
+                                <div class="card-header p-7 bg-transparent">
+                                    <h4 class="fs-18px mb-0 font-weight-500">Add Layer</h4>
+                                </div>
+                                <div class="card-body p-7 layer">
+                                    <div class="form-border-1 ">
+                                        <div class="mb-8 ">
+                                            <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Layers</label>
+                                            <input type="text" name="layers[][name]"  class="form-control" value="{{$layers['name']}}" required>
+                                            <input type="hidden" name="layers[][id]"  class="form-control" value="{{$layers['id']}}" required>
+                                            <br/>
+                                            <input type="hidden" name="layers[][amount]" value="0"  class="form-control" placeholder="Price" min="0" step="0.01" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                                 <div class="mb-8">
                                     <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Addition Information</label>
                                     <textarea   class="form-control" name="addition" rows="4">{{$product->addition}}</textarea>

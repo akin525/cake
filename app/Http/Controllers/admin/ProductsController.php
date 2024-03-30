@@ -8,6 +8,7 @@ use App\Models\Products;
 use App\Models\Rtb;
 use App\Models\Sizes;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 class ProductsController
@@ -243,13 +244,17 @@ class ProductsController
  {
      $product=Products::where('id', $request)->first();
      $category=Categories::all();
-     return view('admin.editproduct', compact('product', 'category'));
+     $size=Sizes::where('product_id', $product->id)->get();
+     $layer=Layers::where('product_id', $product->id)->get();
+     return view('admin.editproduct', compact('product', 'category', 'size', 'layer'));
  }
  function editproduct1($request)
  {
      $product=Rtb::where('id', $request)->first();
      $category=Categories::all();
-     return view('admin.editproduct1', compact('product', 'category'));
+     $size=Sizes::where('product_id', $product->id)->get();
+     $layer=Layers::where('product_id', $product->id)->get();
+     return view('admin.editproduct1', compact('product', 'category', 'size', 'layer'));
  }
  function updateproduct(Request $request)
  {
@@ -262,11 +267,82 @@ class ProductsController
          'description' => 'nullable|string',
 
      ]);
+
+
      $product = Products::findOrFail($request->id);
 
      // Update the product
      $product->update($validatedData);
 
+     $layers = [];
+     $layerName = null;
+     $layerAmount = null;
+     $layerid = null;
+
+
+     foreach ($request->layers as $item) {
+
+         if (isset($item['name'])) {
+             $layerName = $item['name'];
+
+         } elseif (isset($item['amount'])) {
+             $layerAmount = $item['amount'];
+             // Insert into database here
+             // For example:
+
+
+         }elseif (isset($item['id'])) {
+//             return response()->json( $item['id'], Response::HTTP_BAD_REQUEST);
+             $layerid= $item['id'];
+
+             $layers[] = ['name' => $layerName, 'amount' => $layerAmount, 'id'=>$layerid];
+             // Reset variables for next iteration
+             $layerName = null;
+             $layerAmount = null;
+             $layerid = null;
+         }
+     }
+
+     foreach ($layers  as $layer) {
+
+         $lay=Layers::where('id', $layer['id'])->get();
+         foreach ($lay as $la){
+             $la['name']=$layer['name'];
+             $la->save();
+
+         }
+     }
+
+     $sizes = [];
+     $sizeName = null;
+     $sizeAmount = null;
+     $sizeid = null;
+
+     foreach ($request->sizes as $item) {
+         if (isset($item['name'])) {
+             $sizesName = $item['name'];
+         } elseif (isset($item['amount'])) {
+             $sizesAmount = $item['amount'];
+
+         } elseif (isset($item['id'])) {
+             $sizesid= $item['id'];
+
+             $sizes[] = ['name' => $sizesName, 'amount' => $sizesAmount, 'id'=>$sizesid];
+             $sizesName = null;
+             $sizesAmount = null;
+             $sizesid = null;
+         }
+     }
+
+     foreach ($sizes as $size) {
+         $se=Sizes::where('id', $size['id'])->get();
+
+         foreach ($se as $ses){
+             $ses['name']=$size['name'];
+             $ses['amount']=$size['amount'];
+             $ses->save();
+         }
+     }
 
      return response()->json([
          'status' => 'success',
