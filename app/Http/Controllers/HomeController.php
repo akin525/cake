@@ -184,54 +184,57 @@ function cakedetail($request)
             'layers'=>'required',
             'amount'=>'required',
         ]);
-        $product = Products::where('id', $request->id)->first();
-
-//        if ($product->price < $request->amount){
-//            $message = "error!";
-//            return back()->with('error', $message);
-//        }
-        if (Auth::check()) {
-            $insert = Cart::create([
-                'user_id' => Auth::user()->id,
-                'product_id' => $request->id,
-                'quantity' => 1,
+        $product = Products::find($request->id);
+        if ($product) {
+            $productDetails = [
+                'id' => $product->id,
                 'name' => $product->name,
-                'amount' => $request->amount,
                 'image' => $product->image,
-                'color'=>$request->color ?? null,
-                'size'=>$request->size,
-                'flavour'=>$request->flavor,
-                'layer'=>$request->layers,
-                'card'=>$request->ekoCakesMessage ?? null,
-                'topper'=>$request->topper ?? null,
-                'topper_text'=>$request->topperText ?? null,
-                'addition'=>$request->addition ?? null,
-                'message'=>$request->message ?? null,
-            ]);
-            $email=Auth::user()->email;
-            $input=Cart::where('user_id', Auth::user()->id)->get();
-            $amount=Cart::where('user_id', Auth::user()->id)->sum('amount');
-            Mail::to($email)->send(new MailCart($input,  $amount));
+                'flavor' => $request->flavor,
+                'size' => $request->size,
+                'layers' => $request->layers,
+                'amount' => $request->amount,
+                'color' => $request->color ?? null,
+            ];
 
-            $message = "Added To Cart Successfully!";
-            return redirect('cart')->with('status', $message);
+            Session::put('selected_product', $productDetails);
+            return redirect('cart');
 
-
-        } else {
-
-//            $data = json_decode($request, true);
-//            unset($data['_token']);
-//
-//            session(['cart' => $data]);
-
-            $message = "Added To Cart Successfully!";
-
-            return redirect('login');
         }
-//        return response()->json([
-//            'status' => 'success',
-//            'message' => $message,
-//        ]);
+
+//        if (Auth::check()) {
+//            $insert = Cart::create([
+//                'user_id' => Auth::user()->id,
+//                'product_id' => $request->id,
+//                'quantity' => 1,
+//                'name' => $product->name,
+//                'amount' => $request->amount,
+//                'image' => $product->image,
+//                'color'=>$request->color ?? null,
+//                'size'=>$request->size,
+//                'flavour'=>$request->flavor,
+//                'layer'=>$request->layers,
+//                'card'=>$request->ekoCakesMessage ?? null,
+//                'topper'=>$request->topper ?? null,
+//                'topper_text'=>$request->topperText ?? null,
+//                'addition'=>$request->addition ?? null,
+//                'message'=>$request->message ?? null,
+//            ]);
+//            $email=Auth::user()->email;
+//            $input=Cart::where('user_id', Auth::user()->id)->get();
+//            $amount=Cart::where('user_id', Auth::user()->id)->sum('amount');
+//            Mail::to($email)->send(new MailCart($input,  $amount));
+//
+//            $message = "Added To Cart Successfully!";
+//            return redirect('cart')->with('status', $message);
+//
+//
+//        } else {
+//
+//            $message = "Added To Cart Successfully!";
+//
+//            return redirect('login');
+//        }
 
 
     }
@@ -270,38 +273,14 @@ function cakedetail($request)
     }
 function mycart()
 {
-    if (Auth::user()) {
-        $cartsum = Cart::where('user_id', Auth::user()->id)->sum('amount');
-        $cart = Cart::where('user_id', Auth::user()->id)->get();
-    }else{
-        $cartsum=0;
-        $cart = [];
-//        $carts = session()->get('cart', []);
-        $cakeData = session('cart');
 
-//        foreach ($carts as $productId => $quantity) {
-//            $product = Products::find($productId);
-//            if ($product) {
-//                $cartsum += $product->price * $quantity;
-//                $cart[] = [
-//                    'id' => $product->id,
-//                    'name' => $product->name,
-//                    'quantity' => $quantity,
-//                    'amount' => $product->price,
-//                    'total' => $quantity * $product->price,
-//                    'image' => $product->image,
-//                ];
-//
-//            }
-//        }
+    $cat = Session::get('selected_product', []);
+    $cartsum = 0;
 
-        return $cakeData;
-
-    }
     $category=Categories::all();
 
-//    return $cart;
-    return view('shop.cart', compact('cart', 'category', 'cartsum'));
+//    return $cat;
+    return view('shop.cart', compact('cat', 'category', 'cartsum'));
 }
 
 function category($request)
@@ -325,26 +304,18 @@ function checkout()
 
     }else{
         $checkout=0;
-        $cart=[];
-        $carts = session()->get('cart', []);
+//        $cart=[];
+        $cart = session::get('selected_product', []);
 
-        foreach ($carts as $productId => $quantity) {
-            $product = Products::find($productId);
+//        return $cart;
+            $product = Products::where('id',$cart['id'])->first();
             if ($product) {
-                $checkout += $product->price * $quantity;
+                $checkout = $cart['amount'] ;
 
-            } $cart[] = [
-                'id' => $product->id,
-                'name' => $product->name,
-                'quantity' => $quantity,
-                'amount' => (int)$product->price,
-                'total' => $quantity * $product->price,
-                'image' => $product->image,
-            ];
+            }
+            $cart['image'] = $product->image;
         }
 //        $state=State::all();
-
-    }
 
     return view('shop.checkout', compact('checkout', 'cart'));
 }

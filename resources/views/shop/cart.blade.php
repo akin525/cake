@@ -40,7 +40,12 @@
                             </tr>
                             </thead>
                             <tbody class="border-top-0">
-                            @forelse($cart as $cat)
+{{--                            @forelse($cart as $cat)--}}
+
+@if(empty($cat))
+    <p>Your cart is empty.</p>
+@else
+
                             <tr>
                                 <th class="cart-remove">
                                     <button class="remove-btn" id="cancelcart" data-id="{{$cat['id']}}"><i class="lastudioicon lastudioicon-e-remove"></i></button>
@@ -63,9 +68,10 @@
                                 </td>
                                 <td>₦{{$cat['amount']}}</td>
                             </tr>
-                            @empty
-                                <h2 class="text-center"> No Product Added yet</h2>
-                            @endforelse
+@endif
+{{--                            @empty--}}
+{{--                                <h2 class="text-center"> No Product Added yet</h2>--}}
+{{--                            @endforelse--}}
                             </tbody>
                         </table>
                     </div>
@@ -73,7 +79,10 @@
 
                     <!-- Cart Table For Mobile Devices Start -->
                     <div class="cart-products-mobile d-md-none">
-                        @foreach($cart as $cat)
+{{--                        @foreach($cart as $cat)--}}
+                        @if(empty($cat))
+                            <p>Your cart is empty.</p>
+                        @else
                         <div class="cart-product-mobile">
                             <div class="cart-product-mobile-thumb">
                                 <a href="{{route('cakedetail', $cat['id'])}}" class="cart-product-mobile-image"><img src="{{url($cat['image'])}}" alt="{{url($cat['image'])}}" width="90" height="103"></a>
@@ -90,7 +99,8 @@
                                 <!-- Quantity End -->
                             </div>
                         </div>
-                        @endforeach
+                        @endif
+{{--                        @endforeach--}}
                     </div>
                     <!-- Cart Table For Mobile Devices End -->
 
@@ -114,11 +124,19 @@
                                 <tbody>
                                 <tr class="subtotal">
                                     <th class="sub-title">Subtotal</th>
-                                    <td class="amount"><span >₦{{number_format(intval($cartsum *1))}}</span></td>
+                                    @if(empty($cat))
+                                        <td class="amount"><span >₦{{number_format(intval(0 *1))}}</span></td>
+                                    @else
+                                    <td class="amount"><span >₦{{number_format(intval($cat['amount']*1))}}</span></td>
+                                    @endif
                                 </tr>
                                 <tr class="total">
                                     <th class="sub-title">Total</th>
-                                    <td class="amount"><strong>₦{{number_format(intval($cartsum *1))}}</strong></td>
+                                    @if(empty($cat))
+                                        <td class="amount"><span >₦{{number_format(intval(0 *1))}}</span></td>
+                                    @else
+                                    <td class="amount"><strong>₦{{number_format(intval($cat['amount'] *1))}}</strong></td>
+                                    @endif
                                 </tr>
                                 </tbody>
                             </table>

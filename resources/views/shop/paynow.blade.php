@@ -21,7 +21,7 @@
     <div class="checkout-box">
         <h4 class="mb-4">Payment Now</h4>
         <form id="paymentForm">
-            <input type="hidden" id="email-address" name="email" value="{{ Auth::user()->email }}" required>
+            <input type="hidden" id="email-address" name="email" value="{{ $request->email }}" required>
             <input type="hidden" id="amount" name="amount" value="{{ $request->checkout }}" required>
             <input type="hidden" id="firstSelect" name="firstSelect" value="{{ $payid }}" required>
 

@@ -14,6 +14,7 @@ use Faker\Provider\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class OrderController
 {
@@ -26,11 +27,12 @@ function postorder(Request  $request)
     $gateway=Gateways::where('name', 'paystack')->first();
     $pkey=$gateway->pkey;
     $payid = mt_rand(1000000000, 9999999999);
-    $address=Address::where('user_id', Auth::user()->id)->first();
-    if (!$address) {
-        $caddress = Address::create([
-            'user_id' => Auth::user()->id,
+//    $address=Address::where('user_id', $request->name)->first();
+//    if (!$address) {
+        $address = Address::create([
+            'user_id' => $request->name,
             'address_line1' => $request->address,
+            'address_line2'=>$request->apartment ?? null,
             'phone' => $request->phone,
             'email' => $request->email,
             'city' => $request->city,
@@ -38,15 +40,16 @@ function postorder(Request  $request)
             'state' => $request->state,
             'postal_code' => $request->postal_code,
         ]);
-    }
-    $cart=Cart::where('user_id', Auth::user()->id)->get();
-    foreach ($cart as $carts) {
+//    }
+    $carts=Session::get('selected_product', []);
+//    foreach ($cart as $carts) {
         $order = Order::create([
 
-            'user_id' => Auth::user()->id,
-            'order_id' => $carts['id'],
+            'user_id' => $request->name,
+            'deliver_time'=>$request->time,
+            'deliver_date'=>$request->date,
             'name' => $request->name,
-            'product_id' => $carts['product_id'],
+            'product_id' => $carts['id'],
             'quantity' => 1,
             'image' => $carts['image'],
             'price' => $carts['amount'],
@@ -61,7 +64,7 @@ function postorder(Request  $request)
 
         ]);
 
-    }
+//    }
 
     return view('shop.paynow', compact('request', 'payid', 'pkey'))->with('status', 'Kindly Complete your payment');
 }
@@ -106,28 +109,30 @@ function confirmpayment($reference, $secondS)
         if ($create){
             return redirect('cart')->with('errors', 'Duplicate Payment');
         }
+        $check=Order::where('payid', $secondS)->first();
+
+//        return $check;
         $put=Payments::create([
             'order_id'=>$secondS,
-            'user_id'=>Auth::user()->id,
-            'name'=>Auth::user()->name,
+            'user_id'=>$check->user_id,
+            'name'=>$check->name,
             'amount'=>$amount,
             'payment_method'=>'Paystack',
             'transaction_id'=>$reference,
             'status'=>1,
         ]);
-        $check=Order::where('payid', $secondS)->get();
 
-        foreach ($check as $cic){
-            $cic->pay = 1;
-            $cic->save();
-        }
+//        foreach ($check as $cic){
+            $check->pay = 1;
+            $check->save();
+//        }
 
-        $move=Cart::where('user_id', Auth::user()->id)->delete();
-        $email=Auth::user()->email;
+        $move=Address::where('user_id', $check->user_id)->first();
+        $email=$move->email;
         $or=Order::where('payid', $secondS)->first();
         $order=Order::where('payid', $secondS)->get();
         $total=Order::where('payid', $secondS)->sum('price');
-        Mail::to($email)->send(new MailOrder($order,  $total, $or));
+//        Mail::to($email)->send(new MailOrder($order,  $total, $or));
 
         return  redirect('dashboard')->with('status', 'Payments Successful');
     }

@@ -42,10 +42,14 @@ Route::get('category/{id}', [HomeController::class, 'category'])->name('category
 Route::get('ready', [HomeController::class, 'loadrtb'])->name('ready');
 Route::get('getlayer/{id}', [HomeController::class, 'getlayer'])->name('getlayer');
 Route::get('getsize/{id}', [HomeController::class, 'getsize'])->name('getsize');
-
+Route::post('addcart1', [HomeController::class, 'addcart'])->name('addcart1');
+Route::get('cart', [HomeController::class, 'mycart'])->name('cart');
+Route::post('check', [OrderController::class, 'postorder'])->name('check');
+Route::get('tran/{reference}/{secondS}', [OrderController::class, 'confirmpayment'])->name('tran');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::get('about', [HomeController::class, 'aboutus'])->name('about');
 Route::middleware('auth')->group(function () {
@@ -53,11 +57,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::post('addcart1', [HomeController::class, 'addcart'])->name('addcart1');
-    Route::get('cart', [HomeController::class, 'mycart'])->name('cart');
-    Route::post('check', [OrderController::class, 'postorder'])->name('check');
-    Route::get('tran/{reference}/{secondS}', [OrderController::class, 'confirmpayment'])->name('tran');
-
 });
 
 Route::get('/cat/{filename}', function ($filename) {

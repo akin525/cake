@@ -33,11 +33,11 @@
 
                         <!-- Billing Address -->
                         <div id="billing-form">
-                            <h4 class="mb-4">Billing Address</h4>
+                            <h4 class="mb-4">Customer Details</h4>
                             <div class="row row-cols-sm-2 row-cols-1 g-4">
                                 <div class="col">
                                     <label>Full Name*</label>
-                                    <input class="form-field" name="name" value="{{Auth::user()->name}}" type="text" required>
+                                    <input class="form-field" name="name"  type="text" required>
                                     <input type="hidden" name="checkout" value="{{$checkout}}">
 
                                 </div>
@@ -47,7 +47,7 @@
 {{--                                </div>--}}
                                 <div class="col">
                                     <label>Email Address*</label>
-                                    <input class="form-field" id="email" name="email" type="email" value="{{Auth::user()->email}}" required>
+                                    <input class="form-field" id="email" name="email" type="email"  required>
                                 </div>
                                 <div class="col">
                                     <label>Phone no*</label>
@@ -58,11 +58,11 @@
 {{--                                    <input class="form-field" type="text">--}}
 {{--                                </div>--}}
                                 <div class="col-sm-12">
-                                    <label>Address*</label>
-                                    <input class="form-field" type="text" name="address" placeholder="Address line 1" required>
+                                    <label>Street address</label>
+                                    <input class="form-field" type="text" name="address" placeholder="Street address" required>
                                 </div>
                                 <div class="col-sm-12">
-                                    <input class="form-field" type="text" placeholder="Address line 2">
+                                    <input class="form-field" type="text" name="apartment" placeholder="Apartment, suite, unit, etc. (optional)">
                                 </div>
                                 <div class="col">
                                     <label>Location</label>
@@ -96,6 +96,22 @@
                                     <label>Zip Code*</label>
                                     <input class="form-field" type="text" name="postal_code" required>
                                 </div>
+                            <div class="col">
+                                    <label>Delivery Date *</label>
+                                    <input class="form-field" type="date" name="date" placeholder="Choose date" required>
+                                </div>
+                            <h4><b>Delivery Time *</b></h4>
+                            <div class="col">
+                                <label>Choose Delivery Time (optional)</label>
+                                <div class="select-wrapper">
+                                <select  name="time" id="daypart" class="form-field" data-placeholder="">
+                                    <option value="blank">Select a delivery time</option>
+                                    <option value="11:30am - 04:00pm">11:30am - 04:00pm OTHER ONLY</option>
+                                    <option value="12:30am - 04:00pm">12:30am - 04:00pm READY TO GO ONLY</option>
+                                </select>
+                                </div>
+                                </div>
+                            <br/>
 {{--                                <div class="col-sm-12 d-flex flex-wrap gap-6">--}}
 {{--                                    <div class="form-check m-0">--}}
 {{--                                        <input class="form-check-input" type="checkbox" id="create_account">--}}
@@ -114,7 +130,7 @@
 
                     <div class="col-lg-5">
 
-                        <!-- Checkout Summary Start -->
+{{--                        <!-- Checkout Summary Start -->--}}
                         <div class="checkout-box">
 
                             <h4 class="mb-4">Cart Total</h4>
@@ -127,17 +143,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($cart as $cat)
+{{--                                @forelse($cart as $cat)--}}
                                 <tr>
-                                    <td>{{$cat['name']}}</td>
-                                    <td>₦{{number_format(intval($cat['amount'] *1))}}</td>
+                                    <td>{{$cart['name']}}</td>
+                                    <td>₦{{number_format(intval($cart['amount'] *1))}}</td>
                                 </tr>
-                                @empty
-                                    <tr>
-                                        <td>Empty</td>
-                                        <td>₦0.00</td>
-                                    </tr>
-                                @endforelse
+
                                 </tbody>
                                 <tfoot>
                                 <tr>
