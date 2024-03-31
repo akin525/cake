@@ -387,8 +387,8 @@
                         </div>
                             <select name="topper" id="topperBy" class="form-control cormorant-upright-light">
                                 <option value="">Choose an option</option>
-                                <option value="kqud9" data-wapf-price="4000" data-wapf-pricetype="fixed">Customized Topper (+₦4,000.00)</option>
-                                <option value="y7nvb" data-wapf-price="1000" data-wapf-pricetype="fixed">In-House Happy Birthday Topper (+₦1,000.00)</option>
+                                <option value="4000" data-wapf-price="4000" data-wapf-pricetype="fixed">Customized Topper (+₦4,000.00)</option>
+                                <option value="1000" data-wapf-price="1000" data-wapf-pricetype="fixed">In-House Happy Birthday Topper (+₦1,000.00)</option>
                             </select>
                             <div class="cormorant-upright-regular">Please write a short message you would like to see on the Topper. e.g. Mummy at 60, Happy Birthday Baby</div>
 
@@ -536,9 +536,9 @@
 
                             <li>
 
-                                <h4 class="cormorant-upright-semibold">Total Price</h4>
-                                <span class="product-head-price"  style="font-size: 30px ">₦</span>
-                                <input type="text" id="totalAmount" class="no-border-input" name="amount" style="font-size: 30px "
+                                <h6 class="cormorant-upright-semibold">Total Price</h6>
+                                <span class="product-head-price"  style="font-size: 20px ">₦</span>
+                                <input type="text" id="totalAmount" class="no-border-input" name="amount" style="font-size: 20px "
                                        value="">
                                 <!-- Cart Button Start -->
                                 <div class="cart-btn">
@@ -730,6 +730,25 @@
                     }
                 });
             });
+        });
+
+    </script>
+    <input type="hidden" id="tPrice" value="0">
+    <script>
+        // topperBy
+
+
+        document.getElementById('topperBy').addEventListener('change', function() {
+            var toppernumber = parseInt(this.value); // Get the selected layer price
+            var defaultAmount = parseInt(document.getElementById('totalAmount').value);
+            var totalAmount = defaultAmount + toppernumber; // Calculate the total amount
+
+            var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
+            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
+            document.getElementById('tPrice').value = toppernumber; // Store current layer price for next calculation
+
+
+            document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
         });
 
     </script>
