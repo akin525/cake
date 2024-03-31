@@ -362,6 +362,7 @@
 
                                 </h6>
                             </div>
+                            <input type="hidden" id="tPrice" value="0">
                             <br/>
                             <div class="product-size">
                                 <label for="layersBy" class="cormorant-upright-bold" ><span>Text to Appear on the Cake</span></label>
@@ -386,7 +387,7 @@
                                 <label for="topperBy" class="cormorant-upright-bold" ><span>Topper</span></label>
                         </div>
                             <select name="topper" id="topperBy" class="form-control cormorant-upright-light">
-                                <option value="">Choose an option</option>
+                                <option value="0">Choose an option</option>
                                 <option value="4000" data-wapf-price="4000" data-wapf-pricetype="fixed">Customized Topper (+₦4,000.00)</option>
                                 <option value="1000" data-wapf-price="1000" data-wapf-pricetype="fixed">In-House Happy Birthday Topper (+₦1,000.00)</option>
                             </select>
@@ -422,7 +423,7 @@
                         </div>
                             <select name="card"  class="form-control  cormorant-upright-light " id="ekoCakesCard" >
                             <option >Choose an option</option>
-                            <option value="no">No, please</option>
+                            <option value="no" data-wapf-price="0" >No, please</option>
                             <option value="yes" data-wapf-price="1500" data-wapf-pricetype="fixed">Yes, please (+₦1,500.00)</option>
                             </select>
                             <br/>
@@ -465,73 +466,27 @@
                                     handleTopperVisibility();
                                     handleEkoCakesCard();
                                 });
+
+                                document.getElementById('ekoCakesCard').addEventListener('change', function() {
+                                    var selectElement = this;
+                                    var selectedOption = selectElement.options[selectElement.selectedIndex];
+                                    var selectedPrice = parseFloat(selectedOption.getAttribute('data-wapf-price'));
+
+                                    var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
+                                    totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
+                                    document.getElementById('tPrice').value = selectedPrice; // Store current layer price for next calculation
+
+                                    // Update total amount
+                                    var totalAmountElement = document.getElementById('totalAmount');
+                                    var currentTotal = parseFloat(totalAmountElement.value.replace('', '').replace(',', ''));
+                                    var newTotal = currentTotal + selectedPrice;
+                                    totalAmountElement.value = newTotal.toFixed(2);
+                                });
+
                             </script>
 
 
                             <br/>
-{{--                        <div class="product-size mb-5">--}}
-{{--                            <label for="sizeBy">Size</label>--}}
-{{--                            <div class="select-wrapper">--}}
-{{--                                <select name="size" id="sizeBy">--}}
-{{--                                    <option value="manual">Choose an option</option>--}}
-{{--                                    <option value="large">Large</option>--}}
-{{--                                    <option value="medium">Medium</option>--}}
-{{--                                    <option value="small">Small</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                            <div class="col-lg-5">--}}
-
-{{--                                <!-- Checkout Summary Start -->--}}
-{{--                                <div class="checkout-box">--}}
-
-{{--                                    <h4 class="mb-4">Cart Total</h4>--}}
-
-{{--                                    <table class="checkout-summary-table table table-borderless">--}}
-{{--                                        <thead>--}}
-{{--                                        <tr>--}}
-{{--                                            <th>Product</th>--}}
-{{--                                            <th>Total</th>--}}
-{{--                                        </tr>--}}
-{{--                                        </thead>--}}
-{{--                                        <tbody>--}}
-{{--                                        @forelse($cart as $cat)--}}
-{{--                                            <tr>--}}
-{{--                                                <td>{{$cat['name']}}</td>--}}
-{{--                                                <td>₦{{number_format(intval($cat['amount'] *1))}}</td>--}}
-{{--                                            </tr>--}}
-{{--                                        @empty--}}
-{{--                                            <tr>--}}
-{{--                                                <td>Empty</td>--}}
-{{--                                                <td>₦0.00</td>--}}
-{{--                                            </tr>--}}
-{{--                                        @endforelse--}}
-{{--                                        </tbody>--}}
-{{--                                        <tfoot>--}}
-{{--                                        <tr>--}}
-{{--                                            <th class="border-top">Grand Total</th>--}}
-{{--                                            <th class="border-top">₦{{number_format(intval($checkout *1))}}</th>--}}
-{{--                                        </tr>--}}
-{{--                                        </tfoot>--}}
-{{--                                    </table>--}}
-
-{{--                                </div>--}}
-{{--                                <!-- Checkout Summary End -->--}}
-
-{{--                                <!-- Payment Method Start -->--}}
-{{--                                <div class="checkout-box">--}}
-{{--                                    <h4 class="mb-4">Payment Method</h4>--}}
-{{--                                    <input type="hidden" name="amount" value="{{$checkout}}">--}}
-{{--                                    --}}{{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Direct Bank Transfer</a>--}}
-{{--                                    --}}{{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Cash on Delivery</a>--}}
-{{--                                    <button type="submit" class="btn btn-dark btn-primary-hover rounded-0 mt-6" >Place Order</button>--}}
-{{--                                </div>--}}
-{{--                                <!-- Payment Method End -->--}}
-
-{{--                            </div>--}}
-
-                        <!-- Product Quantity, Cart Button, Wishlist and Compare Start -->
                         <ul class="product-cta">
 
                             <li>
@@ -733,7 +688,6 @@
         });
 
     </script>
-    <input type="hidden" id="tPrice" value="0">
     <script>
         // topperBy
 
