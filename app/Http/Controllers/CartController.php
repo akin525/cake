@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartController
 {
@@ -13,18 +14,12 @@ function removefromcart($request)
         $cart = Cart::where('id', $request)->delete();
         $msg = "Product Removed";
     }else{
-        $productId = $request;
+        Session::forget('selected_product');
 
-        $cart = session()->get('cart', []);
-
-        if(isset($cart[$productId])) {
-            unset($cart[$productId]);
-        }
-
-        session()->put('cart', $cart);
-        $msg = "Product Removed";
 
     }
+    $msg = "Cart clear Successful";
+
     return response()->json([
         'status'=>1,
         'message'=>$msg,
@@ -36,8 +31,8 @@ function clearcart()
         $cart = Cart::where('user_id', Auth::user()->id)->delete();
         $msg = "Cart clear Successful";
     }else{
-        session()->forget('cart');
         $msg = "Cart clear Successful";
+        Session::forget('selected_product');
 
     }
     return response()->json([
