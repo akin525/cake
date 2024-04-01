@@ -137,7 +137,7 @@
                                     <!-- Single Product Start -->
                                         <li class="single-product">
                                             <a href="{{route('cakedetail', $pu['id'])}}" class="single-product_thumb">
-                                                <img width="50" src="{{$pu['image']}}" alt="Sidebar-Image">
+                                                <img width="50" src="{{url($pu['image'])}}" alt="Sidebar-Image">
                                             </a>
                                             <div class="single-product_content">
                                                 <a href="#" class="single-product_content__title">{{$pu['name']}}</a>

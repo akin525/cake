@@ -617,7 +617,7 @@
                             <div class="product-item text-center">
                                 <div class="product-item__badge ">Hot</div>
                                 <div class="product-item__image border w-100">
-                                    <a href="{{route('cakedetail', $pro['id'])}}"><img width="350" height="350" src="{{$pro['image']}}" alt="Product"></a>
+                                    <a href="{{route('cakedetail', $pro['id'])}}"><img width="350" height="350" src="{{url($pro['image'])}}" alt="Product"></a>
                                     <ul class="product-item__meta">
 {{--                                        <li class="product-item__meta-action">--}}
 {{--                                            <a class="shadow-1 labtn-icon-cart" href="#" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" data-bs-toggle="modal" data-product-id="{{$pro['id']}}" data-bs-target="#modalCart{{$pro['id']}}"></a>--}}

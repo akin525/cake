@@ -44,7 +44,7 @@
                             <h6 class="mb-4">Customer</h6>
                             <p class="mb-4">
                                 {{$order->name}}<br>
-                                {{$user->email}}<br>
+                                {{$address->email}}<br>
                                 {{$address->phone}}
                             </p>
                             <a href="#" class="btn-link-custom">View profile</a>

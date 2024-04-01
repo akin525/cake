@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="breadcrumb_title">All Cake</h1>
+                        <h1 class="section-title-10__subtitle text-white">All Cake</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{route('home')}}">Home</a></li>
                             <li>Cakes</li>
@@ -66,7 +66,7 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h5 class="product-item__title"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
+                                    <h5 class="sam" style="font-size: 18px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
                                     <span class="product-item__price">₦{{number_format(intval($pro['price'] *1))}}</span>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
 
                 <div class="">
                     <div class="faq-head align-content-center">
-                        <h4 class="faq-head__title text-center">FREQUENTLY ASKED QUESTIONS</h4>
+                        <h4 class="faq-head__title text-center sam" style="font-size: 30px">FREQUENTLY ASKED QUESTIONS</h4>
                         <span class="faq-head__border"></span>
                     </div>
                 </div>
@@ -171,12 +171,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$fa['id']}}" aria-expanded="true" aria-controls="collapseOne">
-                                        <span>{{$fa['heading']}}</span>
+                                        <span class="sam" style="font-size: 18px">{{$fa['heading']}}</span>
                                         <i class="lastudioicon lastudioicon-down-arrow"></i>
                                     </button>
                                 </h2>
                                 <div id="collapse{{$fa['id']}}" class="accordion-collapse collapse" data-bs-parent="#exampleOne">
-                                    <div class="accordion-body">{!! $fa['content'] !!}</div>
+                                    <div class="accordion-body cormorant-upright-bold" style="font-size: 21px">{!! $fa['content'] !!}</div>
                                 </div>
                             </div>
                         @endforeach
@@ -186,6 +186,7 @@
             </div>
         </div>
     </div>
+
     <!-- Product Section End -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

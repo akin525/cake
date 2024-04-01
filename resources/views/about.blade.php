@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="breadcrumb_title"><b>ABOUT US</b></h1>
+                        <h1 class="section-title-10__subtitle text-white"><b>About Us</b></h1>
 {{--                        <p class="breadcrumb_text">Welcome to Eko Cakes WHO WE ARE</p>--}}
                     </div>
                 </div>
