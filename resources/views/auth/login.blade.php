@@ -1,4 +1,39 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Admin</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/eko.png')}}">
 
+    <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
+
+    <!-- Font CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Handlee&amp;family=Inter:wght@300;400;500;600;700&amp;family=Comfortaa:wght@300;400;500;600;700&amp;family=Montaga&amp;family=Pacifico&amp;family=Fredericka+the+Great&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Yellowtail&amp;display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS (Bootstrap & Icon Font) -->
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/lastudioicons.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/dliconoutline.css')}}">
+
+    <!-- Plugins CSS (All Plugins Files) -->
+    <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/swiper-bundle.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/ion.rangeSlider.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/lightgallery-bundle.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    @yield('style')
+</head>
 
 <style>
     .main-content{
@@ -79,46 +114,49 @@
         color:#fff;
     }
 </style>
-
-
-
+@if(Session::has('error'))
+    <script>
+        Swal.fire({
+            title: 'Ooops..',
+            text: '{{ Session::get('error') }}',
+            icon: 'warning',
+            confirmButtonColor: '#3085d6',
+        })
+    </script>
+@endif
 <!-- Main Content -->
 <div class="container-fluid">
     <div class="row main-content bg-success text-center">
         <div class="col-md-4 text-center company__info">
             <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
-{{--            <h4 class="company_title">Your Company Logo</h4>--}}
+            {{--            <h4 class="company_title">Your Company Logo</h4>--}}
             <center>
-            <img width="100" src="{{asset('assets/images/eko.png')}}" alt=""/>
+                <img width="100" src="{{asset('assets/images/eko.png')}}" alt=""/>
             </center>
         </div>
         <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
             <div class="container-fluid">
                 <br>
                 <div class="row">
-{{--                    <h4>Log In</h4>--}}
+                    <h4>Admin Login</h4>
                 </div>
                 <div class="row">
                     <x-auth-session-status class="mb-4" :status="session('status')" />
-
+                    @if (session('errors'))
+                        <div class="alert alert-danger">
+                            {{ session('errors') }}
+                        </div>
+                    @endif
                     <form class="form-group" action="{{route('login')}}" method="post">
                         @csrf
                         <div class="row">
                             <input type="email" name="email" id="email" class="form__input" placeholder="email">
-                            <x-input-error :messages="$errors->get('email')" class="alert alert-danger" />
+                                                            <x-input-error :messages="$errors->get('email')" class="alert alert-danger" />
                         </div>
-{{--                        <div class="row">--}}
-{{--                            <input type="number" name="number" id="number" class="form__input" placeholder="Phone Number">--}}
-{{--                            <x-input-error :messages="$errors->get('number')" class="alert alert-danger" />--}}
-{{--                        </div>--}}
-{{--                        <div class="row">--}}
-{{--                            <input type="text" name="name" id="name" class="form__input" placeholder="Name">--}}
-{{--                            <x-input-error :messages="$errors->get('name')" class="alert alert-danger" />--}}
-{{--                        </div>--}}
                         <div class="row">
-                           <span class="fa fa-lock"></span>
+                            <span class="fa fa-lock"></span>
                             <input type="password" name="password" id="password" class="form__input" placeholder="Password">
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
                         </div>
                         <div class="row">
                             <input type="checkbox" name="remember_me" id="remember_me" class="">
@@ -126,14 +164,11 @@
                         </div>
                         <div class="row">
                             <center>
-                            <input type="submit" value="Continue" class="btn">
+                                <input type="submit" value="Login" class="btn">
                             </center>
                         </div>
                     </form>
                 </div>
-{{--                <div class="row">--}}
-{{--                    <p>Don't have an account? <a href="{{route('register')}}">Register Here</a></p>--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>
