@@ -18,7 +18,6 @@ function vieworders($request)
 {
     $order=Order::where('id', $request)->first();
     $product=Products::where('id', $order->product_id)->first();
-    return $product;
     $address=Address::where('user_id', $order->user_id)->first();
     $user=User::where('id', $order->user_id)->first();
 
