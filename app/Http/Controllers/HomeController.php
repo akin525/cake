@@ -195,12 +195,18 @@ function cakedetail($request)
                 'layers' => $request->layers,
                 'amount' => $request->amount,
                 'color' => $request->color ?? null,
+                'topper' => $request->topperText ?? null,
+                'topperamount' => $request->topper ?? null,
+                'addition' => $request->addition ?? null,
+                'card' => $request->card ?? null,
+                'cardtext' => $request->ekoCakesMessage ?? null,
             ];
 
             Session::put('selected_product', $productDetails);
             return redirect('cart');
 
         }
+
 
 //        if (Auth::check()) {
 //            $insert = Cart::create([
@@ -315,8 +321,9 @@ function checkout()
             }
             $cart['image'] = $product->image;
         }
-//        $state=State::all();
+        $state=State::all();
 
+//    return $checkout;
     return view('shop.checkout', compact('checkout', 'cart'));
 }
 function dashboard()

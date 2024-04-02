@@ -21,11 +21,15 @@
         </div>
     </div>
     <!-- Breadcrumb Section End -->
+    <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
 
     <!-- Product Section Start -->
     <div class="shop-product-section section section-padding-03">
         <div class="container custom-container">
-            <form class="checkout-form" method="post" action="{{route('check')}}">
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <form class="checkout-form" id="checkout">
                 @csrf
                 <div class="row g-8">
 
@@ -91,11 +95,6 @@
                                         <input type="text" class="form-field" name="city" required>
                                     </div>
                                 </div>
-
-                                <div class="col">
-                                    <label>Zip Code*</label>
-                                    <input class="form-field" type="text" name="postal_code" required>
-                                </div>
                             <div class="col">
                                     <label>Delivery Date *</label>
                                     <input class="form-field" type="date" name="date" placeholder="Choose date" required>
@@ -125,6 +124,52 @@
                             </div>
 
                         </div>
+
+
+                    <div class="col-lg-7">
+
+                        <!-- Billing Address -->
+                        <div id="billing-form">
+                            <h4 class="mb-4">Recipient Details</h4>
+                            <div class="row row-cols-sm-2 row-cols-1 g-4">
+                                <div class="col">
+                                    <label>Full Name*</label>
+                                    <input class="form-field" name="namec"  type="text" required>
+
+                                </div>
+                              <div class="col">
+                                    <label>Email Address*</label>
+                                    <input class="form-field" id="email" name="emailc" type="email"  required>
+                                </div>
+                                <div class="col">
+                                    <label>Phone no*</label>
+                                    <input class="form-field" type="text"  name="phonec" required>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label>Street address</label>
+                                    <input class="form-field" type="text" name="addressc" placeholder="Street address" required>
+                                </div>
+                                <div class="col">
+                                    <label>Location</label>
+                                    <div class="select-wrapper">
+                                        <select class="form-field" name="countryc" required>
+                                            <option value=Eko"">Eko(Lagos)</option>
+                                            <option value="ibadan">Ibadan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                               </div>
+                            <div class="col">
+                                <label>City/Town*</label>
+                                <div class="select-wrapper">
+                                    <input type="text" class="form-field" name="cityc" required>
+                                </div>
+                            </div>
+
+                            <br/>
+                           </div>
+
+                    </div>
 
                     </div>
 
@@ -172,12 +217,11 @@
                         <!-- Payment Method End -->
 
                     </div>
+            </form>
 
                 </div>
-            </form>
         </div>
     </div>
-    <script src="https://js.paystack.co/v1/inline.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -245,6 +289,59 @@
     </script>
 
 
+    <script>
+        $(document).ready(function() {
+
+
+            // Send the AJAX request
+            $('#checkout').submit(function(e) {
+                e.preventDefault();
+
+                var formData = $(this).serialize();
+
+                $('#loadingSpinner').show();
+
+                $.ajax({
+                    url: "{{ route('check') }}",
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        // Handle the success response here
+                        // $('#loadingSpinner').hide();
+
+                        console.log(response);
+                        // Update the page or perform any other actions based on the response
+
+                        if (response.status == 'success') {
+                            window.location.href = response.url;
+                        } else {
+                            Swal.fire({
+                                icon: 'info',
+                                title: 'Pending',
+                                text: response.message
+                            });
+                            // Handle any other response status
+                        }
+
+                    },
+                    // $('#loadingSpinner').hide();
+
+                    error: function(xhr) {
+                        $('#loadingSpinner').hide();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'fail',
+                            text: xhr.responseText
+                        });
+                        // Handle any errors
+                        console.log(xhr.responseText);
+
+                    }
+                });
+            });
+        });
+
+    </script>
 
 
 @endsection

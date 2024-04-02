@@ -32,13 +32,20 @@ function postorder(Request  $request)
         $address = Address::create([
             'user_id' => $request->name,
             'address_line1' => $request->address,
+            'addressc' => $request->addressc,
             'address_line2'=>$request->apartment ?? null,
             'phone' => $request->phone,
+            'phonec' => $request->phonec,
             'email' => $request->email,
+            'emailc' => $request->emailc,
             'city' => $request->city,
+            'cityc' => $request->cityc,
+            'namec' => $request->namec,
             'country' => $request->country,
-            'state' => $request->state,
-            'postal_code' => $request->postal_code,
+            'countryc' => $request->countryc,
+            'state' => $request->countryc,
+            'statec' => $request->countryc,
+            'postal_code' => $request->postal_code ?? null,
         ]);
 //    }
     $carts=Session::get('selected_product', []);
@@ -56,28 +63,70 @@ function postorder(Request  $request)
             'subtotal' => $carts['amount'],
             'status' => 0,
             'topper' => $carts['topper'] ?? null,
-            'flavour' => $carts['flavour'] ?? null,
-            'layer' => $carts['layer'] ?? null,
+            'topperamount' => $carts['topperamount'] ?? null,
+            'flavour' => $carts['flavor'] ?? null,
+            'layer' => $carts['layers'] ?? null,
             'color' => $carts['color'] ?? null,
             'size' => $carts['size'] ?? null,
+            'card' => $carts['cardtext'] ?? null,
+            'card_amount' => $carts['card'] ?? null,
             'payid'=>$payid,
 
         ]);
 
 //    }
 
-    return view('shop.paynow', compact('request', 'payid', 'pkey'))->with('status', 'Kindly Complete your payment');
+
+    $url = "https://api.paystack.co/transaction/initialize";
+
+    $fields = [
+        'email' => $request->email,
+        'amount' => $request->amount * 100,
+        'reference'=>$payid,
+        'callback_url' => $gateway->call_url,
+        'metadata' => ["cancel_action" => $gateway->cancel_url]
+    ];
+
+    $fields_string = http_build_query($fields);
+
+    //open connection
+    $ch = curl_init();
+
+    //set the url, number of POST vars, POST data
+    curl_setopt($ch,CURLOPT_URL, $url);
+    curl_setopt($ch,CURLOPT_POST, true);
+    curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        "Authorization: Bearer ".$gateway->skey,
+        "Cache-Control: no-cache",
+    ));
+
+    //So that curl_exec returns the contents of the cURL; rather than echoing it
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+
+    //execute post
+    $result = curl_exec($ch);
+//    return $result;
+    $data = json_decode($result, true);
+    Session::forget('selected_product');
+
+    return response()->json([
+        'status'=>'success',
+        'url'=>$data['data']['authorization_url'],
+        'reference'=>$data['data']['reference'],
+    ]);
+//    return view('shop.paynow', compact('request', 'payid', 'pkey'))->with('status', 'Kindly Complete your payment');
 }
 
 
-function confirmpayment($reference, $secondS)
+function confirmpayment(Request $request)
 {
     $gateway=Gateways::where('name', 'paystack')->first();
     $skey=$gateway->skey;
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://api.paystack.co/transaction/verify/$reference",
+        CURLOPT_URL => "https://api.paystack.co/transaction/verify/$request->reference",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -105,20 +154,20 @@ function confirmpayment($reference, $secondS)
     $data=json_decode($response, true);
     $amount=$data["data"]["amount"]/100;
     if ($data['status'] == true){
-        $create=Payments::where('transaction_id', $reference)->first();
+        $create=Payments::where('transaction_id', $request->reference)->first();
         if ($create){
             return redirect('cart')->with('errors', 'Duplicate Payment');
         }
-        $check=Order::where('payid', $secondS)->first();
+        $check=Order::where('payid', $request->reference)->first();
 
 //        return $check;
         $put=Payments::create([
-            'order_id'=>$secondS,
+            'order_id'=>$request->reference,
             'user_id'=>$check->user_id,
             'name'=>$check->name,
             'amount'=>$amount,
             'payment_method'=>'Paystack',
-            'transaction_id'=>$reference,
+            'transaction_id'=>$request->reference,
             'status'=>1,
         ]);
 
@@ -129,14 +178,14 @@ function confirmpayment($reference, $secondS)
 
         $move=Address::where('user_id', $check->user_id)->first();
         $email=$move->email;
-        $or=Order::where('payid', $secondS)->first();
-        $order=Order::where('payid', $secondS)->get();
-        $total=Order::where('payid', $secondS)->sum('price');
+        $or=Order::where('payid', $request->reference)->first();
+        $order=Order::where('payid', $request->reference)->get();
+        $total=Order::where('payid', $request->reference)->sum('price');
 //        Mail::to($email)->send(new MailOrder($order,  $total, $or));
 
         return  redirect('home')->with('status', 'Payments Successful');
     }
-    return  redirect('dashboard')->with('errors', 'Please contact admin');
+    return  redirect('home')->with('errors', 'Please contact admin');
 
 }
 }

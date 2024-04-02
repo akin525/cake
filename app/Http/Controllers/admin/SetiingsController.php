@@ -53,6 +53,8 @@ function updategateway(Request $request)
 
     $gateway->skey=$request->sk;
     $gateway->pkey=$request->pk;
+    $gateway->call_url=$request->call_url ?? null;
+    $gateway->cancel_url=$request->cancel_url ?? null;
     $gateway->save();
 
     return response()->json([

@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('logsp', [HomeController::class, 'logincheck'])->name('logsp');
 
 Route::get('/', [HomeController::class, 'landingpage'])->name('home');
+Route::get('home', [HomeController::class, 'landingpage'])->name('home');
 Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::get('product/{id}', [HomeController::class, 'getproduct']);
 Route::get('cakes', [HomeController::class, 'allcake'])->name('cakes');
@@ -45,7 +46,7 @@ Route::get('getsize/{id}', [HomeController::class, 'getsize'])->name('getsize');
 Route::post('addcart1', [HomeController::class, 'addcart'])->name('addcart1');
 Route::get('cart', [HomeController::class, 'mycart'])->name('cart');
 Route::post('check', [OrderController::class, 'postorder'])->name('check');
-Route::get('tran/{reference}/{secondS}', [OrderController::class, 'confirmpayment'])->name('tran');
+Route::get('tran', [OrderController::class, 'confirmpayment'])->name('tran');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
