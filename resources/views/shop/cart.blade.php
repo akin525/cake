@@ -40,15 +40,22 @@
                             </tr>
                             </thead>
                             <tbody class="border-top-0">
-{{--                            @forelse($cart as $cat)--}}
+{{--                            @if(empty($cat))--}}
+{{--                                <p>Your cart is empty.</p>--}}
+{{--                            @else--}}
+                                @forelse($cart as $key => $cat)
 
-@if(empty($cat))
-    <p>Your cart is empty.</p>
-@else
+
 
                             <tr>
                                 <th class="cart-remove">
-                                    <button class="remove-btn" id="cancelcart" data-id="{{$cat['id']}}"><i class="lastudioicon lastudioicon-e-remove"></i></button>
+                                    <form id="cancelcart" class="remove-item-form">
+                                        @csrf
+                                        <input type="hidden" name="item_index" value="{{ $key }}">
+                                        <button type="submit" class="cart-product-mobile-remove">
+                                            <i class="lastudioicon lastudioicon-e-remove"></i>
+                                        </button>
+                                    </form>
                                 </th>
                                 <th class="cart-thumb">
                                     <a href="{{route('cakedetail',$cat['id'])}}">
@@ -68,10 +75,10 @@
                                 </td>
                                 <td>₦{{$cat['amount']}}</td>
                             </tr>
-@endif
-{{--                            @empty--}}
-{{--                                <h2 class="text-center"> No Product Added yet</h2>--}}
-{{--                            @endforelse--}}
+{{--@endif--}}
+                            @empty
+                                <h2 class="text-center"> No Product Added yet</h2>
+                            @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -79,28 +86,36 @@
 
                     <!-- Cart Table For Mobile Devices Start -->
                     <div class="cart-products-mobile d-md-none">
-{{--                        @foreach($cart as $cat)--}}
-                        @if(empty($cat))
-                            <p>Your cart is empty.</p>
-                        @else
-                        <div class="cart-product-mobile">
-                            <div class="cart-product-mobile-thumb">
-                                <a href="{{route('cakedetail', $cat['id'])}}" class="cart-product-mobile-image"><img src="{{url($cat['image'])}}" alt="{{url($cat['image'])}}" width="90" height="103"></a>
-                                <button class="cart-product-mobile-remove" id="cancelcart" data-id="{{$cat['id']}}"><i class="lastudioicon lastudioicon-e-remove"></i></button>
-                            </div>
-                            <div class="cart-product-mobile-content">
-                                <h5 class="cart-product-mobile-title"><a href="{{route('cakedetail', $cat['id'])}}">{{$cat['name']}}</a></h5>
-                                <span class="cart-product-mobile-quantity">1 x ₦{{$cat['amount']}}</span>
-                                <span class="cart-product-mobile-total"><b>Total:₦{{$cat['amount']}}</b> </span>
-                                <!-- Quantity Start -->
-                                <div class="quantity">
-                                    <div class="cart-plus-minus border-0"></div>
+                        @foreach($cart as $key => $cat)
+                            <div class="cart-product-mobile">
+                                <div class="cart-product-mobile-thumb">
+                                    <a href="{{ route('cakedetail', $cat['id']) }}" class="cart-product-mobile-image">
+                                        <img src="{{ url($cat['image']) }}" alt="{{ $cat['name'] }}" width="90" height="103">
+                                    </a>
+                                    <!-- Form for removing item from cart -->
+                                    <form id="cancelcart" class="remove-item-form">
+                                        @csrf
+                                        <input type="hidden" name="item_index" value="{{ $key }}">
+                                        <button type="submit" class="cart-product-mobile-remove">
+                                            <i class="lastudioicon lastudioicon-e-remove"></i>
+                                        </button>
+                                    </form>
                                 </div>
-                                <!-- Quantity End -->
+                                <div class="cart-product-mobile-content">
+                                    <h5 class="cart-product-mobile-title">
+                                        <a href="{{ route('cakedetail', $cat['id']) }}">{{ $cat['name'] }}</a>
+                                    </h5>
+                                    <span class="cart-product-mobile-quantity">1 x ₦{{ $cat['amount'] }}</span>
+                                    <span class="cart-product-mobile-total"><b>Total: ₦{{ $cat['amount'] }}</b></span>
+                                    <!-- Quantity Start -->
+                                    <div class="quantity">
+                                        <div class="cart-plus-minus border-0"></div>
+                                    </div>
+                                    <!-- Quantity End -->
+                                </div>
                             </div>
-                        </div>
-                        @endif
-{{--                        @endforeach--}}
+                        @endforeach
+
                     </div>
                     <!-- Cart Table For Mobile Devices End -->
 
@@ -124,19 +139,19 @@
                                 <tbody>
                                 <tr class="subtotal">
                                     <th class="sub-title">Subtotal</th>
-                                    @if(empty($cat))
-                                        <td class="amount"><span >₦{{number_format(intval(0 *1))}}</span></td>
-                                    @else
-                                    <td class="amount"><span >₦{{number_format(intval($cat['amount']*1))}}</span></td>
-                                    @endif
+{{--                                    @if(empty($cat))--}}
+{{--                                        <td class="amount"><span >₦{{number_format(intval(0 *1))}}</span></td>--}}
+{{--                                    @else--}}
+                                    <td class="amount"><span >₦{{number_format(intval($cartsum *1))}}</span></td>
+{{--                                    @endif--}}
                                 </tr>
                                 <tr class="total">
                                     <th class="sub-title">Total</th>
-                                    @if(empty($cat))
-                                        <td class="amount"><span >₦{{number_format(intval(0 *1))}}</span></td>
-                                    @else
-                                    <td class="amount"><strong>₦{{number_format(intval($cat['amount'] *1))}}</strong></td>
-                                    @endif
+{{--                                    @if(empty($cat))--}}
+{{--                                        <td class="amount"><span >₦{{number_format(intval(0 *1))}}</span></td>--}}
+{{--                                    @else--}}
+                                    <td class="amount"><strong>₦{{number_format(intval($cartsum *1))}}</strong></td>
+{{--                                    @endif--}}
                                 </tr>
                                 </tbody>
                             </table>
@@ -167,8 +182,8 @@
 
                 // Send the selected value to the '/getOptions' route
                 $.ajax({
-                    url: '/cancelcart/' + idValue,
-                    type: 'GET',
+                    url: '{{route('cancelcart')}}',
+                    type: 'post',
                     data: { id: idValue }, // Pass the ID value in the request
                     success: function(response) {
                         // Handle the successful response

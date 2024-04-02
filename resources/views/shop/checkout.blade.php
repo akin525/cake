@@ -188,17 +188,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-{{--                                @forelse($cart as $cat)--}}
-                                <tr>
-                                    <td>{{$cart['name']}}</td>
-                                    <td>₦{{number_format(intval($cart['amount'] *1))}}</td>
-                                </tr>
-
+                                @forelse($cart as $cat)
+                                    <tr>
+                                        <td>{{ $cat['name'] }}</td>
+                                        <td>₦{{ number_format($cat['amount']) }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="2">No items in the cart</td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th class="border-top">Grand Total</th>
-                                    <th class="border-top">₦{{number_format(intval($checkout *1))}}</th>
+                                    <th class="border-top">₦{{ number_format($checkout) }}</th>
                                 </tr>
                                 </tfoot>
                             </table>

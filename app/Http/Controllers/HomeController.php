@@ -318,15 +318,21 @@ function checkout()
         $cart = session::get('selected_product', []);
 
 //        return $cart;
-            $product = Products::where('id',$cart['id'])->first();
-            if ($product) {
-                $checkout = $cart['amount'] ;
+//            $product = Products::where('id',$cart['id'])->first();
+//            if ($product) {
+//                $checkout = $cart['amount'] ;
 
-            }
-            $cart['image'] = $product->image;
+//            }
+//            $cart['image'] = $product->image;
 
 //        $state=State::all();
+    foreach ($cart as $item) {
+        $amount = isset($item['amount']) ? $item['amount'] : 0;
+        // Debugging: Print out individual amounts
+//        echo "Amount for item: " . $amount . "<br>";
 
+        $checkout += (float) $amount;
+    }
 //    return $checkout;
     return view('shop.checkout', compact('checkout', 'cart'));
 }

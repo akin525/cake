@@ -48,8 +48,8 @@ function postorder(Request  $request)
             'postal_code' => $request->postal_code ?? null,
         ]);
 //    }
-    $carts=Session::get('selected_product', []);
-//    foreach ($cart as $carts) {
+    $cart=Session::get('selected_product', []);
+    foreach ($cart as $carts) {
         $order = Order::create([
 
             'user_id' => $request->name,
@@ -74,7 +74,7 @@ function postorder(Request  $request)
 
         ]);
 
-//    }
+    }
 
 
     $url = "https://api.paystack.co/transaction/initialize";
