@@ -184,8 +184,10 @@ function cakedetail($request)
             'layers'=>'required',
             'amount'=>'required',
         ]);
+
         $product = Products::find($request->id);
         if ($product) {
+            $productDetails1= Session::get('selected_product', []);
             $productDetails = [
                 'id' => $product->id,
                 'name' => $product->name,
@@ -201,8 +203,9 @@ function cakedetail($request)
                 'card' => $request->card ?? null,
                 'cardtext' => $request->ekoCakesMessage ?? null,
             ];
+            $productDetails1[] = $productDetails;
 
-            Session::put('selected_product', $productDetails);
+            Session::put('selected_product', $productDetails1);
             return redirect('cart');
 
         }
@@ -280,13 +283,19 @@ function cakedetail($request)
 function mycart()
 {
 
-    $cat = Session::get('selected_product', []);
+    $cart = Session::get('selected_product', []);
     $cartsum = 0;
 
     $category=Categories::all();
+    foreach ($cart as $item) {
+        $amount = isset($item['amount']) ? $item['amount'] : 0;
+        // Debugging: Print out individual amounts
+//        echo "Amount for item: " . $amount . "<br>";
 
-//    return $cat;
-    return view('shop.cart', compact('cat', 'category', 'cartsum'));
+        $cartsum += (float) $amount;
+    }
+//    return $cart;
+    return view('shop.cart', compact('cart', 'category', 'cartsum'));
 }
 
 function category($request)
@@ -303,12 +312,7 @@ function category($request)
 }
 function checkout()
 {
-    if (Auth::user()){
-        $checkout=Cart::where('user_id', Auth::user()->id)->sum('amount');
-        $cart=Cart::where('user_id', Auth::user()->id)->get();
-//        $state=State::all();
 
-    }else{
         $checkout=0;
 //        $cart=[];
         $cart = session::get('selected_product', []);
@@ -320,7 +324,7 @@ function checkout()
 
             }
             $cart['image'] = $product->image;
-        }
+
 //        $state=State::all();
 
 //    return $checkout;
