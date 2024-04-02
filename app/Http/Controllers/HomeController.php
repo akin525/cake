@@ -321,7 +321,7 @@ function checkout()
             }
             $cart['image'] = $product->image;
         }
-        $state=State::all();
+//        $state=State::all();
 
 //    return $checkout;
     return view('shop.checkout', compact('checkout', 'cart'));
