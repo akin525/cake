@@ -284,12 +284,12 @@
                             <div class="row">
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input  style="font-size: 21px" class="form-control rowdies-regular" type="text" name="con_name" placeholder="Name">
+                                        <input  style="font: 21px" class="form-control rowdies-regular" type="text" name="con_name" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input style="font-size: 21px" class="form-control rowdies-regular" type="email" name="con_email" placeholder="Email">
+                                        <input style="font: 21px" class="form-control rowdies-regular" type="email" name="con_email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
