@@ -35,6 +35,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Upright:wght@300;400;500;600;700&family=Great+Vibes&family=Jost:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+
     <!-- Style CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Upright:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -96,6 +100,24 @@
     }
 </style>
 <style>
+    .rowdies-light {
+        font-family: "Rowdies", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    .rowdies-regular {
+        font-family: "Rowdies", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .rowdies-bold {
+        font-family: "Rowdies", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
     .head{
         color: #000000;
         /*margin: 0;*/
@@ -281,7 +303,7 @@
             </div>
         </div>
         <div class="leftBox text-center">
-            <h6 class="cormorant-upright-bold" style="font-size: 25px">
+            <h6 class="rowdies-bold" style="font-size: 20px">
                 CAKES FOR EVERY LAGOSIAN. CAKES FOR LAGOS<br>
             </h6>
 
@@ -292,10 +314,10 @@
                 <div class="header-menu d-none d-lg-block">
                     <ul class="header-primary-menu header-primary-menu-05 d-flex justify-content-center">
                         <li>
-                            <a href="{{url('/')}}" class="menu-item-link active"><span>Home</span></a>
+                            <a href="{{url('/')}}" class="menu-item-link rowdies-bold active"><span>Home</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" class="menu-item-link active"><span>Cakes</span></a>
+                                                    <a href="#" class="menu-item-link  rowdies-bold active"><span>Cakes</span></a>
                                                     <ul class="sub-menu">
                                                         <li><a class="sub-item-link" href="{{route('cakes')}}"><span>All Cakes</span></a></li>
                                                     @isset($category)
@@ -309,15 +331,15 @@
                                                 </li>
 
                                                 <li class="position-static">
-                                                    <a class="menu-item-link active" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>
+                                                    <a class="menu-item-link rowdies-bold active" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>
                                                 </li>
                                                 <li class="position-static">
-                                                    <a class="menu-item-link active" href="{{route('about')}}"><span>About</span></a>
+                                                    <a class="menu-item-link  rowdies-bold active" href="{{route('about')}}"><span>About</span></a>
                                                 </li>
                                                 <li class="position-static">
-                                                    <a class="menu-item-link active" href="{{route('cart')}}"><span>Cart</span></a>
+                                                    <a class="menu-item-link rowdies-bold active" href="{{route('cart')}}"><span>Cart</span></a>
                                                 </li>
-                                                <li><a class="menu-item-link active" href="#"><span>Contact</span></a></li>
+                                                <li><a class="menu-item-link rowdies-bold active" href="#"><span>Contact</span></a></li>
                     </ul>
                 </div>
                 <!-- Header Menu End -->
