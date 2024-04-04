@@ -80,7 +80,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="section-title-10__subtitle text-white">Product Details</h1>
+                        <h1 class="rowdies-bold text-white">Product Details</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{url('/')}}">Home</a></li>
                             <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif">
@@ -162,7 +162,7 @@
                     <!-- Product Summery Start -->
                     <div class="product-summery position-relative card-body">
                         <!-- Product Head Start -->
-                        <h5 class="sam">{{$product->name}}</h5>
+                        <h5 class="rowdies-bold">{{$product->name}}</h5>
 
                         <div class="product-head mb-3">
                             <!-- Price Start -->
@@ -175,9 +175,9 @@
                                 }
                             </style>
 
-                            <span class="product-head-price"  style="font-size: 30px ">₦</span>
+{{--                            <span class="product-head-price"  style="font-size: 30px "></span>--}}
                             <input type="text" id="total" class="no-border-input"  style="font-size: 30px "
-                                   value="{{ number_format(intval($product->price * 1))}}">
+                                   value="₦{{ number_format(intval($product->price * 1))}}">
                             <input type="hidden" id="defaultAmount"
                                    value="{{$product->price}}">
 {{--                            <span class="product-head-price" id="defaultAmount" style="font-size: 30px ">₦{{ number_format(intval($product->price * 1)) }}</span>--}}
@@ -564,7 +564,7 @@
                                 </div>
                                 <div class="product-desc-content">
                                     <h5 class="section-title-10__subtitle">We Love Cake</h5>
-                                    <p class="product-desc-text cormorant-upright-bold">{{$product->description}}</p>
+                                    <p class="product-desc-text cormorant-upright-bold">{!! $product->description !!}</p>
                                 </div>
                             </div>
                         </div>

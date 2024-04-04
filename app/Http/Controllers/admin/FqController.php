@@ -31,6 +31,8 @@ function createfq(Request $request)
 function editfq($id)
 {
     $fq=FQ::where('id', $id)->first();
+
+    return view('admin.editfq', compact('fq'));
 }
 function updatefq(Request $request)
 {

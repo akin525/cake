@@ -160,6 +160,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/alert', [AlertController::class, 'loadindex'])->name('admin/alert');
     Route::post('admin/alertp', [AlertController::class, 'updatealert'])->name('admin/alertp');
 
+    Route::get('admin/editfq/{id}', [FqController::class, 'editfq'])->name('admin/editfq');
+    Route::post('admin/updatefq', [FqController::class, 'updatefq'])->name('admin/updatefq');
 });
     require __DIR__.'/auth.php';
 
