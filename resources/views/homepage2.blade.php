@@ -277,7 +277,7 @@
     <div class="section-padding-03 contact-section contact-section_bg" data-bg-image="" >
         <div class="container custom-container-five">
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="">
                     <div class="contact-section_formbg" data-bg-image="">
                         <h2 class="contact-section_form__title rowdies-bold" style="font-size: 20px">Get in touch</h2>
                         <form class="contact-section_form cormorant-upright-regular" id="contact-form" action="" method="post" style="background-color: white">
@@ -319,25 +319,25 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <div class="contact-section_content">
-                        <h4 class="contact-section__title rowdies-bold" style="font-size: 25px">Our Contact</h4>
-                        <ul class="contact-section_list">
-                            <li>
-                                <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-phone-2"></i></span>
-                                <span class="contact-section_list__text rowdies-regular" style="font-size: 15px">Phone Number : <span class="cormorant-upright-regular" style="font-size: 15px">08162300183</span></span>
-                            </li>
-                            <li>
-                                <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-pin-3-2"></i></span>
-                                <span class="contact-section_list__text rowdies-regular" style="font-size: 15px">Address : <span class="cormorant-upright-regular" style="font-size: 15px">Gbagada 100234 Lagos</span></span>
-                            </li>
-                            <li>
-                                <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-mail"></i></span>
-                                <span class="contact-section_list__text rowdies-regular" style="font-size: 15px">Email Address : <span class="cormorant-upright-regular" style="font-size: 15px">info@admin.com</span></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+{{--                <div class="text-center">--}}
+{{--                    <div class="contact-section_content">--}}
+{{--                        <h4 class="contact-section__title rowdies-bold" style="font-size: 25px">Our Contact</h4>--}}
+{{--                        <ul class="contact-section_list">--}}
+{{--                            <li>--}}
+{{--                                <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-phone-2"></i></span>--}}
+{{--                                <span class="contact-section_list__text rowdies-regular" style="font-size: 15px">Phone Number : <span class="cormorant-upright-regular" style="font-size: 15px">08162300183</span></span>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-pin-3-2"></i></span>--}}
+{{--                                <span class="contact-section_list__text rowdies-regular" style="font-size: 15px">Address : <span class="cormorant-upright-regular" style="font-size: 15px">Gbagada 100234 Lagos</span></span>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-mail"></i></span>--}}
+{{--                                <span class="contact-section_list__text rowdies-regular" style="font-size: 15px">Email Address : <span class="cormorant-upright-regular" style="font-size: 15px">info@admin.com</span></span>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
         <div class="contact-section_shape">
