@@ -422,7 +422,7 @@
 {{--                            </div>--}}
                         </div>
                             <select name="card"  class="form-control  cormorant-upright-light " id="ekoCakesCard" >
-                            <option >Choose an option</option>
+                            <option value="no" data-wapf-price="0" >Choose an option</option>
                             <option value="no" data-wapf-price="0" >No, please</option>
                             <option value="yes" data-wapf-price="1500" data-wapf-pricetype="fixed">Yes, please (+₦1,500.00)</option>
                             </select>
