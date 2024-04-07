@@ -22,4 +22,5 @@ class Products extends Authenticatable
     protected $table = 'products';
     protected $guarded=[];
 
+
 }

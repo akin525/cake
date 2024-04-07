@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Attribute;
 use App\Models\Categories;
 use App\Models\Layers;
 use App\Models\Products;
 use App\Models\Rtb;
 use App\Models\Sizes;
+use App\Models\Variation;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -31,90 +33,57 @@ class ProductsController
  function addproduct(Request $request)
  {
 //     return $request;
+// Validate the request
      $request->validate([
-         'tittle'=>'required',
-         'content'=>'required',
-         'price'=>'required',
-         'cprice'=>'required',
-         'fee'=>'required',
-         'category'=>'required',
-         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file validation rules as needed
-
+         'tittle' => 'required',
+         'content' => 'required',
+         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+         // Add other validation rules as needed
      ]);
 
-     $cover = Storage::put('cover', $request['image']);
-     $insert=Products::create([
-         'name'=>$request['tittle'],
-         'description'=>$request['content'],
-         'price'=>$request['price'],
-         'cprice'=>$request['cprice'],
-         'quantity'=>1,
-         'addition'=>$request['addition'],
-         'image'=>$cover,
-         'category'=>$request['category'],
-         'status'=>1,
-         'fee'=>$request['fee'],
+// Upload the image file
+     $cover = Storage::put('cover', $request->file('image'));
+
+// Create the product
+     $insert = Products::create([
+         'name' => $request->input('tittle'),
+         'description' => $request->input('content'),
+         'price' => $request->input('price') ?? 0,
+         'cprice' => $request->input('cprice') ?? 0,
+         'quantity' => 1,
+         'addition' => $request->input('addition') ?? null,
+         'image' => $cover,
+         'category' => $request->input('category'),
+         'status' => 1,
+         'fee' => $request->input('fee') ?? 0,
      ]);
 
-     $layers = [];
-     $layerName = null;
-     $layerAmount = null;
+// Handle product variations
+     if ($request->has('attribute')) {
+         foreach ($request->input('attribute') as $attribute) {
+             $act = Attribute::create([
+                 'name' => $attribute['name'],
+                 'value' => $attribute['value'],
+                 'product_id' => $insert->id,
+             ]);
 
-     foreach ($request->layers as $item) {
-         if (isset($item['name'])) {
-             $layerName = $item['name'];
-         } elseif (isset($item['amount'])) {
-             $layerAmount = $item['amount'];
-             // Insert into database here
-             // For example:
-             $layers[] = ['name' => $layerName, 'amount' => $layerAmount];
-             // Reset variables for next iteration
-             $layerName = null;
-             $layerAmount = null;
+
+         }
+     }
+     if (isset($request['variation_attributes'])) {
+         foreach ($request['variation_attributes'] as $variation) {
+             Variation::create([
+                 'attribute_id' => $insert->id,
+                 'attribute_value' => $variation['sizes'],
+                 'attribute_value1' => $variation['layer'] ?? null,
+                 'attribute_name' => $variation['flavour'] ?? null,
+                 'price' => $variation['price'] ?? 0,
+             ]);
          }
      }
 
-     foreach ($layers  as $layer) {
-
-//         return $layer;
-//         if (isset($layer['name']) && isset($layer['amount'])) {
-             Layers::create([
-                 'name' => $layer['name'],
-                 'amount' => $layer['amount'],
-                 'product_id' => $insert->id,
-             ]);
-//         }
-     }
-
-     $sizes = [];
-     $sizeName = null;
-     $sizeAmount = null;
-
-     foreach ($request->sizes as $item) {
-         if (isset($item['name'])) {
-             $sizesName = $item['name'];
-         } elseif (isset($item['amount'])) {
-             $sizesAmount = $item['amount'];
-             // Insert into database here
-             // For example:
-             $sizes[] = ['name' => $sizesName, 'amount' => $sizesAmount];
-             // Reset variables for next iteration
-             $sizesName = null;
-             $sizesAmount = null;
-         }
-     }
-
-     foreach ($sizes as $size) {
-//         if (isset($size['name']) && isset($size['amount'])) {
-             Sizes::create([
-                 'name' => $size['name'],
-                 'amount' => $size['amount'],
-                 'product_id' => $insert->id,
-             ]);
-//         }
-     }
-
-     $mg="product post was Successful";
+// Redirect with success message
+     $mg = "Product post was successful";
      return redirect('admin/addproduct')->with('success', $mg);
 
  }
