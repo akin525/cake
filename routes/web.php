@@ -162,6 +162,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('admin/editfq/{id}', [FqController::class, 'editfq'])->name('admin/editfq');
     Route::post('admin/updatefq', [FqController::class, 'updatefq'])->name('admin/updatefq');
+
+    Route::get('admin/attribute', [\App\Http\Controllers\admin\CreateAttributeController::class, 'index'])->name('admin/attribute');
+    Route::post('admin/attribute', [\App\Http\Controllers\admin\CreateAttributeController::class, 'createattribute'])->name('admin/attribute');
+
 });
     require __DIR__.'/auth.php';
 

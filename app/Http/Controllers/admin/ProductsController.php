@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Attribute;
+use App\Models\Attributes;
 use App\Models\Categories;
 use App\Models\Layers;
 use App\Models\Products;
@@ -18,7 +19,8 @@ class ProductsController
  function addproductindex()
  {
      $category=Categories::all();
-     return view('admin.addproduct', compact('category'));
+     $attribute=Attributes::all();
+     return view('admin.addproduct', compact('category', 'attribute'));
  }
  function addproductindex1()
  {
@@ -32,7 +34,7 @@ class ProductsController
  }
  function addproduct(Request $request)
  {
-//     return $request;
+     return $request;
 // Validate the request
      $request->validate([
          'tittle' => 'required',
@@ -59,28 +61,19 @@ class ProductsController
      ]);
 
 // Handle product variations
-     if ($request->has('attribute')) {
-         foreach ($request->input('attribute') as $attribute) {
-             $act = Attribute::create([
-                 'name' => $attribute['name'],
-                 'value' => $attribute['value'],
-                 'product_id' => $insert->id,
-             ]);
 
+     $collectionFromArray = collect($request->variation_attributes);
 
-         }
-     }
-     if (isset($request['variation_attributes'])) {
+     $act=Attributes::all();
          foreach ($request['variation_attributes'] as $variation) {
              Variation::create([
                  'attribute_id' => $insert->id,
                  'attribute_value' => $variation['sizes'],
-                 'attribute_value1' => $variation['layer'] ?? null,
                  'attribute_name' => $variation['flavour'] ?? null,
                  'price' => $variation['price'] ?? 0,
              ]);
          }
-     }
+
 
 // Redirect with success message
      $mg = "Product post was successful";

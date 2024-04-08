@@ -69,7 +69,13 @@
                                     <div class="form-border-1">
                                         <div class="mb-8">
                                             <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Name</label>
-                                            <input type="text" name="attribute[][name]" id="attributeName" class="form-control" placeholder="Name" required>
+{{--                                            <input type="text" name="attribute[][name]" id="attributeName" class="form-control" placeholder="Name" required>--}}
+                                            <select name="attribute[][name]" id="attributeName" class="form-control">
+                                                <option>Choose Option</option>
+                                                @foreach($attribute as $act)
+                                                    <option value="{{$act['name']}}">{{$act['name']}}</option>
+                                                @endforeach
+                                            </select>
                                             <br>
 {{--                                            <label>--}}
                                                 <textarea name="attribute[][value]" class="form-control" id="attributeValues" placeholder="Enter options for customer to choose from f.e, Blue, or Large , Use | to separate different options."></textarea>
