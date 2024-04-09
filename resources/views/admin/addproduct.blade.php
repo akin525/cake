@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <button type="button" class="btn btn-primary" id="add-layer">Add New</button>
-                            <button type="button" onclick="generateVariations()">Generate Variations</button>
+                            <button type="button" class="btn btn-danger" onclick="generateVariations()">Generate Variations</button>
 
                             <style>
                                 .variation {
