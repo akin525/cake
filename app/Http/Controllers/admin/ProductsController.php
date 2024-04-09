@@ -34,22 +34,26 @@ class ProductsController
  }
  function addproduct(Request $request)
  {
-     return $request;
+//     return $request;
 // Validate the request
-     $request->validate([
-         'tittle' => 'required',
-         'content' => 'required',
-         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-         // Add other validation rules as needed
-     ]);
+//     $request->validate([
+//         'tittle' => 'required',
+//         'content' => 'required',
+//         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+//         // Add other validation rules as needed
+//     ]);
 
+
+
+
+//     return $request;
 // Upload the image file
      $cover = Storage::put('cover', $request->file('image'));
 
 // Create the product
      $insert = Products::create([
          'name' => $request->input('tittle'),
-         'description' => $request->input('content'),
+         'description' => $request->input('content')?? null,
          'price' => $request->input('price') ?? 0,
          'cprice' => $request->input('cprice') ?? 0,
          'quantity' => 1,
@@ -61,16 +65,26 @@ class ProductsController
      ]);
 
 // Handle product variations
+     foreach ($request->attribute as $index => $tri) {
+         if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
+             Attribute::create([
+                 'product_id'=>$insert['id'],
+                 'name' => $tri['name'],
+                 'value' => $request->attribute[$index + 1]['value'],
+             ]);
+         }
+     }
 
-     $collectionFromArray = collect($request->variation_attributes);
+//     $collectionFromArray = collect($request->variation_attributes);
 
      $act=Attributes::all();
          foreach ($request['variation_attributes'] as $variation) {
              Variation::create([
                  'attribute_id' => $insert->id,
-                 'attribute_value' => $variation['sizes'],
-                 'attribute_name' => $variation['flavour'] ?? null,
-                 'price' => $variation['price'] ?? 0,
+                 'attribute_size' => $variation['Sizes'],
+                 'attribute_layer' => $variation['layers'] ?? null,
+                 'attribute_flavor' => $variation['Flavor'] ?? null,
+                 'price' => $variation['price'] ,
              ]);
          }
 
@@ -94,77 +108,45 @@ class ProductsController
      ]);
 
      $cover = Storage::put('cover', $request['image']);
-     $insert=Products::create([
-         'name'=>$request['tittle'],
-         'description'=>$request['content'],
-         'price'=>$request['price'],
-         'cprice'=>$request['cprice'],
-         'quantity'=>1,
-         'addition'=>$request['addition'],
-         'image'=>$cover,
-         'category'=>$request['category'],
+     $insert = Products::create([
+         'name' => $request->input('tittle'),
+         'description' => $request->input('content')?? null,
+         'price' => $request->input('price') ?? 0,
+         'cprice' => $request->input('cprice') ?? 0,
+         'quantity' => 1,
+         'addition' => $request->input('addition') ?? null,
+         'image' => $cover,
+         'category' => $request->input('category'),
+         'status' => 1,
          'cool'=>'hots',
-         'status'=>1,
-         'fee'=>$request['fee'],
+         'fee' => $request->input('fee') ?? 0,
      ]);
 
-     $layers = [];
-     $layerName = null;
-     $layerAmount = null;
-
-     foreach ($request->layers as $item) {
-         if (isset($item['name'])) {
-             $layerName = $item['name'];
-         } elseif (isset($item['amount'])) {
-             $layerAmount = $item['amount'];
-             // Insert into database here
-             // For example:
-             $layers[] = ['name' => $layerName, 'amount' => $layerAmount];
-             // Reset variables for next iteration
-             $layerName = null;
-             $layerAmount = null;
+// Handle product variations
+     foreach ($request->attribute as $index => $tri) {
+         if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
+             Attribute::create([
+                 'product_id'=>$insert['id'],
+                 'name' => $tri['name'],
+                 'value' => $request->attribute[$index + 1]['value'],
+             ]);
          }
      }
 
-     foreach ($layers  as $layer) {
+//     $collectionFromArray = collect($request->variation_attributes);
 
-//         return $layer;
-//         if (isset($layer['name']) && isset($layer['amount'])) {
-         Layers::create([
-             'name' => $layer['name'],
-             'amount' => $layer['amount'],
-             'product_id' => $insert->id,
+     $act=Attributes::all();
+     foreach ($request['variation_attributes'] as $variation) {
+         Variation::create([
+             'attribute_id' => $insert->id,
+             'attribute_size' => $variation['Sizes'],
+             'attribute_layer' => $variation['layers'] ?? null,
+             'attribute_flavor' => $variation['Flavor'] ?? null,
+             'price' => $variation['price'] ,
          ]);
-//         }
      }
 
-     $sizes = [];
-     $sizeName = null;
-     $sizeAmount = null;
 
-     foreach ($request->sizes as $item) {
-         if (isset($item['name'])) {
-             $sizesName = $item['name'];
-         } elseif (isset($item['amount'])) {
-             $sizesAmount = $item['amount'];
-             // Insert into database here
-             // For example:
-             $sizes[] = ['name' => $sizesName, 'amount' => $sizesAmount];
-             // Reset variables for next iteration
-             $sizesName = null;
-             $sizesAmount = null;
-         }
-     }
-
-     foreach ($sizes as $size) {
-//         if (isset($size['name']) && isset($size['amount'])) {
-         Sizes::create([
-             'name' => $size['name'],
-             'amount' => $size['amount'],
-             'product_id' => $insert->id,
-         ]);
-//         }
-     }
 
      $mg="product post was Successful";
      return redirect('admin/addproduct1')->with('success', $mg);
@@ -206,9 +188,13 @@ class ProductsController
  {
      $product=Products::where('id', $request)->first();
      $category=Categories::all();
+     $attribute=Attribute::where('product_id', $product->id)->get();
+     $variation=Variation::where('attribute_id', $product->id)->get();
+     $attributes=Attribute::all();
      $size=Sizes::where('product_id', $product->id)->get();
      $layer=Layers::where('product_id', $product->id)->get();
-     return view('admin.editproduct', compact('product', 'category', 'size', 'layer'));
+     return view('admin.editproduct', compact('product',
+         'category', 'attribute', 'variation', 'size','attributes', 'layer'));
  }
  function editproduct1($request)
  {
@@ -220,6 +206,8 @@ class ProductsController
  }
  function updateproduct(Request $request)
  {
+//     return response()->json($request,  Response::HTTP_BAD_REQUEST);
+
      $validatedData = $request->validate([
          'name' => 'required|string|max:255',
          'category' => 'required|string|max:255',
@@ -236,73 +224,23 @@ class ProductsController
      // Update the product
      $product->update($validatedData);
 
-     $layers = [];
-     $layerName = null;
-     $layerAmount = null;
-     $layerid = null;
-
-
-     foreach ($request->layers as $item) {
-
-         if (isset($item['name'])) {
-             $layerName = $item['name'];
-
-         } elseif (isset($item['amount'])) {
-             $layerAmount = $item['amount'];
-             // Insert into database here
-             // For example:
-
-
-         }elseif (isset($item['id'])) {
-//             return response()->json( $item['id'], Response::HTTP_BAD_REQUEST);
-             $layerid= $item['id'];
-
-             $layers[] = ['name' => $layerName, 'amount' => $layerAmount, 'id'=>$layerid];
-             // Reset variables for next iteration
-             $layerName = null;
-             $layerAmount = null;
-             $layerid = null;
+     foreach ($request->attribute as $index => $tri) {
+         if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
+             $act = Attribute::findOrFail($tri->id);
+             $act->update([
+                 'name' => $tri['name'],
+                 'value' => $request->attribute[$index + 1]['value'],
+             ]);
          }
      }
 
-     foreach ($layers  as $layer) {
 
-         $lay=Layers::where('id', $layer['id'])->get();
-         foreach ($lay as $la){
-             $la['name']=$layer['name'];
-             $la->save();
-
-         }
-     }
-
-     $sizes = [];
-     $sizeName = null;
-     $sizeAmount = null;
-     $sizeid = null;
-
-     foreach ($request->sizes as $item) {
-         if (isset($item['name'])) {
-             $sizesName = $item['name'];
-         } elseif (isset($item['amount'])) {
-             $sizesAmount = $item['amount'];
-
-         } elseif (isset($item['id'])) {
-             $sizesid= $item['id'];
-
-             $sizes[] = ['name' => $sizesName, 'amount' => $sizesAmount, 'id'=>$sizesid];
-             $sizesName = null;
-             $sizesAmount = null;
-             $sizesid = null;
-         }
-     }
-
-     foreach ($sizes as $size) {
-         $se=Sizes::where('id', $size['id'])->get();
-
-         foreach ($se as $ses){
-             $ses['name']=$size['name'];
-             $ses['amount']=$size['amount'];
-             $ses->save();
+     foreach ($request->variation as $index => $tri) {
+         if ($index % 2 == 0 && isset($tri['id']) && isset($request->variation[$index + 1]['price'])) {
+             $act =Variation::findOrFail($tri['id']); // Ensure 'id' exists in $tri
+             $act->update([
+                 'price' => $request->variation[$index + 1]['price'],
+             ]);
          }
      }
 

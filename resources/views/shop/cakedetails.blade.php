@@ -254,30 +254,27 @@
                                         border-radius: 4px;
                                     }
                                 </style>
+                                @php
+                                    $values = explode(' | ', $size->value);
+                                    $values1 = explode(' | ', $layer->value);
+                                    $values2 = explode(' | ', $flavor->value);
+                                @endphp
                                 <div class="select-wrapper">
                                     <select name="size" id="layersBy1" class="cormorant-upright-light" >
                                         <option>Choose an option</option>
-                                        @foreach($size as $la)
-                                            <option value="{{$la['name']}}">{{$la['name']}}</option>
+                                        @foreach ($values as $value)
+                                            <option value="{{ $value }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-{{--                        <div class="product-size mb-5">--}}
-{{--                                <label for="color" class="cormorant-upright-bold" style="font-size: 21px">Input Color:</label>--}}
-{{--                                <div class="color-options">--}}
-{{--                                    <input type="text"  placeholder="Enter your color choice" name="color"  class="bo cormorant-upright-light tag" style="font-size: 21px;"/>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
-{{--                        </div>--}}
                             <div class="product-size mb-5">
                                 <label for="layersBy" class="cormorant-upright-bold" >Layers:</label>
                                 <div class="select-wrapper">
                                     <select name="layers" id="layerSelect" class="cormorant-upright-light " >
                                         <option>Choose an option</option>
-                                        @foreach($layer as $layers)
-                                            <option value="{{$layers['name']}}">{{$layers['name']}}</option>
+                                        @foreach ($values1 as $value)
+                                            <option value="{{ $value }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -287,65 +284,68 @@
                             <label for="flavourBy" class="cormorant-upright-bold">Flavour</label>
                             <div class="select-wrapper">
                                 <select name="flavor" id="flavorSelect" class=" cormorant-upright-light tag" >
-
+                                    <option>Choose an option</option>
+                                    @foreach ($values2 as $value)
+                                        <option value="{{ $value }}">{{ $value }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
 
-<script>
-    const layerSelect = document.getElementById('layerSelect');
-    const flavorSelect = document.getElementById('flavorSelect');
+{{--<script>--}}
+{{--    const layerSelect = document.getElementById('layerSelect');--}}
+{{--    const flavorSelect = document.getElementById('flavorSelect');--}}
 
-    function updateFlavorOptions() {
-        const selectedLayers = layerSelect.value;
-        flavorSelect.disabled = false; // Enable flavor selection by default
+{{--    function updateFlavorOptions() {--}}
+{{--        const selectedLayers = layerSelect.value;--}}
+{{--        flavorSelect.disabled = false; // Enable flavor selection by default--}}
 
-        // Clear existing options
-        flavorSelect.innerHTML = '';
+{{--        // Clear existing options--}}
+{{--        flavorSelect.innerHTML = '';--}}
 
-        // Add a default option
-        const defaultOption = document.createElement('option');
-        defaultOption.value = '';
-        defaultOption.text = '-- Select Flavor(s) --';
-        flavorSelect.appendChild(defaultOption);
+{{--        // Add a default option--}}
+{{--        const defaultOption = document.createElement('option');--}}
+{{--        defaultOption.value = '';--}}
+{{--        defaultOption.text = '-- Select Flavor(s) --';--}}
+{{--        flavorSelect.appendChild(defaultOption);--}}
 
-        // Add flavor options based on selected layers
-        if (selectedLayers === "layer 1" || selectedLayers === "Layer 1" ) {
-            const flavors = ['Vanilla ', 'Chocolate', 'Red Velvet', 'Cookies and cream' ]; // Add more flavors here if needed
-            flavors.forEach(flavor => {
-                const option = document.createElement('option');
-                option.value = flavor;
-                option.text = flavor;
-                flavorSelect.appendChild(option);
-            });
-        } else if(selectedLayers === "layer 2" || selectedLayers === "Layer 2"){
-            const flavors = ['Vanilla only ', 'Chocolate only', 'Red Velvet only', 'Cookies and Cream only', 'Vanilla & Chocolate', 'Red Velvet and Cookies and Cream', 'Chocolate and Cookies and Cream', 'Vanilla and Red Velvet', 'Red Velvet and Chocolate', 'Vanilla and Cookies and Cream']; // Add more flavors here if needed
-            flavors.forEach(flavor => {
-                const option = document.createElement('option');
-                option.value = flavor;
-                option.text = flavor;
-                flavorSelect.appendChild(option);
-            });
-        } else if(selectedLayers === "layer 3" || selectedLayers === "Layer 3"){
-            const flavors = ['vanilla,chocolate and red velvet', 'chocolate,  red velvet and cookies and cream',  'vanilla, chocolate and cookies and cream', 'vanilla,  red velvet and cookies and cream']; // Add more flavors here if needed
-            flavors.forEach(flavor => {
-                const option = document.createElement('option');
-                option.value = flavor;
-                option.text = flavor;
-                flavorSelect.appendChild(option);
-            });
-        } else {
-            flavorSelect.disabled = true; // Disable if only 1 layer selected
-        }
-    }
+{{--        // Add flavor options based on selected layers--}}
+{{--        if (selectedLayers === "1 layers" || selectedLayers === "1 Layers" ) {--}}
+{{--            const flavors = ['Vanilla ', 'Chocolate', 'Red Velvet', 'Cookies and cream' ]; // Add more flavors here if needed--}}
+{{--            flavors.forEach(flavor => {--}}
+{{--                const option = document.createElement('option');--}}
+{{--                option.value = flavor;--}}
+{{--                option.text = flavor;--}}
+{{--                flavorSelect.appendChild(option);--}}
+{{--            });--}}
+{{--        } else if(selectedLayers === "2 layers" || selectedLayers === "2 Layers "){--}}
+{{--            const flavors = ['Vanilla only ', 'Chocolate only', 'Red Velvet only', 'Cookies and Cream only', 'Vanilla & Chocolate', 'Red Velvet and Cookies and Cream', 'Chocolate and Cookies and Cream', 'Vanilla and Red Velvet', 'Red Velvet and Chocolate', 'Vanilla and Cookies and Cream']; // Add more flavors here if needed--}}
+{{--            flavors.forEach(flavor => {--}}
+{{--                const option = document.createElement('option');--}}
+{{--                option.value = flavor;--}}
+{{--                option.text = flavor;--}}
+{{--                flavorSelect.appendChild(option);--}}
+{{--            });--}}
+{{--        } else if(selectedLayers === "3 layers " || selectedLayers === "3 Layers "){--}}
+{{--            const flavors = ['vanilla,chocolate and red velvet', 'chocolate,  red velvet and cookies and cream',  'vanilla, chocolate and cookies and cream', 'vanilla,  red velvet and cookies and cream']; // Add more flavors here if needed--}}
+{{--            flavors.forEach(flavor => {--}}
+{{--                const option = document.createElement('option');--}}
+{{--                option.value = flavor;--}}
+{{--                option.text = flavor;--}}
+{{--                flavorSelect.appendChild(option);--}}
+{{--            });--}}
+{{--        } else {--}}
+{{--            flavorSelect.disabled = true; // Disable if only 1 layer selected--}}
+{{--        }--}}
+{{--    }--}}
 
-    layerSelect.addEventListener('change', updateFlavorOptions);
+{{--    layerSelect.addEventListener('change', updateFlavorOptions);--}}
 
-    // Call updateFlavorOptions initially to set the disabled state
-    updateFlavorOptions();
+{{--    // Call updateFlavorOptions initially to set the disabled state--}}
+{{--    updateFlavorOptions();--}}
 
-</script>
+{{--</script>--}}
 
 
                             <div class="">
@@ -657,26 +657,36 @@
 
     <script>
         $(document).ready(function() {
-            $('#layersBy1').change(function() {
-                var selectedValue = $(this).val();
+            $('#flavorSelect').change(function() {
+                var sizeValue = $('#layersBy1').val(); // Get the selected size value
+                var layersValue = $('#layerSelect').val(); // Get the selected layers value
+                var flavorValue = $(this).val(); // Get the selected flavor value
+
                 // Show the loading spinner
                 $('#loadingSpinner').show();
-                // Send the selected value to the '/getOptions' route
+
+                // Send the selected values to the '/getsize' route
                 $.ajax({
-                    url: '{{ url('getsize') }}/' + selectedValue,
+                    url: '{{ url('getsize') }}',
                     type: 'GET',
+                    data: {
+                        size: sizeValue,
+                        layers: layersValue,
+                        flavor: flavorValue
+                    },
                     success: function(response) {
                         $('#loadingSpinner').hide();
 
                         // Handle the successful response
-                            var sizePrice = parseInt(response); // Get the selected layer price
-                            var defaultAmount = parseInt(document.getElementById('defaultAmount').value);
-                            var totalAmount = defaultAmount + sizePrice; // Calculate the total amount
+                        var sizePrice = parseInt(response); // Get the selected layer price
+                        // var defaultAmount = parseInt(document.getElementById('defaultAmount').value);
+                        var defaultAmount = 0;
+                        var totalAmount = defaultAmount + sizePrice; // Calculate the total amount
 
                         console.log(totalAmount);
                         console.log(defaultAmount);
                         console.log(sizePrice);
-                            document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
+                        document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
 
                     },
                     error: function(xhr) {
@@ -686,7 +696,6 @@
                 });
             });
         });
-
     </script>
     <script>
         // topperBy

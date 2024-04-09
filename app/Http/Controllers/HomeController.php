@@ -6,6 +6,7 @@ use App\Mail\MailCart;
 use App\Mail\register;
 use App\Models\Address;
 use App\Models\Alert;
+use App\Models\Attribute;
 use App\Models\Cart;
 use App\Models\Categories;
 use App\Models\Cheff;
@@ -20,6 +21,7 @@ use App\Models\Settings;
 use App\Models\Sizes;
 use App\Models\State;
 use App\Models\User;
+use App\Models\Variation;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -155,8 +157,9 @@ function cakedetail($request)
     $product=Products::where('id', $request)->first();
     $product1=Products::where('status', 1)->limit(9)->get();
     $color=Colors::all();
-    $layer=Layers::where('product_id', $product->id)->get();
-    $size=Sizes::where('product_id', $product->id)->get();
+    $layer=Attribute::where('name', 'layers')->first();
+    $size=Attribute::where('name', 'Sizes')->first();
+    $flavor=Attribute::where('name', 'Flavor')->first();
     $layeralert=Alert::where('name', 'layers')->first();
     $addalert=Alert::where('name', 'addition')->first();
     if (Auth::user()) {
@@ -170,7 +173,7 @@ function cakedetail($request)
     $category=Categories::all();
 
     return view('shop.cakedetails', compact('product', 'product1',
-    'cart', 'cartsum', 'category', 'color', 'layer', 'size', 'layeralert', 'addalert'
+    'cart', 'cartsum', 'category', 'color', 'layer', 'size', 'layeralert', 'addalert', 'flavor'
     ));
 
 }
@@ -352,14 +355,25 @@ function dashboard()
             ->get();
         return view('shop.rtb', compact('product', 'category', 'pop'));
     }
-    function getlayer($id)
+    function getlayer()
     {
-        $find=Layers::where('name', $id)->first();
-        return response()->json($find->amount);
+        $find=Attribute::where('name', 'layers')->first();
+        return response()->json($find->value);
     }
-    function getsize($id)
+    function getsize(Request $request)
     {
-        $find=Sizes::where('name', $id)->first();
-        return response()->json($find->amount);
+        $size = $request->input('size');
+        $layers = $request->input('layers');
+        $flavor = $request->input('flavor');
+        $find=Variation::where('attribute_size', $size)
+            ->where('attribute_layer', $layers)
+            ->where('attribute_flavor', $flavor)
+            ->first();
+        return response()->json($find->price);
+    }
+    function getflavor()
+    {
+        $find=Attribute::where('name', 'Flavor')->first();
+        return response()->json($find->value);
     }
 }
