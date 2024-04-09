@@ -348,20 +348,7 @@
 {{--</script>--}}
 
 
-                            <div class="">
-                                <h6 class="cormorant-upright-regular" >
-                                    Additional Information
-                                </h6><br/>
-                                <input type="text"   name="addition"  class="form-control cormorant-upright-light text-center" style="font-size: 21px;"/>
-                            </div>
 
-                            <br/>
-                            <div class="">
-                                <h6 class="cormorant-upright-regular" >
-                                    {!! $addalert->message !!}
-
-                                </h6>
-                            </div>
                             <input type="hidden" id="tPrice" value="0">
                             <br/>
                             <div class="product-size">
@@ -432,6 +419,20 @@
                             <br/>
                             <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="cormorant-upright-light form-control" style="font-size: 21px;" />
                         </div>
+                            <div class="">
+                                <h6 class="cormorant-upright-regular" >
+                                    Additional Information
+                                </h6><br/>
+                                <input type="text"   name="addition"  class="form-control cormorant-upright-light text-center" style="font-size: 21px;"/>
+                            </div>
+
+                            <br/>
+                            <div class="">
+                                <h6 class="cormorant-upright-regular" >
+                                    {!! $addalert->message !!}
+
+                                </h6>
+                            </div>
                             <script>
                                 $(document).ready(function () {
                                     // Function to update flavor options based on selected layers

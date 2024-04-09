@@ -162,6 +162,8 @@ function cakedetail($request)
     $flavor=Attribute::where('name', 'Flavor')->first();
     $layeralert=Alert::where('name', 'layers')->first();
     $addalert=Alert::where('name', 'addition')->first();
+
+//    return $size;
     if (Auth::user()) {
         $cartsum = Cart::where('user_id', Auth::user()->id)->sum('amount');
         $cart=Cart::where('user_id', Auth::user()->id)->get();
