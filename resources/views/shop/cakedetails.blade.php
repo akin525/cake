@@ -378,8 +378,35 @@
                                 <option value="4000" data-wapf-price="4000" data-wapf-pricetype="fixed">Customized Topper (+₦4,000.00)</option>
                                 <option value="1000" data-wapf-price="1000" data-wapf-pricetype="fixed">In-House Happy Birthday Topper (+₦1,000.00)</option>
                             </select>
+
+
                             <div class="cormorant-upright-regular">Please write a short message you would like to see on the Topper. e.g. Mummy at 60, Happy Birthday Baby</div>
 
+                            <br/>
+                            <div class="" id="topperInput" style="display: none;">
+                                <h6 class="cormorant-upright-bold" >Topper Text</h6>
+                                <input type="text" name="topperText" id="topperText" class="form-control cormorant-upright-light text-center"  />
+                                <br/>
+                                <br/>
+
+                            </div>
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#topperBy').change(function() {
+                                            var selectedOption = $(this).find(':selected');
+                                            var price = selectedOption.data('wapf-price');
+
+                                            if (price == '4000') {
+                                                $('#topperInput').show(); // Show the input box if Customized Topper is selected
+                                            } else if(price == '1000'){
+                                                $('#topperInput').show(); // Show the input box if Customized Topper is selected
+
+                                            }else {
+                                                $('#topperInput').hide(); // Hide the input box for other options
+                                            }
+                                        });
+                                    });
+                                </script>
 
                             <div class="product-size">
                                 <label for="layersBy" class="cormorant-upright-bold" ><span>Base Colour of Cake</span></label>
@@ -389,16 +416,16 @@
                             <div class="cormorant-upright-regular">Would you like the Cake in a different colour? Please specify preferred colour and shade. We will try our best to meet your colour preference</div>
 
                             <input type="hidden" name="id" value="{{$product->id}}">
-                        <div class="" id="topperTextSection" style="display: none;">
-                            <h6 class="cormorant-upright-bold" >Topper Text</h6>
-                            <input type="text" name="topperText" id="topperText" class="cormorant-upright-light text-center"  />
-                            <br/>
-                            <div class="alert alert-warning">
-                                <h6 class="cormorant-upright-regular" style="font-size: 21px"><b>
-                                        Please write a short message you would like to see on the Topper. E.g. I love you baby. Daddy Rocks @ 40
-                                    </b></h6>
-                            </div>
-                        </div>
+{{--                        <div class="" id="topperTextSection" style="display: none;">--}}
+{{--                            <h6 class="cormorant-upright-bold" >Topper Text</h6>--}}
+{{--                            <input type="text" name="topperText" id="topperText" class="cormorant-upright-light text-center"  />--}}
+{{--                            <br/>--}}
+{{--                            <div class="alert alert-warning">--}}
+{{--                                <h6 class="cormorant-upright-regular" style="font-size: 21px"><b>--}}
+{{--                                        Please write a short message you would like to see on the Topper. E.g. I love you baby. Daddy Rocks @ 40--}}
+{{--                                    </b></h6>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="product-color mb-2">
                             <label for="ekoCakesCard" class="cormorant-upright-bold" >Add Eko Cakes Greeting Card?</label>
 {{--                            <div class="select-wrapper">--}}
