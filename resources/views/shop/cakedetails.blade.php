@@ -698,6 +698,92 @@
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#layersBy1').change(function() {
+                var sizeValue = $(this).val(); // Get the selected size value
+                var layersValue = $('#layerSelect').val(); // Get the selected layers value
+                var flavorValue = $('#flavorSelect').val(); // Get the selected flavor value
+
+                // Show the loading spinner
+                // $('#loadingSpinner').show();
+
+                // Send the selected values to the '/getsize' route
+                $.ajax({
+                    url: '{{ url('getsize') }}',
+                    type: 'GET',
+                    data: {
+                        size: sizeValue,
+                        layers: layersValue,
+                        flavor: flavorValue
+                    },
+                    success: function(response) {
+                        // $('#loadingSpinner').hide();
+
+                        // Handle the successful response
+                        var sizePrice = parseInt(response); // Get the selected layer price
+                        // var defaultAmount = parseInt(document.getElementById('defaultAmount').value);
+                        var defaultAmount = 0;
+                        var totalAmount = defaultAmount + sizePrice; // Calculate the total amount
+
+                        console.log(totalAmount);
+                        console.log(defaultAmount);
+                        console.log(sizePrice);
+                        document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
+
+                    },
+                    error: function(xhr) {
+                        // Handle any errors
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#layerSelect').change(function() {
+                var sizeValue = $('#layersBy1').val(); // Get the selected size value
+                var layersValue = $(this).val(); // Get the selected layers value
+                var flavorValue = $('#flavorSelect').val(); // Get the selected flavor value
+
+                // Show the loading spinner
+                // $('#loadingSpinner').show();
+
+                // Send the selected values to the '/getsize' route
+                $.ajax({
+                    url: '{{ url('getsize') }}',
+                    type: 'GET',
+                    data: {
+                        size: sizeValue,
+                        layers: layersValue,
+                        flavor: flavorValue
+                    },
+                    success: function(response) {
+                        // $('#loadingSpinner').hide();
+
+                        // Handle the successful response
+                        var sizePrice = parseInt(response); // Get the selected layer price
+                        // var defaultAmount = parseInt(document.getElementById('defaultAmount').value);
+                        var defaultAmount = 0;
+                        var totalAmount = defaultAmount + sizePrice; // Calculate the total amount
+
+                        console.log(totalAmount);
+                        console.log(defaultAmount);
+                        console.log(sizePrice);
+                        document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
+
+                    },
+                    error: function(xhr) {
+                        // Handle any errors
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         // topperBy
 

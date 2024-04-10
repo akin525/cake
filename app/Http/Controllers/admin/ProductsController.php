@@ -128,7 +128,7 @@ class ProductsController
              Attribute::create([
                  'product_id'=>$insert['id'],
                  'name' => $tri['name'],
-                 'value' => $request->attribute[$index + 1]['value'],
+                 'value' => $request->attribute[$index + 1]['value'] ??null,
              ]);
          }
      }
@@ -142,7 +142,7 @@ class ProductsController
              'attribute_size' => $variation['Sizes'],
              'attribute_layer' => $variation['layers'] ?? null,
              'attribute_flavor' => $variation['Flavor'] ?? null,
-             'price' => $variation['price'] ,
+             'price' => $variation['price']  ?? 0,
          ]);
      }
 
