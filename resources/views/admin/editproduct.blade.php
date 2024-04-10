@@ -161,12 +161,14 @@
                             <div class="row mx-n3">
                                 <div class="">
                                     <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase " for="category">Category</label>
-                                    <select class="form-select" id="category" name="category">
-                                        <option value="{{$product->category}}">{{$product->category}}</option>
-                                        @foreach($category as $cat)
-                                            <option value="{{$cat['name']}}">{{$cat['name']}}</option>
-                                        @endforeach
-                                    </select>
+                                    @foreach ($category as $cat)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $cat->name }}" id="category{{ $cat->id }}">
+                                            <label class="form-check-label" for="category{{ $cat->id }}">
+                                                {{ $cat->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 </div>
                                 <div class="mb-5 col-12 px-3">
                                     <label for="tag" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Tags</label>

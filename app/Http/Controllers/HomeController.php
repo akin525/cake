@@ -305,7 +305,7 @@ function mycart()
 
 function category($request)
 {
-    $product=Products::where('category', $request)
+    $product=Products::where([['category', 'like', '%'.$request.'%']])
         ->orderBy('id', 'DESC')
         ->paginate('12');
     $category=Categories::all();

@@ -260,7 +260,7 @@
                                     $values2 = explode(' | ', $flavor->value);
                                 @endphp
                                 <div class="select-wrapper">
-                                    <select name="size" id="layersBy1" class="cormorant-upright-light" >
+                                    <select name="size" id="layersBy1" class="cormorant-upright-light" required>
                                         <option>Choose an option</option>
                                         @foreach ($values as $value)
                                             <option value="{{ $value }}">{{ $value }}</option>
@@ -271,7 +271,7 @@
                             <div class="product-size mb-5">
                                 <label for="layersBy" class="cormorant-upright-bold" >Layers:</label>
                                 <div class="select-wrapper">
-                                    <select name="layers" id="layerSelect" class="cormorant-upright-light " >
+                                    <select name="layers" id="layerSelect" class="cormorant-upright-light " required>
                                         <option>Choose an option</option>
                                         @foreach ($values1 as $value)
                                             <option value="{{ $value }}">{{ $value }}</option>
@@ -283,7 +283,7 @@
                             <div class="product-color mb-2" >
                             <label for="flavourBy" class="cormorant-upright-bold">Flavour</label>
                             <div class="select-wrapper">
-                                <select name="flavor" id="flavorSelect" class=" cormorant-upright-light tag" >
+                                <select name="flavor" id="flavorSelect" class=" cormorant-upright-light tag" required>
                                     <option>Choose an option</option>
                                     @foreach ($values2 as $value)
                                         <option value="{{ $value }}">{{ $value }}</option>
@@ -691,7 +691,7 @@
                 var flavorValue = $(this).val(); // Get the selected flavor value
 
                 // Show the loading spinner
-                $('#loadingSpinner').show();
+                // $('#loadingSpinner').show();
 
                 // Send the selected values to the '/getsize' route
                 $.ajax({
@@ -703,7 +703,7 @@
                         flavor: flavorValue
                     },
                     success: function(response) {
-                        $('#loadingSpinner').hide();
+                        // $('#loadingSpinner').hide();
 
                         // Handle the successful response
                         var sizePrice = parseInt(response); // Get the selected layer price

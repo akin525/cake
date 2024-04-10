@@ -34,7 +34,7 @@ class ProductsController
  }
  function addproduct(Request $request)
  {
-//     return $request;
+//     return response()->json($request, Response::HTTP_BAD_REQUEST);
 // Validate the request
 //     $request->validate([
 //         'tittle' => 'required',
