@@ -1,11 +1,11 @@
 @extends('admin.layouts.sidebar')
-@section('tittle', 'Add-Product Hot')
+@section('tittle', 'Add-Product-Hot')
 @section('content')
     <div class="row mb-9 align-items-center">
         <div class="col-xxl-9">
             <div class="row">
                 <div class="col-sm-6 mb-8 mb-sm-0">
-                    <h2 class="fs-4 mb-0">Add New Product HOt</h2>
+                    <h2 class="fs-4 mb-0">Add New Product-Hot</h2>
                 </div>
 
             </div>
@@ -17,21 +17,21 @@
                 {{ session('errors') }}
             </div>
         @endif
-            @if (session('success'))
+        @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
         <div class="col-xxl-9">
-            <form method="post" class="form-border-1" action="{{route('admin/addproducts')}}" enctype="multipart/form-data">
+            <form method="post" class="form-border-1" action="{{route('admin/addproducts1')}}" enctype="multipart/form-data">
                 @csrf
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="card mb-8 rounded-4">
-                        <div class="card-header p-7 bg-transparent">
-                            <h4 class="fs-18 mb-0 font-weight-500">Basic</h4>
-                        </div>
-                        <div class="card-body p-7">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card mb-8 rounded-4">
+                            <div class="card-header p-7 bg-transparent">
+                                <h4 class="fs-18 mb-0 font-weight-500">Basic</h4>
+                            </div>
+                            <div class="card-body p-7">
                                 <div class="mb-8">
                                     <label for="product_title" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Product title</label>
                                     <input type="text" name="tittle" placeholder="Type here" class="form-control" id="product_title">
@@ -40,6 +40,7 @@
                                     <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Full description</label>
                                     <textarea placeholder="Type here" class="form-control" name="content" id="editor" rows="4"></textarea>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-8">
@@ -60,132 +61,277 @@
                                         </select>
                                     </div>
                                 </div>
-
-                            <div class="card mb-8 rounded-4" id="layers">
-                                <div class="card-header p-7 bg-transparent">
-                                    <h4 class="fs-18px mb-0 font-weight-500">Add Layer</h4>
-                                </div>
-                                <div class="card-body p-7 layer">
-                                    <div class="form-border-1 ">
-                                        <div class="mb-8 ">
-                                            <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Layers</label>
-                                            <input type="text" name="layers[][name]"  class="form-control" placeholder="Layer Name" required>
-                                            <br/>
-                                            <input type="number" name="layers[][amount]"  class="form-control" placeholder="Price" min="0" step="0.01" required>
+                                <div class="card mb-8 rounded-4" id="layers">
+                                    <div class="card-header p-7 bg-transparent">
+                                        <h4 class="fs-18px mb-0 font-weight-500">Add Attribute</h4>
+                                    </div>
+                                    <div class="card-body p-7 layer">
+                                        <div class="form-border-1">
+                                            <div class="mb-8">
+                                                <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Name</label>
+                                                {{--                                            <input type="text" name="attribute[][name]" id="attributeName" class="form-control" placeholder="Name" required>--}}
+                                                <select name="attribute[][name]" id="attributeName" class="form-control">
+                                                    <option>Choose Option</option>
+                                                    @foreach($attribute as $act)
+                                                        <option value="{{$act['name']}}">{{$act['name']}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <br>
+                                                {{--                                            <label>--}}
+                                                <textarea name="attribute[][value]" class="form-control" id="attributeValues" placeholder="Enter options for customer to choose from f.e, Blue, or Large , Use | to separate different options."></textarea>
+                                                {{--                                            </label>--}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <button type="button" class="btn btn-primary" id="add-layer">Add layer</button>
+                                <button type="button" class="btn btn-primary" id="add-layer">Add New</button>
+                                <button type="button" class="btn btn-danger" onclick="generateVariations()">Generate Variations</button>
 
-                            <script>
-                                document.getElementById('add-layer').addEventListener('click', function () {
-                                    var variationTemplate = document.querySelector('.layer').cloneNode(true);
-                                    document.getElementById('layers').appendChild(variationTemplate);
-                                });
-                            </script>
-                            <br/>
-                            <br/>
+                                <style>
+                                    .variation {
+                                        border: 1px solid #ccc;
+                                        padding: 10px;
+                                        margin-bottom: 10px;
+                                        border-radius: 5px;
+                                    }
 
+                                    .variation label {
+                                        font-weight: bold;
+                                        margin-right: 5px;
+                                    }
 
+                                    .variation input[type="number"] {
+                                        width: 80px;
+                                    }
+                                </style>
+                                <div class="card mb-8 rounded-4" id="variations">
+                                    <div class="card-header p-7 bg-transparent">
+                                        <h4 class="fs-18px mb-0 font-weight-500">Variations</h4>
+                                    </div>
 
-                            <div class="card mb-8 rounded-4" id="sizes">
-                                <div class="card-header p-7 bg-transparent">
-                                    <h4 class="fs-18px mb-0 font-weight-500">Add Size</h4>
-                                </div>
-                                <div class="card-body p-7 size">
-                                    <div class="form-border-1 ">
-                                        <div class="mb-8 ">
-                                            <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Size</label>
-                                            <input type="text" name="sizes[][name]"  class="form-control" placeholder="size Name" required>
-                                            <br/>
-                                            <input type="number" name="sizes[][amount]"  class="form-control" placeholder="Price" min="0" step="0.01" required>
-                                        </div>
+                                    <div class="card-body p-7 layer" id="variationContainer">
+                                        <!-- Variations will be displayed here -->
+                                    </div>
+                                    <div class="card-body p-7 layer" id="allvariationContainer" style="display: block">
+                                        <!-- Variations will be displayed here -->
                                     </div>
                                 </div>
-                            </div>
-                            <button type="button" class="btn btn-primary" id="add-size">Add Size</button>
 
-                            <script>
-                                document.getElementById('add-size').addEventListener('click', function () {
-                                    var variationTemplate = document.querySelector('.size').cloneNode(true);
-                                    document.getElementById('sizes').appendChild(variationTemplate);
-                                });
-                            </script>
-                            <br/>
+                                <script>
+                                    function generateVariations() {
+                                        var attributeNameElements = document.getElementsByName('attribute[][name]');
+                                        var attributeValueElements = document.getElementsByName('attribute[][value]');
 
-                            <div class="mb-8">
-                                    <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Addition Information</label>
-                                    <textarea placeholder="Type here" class="form-control" name="addition" rows="4"></textarea>
-                                </div>
-{{--                                <label class="form-check mb-5" for="make-template">--}}
-{{--                                    <input class="form-check-input" type="checkbox" value id="make-template">--}}
-{{--                                    <span class="form-check-label"> Make a template </span>--}}
-{{--                                </label>--}}
-                        </div>
-                    </div>
-                    <div class="card mb-8 rounded-4">
-                        <div class="card-header p-7 bg-transparent">
-                            <h4 class="fs-18px mb-0 font-weight-500">Shipping</h4>
-                        </div>
-                        <div class="card-body p-7">
-                            <form class="form-border-1">
+                                        var variations = [];
+                                        for (var i = 0; i < attributeNameElements.length; i++) {
+                                            var attributeName = attributeNameElements[i].value;
+                                            var attributeValues = attributeValueElements[i].value.split('|').map(value => value.trim());
+                                            variations.push({
+                                                name: attributeName,
+                                                values: attributeValues
+                                            });
+                                        }
+
+                                        var allCombinations = getAllCombinations(variations);
+                                        displayVariations(allCombinations);
+                                    }
+
+                                    function getAllCombinations(attributes) {
+                                        var combinations = [];
+                                        var helper = function (current, remaining) {
+                                            if (remaining.length === 0) {
+                                                combinations.push(current);
+                                            } else {
+                                                var nextAttribute = remaining[0];
+                                                for (var i = 0; i < nextAttribute.values.length; i++) {
+                                                    helper(current.concat({ name: nextAttribute.name, value: nextAttribute.values[i] }), remaining.slice(1));
+                                                }
+                                            }
+                                        };
+                                        helper([], attributes);
+                                        return combinations;
+                                    }
+
+                                    function displayVariations(variations) {
+                                        var variationContainer = document.getElementById('variationContainer');
+                                        variationContainer.innerHTML = ''; // Clear previous variations
+
+                                        variations.forEach(function (variation, index) {
+                                            var variationElement = document.createElement('div');
+                                            variationElement.classList.add('mb-8');
+                                            variationElement.innerHTML = '<strong>Variation ' + (index + 1) + ':</strong> ';
+
+                                            variation.forEach(function (attribute) {
+                                                variationElement.innerHTML += '<strong>' + attribute.name + ': </strong>' + attribute.value + ' ';
+                                                var nameInput = document.createElement('input');
+                                                nameInput.type = 'hidden';
+                                                nameInput.name = 'variation_attributes[' + index + '][' + attribute.name + ']'; // Name for the variation attribute input
+                                                nameInput.value = attribute.value;
+                                                variationElement.appendChild(nameInput);
+                                            });
+
+                                            var priceInput = document.createElement('input');
+                                            priceInput.type = 'number';
+                                            priceInput.name = 'variation_attributes[' + index + '][price]'; // Name for the variation price input
+                                            priceInput.value = '0';
+                                            priceInput.onchange = function () {
+                                                updatePrice(index, this.value);
+                                            };
+
+                                            variationElement.appendChild(document.createElement('br'));
+                                            variationElement.appendChild(document.createTextNode('Price: ₦'));
+                                            variationElement.appendChild(priceInput);
+
+                                            variationContainer.appendChild(variationElement);
+
+                                        });
+                                    }
+
+                                    function updatePrice(index, price) {
+                                        // Implement price update logic here
+                                        console.log('Variation ' + (index + 1) + ' price updated to: ₦' + price);
+                                    }
+                                </script>
+                                <script>
+                                    document.getElementById('add-layer').addEventListener('click', function () {
+                                        var variationTemplate = document.querySelector('.layer').cloneNode(true);
+                                        document.getElementById('layers').appendChild(variationTemplate);
+                                    });
+                                </script>
+
+
+
+                                <br/>
+                                <br/>
+
+
+
+                                {{--                            <div class="card mb-8 rounded-4" id="sizes">--}}
+                                {{--                                <div class="card-header p-7 bg-transparent">--}}
+                                {{--                                    <h4 class="fs-18px mb-0 font-weight-500">Add Size</h4>--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="card-body p-7 size">--}}
+                                {{--                                    <div class="form-border-1 ">--}}
+                                {{--                                        <div class="mb-8 ">--}}
+                                {{--                                            <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Size</label>--}}
+                                {{--                                            <input type="text" name="sizes[][name]"  class="form-control" placeholder="size Name" required>--}}
+                                {{--                                            <br/>--}}
+                                {{--                                            <input type="number" name="sizes[][amount]"  class="form-control" placeholder="Price" min="0" step="0.01" required>--}}
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                            </div>--}}
+                                {{--                            <button type="button" class="btn btn-primary" id="add-size">Add Size</button>--}}
+
+                                {{--                            <script>--}}
+                                {{--                                document.getElementById('add-size').addEventListener('click', function () {--}}
+                                {{--                                    var variationTemplate = document.querySelector('.size').cloneNode(true);--}}
+                                {{--                                    document.getElementById('sizes').appendChild(variationTemplate);--}}
+                                {{--                                });--}}
+                                {{--                            </script>--}}
+                                <br/>
+
                                 <div class="mb-8">
-                                    <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Shipping fees</label>
-                                    <input type="number" placeholder="NGN" name="fee" class="form-control" id="shipping-fee">
+                                    <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Addition Information</label>
+                                    <textarea placeholder="Type here" class="form-control" id="editor" name="addition" rows="4"></textarea>
                                 </div>
-                            </form>
+                                {{--                                <label class="form-check mb-5" for="make-template">--}}
+                                {{--                                    <input class="form-check-input" type="checkbox" value id="make-template">--}}
+                                {{--                                    <span class="form-check-label"> Make a template </span>--}}
+                                {{--                                </label>--}}
+                            </div>
+                        </div>
+                        <div class="card mb-8 rounded-4">
+                            <div class="card-header p-7 bg-transparent">
+                                <h4 class="fs-18px mb-0 font-weight-500">Shipping</h4>
+                            </div>
+                            <div class="card-body p-7">
+                                <form class="form-border-1">
+                                    <div class="mb-8">
+                                        <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Shipping fees</label>
+                                        <input type="number" placeholder="NGN" name="fee" class="form-control" id="shipping-fee">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card mb-8 rounded-4">
-                        <div class="card-header p-7 bg-transparent">
-                            <h4 class="fs-18px mb-0 font-weight-500">Media</h4>
-                        </div>
-                        <div class="card-body p-7">
-                            <div class="input-upload">
-                                <div class="mb-7">
-                                    <img src="https://templates.g5plus.net/glowing-bootstrap-5/assets/images/dashboard/upload.svg" width="102" class="d-block mx-auto" alt>
-                                </div>
-                                <input name="image" class="form-control"  id="file-input" type="file">
+                    <style>
+                        #image-preview {
+                            max-width: 300px;
+                            max-height: 300px;
+                        }
+                    </style>
+                    <div class="col-lg-4">
+                        <div class="card mb-8 rounded-4">
+                            <div class="card-header p-7 bg-transparent">
+                                <h4 class="fs-18px mb-0 font-weight-500">Media</h4>
                             </div>
-                            <div class="card card-body"  id="image-preview"></div>
+                            <div class="card-body p-7">
+                                <div class="input-upload">
+                                    <div class="mb-7">
+                                        <img src="https://templates.g5plus.net/glowing-bootstrap-5/assets/images/dashboard/upload.svg" width="102" class="d-block mx-auto" alt>
+                                    </div>
+                                    <input name="image" class="form-control" id="file-input" type="file">
+                                </div>
 
+
+                                <div class="card card-body" id="image-preview"></div>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="card mb-8 rounded-4">
-                        <div class="card-header p-7 bg-transparent">
-                            <h4 class="fs-18px mb-0 font-weight-500">Organization</h4>
-                        </div>
-                        <div class="card-body p-7">
-                            <div class="row mx-n3">
-                                <div class="">
-                                    <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase " for="category">Category</label>
-                                    <select class="form-select" id="category" name="category">
-                                        <option>Select Category</option>
-                                        @foreach($category as $cat)
-                                            <option value="{{$cat['name']}}">{{$cat['name']}}</option>
+                        <div class="card mb-8 rounded-4">
+                            <div class="card-header p-7 bg-transparent">
+                                <h4 class="fs-18px mb-0 font-weight-500">Organization</h4>
+                            </div>
+                            <div class="card-body p-7">
+                                <div class="row mx-n3">
+                                    <div class="">
+                                        <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase " for="category">Category</label>
+                                        @foreach ($category as $cat)
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $cat->name }}" id="category{{ $cat->id }}">
+                                                <label class="form-check-label" for="category{{ $cat->id }}">
+                                                    {{ $cat->name }}
+                                                </label>
+                                            </div>
                                         @endforeach
-                                    </select>
-                                </div>
-                                <div class="mb-5 col-12 px-3">
-                                    <label for="tag" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Tags</label>
-                                    <input type="text" class="form-control" id="tag">
-                                </div>
-                                <div class="mb-5 col-12 px-3">
-                                <button type="submit" class="btn btn-primary">
-                                        Publish
-                                </button>
+                                    </div>
+                                    <div class="mb-5 col-12 px-3">
+                                        <label for="tag" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Tags</label>
+                                        <input type="text" class="form-control" id="tag">
+                                    </div>
+                                    <div class="mb-5 col-12 px-3">
+                                        <button type="submit" class="btn btn-primary">
+                                            Publish
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </form>
         </div>
     </div>
+
+
+    {{--    <label>Variations:</label>--}}
+    {{--    <div id="variations">--}}
+    {{--        <div class="variation">--}}
+    {{--            <input type="text" name="variations[][name]" placeholder="Variation Name" required>--}}
+    {{--            <input type="number" name="variations[][price]" placeholder="Price" min="0" step="0.01" required>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
+    {{--    <button type="button" id="add-variation">Add Variation</button>--}}
+
+
+
+    {{--    <script>--}}
+    {{--        document.getElementById('add-variation').addEventListener('click', function () {--}}
+    {{--            var variationTemplate = document.querySelector('.variation').cloneNode(true);--}}
+    {{--            document.getElementById('variations').appendChild(variationTemplate);--}}
+    {{--        });--}}
+    {{--    </script>--}}
     <script>
         document.getElementById('file-input').addEventListener('change', function(event) {
             var file = event.target.files[0];
@@ -204,5 +350,6 @@
             reader.readAsDataURL(file);
         });
     </script>
+
 
 @endsection
