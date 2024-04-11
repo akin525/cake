@@ -223,15 +223,15 @@ class ProductsController
      // Update the product
      $product->update($validatedData);
 
-     foreach ($request->attribute as $index => $tri) {
-         if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
-             $act = Attribute::findOrFail($tri->id);
-             $act->update([
-                 'name' => $tri['name'],
-                 'value' => $request->attribute[$index + 1]['value'],
-             ]);
-         }
-     }
+//     foreach ($request->attribute as $index => $tri) {
+//         if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
+//             $act = Attribute::findOrFail($tri->id);
+//             $act->update([
+//                 'name' => $tri['name'],
+//                 'value' => $request->attribute[$index + 1]['value'],
+//             ]);
+//         }
+//     }
 
 
      foreach ($request->variation as $index => $tri) {
