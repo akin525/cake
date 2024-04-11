@@ -59,7 +59,7 @@ class ProductsController
          'quantity' => 1,
          'addition' => $request->input('addition') ?? null,
          'image' => $cover,
-         'category' => $request->input('categories'),
+         'category' => $request->input('categories[]'),
          'status' => 1,
          'fee' => $request->input('fee') ?? 0,
      ]);
