@@ -157,11 +157,16 @@ function cakedetail($request)
     $product=Products::where('id', $request)->first();
     $product1=Products::where('status', 1)->limit(9)->get();
     $color=Colors::all();
-    $layer=Attribute::where('name', 'layers')->first();
-    $size=Attribute::where('name', 'Sizes')->first();
-    $flavor=Attribute::where('name', 'Flavor')->first();
-    $layeralert=Alert::where('name', 'layers')->first();
-    $addalert=Alert::where('name', 'addition')->first();
+    $layer=Attribute::where('product_id', $product->id)
+        ->where('name', 'layers')->first();
+    $size=Attribute::where('product_id', $product->id)
+        ->where('name', 'Sizes')->first();
+    $flavor=Attribute::where('product_id', $product->id)
+        ->where('name', 'Flavor')->first();
+    $layeralert=Alert::where('product_id', $product->id)
+        ->where('name', 'layers')->first();
+    $addalert=Alert::where('product_id', $product->id)
+        ->where('name', 'addition')->first();
 
 //    return $size;
     if (Auth::user()) {
