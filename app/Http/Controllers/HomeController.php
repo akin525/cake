@@ -165,8 +165,7 @@ function cakedetail($request)
         ->where('name', 'Flavor')->first();
     $layeralert=Alert::where('product_id', $product->id)
         ->where('name', 'layers')->first();
-    $addalert=Alert::where('product_id', $product->id)
-        ->where('name', 'addition')->first();
+    $addalert=Alert::where('name', 'addition')->first();
 
 //    return $size;
     if (Auth::user()) {
