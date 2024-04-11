@@ -398,10 +398,7 @@
 
                                             if (price == '4000') {
                                                 $('#topperInput').show(); // Show the input box if Customized Topper is selected
-                                            } else if(price == '1000'){
-                                                $('#topperInput').show(); // Show the input box if Customized Topper is selected
-
-                                            }else {
+                                            } else {
                                                 $('#topperInput').hide(); // Hide the input box for other options
                                             }
                                         });
