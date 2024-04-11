@@ -166,6 +166,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/attribute', [\App\Http\Controllers\admin\CreateAttributeController::class, 'index'])->name('admin/attribute');
     Route::post('admin/attribute', [\App\Http\Controllers\admin\CreateAttributeController::class, 'createattribute'])->name('admin/attribute');
 
+    Route::get('admin/delete/{id}', [ProductsController::class, 'destroyproduct'])->name('admin/delete');
 });
     require __DIR__.'/auth.php';
 

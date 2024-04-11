@@ -278,13 +278,14 @@ class ProductsController
         // Find the product by ID
         $product = Products::findOrFail($id);
 
+        $attribute=Attribute::where('product_id', $product->id)->delete();
+        $variation=Variation::where('attribute_id', $product->id)->delete();
         // Delete the product
         $product->delete();
 
         return response()->json([
             'status' => 'success',
             'message' => 'Product deleted successfully',
-            'product' => $product
         ]);
     }
 }

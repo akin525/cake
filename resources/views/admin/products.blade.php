@@ -16,7 +16,9 @@
             </a>
         </div>
     </div>
-
+    <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
     <div class="card mb-4 rounded-4 p-7">
         <div class="card-header bg-transparent px-0 pt-0 pb-7">
             <div class="row align-items-center justify-content-between">
@@ -72,7 +74,7 @@
                         <td class="text-center">
                             <div class="d-flex flex-nowrap justify-content-center">
                                 <a href="{{route('admin/editproduct', $products['id'])}}" class="btn btn-primary py-4 px-5 btn-xs fs-13px me-4"><i class="far fa-pen me-2"></i> Edit</a>
-                                <a href="#" class="btn btn-outline-primary btn-hover-bg-danger btn-hover-border-danger btn-hover-text-light py-4 px-5 fs-13px btn-xs me-4"><i class="far fa-trash me-2"></i> Delete</a>
+                                <button type="button" value="{{$products['id']}}" class="btn delete-user-btn btn-outline-primary btn-hover-bg-danger btn-hover-border-danger btn-hover-text-light py-4 px-5 fs-13px btn-xs me-4"><i class="far fa-trash me-2"></i> Delete</button>
                             </div>
                         </td>
                     @empty
@@ -89,4 +91,69 @@
            {{$product->links()}}
         </ul>
     </nav>
+
+    <script>
+        $(document).ready(function () {
+            $('.delete-user-btn').click(function () {
+                var selectedValue = $(this).val();
+                // Send the selected value to the '/getOptions' route
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'Do you want to delete this product',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // The user clicked "Yes", proceed with the action
+                        // Add your jQuery code here
+                        // For example, perform an AJAX request or update the page content
+                        $('#loadingSpinner').show();
+                        $.ajax({
+                            url: '{{ url('admin/delete') }}/' + selectedValue,
+                            type: 'GET',
+                            success: function (response) {
+                                // Handle the success response here
+                                $('#loadingSpinner').hide();
+
+                                console.log(response);
+                                // Update the page or perform any other actions based on the response
+
+                                if (response.status == 'success') {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Success',
+                                        text: response.message
+                                    }).then(() => {
+                                        location.reload(); // Reload the page
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'info',
+                                        title: 'Pending',
+                                        text: response.message
+                                    });
+                                    // Handle any other response status
+                                }
+                            },
+                            error: function (xhr) {
+                                $('#loadingSpinner').hide();
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'fail',
+                                    text: xhr.responseText
+                                });
+                                // Handle any errors
+                                console.log(xhr.responseText);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
 @endsection
