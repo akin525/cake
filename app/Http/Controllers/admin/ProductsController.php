@@ -208,15 +208,15 @@ class ProductsController
  {
 //     return response()->json($request,  Response::HTTP_BAD_REQUEST);
 
-     $validatedData = $request->validate([
-         'name' => 'required|string|max:255',
-         'category' => 'required|string|max:255',
-         'price' => 'required|numeric|min:0',
-         'cprice' => 'required|numeric|min:0',
-         'fee' => 'required|numeric|min:0',
-         'description' => 'nullable|string',
-
-     ]);
+//     $validatedData = $request->validate([
+//         'name' => 'required|string|max:255',
+//         'category' => 'required|string|max:255',
+//         'price' => 'required|numeric|min:0',
+//         'cprice' => 'required|numeric|min:0',
+//         'fee' => 'required|numeric|min:0',
+//         'description' => 'nullable|string',
+//
+//     ]);
 
 
      $product = Products::findOrFail($request->id);
