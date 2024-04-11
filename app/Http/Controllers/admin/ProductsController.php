@@ -84,7 +84,7 @@ class ProductsController
                  'attribute_size' => $variation['Sizes'],
                  'attribute_layer' => $variation['layers'] ?? null,
                  'attribute_flavor' => $variation['Flavor'] ?? null,
-                 'price' => $variation['price'] ,
+                 'price' => $variation['price'] ??0  ,
              ]);
          }
 
