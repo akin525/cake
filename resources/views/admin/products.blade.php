@@ -75,7 +75,7 @@
                             <div class="d-flex flex-nowrap justify-content-center">
                                 <a href="{{route('admin/editproduct', $products['id'])}}" class="btn btn-primary py-4 px-5 btn-xs fs-13px me-4"><i class="far fa-pen me-2"></i> Edit</a>
                                 <button type="button" value="{{$products['id']}}" class="btn delete-user-btn btn-outline-primary btn-hover-bg-danger btn-hover-border-danger btn-hover-text-light py-4 px-5 fs-13px btn-xs me-4"><i class="far fa-trash me-2"></i> Delete</button>
-                                <button type="button" value="{{$products['id']}}" class="btn  btn-outline-primary btn-hover-bg-danger btn-hover-border-danger btn-hover-text-light py-4 px-5 fs-13px btn-xs me-4"><i class="far fa-copy me-2"></i> Duplicate</button>
+                                <a href="{{route('admin/duplicateproduct', $products['id'])}}"  class="btn  btn-outline-primary btn-hover-bg-danger btn-hover-border-danger btn-hover-text-light py-4 px-5 fs-13px btn-xs me-4"><i class="far fa-copy me-2"></i> Duplicate</a>
                             </div>
                         </td>
                     @empty

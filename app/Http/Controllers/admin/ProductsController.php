@@ -75,7 +75,6 @@ class ProductsController
          }
      }
 
-//     $collectionFromArray = collect($request->variation_attributes);
 
      $act=Attributes::all();
          foreach ($request['variation_attributes'] as $variation) {
@@ -184,6 +183,19 @@ class ProductsController
      return redirect('admin/addproduct2')->with('success', $mg);
 
  }
+ function duplicateproduct($request)
+ {
+     $product=Products::where('id', $request)->first();
+     $category=Categories::all();
+     $attribute=Attribute::where('product_id', $product->id)->get();
+     $variation=Variation::where('attribute_id', $product->id)->get();
+     $attributes=Attribute::all();
+     $size=Sizes::where('product_id', $product->id)->get();
+     $layer=Layers::where('product_id', $product->id)->get();
+     return view('admin.duplicateproduct', compact('product',
+         'category', 'attribute', 'variation', 'size','attributes', 'layer'));
+ }
+
  function editproduct($request)
  {
      $product=Products::where('id', $request)->first();
@@ -248,6 +260,91 @@ class ProductsController
          'message' => 'Product updated successfully',
          'product' => $product,
      ]);
+ }
+ function duplicateupdateproduct(Request $request)
+ {
+//     return response()->json($request,  Response::HTTP_BAD_REQUEST);
+
+     $validatedData = $request->validate([
+         'name' => 'required|string|max:255',
+         'price' => 'required|numeric|min:0',
+         'cprice' => 'required|numeric|min:0',
+         'fee' => 'required|numeric|min:0',
+         'description' => 'nullable|string',
+
+     ]);
+
+
+     $cover = Storage::put('cover', $request->file('image'));
+
+// Create the product
+     $insert = Products::create([
+         'name' => $request->input('name'),
+         'description' => $request->input('description')?? null,
+         'price' => $request->input('price') ?? 0,
+         'cprice' => $request->input('cprice') ?? 0,
+         'quantity' => 1,
+         'addition' => $request->input('addition') ?? null,
+         'image' => $cover,
+         'category' => $request->input('categories[]'),
+         'status' => 1,
+         'fee' => $request->input('fee') ?? 0,
+     ]);
+
+// Handle product variations
+     foreach ($request->attribute as $index => $tri) {
+         if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
+             Attribute::create([
+                 'product_id'=>$insert['id'],
+                 'name' => $tri['name'],
+                 'value' => $request->attribute[$index + 1]['value'],
+             ]);
+         }
+     }
+
+//     $collectionFromArray = collect($request->variation_attributes);
+
+     $variationsArray =$request['variation'];
+
+// Define an array to store variations temporarily
+     $currentVariation = [];
+
+// Iterate through the variations array
+     foreach ($variationsArray as $variationData) {
+         // Check if the attribute is present and add it to the current variation
+         if (isset($variationData['id'])) {
+             $currentVariation[$variationData['id']] = $variationData['price'] ?? 0;
+         } elseif (isset($variationData['Sizes'])) {
+             $currentVariation['Sizes'] = $variationData['Sizes'];
+         } elseif (isset($variationData['layers'])) {
+             $currentVariation['layers'] = $variationData['layers'];
+         } elseif (isset($variationData['Flavor'])) {
+             $currentVariation['Flavor'] = $variationData['Flavor'];
+         }
+
+         // If the current variation is complete (contains all required attributes), insert it into the database
+         if (count($currentVariation) == 5) {
+             Variation::create([
+                 'attribute_id' => $insert->id,
+                 'attribute_size' => $currentVariation['Sizes'],
+                 'attribute_layer' => $currentVariation['layers'] ?? null,
+                 'attribute_flavor' => $currentVariation['Flavor'] ?? null,
+                 'price' => $currentVariation['price'] ?? 0,
+             ]);
+             // Reset the current variation array
+             $currentVariation = [];
+         }
+     }
+
+// Insert the last variation
+     if (!empty($currentVariation)) {
+         Variation::create($currentVariation);
+     }
+// Redirect with success message
+     $mg = "Product post was successful";
+     return redirect('admin/addproduct')->with('success', $mg);
+
+
  }
  function updateproduct1(Request $request)
  {
