@@ -181,7 +181,7 @@ function confirmpayment(Request $request)
         $or=Order::where('payid', $request->reference)->first();
         $order=Order::where('payid', $request->reference)->get();
         $total=Order::where('payid', $request->reference)->sum('price');
-//        Mail::to($email)->send(new MailOrder($order,  $total, $or));
+        Mail::to($email)->send(new MailOrder($order,  $total, $or, $move));
 
         return  redirect('home')->with('status', 'Payments Successful');
     }

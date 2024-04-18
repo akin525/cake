@@ -16,11 +16,12 @@ class MailOrder extends Mailable
      *
      * @return void
      */
-    public function __construct($order, $total, $or)
+    public function __construct($order, $total, $or, $move)
     {
         $this->order = $order;
         $this->total = $total;
         $this->or = $or;
+        $this->move = $move;
     }
 
     /**
@@ -30,7 +31,7 @@ class MailOrder extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.order', ['order' => $this->order, 'total' => $this->total, 'or'=>$this->or])
+        return $this->markdown('emails.order', ['order' => $this->order, 'total' => $this->total, 'or'=>$this->or, 'move'=>$this->move])
             ->subject('New Order');
     }
 
