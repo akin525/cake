@@ -41,13 +41,10 @@ function updatecategory(Request $request)
     {
         Categories::where('id', $id)->delete();
         $msg="Category delete successful";
-//        return response()->json([
-//            'status'=>'success',
-//            'message'=>$msg,
-//        ]);
-
-        return redirect('admin/category')->with('status', $msg);
-
+        return response()->json([
+            'status'=>'success',
+            'message'=>$msg,
+        ]);
 
 }
 }
