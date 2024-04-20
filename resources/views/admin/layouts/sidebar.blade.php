@@ -384,6 +384,26 @@
                     <div class="row mb-9 align-items-center">
                         @yield('content')
 
+                        @if(Session::has('error'))
+                            <script>
+                                Swal.fire({
+                                    title: 'Ooops..',
+                                    text: '{{ Session::get('error') }}',
+                                    icon: 'warning',
+                                    confirmButtonColor: '#3085d6',
+                                })
+                            </script>
+                        @endif
+                        @if(Session::has('status'))
+                            <script>
+                                Swal.fire({
+                                    title: 'done',
+                                    text: '{{ Session::get('status') }}',
+                                    icon: 'success',
+                                    confirmButtonColor: '#3085d6',
+                                })
+                            </script>
+                        @endif
                     </div>
                 </div>
                 <footer class="pt-6 pb-10 footer-dashboard mt-auto">

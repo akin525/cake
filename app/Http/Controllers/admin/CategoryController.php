@@ -27,8 +27,6 @@ function updatecategory(Request $request)
 {
     $validatedData= $request->validate([
         'name'=>'required',
-        'slug'=>'required',
-        'description'=>'required',
     ]);
     $category=Categories::findOrFail($request->id);
     $category->update($validatedData);
@@ -37,5 +35,19 @@ function updatecategory(Request $request)
         'status' => 'success',
         'message' => 'Category updated successfully',
     ]);
+}
+
+    function detetecategory($id)
+    {
+        Categories::where('id', $id)->delete();
+        $msg="Category delete successful";
+//        return response()->json([
+//            'status'=>'success',
+//            'message'=>$msg,
+//        ]);
+
+        return redirect('admin/category')->with('status', $msg);
+
+
 }
 }

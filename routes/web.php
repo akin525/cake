@@ -170,6 +170,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('admin/duplicateproduct/{id}', [ProductsController::class, 'duplicateproduct'])->name('admin/duplicateproduct');
     Route::post('admin/duplicateproduct1', [ProductsController::class, 'duplicateupdateproduct'])->name('admin/duplicateproduct1');
+
+    Route::post('admin/updatecategory', [CategoryController::class, 'updatecategory'])->name('admin/updatecategory');
+    Route::get('admin/detetcategory/{id}', [CategoryController::class, 'detetecategory'])->name('admin/detetcategory');
 });
     require __DIR__.'/auth.php';
 
