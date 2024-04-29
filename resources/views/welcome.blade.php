@@ -67,7 +67,7 @@
             <!-- Section Title Strat -->
             <div class="section-title-03 text-center max-width-720 mx-auto">
                 <h2 class="section-title-03__title"><span>MAKING CAKE IS ART</span></h2>
-                <p>PLEASE VIEW OUR PRODUCTS BELOW</p>
+                <p style="font-family: Montserrat, sans-serif; font: 30px">PLEASE VIEW OUR PRODUCTS BELOW</p>
 
             </div>
             <!-- Section Title End -->
