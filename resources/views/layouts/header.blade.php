@@ -357,7 +357,7 @@
             </div>
         </div>
         <div class="leftBox text-center">
-            <h6 class="rowdies-bold" style="font-size: 20px">
+            <h6 class="merriweather-bold" >
                 CAKES FOR EVERY LAGOSIAN. CAKES FOR LAGOS<br>
             </h6>
 
@@ -368,32 +368,32 @@
                 <div class="header-menu d-none d-lg-block">
                     <ul class="header-primary-menu header-primary-menu-05 d-flex justify-content-center">
                         <li>
-                            <a href="{{url('/')}}" class="menu-item-link rowdies-bold active"><span>Home</span></a>
+                            <a href="{{url('/')}}" class="menu-item-link merriweather-bold"><span>Home</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" class="menu-item-link  rowdies-bold active"><span>Cakes</span></a>
+                                                    <a href="#" class="menu-item-link  merriweather-bold"><span>Cakes</span></a>
                                                     <ul class="sub-menu">
-                                                        <li><a class="sub-item-link" href="{{route('cakes')}}"><span>All Cakes</span></a></li>
+                                                        <li><a class="sub-item-link merriweather-bold" href="{{route('cakes')}}"><span>All Cakes</span></a></li>
                                                     @isset($category)
                                                         @forelse($category as $cat)
-                                                        <li><a class="sub-item-link" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
+                                                        <li><a class="sub-item-link merriweather-bold" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
                                                         @empty
-                                                            <li><a class="sub-item-link" href="#"><span>Add Category</span></a></li>
+                                                            <li><a class="sub-item-link merriweather-bold" href="#"><span>Add Category</span></a></li>
                                                         @endforelse
                                                         @endisset
                                                     </ul>
                                                 </li>
 
                                                 <li class="position-static">
-                                                    <a class="menu-item-link rowdies-bold active" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>
+                                                    <a class="menu-item-link merriweather-bold" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>
                                                 </li>
                                                 <li class="position-static">
-                                                    <a class="menu-item-link  rowdies-bold active" href="{{route('about')}}"><span>About</span></a>
+                                                    <a class="menu-item-link  merriweather-bold" href="{{route('about')}}"><span>About</span></a>
                                                 </li>
                                                 <li class="position-static">
-                                                    <a class="menu-item-link rowdies-bold active" href="{{route('cart')}}"><span>Cart</span></a>
+                                                    <a class="menu-item-link merriweather-bold" href="{{route('cart')}}"><span>Cart</span></a>
                                                 </li>
-                                                <li><a class="menu-item-link rowdies-bold active" href="#"><span>Contact</span></a></li>
+                                                <li><a class="menu-item-link merriweather-bold" href="#"><span>Contact</span></a></li>
                     </ul>
                 </div>
                 <!-- Header Menu End -->

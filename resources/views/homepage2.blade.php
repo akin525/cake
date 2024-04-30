@@ -195,7 +195,7 @@
                     <!-- Product Item Start -->
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
-                            <h3 class="rowdies-bold" style="font-size: 25px;"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
+                            <h3 class="merriweather-black" style="font-size: 25px;"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
                             <span class="merriweather-bold" style="font-size: 24px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
                         </div>
                         <div class="product-item__image ">
@@ -279,32 +279,32 @@
             <div class="row align-items-center">
                 <div class="">
                     <div class="contact-section_formbg" data-bg-image="">
-                        <h2 class="contact-section_form__title rowdies-bold" style="font-size: 20px">Get in touch</h2>
+                        <h2 class="contact-section_form__title merriweather-black" style="font-size: 20px">Get in touch</h2>
                         <form class="contact-section_form cormorant-upright-regular" id="contact-form" action="" method="post" style="background-color: white">
                             <div class="row">
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input  style="font: 21px" class="form-control rowdies-regular" type="text" name="con_name" placeholder="Name">
+                                        <input  style="font: 21px" class="form-control merriweather-regular" type="text" name="con_name" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input style="font: 21px" class="form-control rowdies-regular" type="email" name="con_email" placeholder="Email">
+                                        <input style="font: 21px" class="form-control merriweather-regular" type="email" name="con_email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input style="font: 21px" class="form-control rowdies-regular" type="text" name="con_phone" placeholder="Phone">
+                                        <input style="font: 21px" class="form-control merriweather-regular" type="text" name="con_phone" placeholder="Phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input style="font: 21px" class="form-control rowdies-regular" type="text" name="con_address" placeholder="Address">
+                                        <input style="font: 21px" class="form-control merriweather-regular" type="text" name="con_address" placeholder="Address">
                                     </div>
                                 </div>
                                 <div class="col-md-12 form-p">
                                     <div class="form-group">
-                                        <textarea style="font: 21px" class="form-control rowdies-regular text-area" name="con_message" placeholder="Message"></textarea>
+                                        <textarea style="font: 21px" class="form-control merriweather-regular text-area" name="con_message" placeholder="Message"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 form-p">
@@ -321,19 +321,19 @@
 
 {{--                <div class="text-center">--}}
 {{--                    <div class="contact-section_content">--}}
-{{--                        <h4 class="contact-section__title rowdies-bold" style="font-size: 25px">Our Contact</h4>--}}
+{{--                        <h4 class="contact-section__title merriweather-black" style="font-size: 25px">Our Contact</h4>--}}
 {{--                        <ul class="contact-section_list">--}}
 {{--                            <li>--}}
 {{--                                <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-phone-2"></i></span>--}}
-{{--                                <span class="contact-section_list__text rowdies-regular" style="font-size: 15px">Phone Number : <span class="cormorant-upright-regular" style="font-size: 15px">08162300183</span></span>--}}
+{{--                                <span class="contact-section_list__text merriweather-regular" style="font-size: 15px">Phone Number : <span class="cormorant-upright-regular" style="font-size: 15px">08162300183</span></span>--}}
 {{--                            </li>--}}
 {{--                            <li>--}}
 {{--                                <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-pin-3-2"></i></span>--}}
-{{--                                <span class="contact-section_list__text rowdies-regular" style="font-size: 15px">Address : <span class="cormorant-upright-regular" style="font-size: 15px">Gbagada 100234 Lagos</span></span>--}}
+{{--                                <span class="contact-section_list__text merriweather-regular" style="font-size: 15px">Address : <span class="cormorant-upright-regular" style="font-size: 15px">Gbagada 100234 Lagos</span></span>--}}
 {{--                            </li>--}}
 {{--                            <li>--}}
 {{--                                <span class="contact-section_list__icon"><i class="lastudioicon lastudioicon-mail"></i></span>--}}
-{{--                                <span class="contact-section_list__text rowdies-regular" style="font-size: 15px">Email Address : <span class="cormorant-upright-regular" style="font-size: 15px">info@admin.com</span></span>--}}
+{{--                                <span class="contact-section_list__text merriweather-regular" style="font-size: 15px">Email Address : <span class="cormorant-upright-regular" style="font-size: 15px">info@admin.com</span></span>--}}
 {{--                            </li>--}}
 {{--                        </ul>--}}
 {{--                    </div>--}}
@@ -352,7 +352,7 @@
 
                 <div class="">
                     <div class="faq-head align-content-center">
-                        <h4 class="faq-head__title text-center rowdies-bold" style="font-size: 20px">FREQUENTLY ASKED QUESTIONS</h4>
+                        <h4 class="faq-head__title text-center merriweather-black" style="font-size: 20px">FREQUENTLY ASKED QUESTIONS</h4>
                         <span class="faq-head__border"></span>
                     </div>
                 </div>
@@ -362,7 +362,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$fa['id']}}" aria-expanded="true" aria-controls="collapseOne">
-                                        <span class="rowdies-regular" style="font-size: 18px">{{$fa['heading']}}</span>
+                                        <span class="merriweather-regular" style="font-size: 18px">{{$fa['heading']}}</span>
                                         <i class="lastudioicon lastudioicon-down-arrow"></i>
                                     </button>
                                 </h2>
