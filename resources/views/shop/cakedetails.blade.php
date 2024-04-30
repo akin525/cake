@@ -588,7 +588,7 @@
                                     <img width="200" src="{{asset('assets/images/eko.png')}}" alt="Image">
                                 </div>
                                 <div class="product-desc-content">
-                                    <h5 class="section-title-10__subtitle">We Love Cake</h5>
+                                    <h5 class="merriweather-light-italic">We Love Cake</h5>
                                     <p class="product-desc-text cormorant-upright-bold">{!! $product->description !!}</p>
                                 </div>
                             </div>

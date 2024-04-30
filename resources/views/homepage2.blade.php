@@ -43,7 +43,7 @@
             font-style: normal;
         }
 
-        .cormorant-upright-bold {
+        .merriweather-bold {
             font-family: "Cormorant Upright", serif;
             font-weight: 700;
             font-style: normal;
@@ -106,7 +106,7 @@
 
     <br/>
     <h6 class="merriweather-light-italic text-center" style="color: black; font-weight: 400; font-size: 38px">We know that <br/> making cake is art</h6>
-{{--    <h3 class="text-center section-title-10__subtitle" style="color: #eda939">Making cake is art</h3>--}}
+{{--    <h3 class="text-center merriweather-light-italic" style="color: #eda939">Making cake is art</h3>--}}
     <hr style="font-weight: 300;"/>
     <h6 class="text-center merriweather-bold" style="color: black" >PLEASE VIEW OUR CATEGORIES</h6>
 {{--    <h5  style="font-family: Great Vibes, cursive;--}}
@@ -127,7 +127,7 @@
                             <img width="100" src="{{asset('cc.jpeg')}}" alt="Category-Image">
                         </a>
                         <div class="category-four_content" style="font: 24px cormorant, serif">
-                            <a href="{{url('cakes')}}" class="category-four_name cormorant-upright-bold">All Cakes</a>
+                            <a href="{{url('cakes')}}" class="category-four_name merriweather-bold">All Cakes</a>
                         </div>
                     </div>
                     <!-- Single Category Four End -->
@@ -140,7 +140,7 @@
                             <img src="{{asset('ca.jpeg')}}" alt="Category-Image">
                         </a>
                         <div class="category-four_content" style="font: 24px cormorant, serif">
-                            <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_name cormorant-upright-bold">Cake For Him</a>
+                            <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_name merriweather-bold">Cake For Him</a>
                         </div>
                     </div>
                     <!-- Single Category Four End -->
@@ -153,7 +153,7 @@
                             <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0837-600x608.jpg" alt="Category-Image">
                         </a>
                         <div class="category-four_content" style="font: 24px cormorant, serif">
-                            <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_name cormorant-upright-bold">Cake For Her</a>
+                            <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_name merriweather-bold">Cake For Her</a>
                         </div>
                     </div>
                     <!-- Single Category Four End -->
@@ -166,7 +166,7 @@
                             <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0703-600x591.jpg" alt="Category-Image">
                         </a>
                         <div class="category-four_content" style="font: 24px cormorant, serif">
-                            <a href="{{url('ready')}}" class="category-four_name cormorant-upright-bold">Ready To Go</a>
+                            <a href="{{url('ready')}}" class="category-four_name merriweather-bold">Ready To Go</a>
                         </div>
                     </div>
                     <!-- Single Category Four End -->
@@ -183,7 +183,7 @@
                 <div class="col-12 text-center">
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
-                        <h6 class="section-title-10__subtitle" style="font-size: 35px"><b>Browse Our Cakes</b></h6>
+                        <h6 class="merriweather-light-italic" style="font-size: 35px"><b>Browse Our Cakes</b></h6>
 {{--                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">--}}
                     </div>
                     <!-- Section Title End -->
@@ -196,7 +196,7 @@
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
                             <h3 class="rowdies-bold" style="font-size: 25px;"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
-                            <span class="cormorant-upright-bold" style="font-size: 24px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                            <span class="merriweather-bold" style="font-size: 24px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
                         </div>
                         <div class="product-item__image ">
                             <a class="item-img image-container" href="{{route('cakedetail', $pro['id'])}}">
@@ -367,7 +367,7 @@
                                     </button>
                                 </h2>
                                 <div id="collapse{{$fa['id']}}" class="accordion-collapse collapse" data-bs-parent="#exampleOne">
-                                    <div class="accordion-body cormorant-upright-bold" style="font-size: 21px">{!! $fa['content'] !!}</div>
+                                    <div class="accordion-body merriweather-bold" style="font-size: 21px">{!! $fa['content'] !!}</div>
                                 </div>
                             </div>
                         @endforeach
