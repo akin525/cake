@@ -105,10 +105,10 @@
     </div>
 
     <br/>
-    <h5 class="merriweather-light-italic text-center" style="color: black; font-weight: 400; font-size: 38px">We know that <br/> making cake is art</h5>
+    <h6 class="merriweather-light-italic text-center" style="color: black; font-weight: 400; font-size: 38px">We know that <br/> making cake is art</h6>
 {{--    <h3 class="text-center section-title-10__subtitle" style="color: #eda939">Making cake is art</h3>--}}
     <hr style="font-weight: 300;"/>
-    <h2 class="text-center merriweather-bold" style="color: black" >PLEASE VIEW OUR CATEGORIES</h2>
+    <h6 class="text-center merriweather-bold" style="color: black" >PLEASE VIEW OUR CATEGORIES</h6>
 {{--    <h5  style="font-family: Great Vibes, cursive;--}}
 {{--    font-weight: 400;--}}
 {{--    font-style: normal;">PLEASE VIEW OUR PRODUCTS BELOW--}}
