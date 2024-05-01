@@ -105,9 +105,9 @@
     </div>
 
     <br/>
-    <h6 class="merriweather-light-italic text-center" style="color: black; font-weight: 400; font-size: 25px">We know that <br/> making cake is art</h6>
+    <h6 class="merriweather-light-italic text-center" style="color: black; font-weight: 400; font-size: 30px">We know that <br/> making cake is art</h6>
 {{--    <h3 class="text-center merriweather-light-italic" style="color: #eda939">Making cake is art</h3>--}}
-    <hr style="font-weight: 300;"/>
+    <hr/>
     <h6 class="text-center merriweather-bold" style="color: black" >PLEASE VIEW OUR CATEGORIES</h6>
 {{--    <h5  style="font-family: Great Vibes, cursive;--}}
 {{--    font-weight: 400;--}}
@@ -183,7 +183,7 @@
                 <div class="col-12 text-center">
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
-                        <h6 class="merriweather-light-italic text-capitalize" style="font-size: 35px"><b>BROWSE OUR CAKES</b></h6>
+                        <h6 class="merriweather-light-italic text-capitalize" style="font-size: 25px"><b>BROWSE OUR CAKES</b></h6>
 {{--                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">--}}
                     </div>
                     <!-- Section Title End -->
@@ -195,8 +195,8 @@
                     <!-- Product Item Start -->
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
-                            <h3 class="merriweather-light-italic" style="font-size: 25px"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
-                            <span class="merriweather-regular-italic" style="font-size: 24px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                            <h3 class="merriweather-light-italic" style="font-size: 20px"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
+                            <span class="merriweather-regular-italic" style="font-size: 20px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
                         </div>
                         <div class="product-item__image ">
                             <a class="item-img image-container" href="{{route('cakedetail', $pro['id'])}}">
@@ -279,7 +279,7 @@
             <div class="row align-items-center">
                 <div class="">
                     <div class="contact-section_formbg" data-bg-image="">
-                        <h2 class="merriweather-light-italic" style="font-size: 35px">Get in touch</h2>
+                        <h2 class="merriweather-light-italic" style="font-size: 25px">Get in touch</h2>
                         <form class="contact-section_form cormorant-upright-regular" id="contact-form" action="" method="post" style="background-color: white">
                             <div class="row">
                                 <div class="col-md-6 form-p">
