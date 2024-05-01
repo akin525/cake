@@ -196,7 +196,7 @@
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
                             <h3 class="merriweather-black" style="font-size: 25px;"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
-                            <span class="merriweather-bold" style="font-size: 24px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                            <span class="merriweather-regular-italic" style="font-size: 24px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
                         </div>
                         <div class="product-item__image ">
                             <a class="item-img image-container" href="{{route('cakedetail', $pro['id'])}}">
