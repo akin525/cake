@@ -656,8 +656,8 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h5 class="sam" style="font-size: 21px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
-                                    <span class="cormorant-upright-regular" style="font-size: 30px">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                    <h5 class="merriweather-light-italic" style="font-size: 20px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
+                                    <span class="merriweather-regular-italic" style="font-size: 20px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
                                 </div>
                             </div>
                             <!-- Product Item End -->
