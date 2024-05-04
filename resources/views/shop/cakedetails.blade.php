@@ -658,7 +658,7 @@
                                 <div class="product-item__content pt-5">
                                     <h5 class="merriweather-light-italic" style="font-size: 20px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
                                     <span class="merriweather-regular-italic" style="font-size: 20px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
-                                </div>
+                                </div>s
                             </div>
                             <!-- Product Item End -->
                         </div>

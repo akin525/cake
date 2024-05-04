@@ -279,7 +279,7 @@
             <div class="row align-items-center">
                 <div class="">
                     <div class="contact-section_formbg" data-bg-image="">
-                        <h2 class="merriweather-light-italic" style="font-size: 25px">Get in touch</h2>
+                        <h2 class="merriweather-light-italic" style="font-size: 25px">GET IN TOUCH</h2>
                         <form class="contact-section_form cormorant-upright-regular" id="contact-form" action="" method="post" style="background-color: white">
                             <div class="row">
                                 <div class="col-md-6 form-p">
