@@ -352,7 +352,7 @@
 
                 <div class="">
                     <div class="faq-head align-content-center">
-                        <h4 class="faq-head__title text-center merriweather-light-italic" style="font-size: 35px">FREQUENTLY ASKED QUESTIONS</h4>
+                        <h4 class="faq-head__title text-center merriweather-light-italic" style="font-size: 25px">FREQUENTLY ASKED QUESTIONS</h4>
                         <span class="faq-head__border"></span>
                     </div>
                 </div>

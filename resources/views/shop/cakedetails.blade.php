@@ -80,7 +80,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="rowdies-bold text-white">Product Details</h1>
+                        <h1 class="merriweather-bold text-white">Product Details</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{url('/')}}">Home</a></li>
                             <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif">
@@ -162,7 +162,7 @@
                     <!-- Product Summery Start -->
                     <div class="product-summery position-relative card-body">
                         <!-- Product Head Start -->
-                        <h5 class="rowdies-bold">{{$product->name}}</h5>
+                        <h5 class="merriweather-light-italic" style="font-size: 20px">{{$product->name}}</h5>
 
                         <div class="product-head mb-3">
                             <!-- Price Start -->
@@ -176,7 +176,7 @@
                             </style>
 
 {{--                            <span class="product-head-price"  style="font-size: 30px "></span>--}}
-                            <input type="text" id="total" class="no-border-input"  style="font-size: 30px "
+                            <input type="text" id="total" class="no-border-input merriweather-regular-italic"  style="font-size: 20px; "
                                    value="₦{{ number_format(intval($product->price * 1))}}">
                             <input type="hidden" id="defaultAmount"
                                    value="{{$product->price}}">
