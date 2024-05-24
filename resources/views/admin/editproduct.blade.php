@@ -66,7 +66,20 @@
                                         </select>
                                     </div>
                                 </div>
-
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-8">
+                                        <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase" for="regular-price">price Range from</label>
+                                        <input placeholder="NGN" name="ramount" type="number" value="{{$product->ramount}}" class="form-control" id="regular-price">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-8">
+                                        <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase" for="promotional-price">price Range to</label>
+                                        <input placeholder="NGN" type="number" name="tamount" value="{{$product->tamount}}" class="form-control" id="promotional-price">
+                                    </div>
+                                </div>
+                            </div>
 
                             @foreach($attribute as $sizes)
                                 <div class="card mb-8 rounded-4" id="layers">

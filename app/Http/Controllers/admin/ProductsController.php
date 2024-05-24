@@ -225,6 +225,8 @@ class ProductsController
      $validatedData = $request->validate([
          'name' => 'required|string|max:255',
          'price' => 'required|numeric|min:0',
+         'tamount' => 'nullable|numeric|min:0',
+         'ramount' => 'nullable|numeric|min:0',
          'cprice' => 'required|numeric|min:0',
          'fee' => 'required|numeric|min:0',
          'description' => 'nullable|string',
@@ -285,6 +287,8 @@ class ProductsController
          'description' => $request->input('description')?? null,
          'price' => $request->input('price') ?? 0,
          'cprice' => $request->input('cprice') ?? 0,
+         'ramount' => $request->input('ramount') ?? null,
+         'tamount' => $request->input('tamount') ?? null,
          'quantity' => 1,
          'addition' => $request->input('addition') ?? null,
          'image' => $cover,
