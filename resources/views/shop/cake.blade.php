@@ -67,7 +67,12 @@
                                 </div>
                                 <div class="product-item__content pt-5">
                                     <h5 class="rowdies-bold" style="font-size: 18px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
-                                    <span class="product-item__price">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                    @if($pro['ramount'] != null)
+                                        <span class="product-item__price fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
+                                        <span class="product-item__price fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
+                                    @else
+                                        <span class="product-item__price fs-4">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                    @endif
                                 </div>
                             </div>
                             <!-- Product Item End -->

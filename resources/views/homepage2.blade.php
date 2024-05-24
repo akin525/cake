@@ -196,7 +196,12 @@
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
                             <h3 class="merriweather-light-italic" style="font-size: 20px"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
-                            <span class="merriweather-regular-italic" style="font-size: 20px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                            @if($pro['ramount'] != null)
+                                <span class="product-item__price fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
+                                <span class="product-item__price fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
+                            @else
+                                <span class="product-item__price fs-4">₦{{number_format(intval($pro['price'] *1))}}</span>
+                            @endif
                         </div>
                         <div class="product-item__image ">
                             <a class="item-img image-container" href="{{route('cakedetail', $pro['id'])}}">

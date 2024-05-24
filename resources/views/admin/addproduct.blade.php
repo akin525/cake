@@ -61,6 +61,21 @@
                                         </select>
                                     </div>
                                 </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-8">
+                                        <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase" for="regular-price">price Range from</label>
+                                        <input placeholder="NGN" name="ramount" type="number" class="form-control" id="regular-price">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-8">
+                                        <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase" for="promotional-price">price Range to</label>
+                                        <input placeholder="NGN" type="number" name="tamount" class="form-control" id="promotional-price">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card mb-8 rounded-4" id="layers">
                                 <div class="card-header p-7 bg-transparent">
                                     <h4 class="fs-18px mb-0 font-weight-500">Add Attribute</h4>
@@ -289,7 +304,7 @@
                                     <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase " for="category">Category</label>
                                     @foreach ($category as $cat)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $cat->name }}" id="category{{ $cat->id }}">
+                                            <input class="form-check-input" type="checkbox" name="categories" value="{{ $cat->name }}" id="category{{ $cat->id }}">
                                             <label class="form-check-label" for="category{{ $cat->id }}">
                                                 {{ $cat->name }}
                                             </label>
