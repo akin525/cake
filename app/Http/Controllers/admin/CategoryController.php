@@ -12,7 +12,6 @@ function createcategory(Request $request)
     $validatedData= $request->validate([
        'name'=>'required',
        'slug'=>'required',
-       'description'=>'required',
    ]);
 
    Categories::create($validatedData);
