@@ -253,11 +253,12 @@
                                         padding: 4px 8px;
                                         border-radius: 4px;
                                     }
+
                                 </style>
                                 @php
-                                    $values = explode(' | ', $size->value);
-                                    $values1 = explode(' | ', $layer->value);
-                                    $values2 = explode(' | ', $flavor->value);
+                                    $values = explode(' | ', $size->value ?? null);
+                                    $values1 = explode(' | ', $layer->value ?? null);
+                                    $values2 = explode(' | ', $flavor->value) ?? null;
                                 @endphp
                                 <div class="select-wrapper">
                                     <select name="size" id="layersBy1" class="cormorant-upright-light" required>
