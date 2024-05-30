@@ -324,6 +324,8 @@ function checkout()
         $checkout=0;
 //        $cart=[];
         $cart = session::get('selected_product', []);
+        $alert=Alert::where('name', '=', 'RTG')->first();
+        $alert1=Alert::where('name', '=','Other')->first();
 
 //        return $cart;
 //            $product = Products::where('id',$cart['id'])->first();
@@ -342,7 +344,7 @@ function checkout()
         $checkout += (float) $amount;
     }
 //    return $checkout;
-    return view('shop.checkout', compact('checkout', 'cart'));
+    return view('shop.checkout', compact('checkout', 'cart', 'alert', 'alert1'));
 }
 function dashboard()
 {

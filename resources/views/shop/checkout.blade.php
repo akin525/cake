@@ -105,12 +105,37 @@
                                 <div class="select-wrapper">
                                 <select  name="time" id="daypart" class="form-field" data-placeholder="">
                                     <option value="blank">Select a delivery time</option>
-                                    <option value="11:30am - 04:00pm">11:30am - 04:00pm OTHER ONLY</option>
-                                    <option value="12:30am - 04:00pm">12:30am - 04:00pm READY TO GO ONLY</option>
+                                    <option value="08:30am - 12:00pm">08:30am - 12:00pm </option>
+                                    <option value="12:00pm - 04:00pm">12:00pm - 04:00pm </option>
+                                    <option value="4:00pm - 8:00pm">4:00pm - 8:00pm </option>
+                                    <option value="12am to 4pm">12am to 4pm READY TO GO ONLY</option>
                                 </select>
                                 </div>
                                 </div>
                             <br/>
+                            <script>
+                                document.getElementById('daypart').addEventListener('change', function() {
+                                    var selectedTime = document.getElementById('daypart').value;
+                                    var now = new Date();
+                                    var currentHour = now.getHours();
+
+                                    if (selectedTime === "12am to 4pm" && currentHour >= 16) {
+                                        Swal.fire({
+                                            title: 'Delivery Notice',
+                                            text: '{{$alert->message}}',
+                                            icon: 'info',
+                                            confirmButtonText: 'OK'
+                                        });
+                                    }else {
+                                        Swal.fire({
+                                            title: 'Delivery Notice',
+                                            text: '{{$alert1->message}}',
+                                            icon: 'info',
+                                            confirmButtonText: 'OK'
+                                        });
+                                    }
+                                });
+                            </script>
 {{--                                <div class="col-sm-12 d-flex flex-wrap gap-6">--}}
 {{--                                    <div class="form-check m-0">--}}
 {{--                                        <input class="form-check-input" type="checkbox" id="create_account">--}}
