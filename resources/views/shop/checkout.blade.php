@@ -126,13 +126,6 @@
                                             icon: 'info',
                                             confirmButtonText: 'OK'
                                         });
-                                    }else {
-                                        Swal.fire({
-                                            title: 'Delivery Notice',
-                                            text: '{{$alert1->message}}',
-                                            icon: 'info',
-                                            confirmButtonText: 'OK'
-                                        });
                                     }
                                 });
                             </script>
