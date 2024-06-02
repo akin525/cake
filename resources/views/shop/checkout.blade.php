@@ -119,7 +119,6 @@
                                     var dd = document.getElementById('today').value;
                                     var now = new Date();
                                     var currentHour = now.getHours();
-                                    const today = new Date();
 
                                     function getFormattedDate() {
                                         const today = new Date();
@@ -132,7 +131,6 @@
 
                                     console.log(getFormattedDate())
                                     console.log(dd);
-                                    console.log(today);
                                     if (selectedTime === "12am to 4pm" && currentHour >= 16) {
                                         Swal.fire({
                                             title: 'Delivery Notice',
@@ -141,7 +139,7 @@
                                             confirmButtonText: 'OK'
                                         });
                                     }
-                                    if (selectedTime === "08:30am - 12:00pm" && getFormattedDate == dd) {
+                                    if (selectedTime === "08:30am - 12:00pm" && getFormattedDate === dd) {
                                         Swal.fire({
                                             title: 'Delivery Notice',
                                             text: '{{$alert1->message}}',
