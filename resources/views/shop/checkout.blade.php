@@ -121,6 +121,16 @@
                                     var currentHour = now.getHours();
                                     const today = new Date();
 
+                                    function getFormattedDate() {
+                                        const today = new Date();
+                                        const year = today.getFullYear();
+                                        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+                                        const day = String(today.getDate()).padStart(2, '0');
+
+                                        return `${year}-${month}-${day}`;
+                                    }
+
+                                    console.log(getFormattedDate())
                                     console.log(dd);
                                     console.log(today);
                                     if (selectedTime === "12am to 4pm" && currentHour >= 16) {
@@ -131,7 +141,7 @@
                                             confirmButtonText: 'OK'
                                         });
                                     }
-                                    if (selectedTime === "08:30am - 12:00pm" && today === dd) {
+                                    if (selectedTime === "08:30am - 12:00pm" && getFormattedDate === dd) {
                                         Swal.fire({
                                             title: 'Delivery Notice',
                                             text: '{{$alert1->message}}',
