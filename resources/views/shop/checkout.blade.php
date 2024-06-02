@@ -139,7 +139,7 @@
                                             confirmButtonText: 'OK'
                                         });
                                     }
-                                    if (selectedTime === "08:30am - 12:00pm" && getFormattedDate === dd) {
+                                    if (selectedTime === "08:30am - 12:00pm" && getFormattedDate() === dd) {
                                         Swal.fire({
                                             title: 'Delivery Notice',
                                             text: '{{$alert1->message}}',
