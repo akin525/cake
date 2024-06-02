@@ -97,7 +97,7 @@
                                 </div>
                             <div class="col">
                                     <label>Delivery Date *</label>
-                                    <input class="form-field" type="date" name="date" placeholder="Choose date" required>
+                                    <input class="form-field" type="date" name="date" id="today" placeholder="Choose date" required>
                                 </div>
                             <h4><b>Delivery Time *</b></h4>
                             <div class="col">
@@ -116,9 +116,13 @@
                             <script>
                                 document.getElementById('daypart').addEventListener('change', function() {
                                     var selectedTime = document.getElementById('daypart').value;
+                                    var dd = document.getElementById('today').value;
                                     var now = new Date();
                                     var currentHour = now.getHours();
+                                    const today = new Date();
 
+                                    console.log(dd);
+                                    console.log(today);
                                     if (selectedTime === "12am to 4pm" && currentHour >= 16) {
                                         Swal.fire({
                                             title: 'Delivery Notice',
@@ -127,6 +131,15 @@
                                             confirmButtonText: 'OK'
                                         });
                                     }
+                                    if (selectedTime === "08:30am - 12:00pm" && today === dd) {
+                                        Swal.fire({
+                                            title: 'Delivery Notice',
+                                            text: '{{$alert1->message}}',
+                                            icon: 'info',
+                                            confirmButtonText: 'OK'
+                                        });
+                                    }
+
                                 });
                             </script>
 {{--                                <div class="col-sm-12 d-flex flex-wrap gap-6">--}}
