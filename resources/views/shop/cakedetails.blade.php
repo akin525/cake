@@ -410,33 +410,46 @@
 
                             <div class="product-size">
                                 <label for="layersBy" class="cormorant-upright-bold" ><span>Base Colour of Cake</span></label>
-                            </div>
+
+                                <style>
+                                    .color-box {
+                                        display: inline-block;
+                                        width: 15px;
+                                        height: 15px;
+                                        margin-right: 5px;
+                                        vertical-align: middle;
+                                    }
+                                </style>
                             <select name="color"  class="form-control  cormorant-upright-light " id="color" >
                                 <option value="no">Choose an option</option>
-                                <option value="White" style="color: white;">White</option>
-                                <option value="purple" style="color: purple;">Purple</option>
-                                <option value="green" style="color: green;">Green</option>
-                                <option value="orange" style="color: orange;">Orange</option>
-                                <option value="brown" style="color: brown;">Brown</option>
-                                <option value="pink" style="color: pink;">Pink</option>
+                                <option value="White" data-color="white">White</option>
+                                <option value="purple" data-color="purple">Purple</option>
+                                <option value="green" data-color="green">Green</option>
+                                <option value="orange" data-color="orange">Orange</option>
+                                <option value="brown" data-color="brown">Brown</option>
+                                <option value="pink" data-color="pink">Pink</option>
                             </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#color').select2({
-                                        templateResult: formatColor,
-                                        templateSelection: formatColor
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#color').select2({
+                                            templateResult: formatColor,
+                                            templateSelection: formatColor
+                                        });
                                     });
-                                });
 
-                                function formatColor(option) {
-                                    if (!option.id) {
-                                        return option.text;
+                                    function formatColor(option) {
+                                        if (!option.id) {
+                                            return option.text;
+                                        }
+                                        var color = $(option.element).data('color');
+                                        var $option = $(
+                                            '<span><span class="color-box" style="background-color: ' + color + ';"></span>' + option.text + '</span>'
+                                        );
+                                        return $option;
                                     }
-                                    var $option = $('<span></span>').text(option.text).css('color', option.element.style.color);
-                                    return $option;
-                                }
-                            </script>
-{{--                            <input type="color" name="color" id="color" class="form-control cormorant-upright-light text-center"  />--}}
+                                </script>
+
+                                {{--                            <input type="color" name="color" id="color" class="form-control cormorant-upright-light text-center"  />--}}
 
                             <div class="cormorant-upright-regular">Would you like the Cake in a different colour? Please specify preferred colour and shade. We will try our best to meet your colour preference</div>
 
