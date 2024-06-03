@@ -409,7 +409,16 @@
                             <div class="product-size">
                                 <label for="layersBy" class="cormorant-upright-bold" ><span>Base Colour of Cake</span></label>
                             </div>
-                            <input type="color" name="color" id="color" class="form-control cormorant-upright-light text-center"  />
+                            <select name="color"  class="form-control  cormorant-upright-light " id="color" >
+                                <option value="no" >Choose an option</option>
+                                <option value="White" >White <span style="color: white"></span></option>
+                                <option value="purple" >purple <span style="color: purple"></span></option>
+                                <option value="green" >green <span style="color: green"></span></option>
+                                <option value="orange" >orange <span style="color: orange"></span></option>
+                                <option value="brown " >brown  <span style="color: brown"></span></option>
+                                <option value="pink " >pink <span style="color: pink"></span></option>
+                            </select>
+{{--                            <input type="color" name="color" id="color" class="form-control cormorant-upright-light text-center"  />--}}
 
                             <div class="cormorant-upright-regular">Would you like the Cake in a different colour? Please specify preferred colour and shade. We will try our best to meet your colour preference</div>
 
