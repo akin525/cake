@@ -410,13 +410,13 @@
                                 <label for="layersBy" class="cormorant-upright-bold" ><span>Base Colour of Cake</span></label>
                             </div>
                             <select name="color"  class="form-control  cormorant-upright-light " id="color" >
-                                <option value="no" >Choose an option</option>
-                                <option value="White" >White <span style="color: white"></span></option>
-                                <option value="purple" >purple <span style="color: purple"></span></option>
-                                <option value="green" >green <span style="color: green"></span></option>
-                                <option value="orange" >orange <span style="color: orange"></span></option>
-                                <option value="brown " >brown  <span style="color: brown"></span></option>
-                                <option value="pink " >pink <span style="color: pink"></span></option>
+                                <option value="no">Choose an option</option>
+                                <option value="White">White <span style="color: white;">White</span></option>
+                                <option value="purple">Purple <span style="color: purple;">Purple</span></option>
+                                <option value="green">Green <span style="color: green;">Green</span></option>
+                                <option value="orange">Orange <span style="color: orange;">Orange</span></option>
+                                <option value="brown">Brown <span style="color: brown;">Brown</span></option>
+                                <option value="pink">Pink <span style="color: pink;">Pink</span></option>
                             </select>
 {{--                            <input type="color" name="color" id="color" class="form-control cormorant-upright-light text-center"  />--}}
 
