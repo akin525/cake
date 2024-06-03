@@ -409,7 +409,7 @@
                             <div class="product-size">
                                 <label for="layersBy" class="cormorant-upright-bold" ><span>Base Colour of Cake</span></label>
                             </div>
-                            <input type="text" name="color" id="color" class="form-control cormorant-upright-light text-center"  />
+                            <input type="color" name="color" id="color" class="form-control cormorant-upright-light text-center"  />
 
                             <div class="cormorant-upright-regular">Would you like the Cake in a different colour? Please specify preferred colour and shade. We will try our best to meet your colour preference</div>
 
