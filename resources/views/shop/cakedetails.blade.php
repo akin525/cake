@@ -411,13 +411,29 @@
                             </div>
                             <select name="color"  class="form-control  cormorant-upright-light " id="color" >
                                 <option value="no">Choose an option</option>
-                                <option value="White">White <span style="color: white;">White</span></option>
-                                <option value="purple">Purple <span style="color: purple;">Purple</span></option>
-                                <option value="green">Green <span style="color: green;">Green</span></option>
-                                <option value="orange">Orange <span style="color: orange;">Orange</span></option>
-                                <option value="brown">Brown <span style="color: brown;">Brown</span></option>
-                                <option value="pink">Pink <span style="color: pink;">Pink</span></option>
+                                <option value="White" style="color: white;">White</option>
+                                <option value="purple" style="color: purple;">Purple</option>
+                                <option value="green" style="color: green;">Green</option>
+                                <option value="orange" style="color: orange;">Orange</option>
+                                <option value="brown" style="color: brown;">Brown</option>
+                                <option value="pink" style="color: pink;">Pink</option>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#color').select2({
+                                        templateResult: formatColor,
+                                        templateSelection: formatColor
+                                    });
+                                });
+
+                                function formatColor(option) {
+                                    if (!option.id) {
+                                        return option.text;
+                                    }
+                                    var $option = $('<span></span>').text(option.text).css('color', option.element.style.color);
+                                    return $option;
+                                }
+                            </script>
 {{--                            <input type="color" name="color" id="color" class="form-control cormorant-upright-light text-center"  />--}}
 
                             <div class="cormorant-upright-regular">Would you like the Cake in a different colour? Please specify preferred colour and shade. We will try our best to meet your colour preference</div>
