@@ -45,7 +45,7 @@
 
         .merriweather-bold {
             font-family: "Cormorant Upright", serif;
-            font-weight: 700;
+            font-weight: 500;
             font-style: normal;
         }
 
@@ -105,10 +105,10 @@
     </div>
 
     <br/>
-    <h6 class="merriweather-light-italic text-center" style="color: black; font-weight: 400; font-size: 30px">We know that <br/> making cake is art</h6>
+    <h6 class="merriweather-light-italic text-center" style="color: black; font-size: 25px">We know that making cake is art</h6>
 {{--    <h3 class="text-center merriweather-light-italic" style="color: #eda939">Making cake is art</h3>--}}
     <hr/>
-    <h6 class="text-center merriweather-bold" style="color: black" >PLEASE VIEW OUR CATEGORIES</h6>
+    <h6 class="text-center merriweather-bold" style="color: black" > VIEW OUR CATEGORIES</h6>
 {{--    <h5  style="font-family: Great Vibes, cursive;--}}
 {{--    font-weight: 400;--}}
 {{--    font-style: normal;">PLEASE VIEW OUR PRODUCTS BELOW--}}
