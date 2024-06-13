@@ -66,12 +66,12 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h5 class="merriweather-bold" style="font-size: 18px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
+                                    <h6 class="merriweather-bold" style="font-size: 15px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h6>
                                     @if($pro['ramount'] != null)
-                                        <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
-                                        <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
+                                        <span class="merriweather-bold ">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
+                                        <span class="merriweather-bold ">₦{{number_format(intval($pro['tamount'] *1))}}</span>
                                     @else
-                                        <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                        <span class="merriweather-bold ">₦{{number_format(intval($pro['price'] *1))}}</span>
                                     @endif
                                 </div>
                             </div>
