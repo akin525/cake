@@ -687,7 +687,7 @@
                         <div class="swiper-slide">
                             <!-- Product Item Start -->
                             <div class="product-item text-center">
-                                <div class="product-item__badge ">Hot</div>
+{{--                                <div class="product-item__badge ">Hot</div>--}}
                                 <div class="product-item__image border w-100">
                                     <a href="{{route('cakedetail', $pro['id'])}}"><img width="350" height="350" src="{{url($pro['image'])}}" alt="Product"></a>
                                     <ul class="product-item__meta">
@@ -703,9 +703,9 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h5 class="merriweather-light-italic" style="font-size: 20px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
-                                    <span class="merriweather-regular-italic" style="font-size: 20px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
-                                </div>s
+                                    <h5 class="merriweather-bold" style="font-size: 20px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
+                                    <span class="merriweather-bold" style="font-size: 20px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                </div>
                             </div>
                             <!-- Product Item End -->
                         </div>

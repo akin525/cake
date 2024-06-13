@@ -47,7 +47,7 @@
                         <div class="col mb-50">
                             <!-- Product Item Start -->
                             <div class="product-item text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
-                                <div class="product-item__badge">Hot</div>
+{{--                                <div class="product-item__badge">Hot</div>--}}
                                 <div class="product-item__image border w-100">
                                     <a href="{{route('cakedetail', $pro['id'])}}"><img width="350" height="350" src="{{$pro['image']}}" alt="Product"></a>
                                     <ul class="product-item__meta">
@@ -66,12 +66,12 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h5 class="rowdies-bold" style="font-size: 18px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
+                                    <h5 class="merriweather-bold" style="font-size: 18px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
                                     @if($pro['ramount'] != null)
-                                        <span class="product-item__price fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
-                                        <span class="product-item__price fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
+                                        <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
+                                        <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
                                     @else
-                                        <span class="product-item__price fs-4">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                        <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['price'] *1))}}</span>
                                     @endif
                                 </div>
                             </div>
