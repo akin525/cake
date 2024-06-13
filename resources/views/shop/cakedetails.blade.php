@@ -405,6 +405,11 @@
                                         });
                                     });
                                 </script>
+                            <style>
+                                .hidden {
+                                    display: none;
+                                }
+                            </style>
 
                             <div class="product-size">
                                 <label for="layersBy" class="cormorant-upright-bold" ><span>Base Colour of Cake</span></label>
@@ -412,28 +417,44 @@
                             <select name="color"  class="form-control  cormorant-upright-light " id="color" >
                                 <option value="no">Choose an option</option>
                                 <option value="White" style="color: white;">White</option>
+                                <option value="black" style="color: black;">Black</option>
+                                <option value="blue" style="color: blue;">Blue</option>
                                 <option value="purple" style="color: purple;">Purple</option>
                                 <option value="green" style="color: green;">Green</option>
                                 <option value="orange" style="color: orange;">Orange</option>
                                 <option value="brown" style="color: brown;">Brown</option>
                                 <option value="pink" style="color: pink;">Pink</option>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#color').select2({
-                                        templateResult: formatColor,
-                                        templateSelection: formatColor
-                                    });
-                                });
+                                <option value="custom">Custom Color</option>
 
-                                function formatColor(option) {
-                                    if (!option.id) {
-                                        return option.text;
+                            </select>
+                            <br/>
+                            <input type="text" id="customColor" name="color" class="hidden form-control " placeholder="Enter custom color"/>
+                            <script>
+                                document.getElementById('color').addEventListener('change', function() {
+                                    var customColorInput = document.getElementById('customColor');
+                                    if (this.value === 'custom') {
+                                        customColorInput.classList.remove('hidden');
+                                    } else {
+                                        customColorInput.classList.add('hidden');
                                     }
-                                    var $option = $('<span></span>').text(option.text).css('color', option.element.style.color);
-                                    return $option;
-                                }
+                                });
                             </script>
+{{--                            <script>--}}
+{{--                                $(document).ready(function() {--}}
+{{--                                    $('#color').select2({--}}
+{{--                                        templateResult: formatColor,--}}
+{{--                                        templateSelection: formatColor--}}
+{{--                                    });--}}
+{{--                                });--}}
+
+{{--                                function formatColor(option) {--}}
+{{--                                    if (!option.id) {--}}
+{{--                                        return option.text;--}}
+{{--                                    }--}}
+{{--                                    var $option = $('<span></span>').text(option.text).css('color', option.element.style.color);--}}
+{{--                                    return $option;--}}
+{{--                                }--}}
+{{--                            </script>--}}
 {{--                            <input type="color" name="color" id="color" class="form-control cormorant-upright-light text-center"  />--}}
 
                             <div class="cormorant-upright-regular">Would you like the Cake in a different colour? Please specify preferred colour and shade. We will try our best to meet your colour preference</div>
@@ -544,8 +565,8 @@
 
                                 <h6 class="cormorant-upright-semibold">Total Price</h6>
                                 <span class="product-head-price"  style="font-size: 20px ">₦</span>
-                                <input type="text" id="totalAmount" class="no-border-input" name="amount" style="font-size: 20px "
-                                       value="">
+                                <input type="text" id="totalAmount" class="no-border-input" name="amount"  style="font-size: 20px "
+                                       value="{{$product->price}}">
                                 <!-- Cart Button Start -->
                                 <div class="cart-btn">
                                     <div class="add-to_cart">
