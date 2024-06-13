@@ -105,7 +105,7 @@
     </div>
 
     <br/>
-    <h6 class="merriweather-light-italic text-center" style="color: black; font-size: 25px">We know that making cake is art</h6>
+    <h5 class="merriweather-bold text-center" style="color: black; font-size: 30px">We know that making cake is art</h5>
 {{--    <h3 class="text-center merriweather-light-italic" style="color: #eda939">Making cake is art</h3>--}}
     <hr/>
     <h6 class="text-center merriweather-bold" style="color: black" > VIEW OUR CATEGORIES</h6>
@@ -183,7 +183,7 @@
                 <div class="col-12 text-center">
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
-                        <h6 class="merriweather-light-italic text-capitalize" style="font-size: 25px"><b>BROWSE OUR CAKES</b></h6>
+                        <h6 class="merriweather-bold text-capitalize" style="font-size: 25px"><b>BROWSE OUR CAKES</b></h6>
 {{--                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">--}}
                     </div>
                     <!-- Section Title End -->
@@ -195,12 +195,12 @@
                     <!-- Product Item Start -->
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
-                            <h3 class="merriweather-light-italic" style="font-size: 20px"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
+                            <h3 class="merriweather-bold" style="font-size: 20px"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
                             @if($pro['ramount'] != null)
-                                <span class="product-item__price fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
-                                <span class="product-item__price fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
+                                <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
+                                <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
                             @else
-                                <span class="product-item__price fs-4">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['price'] *1))}}</span>
                             @endif
                         </div>
                         <div class="product-item__image ">
