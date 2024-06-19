@@ -504,6 +504,16 @@
 
                                 </h6>
                             </div>
+                            <div class="product-color">
+                                <label for="topperBy" class="cormorant-upright-bold" ><span>Include Items</span></label>
+                            </div>
+                            <select name="option"  class="form-control  cormorant-upright-light " id="opt" >
+                                <option value="no" data-wapf-price="0" >Choose an option</option>
+                                @foreach($option as $opt)
+                                    <option value="{{$opt['price']}}" data-wapf-price="{{$opt['price']}}" data-wapf-pricetype="fixed">{{$opt['product']}}</option>
+
+                                @endforeach
+                                 </select>
                             <script>
                                 $(document).ready(function () {
                                     // Function to update flavor options based on selected layers
