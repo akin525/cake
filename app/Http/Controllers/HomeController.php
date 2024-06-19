@@ -14,6 +14,7 @@ use App\Models\Colors;
 use App\Models\FQ;
 use App\Models\Homepage;
 use App\Models\Layers;
+use App\Models\Option;
 use App\Models\Orders;
 use App\Models\Products;
 use App\Models\Rtb;
@@ -165,6 +166,7 @@ function cakedetail($request)
         ->where('name', 'Flavor')->first();
     $layeralert=Alert::where('name', 'layers')->first();
     $addalert=Alert::where('name', 'addition')->first();
+    $option=Option::all();
 
 //    return $size;
     if (Auth::user()) {
@@ -178,7 +180,7 @@ function cakedetail($request)
     $category=Categories::all();
 
     return view('shop.cakedetails', compact('product', 'product1',
-    'cart', 'cartsum', 'category', 'color', 'layer', 'size', 'layeralert', 'addalert', 'flavor'
+    'cart', 'cartsum', 'category', 'color', 'layer', 'size', 'layeralert', 'addalert', 'flavor', 'option'
     ));
 
 }
@@ -187,9 +189,6 @@ function cakedetail($request)
 //
         $validate=$request->validate([
             'id'=>'required',
-            'flavor'=>'required',
-            'size'=>'required',
-            'layers'=>'required',
             'amount'=>'required',
         ]);
 
@@ -200,9 +199,9 @@ function cakedetail($request)
                 'id' => $product->id,
                 'name' => $product->name,
                 'image' => $product->image,
-                'flavor' => $request->flavor,
-                'size' => $request->size,
-                'layers' => $request->layers,
+                'flavor' => $request->flavor ??null,
+                'size' => $request->size ?? null,
+                'layers' => $request->layers ?? null,
                 'amount' => $request->amount,
                 'color' => $request->color ?? null,
                 'topper' => $request->topperText ?? null,
@@ -210,6 +209,7 @@ function cakedetail($request)
                 'addition' => $request->addition ?? null,
                 'card' => $request->card ?? null,
                 'cardtext' => $request->ekoCakesMessage ?? null,
+                'option' => $request->option ?? null,
             ];
             $productDetails1[] = $productDetails;
 

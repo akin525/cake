@@ -176,6 +176,9 @@
                                             <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/addproduct')}}" title="Product Grid">Add Product</a>
                                         </li>
                                         <li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/option')}}" title="Product Grid">Add Product Option</a>
+                                        </li>
+                                        <li class="sidebar-item">
                                             <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/addproduct1')}}" title="Product Grid">Add Product <span class="badge badge-soft-danger">Hots</span></a>
                                         </li>
                                         <li class="sidebar-item">

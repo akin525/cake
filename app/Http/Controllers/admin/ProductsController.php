@@ -6,6 +6,7 @@ use App\Models\Attribute;
 use App\Models\Attributes;
 use App\Models\Categories;
 use App\Models\Layers;
+use App\Models\Option;
 use App\Models\Products;
 use App\Models\Rtb;
 use App\Models\Sizes;
@@ -388,6 +389,29 @@ class ProductsController
         return response()->json([
             'status' => 'success',
             'message' => 'Product deleted successfully',
+        ]);
+    }
+
+    function postoptionindex()
+    {
+        $option=Option::all();
+        return view('admin.option', compact('option'));
+    }
+
+    function postoptionproduct(Request $request)
+    {
+
+       $post= $request->validate([
+            'product'=>'required',
+            'price'=>'required',
+        ]);
+
+
+       $insert=Option::create($post);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Product Option posted',
         ]);
     }
 }

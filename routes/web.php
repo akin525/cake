@@ -176,6 +176,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::post('admin/updatecategory', [CategoryController::class, 'updatecategory'])->name('admin/updatecategory');
     Route::get('admin/detetcategory/{id}', [CategoryController::class, 'detetecategory'])->name('admin/detetcategory');
+
+
+    Route::get('admin/option', [ProductsController::class, 'postoptionindex'])->name('admin/option');
+    Route::post('admin/option', [ProductsController::class, 'postoptionproduct'])->name('admin/option');
 });
     require __DIR__.'/auth.php';
 
