@@ -511,7 +511,7 @@
                             <select name="option"  class="form-control  cormorant-upright-light " id="opt" >
                                 <option value="no" data-wapf-price="0" >Choose an option</option>
                                 @foreach($option as $opt)
-                                    <option value="{{$opt['price']}}" data-wapf-price="{{$opt['price']}}" data-wapf-pricetype="fixed">{{$opt['product']}}</option>
+                                    <option value="{{$opt['price']}}" data-wapf-price="{{$opt['price']}}" data-wapf-pricetype="fixed">{{$opt['product']}} (₦{{$opt['price']}})</option>
 
                                 @endforeach
                                  </select>
