@@ -504,9 +504,10 @@
 
                                 </h6>
                             </div>
-                            <div class="product-color">
-                                <label for="topperBy" class="cormorant-upright-bold" ><span>Include Items</span></label>
-                            </div>
+                            <br/>
+                            <br/>
+                            <h6 class="cormorant-upright-bold" >Include Items</h6>
+
                             <select name="option"  class="form-control  cormorant-upright-light " id="opt" >
                                 <option value="no" data-wapf-price="0" >Choose an option</option>
                                 @foreach($option as $opt)
@@ -877,6 +878,19 @@
             var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
             totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
             document.getElementById('tPrice').value = toppernumber; // Store current layer price for next calculation
+
+
+            document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
+        });
+
+        document.getElementById('opt').addEventListener('change', function() {
+            var optnumber = parseInt(this.value); // Get the selected layer price
+            var defaultAmount = parseInt(document.getElementById('totalAmount').value);
+            var totalAmount = defaultAmount + optnumber; // Calculate the total amount
+
+            var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
+            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
+            document.getElementById('tPrice').value = optnumber; // Store current layer price for next calculation
 
 
             document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
