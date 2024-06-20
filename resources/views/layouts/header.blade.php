@@ -384,9 +384,9 @@
                                                     </ul>
                                                 </li>
 
-                                                <li class="position-static">
-                                                    <a class="menu-item-link merriweather-bold" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>
-                                                </li>
+{{--                                                <li class="position-static">--}}
+{{--                                                    <a class="menu-item-link merriweather-bold" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>--}}
+{{--                                                </li>--}}
                                                 <li class="position-static">
                                                     <a class="menu-item-link  merriweather-bold" href="{{route('about')}}"><span>About</span></a>
                                                 </li>
