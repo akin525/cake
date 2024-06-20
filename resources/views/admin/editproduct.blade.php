@@ -128,7 +128,61 @@
                                 @endforeach
                             </div>
 
-                                <div class="mb-8">
+                            <div class="card-header p-7 bg-transparent">
+                                <h4 class="fs-18px mb-0 font-weight-500">Add Special Items</h4>
+                            </div>
+
+                            @forelse($items as $index => $item)
+                                <div class="item">
+                                    <div class="mb-8">
+                                        <label for="sizes_{{ $index }}" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Item Name</label>
+                                        <input type="text" name="items[{{ $index }}][Sizes]" class="form-control" id="sizes_{{ $index }}" value="{{ $item->Product }}">
+                                    </div>
+                                    <div class="mb-8">
+                                        <label for="price_{{ $index }}" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Price</label>
+                                        <input type="number" name="items[{{ $index }}][price]" id="price_{{ $index }}" value="{{ $item->price }}" class="form-control">
+                                    </div>
+                                </div>
+
+                            @empty
+                                <div id="items-container">
+                                    <div class="item">
+                                        <div class="mb-8">
+                                            <label for="sizes_0" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Item Name</label>
+                                            <input type="text" name="items[0][Sizes]" class="form-control" id="sizes_0">
+                                        </div>
+                                        <div class="mb-8">
+                                            <label for="price_0" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Price</label>
+                                            <input type="number" name="items[0][price]" id="price_0" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" id="add-item" class="btn btn-primary">Add Another Item</button>
+                            @endforelse
+                            <br/>
+                            <br/>
+
+                            <script>
+                                document.getElementById('add-item').addEventListener('click', function() {
+                                    let container = document.getElementById('items-container');
+                                    let itemCount = container.getElementsByClassName('item').length;
+                                    let newItem = document.createElement('div');
+                                    newItem.className = 'item';
+                                    newItem.innerHTML = `
+            <div class="mb-8">
+                <label for="sizes_${itemCount}" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Item Name</label>
+                <input type="text" name="items[${itemCount}][Sizes]" id="sizes_${itemCount}" class="form-control">
+            </div>
+            <div class="mb-8">
+                <label for="price_${itemCount}" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Price</label>
+                <input type="number" name="items[${itemCount}][price]" id="price_${itemCount}" class="form-control">
+            </div>
+        `;
+                                    container.appendChild(newItem);
+                                });
+                            </script>
+
+                            <div class="mb-8">
                                     <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Addition Information</label>
                                     <textarea   class="form-control" name="addition" rows="4">{{$product->addition}}</textarea>
                                 </div>

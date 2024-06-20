@@ -72,6 +72,7 @@ function postorder(Request  $request)
             'card_amount' => $carts['card'] ?? null,
             'payid'=>$payid,
             'option'=>$carts['option'],
+            'item'=>$carts['item'],
 
         ]);
 

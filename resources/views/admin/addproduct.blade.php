@@ -216,6 +216,59 @@
 
 
 
+                            <div class="card-header p-7 bg-transparent">
+                                <h4 class="fs-18px mb-0 font-weight-500">Add Special Items</h4>
+                            </div>
+                            <div id="items-container">
+                                <div class="item">
+                                    <div class="mb-8">
+                                        <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Item Name</label>
+                                        <input type="text" name="items[0][Sizes]" class="form-control" id="sizes">
+                                    </div>
+                                    <div class="mb-8">
+                                        <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Price</label>
+                                        {{--                                            <input type="text" name="attribute[][name]" id="attributeName" class="form-control" placeholder="Name" required>--}}
+
+                                        <input type="number"  name="items[0][price]" id="price" class="form-control">
+
+                                    </div>
+                                </div>
+                                </div>
+
+                            <button type="button" id="add-item" class="btn btn-primary">Add Another Item</button>
+                            <script>
+                                document.getElementById('add-item').addEventListener('click', function() {
+                                    let container = document.getElementById('items-container');
+                                    let itemCount = container.getElementsByClassName('item').length;
+                                    let newItem = document.createElement('div');
+                                    newItem.className = 'item';
+                                    newItem.innerHTML = `
+                                        <div class="mb-8">
+                                            <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Item Name</label>
+                                            <input type="text" name="items[${itemCount}][Sizes]" id="sizes" class="form-control">
+                                           </div>
+                                <div class="mb-8">
+                                            <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Item Price</label>
+                                            <input type="number" name="items[${itemCount}][price]" id="price" class="form-control">
+                                           </div>
+            `;
+                                    container.appendChild(newItem);
+                                });
+                            </script>
+
+
+{{--                            <div id="items-container">--}}
+{{--                                <div class="item">--}}
+{{--                                    <label for="sizes">Sizes:</label>--}}
+{{--                                    <input type="text" name="items[0][Sizes]" id="sizes">--}}
+{{--                                    <label for="price">Price:</label>--}}
+{{--                                    <input type="number" name="items[0][price]" id="price">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+                            <br/>
+                            <br/>
+
+
                             <br/>
                             <br/>
 

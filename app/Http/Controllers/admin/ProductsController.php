@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Attribute;
 use App\Models\Attributes;
 use App\Models\Categories;
+use App\Models\Items;
 use App\Models\Layers;
 use App\Models\Option;
 use App\Models\Products;
@@ -35,20 +36,7 @@ class ProductsController
  }
  function addproduct(Request $request)
  {
-//     return response()->json($request, Response::HTTP_BAD_REQUEST);
-// Validate the request
-//     $request->validate([
-//         'tittle' => 'required',
-//         'content' => 'required',
-//         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-//         // Add other validation rules as needed
-//     ]);
 
-
-
-
-//     return $request;
-// Upload the image file
      $cover = Storage::put('cover', $request->file('image'));
 
 // Create the product
@@ -62,33 +50,47 @@ class ProductsController
          'quantity' => 1,
          'addition' => $request->input('addition') ?? null,
          'image' => $cover,
-         'category' => $request->input('categories'),
+         'category' => $request->input('categories') ?? 'cakes',
          'status' => 1,
          'fee' => $request->input('fee') ?? 0,
      ]);
 
 // Handle product variations
-     foreach ($request->attribute as $index => $tri) {
-         if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
-             Attribute::create([
-                 'product_id'=>$insert['id'],
-                 'name' => $tri['name'],
-                 'value' => $request->attribute[$index + 1]['value'],
-             ]);
+     if ($request->has('attribute') && $request->input('attribute') != null) {
+
+         foreach ($request->attribute as $index => $tri) {
+             if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
+                 Attribute::create([
+                     'product_id' => $insert['id'],
+                     'name' => $tri['name'],
+                     'value' => $request->attribute[$index + 1]['value'],
+                 ]);
+             }
          }
      }
 
 
      $act=Attributes::all();
+     if ($request->has('variation_attributes') && $request->input('variation_attributes') != null) {
          foreach ($request['variation_attributes'] as $variation) {
              Variation::create([
                  'attribute_id' => $insert->id,
                  'attribute_size' => $variation['Sizes'],
                  'attribute_layer' => $variation['layers'] ?? null,
                  'attribute_flavor' => $variation['Flavor'] ?? null,
-                 'price' => $variation['price'] ??0  ,
+                 'price' => $variation['price'] ?? 0,
              ]);
          }
+     }
+     if ($request->has('items') && $request->input('items') != null) {
+         foreach ($request->input('items') as $item) {
+             Items::create([
+                 'product_id' => $insert->id,
+                 'Product' => $item['Sizes'],
+                 'price' => $item['price'] ?? 0,
+             ]);
+         }
+     }
 
 
 // Redirect with success message
@@ -207,9 +209,10 @@ class ProductsController
      $variation=Variation::where('attribute_id', $product->id)->get();
      $attributes=Attribute::all();
      $size=Sizes::where('product_id', $product->id)->get();
+     $items=Items::where('product_id', $product->id)->get();
      $layer=Layers::where('product_id', $product->id)->get();
      return view('admin.editproduct', compact('product',
-         'category', 'attribute', 'variation', 'size','attributes', 'layer'));
+         'category', 'attribute', 'variation', 'size','attributes', 'layer', 'items'));
  }
  function editproduct1($request)
  {
@@ -217,7 +220,10 @@ class ProductsController
      $category=Categories::all();
      $size=Sizes::where('product_id', $product->id)->get();
      $layer=Layers::where('product_id', $product->id)->get();
-     return view('admin.editproduct1', compact('product', 'category', 'size', 'layer'));
+     $item=Items::where('product_id', $product->id)->get();
+     return view('admin.editproduct1', compact('product', 'category', 'size',
+         'layer', 'item'
+     ));
  }
  function updateproduct(Request $request)
  {
@@ -239,26 +245,41 @@ class ProductsController
 
      // Update the product
      $product->update($validatedData);
-
-//     foreach ($request->attribute as $index => $tri) {
-//         if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
-//             $act = Attribute::findOrFail($tri->id);
-//             $act->update([
-//                 'name' => $tri['name'],
-//                 'value' => $request->attribute[$index + 1]['value'],
-//             ]);
-//         }
-//     }
-
-
-     foreach ($request->variation as $index => $tri) {
-         if ($index % 2 == 0 && isset($tri['id']) && isset($request->variation[$index + 1]['price'])) {
-             $act =Variation::findOrFail($tri['id']); // Ensure 'id' exists in $tri
-             $act->update([
-                 'price' => $request->variation[$index + 1]['price'],
-             ]);
+     if ($request->has('variation') && $request->input('variation') != null) {
+         foreach ($request->variation as $index => $tri) {
+             if ($index % 2 == 0 && isset($tri['id']) && isset($request->variation[$index + 1]['price'])) {
+                 $act = Variation::findOrFail($tri['id']); // Ensure 'id' exists in $tri
+                 $act->update([
+                     'price' => $request->variation[$index + 1]['price'],
+                 ]);
+             }
          }
      }
+
+     if ($request->has('items') && $request->input('items') != null) {
+         $existingItems = Items::where('product_id', $request->id)->get();
+         $existingItemIds = $existingItems->pluck('id')->toArray();
+
+         foreach ($request->input('items') as $key => $item) {
+             if (isset($item['id']) && in_array($item['id'], $existingItemIds)) {
+                 // Update existing item
+                 $existingItem = Items::find($item['id']);
+                 $existingItem->update([
+                     'Product' => $item['Sizes'],
+                     'price' => $item['price'] ?? 0,
+                 ]);
+             } else {
+                 // Create new item
+                 Items::create([
+                     'product_id' => $request->id,
+                     'Product' => $item['Sizes'],
+                     'price' => $item['price'] ?? 0,
+                 ]);
+             }
+         }
+
+     }
+
 
      return response()->json([
          'status' => 'success',

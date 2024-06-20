@@ -256,10 +256,15 @@
 
                                 </style>
                                 @php
-                                    $values = explode(' | ', $size->value ?? null);
-                                    $values1 = explode(' | ', $layer->value ?? null);
-                                    $values2 = explode(' | ', $flavor->value) ?? null;
+                                    $values = isset($size) && isset($size->value) ? explode(' | ', $size->value) : [];
+
+                                    $values1 = isset($layer) && isset($layer->value) ? explode(' | ', $layer->value) : [];
+
+                                    $values2 = isset($flavor) && isset($flavor->value) ? explode(' | ', $flavor->value) : [];
+
+                                    $values3 = isset($product) && isset($product->item) ? explode(' | ', $product->item) : [];
                                 @endphp
+
                                 <div class="select-wrapper">
                                     <select name="size" id="layersBy1" class="cormorant-upright-light" required>
                                         <option>Choose an option</option>
@@ -506,10 +511,23 @@
                             </div>
                             <br/>
                             <br/>
+                            @if(!empty($items) && $items->count())
+                                <h6 class="cormorant-upright-bold">Special Items</h6>
+
+                                <select name="option" class="form-control cormorant-upright-light" id="item">
+                                    <option value="0" data-wapf-price="0">Choose an option</option>
+                                    @foreach($items as $item)
+                                        <option value="{{ $item->price }}" data-wapf-price="{{ $item->price }}" data-wapf-pricetype="fixed">{{ $item->product }} (₦{{ $item->price }})</option>
+                                    @endforeach
+                                </select>
+                            @endif
+
+                            <br/>
+                            <br/>
                             <h6 class="cormorant-upright-bold" >Include Items</h6>
 
                             <select name="option"  class="form-control  cormorant-upright-light " id="opt" >
-                                <option value="no" data-wapf-price="0" >Choose an option</option>
+                                <option value="0" data-wapf-price="0" >Choose an option</option>
                                 @foreach($option as $opt)
                                     <option value="{{$opt['price']}}" data-wapf-price="{{$opt['price']}}" data-wapf-pricetype="fixed">{{$opt['product']}} (₦{{$opt['price']}})</option>
 
@@ -891,6 +909,18 @@
             var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
             totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
             document.getElementById('tPrice').value = optnumber; // Store current layer price for next calculation
+
+
+            document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
+        });
+        document.getElementById('item').addEventListener('change', function() {
+            var itemnumber = parseInt(this.value); // Get the selected layer price
+            var defaultAmount = parseInt(document.getElementById('totalAmount').value);
+            var totalAmount = defaultAmount + itemnumber; // Calculate the total amount
+
+            var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
+            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
+            document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation
 
 
             document.getElementById('totalAmount').value = totalAmount; // Update the total amount display

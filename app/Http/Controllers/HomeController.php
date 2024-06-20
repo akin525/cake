@@ -13,6 +13,7 @@ use App\Models\Cheff;
 use App\Models\Colors;
 use App\Models\FQ;
 use App\Models\Homepage;
+use App\Models\Items;
 use App\Models\Layers;
 use App\Models\Option;
 use App\Models\Orders;
@@ -167,6 +168,7 @@ function cakedetail($request)
     $layeralert=Alert::where('name', 'layers')->first();
     $addalert=Alert::where('name', 'addition')->first();
     $option=Option::all();
+    $items=Items::where('product_id', $product->id)->get();
 
 //    return $size;
     if (Auth::user()) {
@@ -180,7 +182,7 @@ function cakedetail($request)
     $category=Categories::all();
 
     return view('shop.cakedetails', compact('product', 'product1',
-    'cart', 'cartsum', 'category', 'color', 'layer', 'size', 'layeralert', 'addalert', 'flavor', 'option'
+    'cart', 'cartsum', 'category', 'color', 'layer', 'size', 'layeralert', 'addalert', 'flavor', 'option', 'items'
     ));
 
 }
@@ -210,6 +212,7 @@ function cakedetail($request)
                 'card' => $request->card ?? null,
                 'cardtext' => $request->ekoCakesMessage ?? null,
                 'option' => $request->option ?? null,
+                'item' => $request->item ?? null,
             ];
             $productDetails1[] = $productDetails;
 
