@@ -5,72 +5,72 @@
     @endif
 @endsection
 @section('content')
-    <style>
-        .size-selector {
-            display: flex;
-            align-items: center;
-        }
+{{--    <style>--}}
+{{--        .size-selector {--}}
+{{--            display: flex;--}}
+{{--            align-items: center;--}}
+{{--        }--}}
 
-        .size-selector label {
-            margin-right: 10px;
-        }
+{{--        .size-selector label {--}}
+{{--            margin-right: 10px;--}}
+{{--        }--}}
 
-        .size-options {
-            display: flex;
-        }
+{{--        .size-options {--}}
+{{--            display: flex;--}}
+{{--        }--}}
 
-        .size-options input[type="radio"] {
-            display: none;
-        }
+{{--        .size-options input[type="radio"] {--}}
+{{--            display: none;--}}
+{{--        }--}}
 
-        .size-options label {
-            display: block;
-            border: 1px solid #ccc;
-            padding: 5px 10px;
-            margin-right: 5px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+{{--        .size-options label {--}}
+{{--            display: block;--}}
+{{--            border: 1px solid #ccc;--}}
+{{--            padding: 5px 10px;--}}
+{{--            margin-right: 5px;--}}
+{{--            cursor: pointer;--}}
+{{--            border-radius: 5px;--}}
+{{--        }--}}
 
-        .size-options input[type="radio"]:checked + label {
-            background-color: #ccc;
-        }
+{{--        .size-options input[type="radio"]:checked + label {--}}
+{{--            background-color: #ccc;--}}
+{{--        }--}}
 
 
-        .flavor-selector {
-            display: flex;
-            align-items: center;
-        }
+{{--        .flavor-selector {--}}
+{{--            display: flex;--}}
+{{--            align-items: center;--}}
+{{--        }--}}
 
-        .flavor-selector label {
-            margin-right: 10px;
-        }
+{{--        .flavor-selector label {--}}
+{{--            margin-right: 10px;--}}
+{{--        }--}}
 
-        .flavor-options {
-            display: flex;
-        }
+{{--        .flavor-options {--}}
+{{--            display: flex;--}}
+{{--        }--}}
 
-        .flavor-options input[type="radio"] {
-            display: none;
-        }
+{{--        .flavor-options input[type="radio"] {--}}
+{{--            display: none;--}}
+{{--        }--}}
 
-        .flavor-options label {
-            display: inline-block;
-            margin-right: 5px;
-            cursor: pointer;
-        }
+{{--        .flavor-options label {--}}
+{{--            display: inline-block;--}}
+{{--            margin-right: 5px;--}}
+{{--            cursor: pointer;--}}
+{{--        }--}}
 
-        .flavor-options label img {
-            width: 50px; /* Adjust image width as needed */
-            height: 50px; /* Adjust image height as needed */
-            border-radius: 50%; /* Rounded corners for circular images */
-        }
+{{--        .flavor-options label img {--}}
+{{--            width: 50px; /* Adjust image width as needed */--}}
+{{--            height: 50px; /* Adjust image height as needed */--}}
+{{--            border-radius: 50%; /* Rounded corners for circular images */--}}
+{{--        }--}}
 
-        .flavor-options input[type="radio"]:checked + label {
-            border: 2px solid #000; /* Add border when selected */
-        }
+{{--        .flavor-options input[type="radio"]:checked + label {--}}
+{{--            border: 2px solid #000; /* Add border when selected */--}}
+{{--        }--}}
 
-    </style>
+{{--    </style>--}}
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
         <div class="loading-spinner"></div>
     </div>
@@ -162,7 +162,7 @@
                     <!-- Product Summery Start -->
                     <div class="product-summery position-relative card-body">
                         <!-- Product Head Start -->
-                        <h5 class="merriweather-light-italic" style="font-size: 20px">{{$product->name}}</h5>
+                        <h5 class="merriweather-bold capitalize" style="font-size: 15px">{{$product->name}}</h5>
 
                         <div class="product-head mb-3">
                             <!-- Price Start -->
@@ -176,7 +176,7 @@
                             </style>
 
 {{--                            <span class="product-head-price"  style="font-size: 30px "></span>--}}
-                            <input type="text" id="total" class="no-border-input merriweather-regular-italic"  style="font-size: 20px; "
+                            <input type="text" id="total" class="no-border-input merriweather-bold fs-4"  style="font-size: 20px; "
                                    value="₦{{ number_format(intval($product->price * 1))}}">
                             <input type="hidden" id="defaultAmount"
                                    value="{{$product->price}}">
@@ -193,7 +193,7 @@
                         </div>
                         <!-- Product Head End -->
                         <!-- Description Start -->
-                        <p class="desc-content cormorant-upright-regular" style="font-size: 21px">{!! $product->description !!}</p>
+                        <p class=" cormorant-upright-light" style="font-size: 21px">{!! $product->description !!}</p>
                         <!-- Description End -->
                         <form method="post" action="{{route('addcart1')}}">
                             @csrf
@@ -650,10 +650,10 @@
                 <div class="col-lg-12 single-product-tab">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active sam" style="font-size: 21px" id="home-tab" data-bs-toggle="tab" href="#connect-1" role="tab" aria-selected="true">Description</a>
+                            <a class="nav-link active merriweather-bold" style="font-size: 15px" id="home-tab" data-bs-toggle="tab" href="#connect-1" role="tab" aria-selected="true">Description</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="review-tab sam" style="font-size: 21px" data-bs-toggle="tab" href="#connect-4" role="tab" aria-selected="false">Additional information</a>
+                            <a class="nav-link" id="review-tab merriweather-bold" style="font-size: 15px" data-bs-toggle="tab" href="#connect-4" role="tab" aria-selected="false">Additional information</a>
                         </li>
 
                     </ul>
