@@ -105,10 +105,10 @@
     </div>
 
     <br/>
-    <h5 class="merriweather-bold text-center" style="color: black; font-size: 30px">We know that making cake is art</h5>
+    <h5 class="merriweather-bold text-center" style="color: black; font-size: 20px">We know that making cake is art</h5>
 {{--    <h3 class="text-center merriweather-light-italic" style="color: #eda939">Making cake is art</h3>--}}
     <hr/>
-    <h6 class="text-center merriweather-bold" style="color: black" > VIEW OUR CATEGORIES</h6>
+    <h6 class="text-center merriweather-bold" style="color: black; font-size: 18px" > VIEW OUR CATEGORIES</h6>
 {{--    <h5  style="font-family: Great Vibes, cursive;--}}
 {{--    font-weight: 400;--}}
 {{--    font-style: normal;">PLEASE VIEW OUR PRODUCTS BELOW--}}
@@ -183,7 +183,7 @@
                 <div class="col-12 text-center">
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
-                        <h6 class="merriweather-bold text-capitalize" style="font-size: 25px"><b>BROWSE OUR CAKES</b></h6>
+                        <h6 class="merriweather-bold text-capitalize" style="font-size: 18px"><b>BROWSE OUR CAKES</b></h6>
 {{--                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">--}}
                     </div>
                     <!-- Section Title End -->
@@ -195,7 +195,7 @@
                     <!-- Product Item Start -->
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
-                            <h3 class="merriweather-bold" style="font-size: 20px"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
+                            <h3 class="merriweather-bold capitalize" style="font-size: 15px"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
                             @if($pro['ramount'] != null)
                                 <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
                                 <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
@@ -214,7 +214,7 @@
                             </ul>
                             <br>
                             <br>
-                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn cormorant-upright-regular" style="font: 24px cormorant, serif" >Add to cart</a>
+                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn cormorant-upright-regular" style="font: 19px cormorant, serif" >Add to cart</a>
                         </div>
                     </div>
                     <!-- Product Item End -->
@@ -284,7 +284,7 @@
             <div class="row align-items-center">
                 <div class="">
                     <div class="contact-section_formbg" data-bg-image="">
-                        <h2 class="merriweather-light-italic" style="font-size: 25px">GET IN TOUCH</h2>
+                        <h2 class="merriweather-bold" style="font-size: 18px">GET IN TOUCH</h2>
                         <form class="contact-section_form cormorant-upright-regular" id="contact-form" action="" method="post" style="background-color: white">
                             <div class="row">
                                 <div class="col-md-6 form-p">
@@ -313,8 +313,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 form-p">
-                                    <div class="form-group mb-0" style="font: 21px">
-                                        <button class="btn btn-black" type="submit">Send Message</button>
+                                    <div class="form-group mb-0" style="font-size: 5px">
+                                        <button class="btn btn-black" type="submit" style="font-size: 15px">Send Message</button>
                                     </div>
                                 </div>
                             </div>
@@ -357,7 +357,7 @@
 
                 <div class="">
                     <div class="faq-head align-content-center">
-                        <h4 class="faq-head__title text-center merriweather-light-italic" style="font-size: 25px">FREQUENTLY ASKED QUESTIONS</h4>
+                        <h4 class="faq-head__title text-center merriweather-bold" style="font-size: 18px">FREQUENTLY ASKED QUESTIONS</h4>
                         <span class="faq-head__border"></span>
                     </div>
                 </div>
@@ -367,7 +367,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$fa['id']}}" aria-expanded="true" aria-controls="collapseOne">
-                                        <span class="merriweather-regular" style="font-size: 18px">{{$fa['heading']}}</span>
+                                        <h4 class="merriweather-regular" style="font-size: 18px">{{$fa['heading']}}</h4>
                                         <i class="lastudioicon lastudioicon-down-arrow"></i>
                                     </button>
                                 </h2>
