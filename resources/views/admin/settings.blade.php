@@ -40,72 +40,68 @@
                                 </div>
                             </div>
                             </form>
+{{--                            <div class="row border-bottom py-8">--}}
+{{--                                <div class="col-md-5">--}}
+{{--                                    <h5>Access</h5>--}}
+{{--                                    <p class="text-muted w-80">Give access of all pages including each product lorem ipsum dolor sit amet, consectetur adipisicing</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-7">--}}
+{{--                                    <label class="mb-2 form-check">--}}
+{{--                                        <input class="form-check-input" checked name="mycheck_a1" type="radio">--}}
+{{--                                        <span class="form-check-label"> All registration is enabled </span>--}}
+{{--                                    </label>--}}
+{{--                                    <label class="mb-2 form-check">--}}
+{{--                                        <input class="form-check-input" name="mycheck_a1" type="radio">--}}
+{{--                                        <span class="form-check-label"> Only buyers is enabled </span>--}}
+{{--                                    </label>--}}
+{{--                                    <label class="mb-2 form-check">--}}
+{{--                                        <input class="form-check-input" name="mycheck_a1" type="radio">--}}
+{{--                                        <span class="form-check-label"> Only buyers is enabled </span>--}}
+{{--                                    </label>--}}
+{{--                                    <label class="mb-2 form-check">--}}
+{{--                                        <input class="form-check-input" name="mycheck_a1" type="radio">--}}
+{{--                                        <span class="form-check-label"> Stop new shop registration </span>--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="row border-bottom py-8">
                                 <div class="col-md-5">
-                                    <h5>Access</h5>
-                                    <p class="text-muted w-80">Give access of all pages including each product lorem ipsum dolor sit amet, consectetur adipisicing</p>
-                                </div>
-                                <div class="col-md-7">
-                                    <label class="mb-2 form-check">
-                                        <input class="form-check-input" checked name="mycheck_a1" type="radio">
-                                        <span class="form-check-label"> All registration is enabled </span>
-                                    </label>
-                                    <label class="mb-2 form-check">
-                                        <input class="form-check-input" name="mycheck_a1" type="radio">
-                                        <span class="form-check-label"> Only buyers is enabled </span>
-                                    </label>
-                                    <label class="mb-2 form-check">
-                                        <input class="form-check-input" name="mycheck_a1" type="radio">
-                                        <span class="form-check-label"> Only buyers is enabled </span>
-                                    </label>
-                                    <label class="mb-2 form-check">
-                                        <input class="form-check-input" name="mycheck_a1" type="radio">
-                                        <span class="form-check-label"> Stop new shop registration </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="row border-bottom py-8">
-                                <div class="col-md-5">
-                                    <h5>Notification</h5>
-                                    <p class="text-muted w-80">Lorem ipsum dolor sit amet, consectetur adipisicing something about this</p>
+                                    <h5>Slider</h5>
+                                    <p class="text-muted w-80">Set Homepage Slider loader</p>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="form-check mb-6">
                                         <input class="form-check-input rounded-0" type="checkbox" value id="mycheck_notify" checked>
-                                        <label class="form-check-label" for="mycheck_notify"> Send notification on each user registration </label>
+                                        <label class="form-check-label" for="mycheck_notify"> Select image with size 1500 x 800 </label>
                                     </div>
+                                    <form action="" method="post">
                                     <div class="mb-3">
-                                        <input class="form-control" placeholder="Text">
+                                        <input type="file" class="form-control" placeholder="Text"  id="file-input">
                                     </div>
+                                    <div class="card card-body" id="image-preview"></div>
+                                    <br/>
+                                    <button type="submit" class="btn btn-black">Upload</button>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="row border-bottom py-8 mb-8">
-                                <div class="col-md-5">
-                                    <h5>Currency</h5>
-                                    <p class="text-muted w-80">Lorem ipsum dolor sit amet, consectetur adipisicing something about this</p>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="mb-6" style="max-width: 200px">
-                                        <label class="mb-5 fs-13px ls-1 fw-semibold text-uppercase" for="currency">Main currency </label>
-                                        <select name="main-currency" class="form-select" id="currency">
-                                            <option>US Dollar</option>
-                                            <option>EU Euro</option>
-                                            <option>RU Ruble</option>
-                                            <option>UZ Som</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-6" style="max-width: 200px">
-                                        <label class="mb-5 fs-13px ls-1 fw-semibold text-uppercase" for="sp-currency">Supported curencies</label>
-                                        <select name="support-currency" class="form-select" id="sp-currency">
-                                            <option>US dollar</option>
-                                            <option>RUBG russia</option>
-                                            <option>INR india</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary" type="submit">Save all changes</button> &nbsp;
-                            <button class="btn border btn-hover-bg-danger btn-hover-border-danger btn-hover-text-light" type="reset">Reset</button>
+                            <script>
+                                document.getElementById('file-input').addEventListener('change', function(event) {
+                                    var file = event.target.files[0];
+                                    var reader = new FileReader();
+
+                                    reader.onload = function(event) {
+                                        var img = new Image();
+                                        img.src = event.target.result;
+                                        img.onload = function() {
+                                            var preview = document.getElementById('image-preview');
+                                            preview.innerHTML = ''; // Clear previous preview
+                                            preview.appendChild(img);
+                                        };
+                                    };
+
+                                    reader.readAsDataURL(file);
+                                });
+                            </script>
                         </div>
                     </section>
                 </div>

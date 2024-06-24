@@ -99,7 +99,8 @@
                                     <label>Delivery Date *</label>
                                     <input class="form-field" type="date" name="date" id="today" placeholder="Choose date" required>
                                 </div>
-                            <h4><b>Delivery Time *</b></h4>
+                            <br/>
+                            <h4 class="merriweather-regular" style="font-size: 18px">Delivery Time *</h4>
                             <div class="col">
                                 <label>Choose Delivery Time (optional)</label>
                                 <div class="select-wrapper">
@@ -148,6 +149,15 @@
                                         });
                                     }
 
+                                });
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    var today = new Date();
+                                    var day = String(today.getDate()).padStart(2, '0');
+                                    var month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+                                    var year = today.getFullYear();
+
+                                    var todayDate = year + '-' + month + '-' + day;
+                                    document.getElementById('today').setAttribute('min', todayDate);
                                 });
                             </script>
 {{--                                <div class="col-sm-12 d-flex flex-wrap gap-6">--}}

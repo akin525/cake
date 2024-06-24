@@ -6,6 +6,7 @@ use App\Models\Gateways;
 use App\Models\Homepage;
 use App\Models\Settings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SetiingsController
 {
@@ -13,8 +14,9 @@ function loadsettings()
 {
     $setting=Settings::where('id', 1)->first();
     $homepage=Homepage::get();
+    $slider=Homepage::where('status', 1)->first();
 
-    return view('admin.settings', compact('setting', 'homepage'));
+    return view('admin.settings', compact('setting', 'homepage', 'slider'));
 }
 function changepage(Request $request)
 {
@@ -81,5 +83,18 @@ function updateabout(Request $request){
         'status'=>'success',
         'message'=>'About-us updated',
     ]);
+}
+
+    function banneruploadslidder(Request $request)
+    {
+
+        $request->validate([
+            'slider'=>'required',
+        ]);
+
+        $slider = Storage::put('cover', $request['slider']);
+        $upload=Homepage::where('status', 1)->first();
+
+
 }
 }
