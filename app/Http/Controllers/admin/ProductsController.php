@@ -260,7 +260,7 @@ class ProductsController
      $product->cprice = $validatedData['cprice'];
      $product->fee = $validatedData['fee'];
      $product->description = $validatedData['description'];
-     $product->categories = $validatedData['categories'];
+     $product->category = $validatedData['categories'];
 
      $product->save();
 
