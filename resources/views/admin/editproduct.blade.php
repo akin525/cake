@@ -233,7 +233,7 @@
                                     <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase " for="category">Category</label>
                                     @foreach ($category as $cat)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="categories" value="{{ $cat->name }}" id="category{{ $cat->id }}"
+                                            <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $cat->name }}" id="category{{ $cat->id }}"
                                                    @if ($cat->name == $product->category) checked @endif required>
 
                                             <label class="form-check-label" for="category{{ $cat->id }}" >
