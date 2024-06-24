@@ -237,7 +237,7 @@ class ProductsController
          'cprice' => 'required|numeric|min:0',
          'fee' => 'required|numeric|min:0',
          'description' => 'nullable|string',
-         'categories' =>'nullable',
+         'categories' => 'required|array|min:1',
          'image'=>'image',
      ]);
 
