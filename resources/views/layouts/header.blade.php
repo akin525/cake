@@ -9,12 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/eko.png')}}">
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Handlee&amp;family=Inter:wght@300;400;500;600;700&amp;family=Comfortaa:wght@300;400;500;600;700&amp;family=Montaga&amp;family=Pacifico&amp;family=Fredericka+the+Great&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Yellowtail&amp;display=swap" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -34,14 +28,6 @@
     <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Upright:wght@300;400;500;600;700&family=Great+Vibes&family=Jost:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <!-- Style CSS -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Upright:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,8 +46,8 @@
         }
 
         .merriweather-bold {
-            font-family: "Merriweather", serif;
-            font-weight: 700;
+            /*font-family: "Merriweather", serif;*/
+            /*font-weight: 700;*/
             font-style: normal;
         }
 
