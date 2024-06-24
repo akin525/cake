@@ -289,11 +289,13 @@ class ProductsController
                  ]);
              } else {
                  // Create new item
-                 Items::create([
-                     'product_id' => $request->id,
-                     'Product' => $item['Sizes'],
-                     'price' => $item['price'] ?? 0,
-                 ]);
+                 if ($item['Sizes'] != null) {
+                     Items::create([
+                         'product_id' => $request->id,
+                         'Product' => $item['Sizes'],
+                         'price' => $item['price'] ?? 0,
+                     ]);
+                 }
              }
          }
 
