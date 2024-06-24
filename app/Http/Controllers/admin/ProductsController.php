@@ -237,14 +237,33 @@ class ProductsController
          'cprice' => 'required|numeric|min:0',
          'fee' => 'required|numeric|min:0',
          'description' => 'nullable|string',
-
+         'categories' =>'nullable',
+         'image'=>'image',
      ]);
 
 
      $product = Products::findOrFail($request->id);
+     if ($request->hasFile('image')) {
+         // Store the image and get the path
+         $cover = Storage::put('cover', $request->file('image'));
 
+         // Update the product's image path
+         $product->image = $cover;
+     }
      // Update the product
-     $product->update($validatedData);
+//     $product->update($validatedData);
+
+     $product->name = $validatedData['name'];
+     $product->price = $validatedData['price'];
+     $product->tamount = $validatedData['tamount'];
+     $product->ramount = $validatedData['ramount'];
+     $product->cprice = $validatedData['cprice'];
+     $product->fee = $validatedData['fee'];
+     $product->description = $validatedData['description'];
+     $product->categories = $validatedData['categories'];
+
+     $product->save();
+
      if ($request->has('variation') && $request->input('variation') != null) {
          foreach ($request->variation as $index => $tri) {
              if ($index % 2 == 0 && isset($tri['id']) && isset($request->variation[$index + 1]['price'])) {
@@ -314,7 +333,7 @@ class ProductsController
          'quantity' => 1,
          'addition' => $request->input('addition') ?? null,
          'image' => $cover,
-         'category' => $request->input('categories[]'),
+         'category' => $request->input('categories'),
          'status' => 1,
          'fee' => $request->input('fee') ?? 0,
      ]);

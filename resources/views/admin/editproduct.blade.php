@@ -136,7 +136,7 @@
                                 <div class="item">
                                     <div class="mb-8">
                                         <label for="sizes_{{ $index }}" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Item Name</label>
-                                        <input type="text" name="items[{{ $index }}][Sizes]" class="form-control" id="sizes_{{ $index }}" value="{{ $item->Product }}">
+                                        <input type="text" name="items[{{ $index }}][Sizes]" class="form-control" id="sizes_{{ $index }}" value="{{ $item->product }}">
                                     </div>
                                     <div class="mb-8">
                                         <label for="price_{{ $index }}" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Price</label>
@@ -214,11 +214,14 @@
                         <div class="card-body p-7">
                             <div class="input-upload">
                                 <div class="mb-7">
-                                    <img src="https://templates.g5plus.net/glowing-bootstrap-5/assets/images/dashboard/upload.svg" width="102" class="d-block mx-auto" alt>
+                                    <img src="{{url($product->image)}}" width="102" class="d-block mx-auto" alt>
+{{--                                    <img src="https://templates.g5plus.net/glowing-bootstrap-5/assets/images/dashboard/upload.svg" width="102" class="d-block mx-auto" alt>--}}
                                 </div>
-                                <input name="image" value="{{$product->image}}" class="form-control" type="file">
+                                <input name="image" class="form-control" id="file-input" type="file">
                             </div>
                         </div>
+                        <div class="card card-body" id="image-preview"></div>
+
                     </div>
                     <div class="card mb-8 rounded-4">
                         <div class="card-header p-7 bg-transparent">
@@ -230,8 +233,10 @@
                                     <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase " for="category">Category</label>
                                     @foreach ($category as $cat)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $cat->name }}" id="category{{ $cat->id }}">
-                                            <label class="form-check-label" for="category{{ $cat->id }}">
+                                            <input class="form-check-input" type="checkbox" name="categories" value="{{ $cat->name }}" id="category{{ $cat->id }}"
+                                                   @if ($cat->name == $product->category) checked @endif required>
+
+                                            <label class="form-check-label" for="category{{ $cat->id }}" >
                                                 {{ $cat->name }}
                                             </label>
                                         </div>
@@ -321,5 +326,22 @@
 
     </script>
 
+    <script>
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
 
+            reader.onload = function(event) {
+                var img = new Image();
+                img.src = event.target.result;
+                img.onload = function() {
+                    var preview = document.getElementById('image-preview');
+                    preview.innerHTML = ''; // Clear previous preview
+                    preview.appendChild(img);
+                };
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
 @endsection

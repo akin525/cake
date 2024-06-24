@@ -151,7 +151,7 @@
                                 <div class="mb-7">
                                     <img src="{{url($product->image)}}" width="102" class="d-block mx-auto" alt>
                                 </div>
-                                <input name="image" value="{{url($product->image)}}" class="form-control" id="file-input" type="file">
+                                <input name="image"  class="form-control" id="file-input" type="file">
                             </div>
 
                         </div>
