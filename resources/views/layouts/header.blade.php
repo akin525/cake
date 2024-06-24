@@ -343,7 +343,7 @@
             </div>
         </div>
         <div class="leftBox text-center">
-            <h6 class="merriweather-bold"  style="font-size: 25px">
+            <h6 class="merriweather-bold"  style="font-size: 20px">
                 CAKES FOR EVERY LAGOSIAN. CAKES FOR LAGOS<br>
             </h6>
 
