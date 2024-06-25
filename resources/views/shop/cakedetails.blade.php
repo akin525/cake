@@ -265,6 +265,7 @@
                                     $values3 = isset($product) && isset($product->item) ? explode(' | ', $product->item) : [];
                                 @endphp
 
+                                @if($size != null)
                                 <div class="select-wrapper">
                                     <select name="size" id="layersBy1" class="cormorant-upright-light" required>
                                         <option>Choose an option</option>
@@ -273,7 +274,9 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                @endif
                             </div>
+                            @if($layer != null)
                             <div class="product-size mb-5">
                                 <label for="layersBy" class="cormorant-upright-bold" >Layers:</label>
                                 <div class="select-wrapper">
@@ -285,7 +288,8 @@
                                     </select>
                                 </div>
                             </div>
-
+                            @endif
+                            @if($flavor != null)
                             <div class="product-color mb-2" >
                             <label for="flavourBy" class="cormorant-upright-bold">Flavour</label>
                             <div class="select-wrapper">
@@ -297,6 +301,7 @@
                                 </select>
                             </div>
                         </div>
+                            @endif
 
 
 {{--<script>--}}

@@ -197,8 +197,10 @@ class ProductsController
      $attributes=Attribute::all();
      $size=Sizes::where('product_id', $product->id)->get();
      $layer=Layers::where('product_id', $product->id)->get();
+     $items=Items::where('product_id', $product->id)->get();
+
      return view('admin.duplicateproduct', compact('product',
-         'category', 'attribute', 'variation', 'size','attributes', 'layer'));
+         'category', 'attribute', 'variation', 'size','attributes', 'layer', 'items'));
  }
 
  function editproduct($request)
@@ -438,6 +440,18 @@ class ProductsController
          Variation::create($currentVariation);
      }
 // Redirect with success message
+
+     if ($request->has('items') && $request->input('items') != null) {
+         foreach ($request->input('items') as $item) {
+             Items::create([
+                 'product_id' => $insert->id,
+                 'Product' => $item['Sizes'],
+                 'price' => $item['price'] ?? 0,
+             ]);
+         }
+     }
+
+
      $mg = "Product post was successful";
      return redirect('admin/addproduct')->with('success', $mg);
 
@@ -473,6 +487,8 @@ class ProductsController
 
         $attribute=Attribute::where('product_id', $product->id)->delete();
         $variation=Variation::where('attribute_id', $product->id)->delete();
+        $item=Items::where('product_id', $product->id)->delete();
+
         // Delete the product
         $product->delete();
 
