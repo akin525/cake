@@ -50,7 +50,7 @@
                                 <div class="product-item text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                                     <div class="product-item__badge">Hot</div>
                                     <div class="product-item__image border w-100">
-                                        <a href="#"><img width="350" height="350" src="{{url($pro['image'])}}" alt="Product"></a>
+                                        <a href="{{route('cakedetail', $pro['id'])}}"><img width="350" height="350" src="{{url($pro['image'])}}" alt="Product"></a>
                                         <ul class="product-item__meta">
                                             <li class="product-item__meta-action">
                                                 <a class="shadow-1 labtn-icon-quickview" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick View" data-product-id="{{$pro['id']}}" data-bs-toggle="modal" data-bs-target="#quickViewModal{{$pro['id']}}"></a>
@@ -67,7 +67,7 @@
                                         </ul>
                                     </div>
                                     <div class="product-item__content pt-5">
-                                        <h5 class="product-item__title"><a href="#">{{$pro['name']}}</a></h5>
+                                        <h5 class="product-item__title"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
                                         @if($pro['ramount'] != null)
                                             <span class="product-item__price fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
                                             <span class="product-item__price fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
@@ -145,7 +145,7 @@
                                                 <img width="50" src="{{url($pu['image'])}}" alt="Sidebar-Image">
                                             </a>
                                             <div class="single-product_content">
-                                                <a href="#" class="single-product_content__title">{{$pu['name']}}</a>
+                                                <a href="{{route('cakedetail', $pu['id'])}}" class="single-product_content__title">{{$pu['name']}}</a>
                                                 <span class="single-product_content__price">₦{{number_format(intval($pu['price'] *1))}}</span>
                                             </div>
                                         </li>
@@ -182,7 +182,7 @@
                                                     <div class="single-product-vertical-tab swiper-container order-2">
 
                                                         <div class="swiper-wrapper">
-                                                            <a class="swiper-slide h-auto" href="#/">
+                                                            <a class="swiper-slide h-auto" href="#">
                                                                 <img class="w-100" src=${response.image} alt="Product">
                                                             </a>
                                                         </div>
