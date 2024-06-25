@@ -440,9 +440,9 @@
                     @endisset
                 </ul>
             </li>
-            <li class="position-static">
-                <a class="menu-item-link active" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>
-            </li>
+{{--            <li class="position-static">--}}
+{{--                <a class="menu-item-link active" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>--}}
+{{--            </li>--}}
             <li class="position-static">
                 <a class="menu-item-link" href="{{route('about')}}"><span>About-Us</span></a>
             </li>
