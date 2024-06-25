@@ -81,7 +81,7 @@
                                 </div>
                             </div>
 
-                            @foreach($attribute as $sizes)
+                            @forelse($attribute as $sizes)
                                 <div class="card mb-8 rounded-4" id="layers">
                                     <div class="card-header p-7 bg-transparent">
                                         <h4 class="fs-18px mb-0 font-weight-500">Add Attribute</h4>
@@ -106,14 +106,43 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-
-                            <div class="card mb-8 rounded-4" id="variations">
-                                <div class="card-header p-7 bg-transparent">
-                                    <h4 class="fs-18px mb-0 font-weight-500">Variations</h4>
+                            @empty
+                                <div class="card mb-8 rounded-4" id="layers">
+                                    <div class="card-header p-7 bg-transparent">
+                                        <h4 class="fs-18px mb-0 font-weight-500">Add Attribute</h4>
+                                    </div>
+                                    <div class="card-body p-7 layer">
+                                        <div class="form-border-1">
+                                            <div class="mb-8">
+                                                <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Name</label>
+                                               <select name="attribute[][name]" id="attributeName" class="form-control">
+                                                    <option>Choose Option</option>
+                                                    @forelse($attributes as $act)
+                                                        <option value="{{$act['name']}}">{{$act['name']}}</option>
+                                                    @empty
+                                                        <option>------</option>
+                                                    @endforelse
+                                                </select>
+                                                <br>
+                                                <textarea name="attribute[][value]" class="form-control" id="attributeValues" placeholder="Enter options for customer to choose from f.e, Blue, or Large , Use | to separate different options."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                @foreach($variation as $va)
+                            @endforelse
+                            <br/>
+                            <br/>
+                            <script>
+                                document.getElementById('add-layer').addEventListener('click', function () {
+                                    var variationTemplate = document.querySelector('.layer').cloneNode(true);
+                                    document.getElementById('layers').appendChild(variationTemplate);
+                                });
+                            </script>
+
+
+
+                                @forelse($variation as $va)
                                 <div class="card-body p-7 layer" id="variationContainer">
                                     <!-- Variations will be displayed here -->
 
@@ -125,8 +154,99 @@
                                     <input type="number" name="variation[][price]" value="{{$va['price']}}"/>
                                     </div>
                                 </div>
-                                @endforeach
-                            </div>
+                                @empty
+                                <button type="button" class="btn btn-primary" id="add-layer">Add New</button>
+                                <button type="button" class="btn btn-danger" onclick="generateVariations()">Generate Variations</button>
+                            <br/>
+                            <br/>
+                                <div class="card mb-8 rounded-4" id="variations">
+                                        <div class="card-header p-7 bg-transparent">
+                                            <h4 class="fs-18px mb-0 font-weight-500">Variations</h4>
+                                        </div>
+
+                                        <div class="card-body p-7 layer" id="variationContainer">
+                                            <!-- Variations will be displayed here -->
+                                        </div>
+                                        <div class="card-body p-7 layer" id="allvariationContainer" style="display: block">
+                                            <!-- Variations will be displayed here -->
+                                        </div>
+                                    </div>
+                                @endforelse
+                            <script>
+                                function generateVariations() {
+                                    var attributeNameElements = document.getElementsByName('attribute[][name]');
+                                    var attributeValueElements = document.getElementsByName('attribute[][value]');
+
+                                    var variations = [];
+                                    for (var i = 0; i < attributeNameElements.length; i++) {
+                                        var attributeName = attributeNameElements[i].value;
+                                        var attributeValues = attributeValueElements[i].value.split('|').map(value => value.trim());
+                                        variations.push({
+                                            name: attributeName,
+                                            values: attributeValues
+                                        });
+                                    }
+
+                                    var allCombinations = getAllCombinations(variations);
+                                    displayVariations(allCombinations);
+                                }
+
+                                function getAllCombinations(attributes) {
+                                    var combinations = [];
+                                    var helper = function (current, remaining) {
+                                        if (remaining.length === 0) {
+                                            combinations.push(current);
+                                        } else {
+                                            var nextAttribute = remaining[0];
+                                            for (var i = 0; i < nextAttribute.values.length; i++) {
+                                                helper(current.concat({ name: nextAttribute.name, value: nextAttribute.values[i] }), remaining.slice(1));
+                                            }
+                                        }
+                                    };
+                                    helper([], attributes);
+                                    return combinations;
+                                }
+
+                                function displayVariations(variations) {
+                                    var variationContainer = document.getElementById('variationContainer');
+                                    variationContainer.innerHTML = ''; // Clear previous variations
+
+                                    variations.forEach(function (variation, index) {
+                                        var variationElement = document.createElement('div');
+                                        variationElement.classList.add('mb-8');
+                                        variationElement.innerHTML = '<strong>Variation ' + (index + 1) + ':</strong> ';
+
+                                        variation.forEach(function (attribute) {
+                                            variationElement.innerHTML += '<strong>' + attribute.name + ': </strong>' + attribute.value + ' ';
+                                            var nameInput = document.createElement('input');
+                                            nameInput.type = 'hidden';
+                                            nameInput.name = 'variation_attributes[' + index + '][' + attribute.name + ']'; // Name for the variation attribute input
+                                            nameInput.value = attribute.value;
+                                            variationElement.appendChild(nameInput);
+                                        });
+
+                                        var priceInput = document.createElement('input');
+                                        priceInput.type = 'number';
+                                        priceInput.name = 'variation_attributes[' + index + '][price]'; // Name for the variation price input
+                                        priceInput.value = '0';
+                                        priceInput.onchange = function () {
+                                            updatePrice(index, this.value);
+                                        };
+
+                                        variationElement.appendChild(document.createElement('br'));
+                                        variationElement.appendChild(document.createTextNode('Price: ₦'));
+                                        variationElement.appendChild(priceInput);
+
+                                        variationContainer.appendChild(variationElement);
+
+                                    });
+                                }
+
+                                function updatePrice(index, price) {
+                                    // Implement price update logic here
+                                    console.log('Variation ' + (index + 1) + ' price updated to: ₦' + price);
+                                }
+                            </script>
 
                             <div class="card-header p-7 bg-transparent">
                                 <h4 class="fs-18px mb-0 font-weight-500">Add Special Items</h4>
