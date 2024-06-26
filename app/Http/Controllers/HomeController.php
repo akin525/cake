@@ -325,29 +325,16 @@ function checkout()
 {
 
         $checkout=0;
-//        $cart=[];
         $cart = session::get('selected_product', []);
         $alert=Alert::where('name', '=', 'RTG')->first();
         $alert1=Alert::where('name', '=','Other')->first();
 
-//        return $cart;
-//            $product = Products::where('id',$cart['id'])->first();
-//            if ($product) {
-//                $checkout = $cart['amount'] ;
-
-//            }
-//            $cart['image'] = $product->image;
-
-//        $state=State::all();
+    $category=Categories::all();
     foreach ($cart as $item) {
         $amount = isset($item['amount']) ? $item['amount'] : 0;
-        // Debugging: Print out individual amounts
-//        echo "Amount for item: " . $amount . "<br>";
-
         $checkout += (float) $amount;
     }
-//    return $checkout;
-    return view('shop.checkout', compact('checkout', 'cart', 'alert', 'alert1'));
+    return view('shop.checkout', compact('checkout', 'category', 'cart', 'alert', 'alert1'));
 }
 function dashboard()
 {
