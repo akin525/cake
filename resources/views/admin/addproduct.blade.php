@@ -217,7 +217,7 @@
 
 
                             <div class="card-header p-7 bg-transparent">
-                                <h4 class="fs-18px mb-0 font-weight-500">Add Special Product</h4>
+                                <h4 class="fs-18px mb-0 font-weight-500">More Options</h4>
                             </div>
                             <div id="items-container">
                                 <div class="item">
