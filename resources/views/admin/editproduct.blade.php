@@ -249,7 +249,7 @@
                             </script>
 
                             <div class="card-header p-7 bg-transparent">
-                                <h4 class="fs-18px mb-0 font-weight-500">Add Special Items</h4>
+                                <h4 class="fs-18px mb-0 font-weight-500">Add Special Product</h4>
                             </div>
 
                             @forelse($items as $index => $item)
@@ -277,7 +277,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" id="add-item" class="btn btn-primary">Add Another Item</button>
+                                <button type="button" id="add-item" class="btn btn-primary">Add Another Product</button>
                             @endforelse
                             <br/>
                             <br/>

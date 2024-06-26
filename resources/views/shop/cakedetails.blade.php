@@ -517,7 +517,7 @@
                             <br/>
                             <br/>
                             @if(!empty($items) && $items->count())
-                                <h6 class="cormorant-upright-bold">Special Items</h6>
+                                <h6 class="cormorant-upright-bold">Special Product</h6>
 
                                 <select name="option" class="form-control cormorant-upright-light" id="item">
                                     <option value="0" data-wapf-price="0">Choose an option</option>
@@ -529,15 +529,15 @@
 
                             <br/>
                             <br/>
-                            <h6 class="cormorant-upright-bold" >Include Items</h6>
+{{--                            <h6 class="cormorant-upright-bold" >Include Items</h6>--}}
 
-                            <select name="option"  class="form-control  cormorant-upright-light " id="opt" >
-                                <option value="0" data-wapf-price="0" >Choose an option</option>
-                                @foreach($option as $opt)
-                                    <option value="{{$opt['price']}}" data-wapf-price="{{$opt['price']}}" data-wapf-pricetype="fixed">{{$opt['product']}} (₦{{$opt['price']}})</option>
+{{--                            <select name="option"  class="form-control  cormorant-upright-light " id="opt" >--}}
+{{--                                <option value="0" data-wapf-price="0" >Choose an option</option>--}}
+{{--                                @foreach($option as $opt)--}}
+{{--                                    <option value="{{$opt['price']}}" data-wapf-price="{{$opt['price']}}" data-wapf-pricetype="fixed">{{$opt['product']}} (₦{{$opt['price']}})</option>--}}
 
-                                @endforeach
-                                 </select>
+{{--                                @endforeach--}}
+{{--                                 </select>--}}
                             <script>
                                 $(document).ready(function () {
                                     // Function to update flavor options based on selected layers
