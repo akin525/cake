@@ -229,6 +229,17 @@
                             </style>
 
 
+
+                                @php
+                                    $values = isset($size) && isset($size->value) ? explode(' | ', $size->value) : [];
+
+                                    $values1 = isset($layer) && isset($layer->value) ? explode(' | ', $layer->value) : [];
+
+                                    $values2 = isset($flavor) && isset($flavor->value) ? explode(' | ', $flavor->value) : [];
+
+                                    $values3 = isset($product) && isset($product->item) ? explode(' | ', $product->item) : [];
+                                @endphp
+                            @if($size != null)
                             <div class="product-size mb-5">
                                 <label for="layersBy" class="cormorant-upright-bold"  >Size in Inches</label>
                                 <style>
@@ -255,17 +266,6 @@
                                     }
 
                                 </style>
-                                @php
-                                    $values = isset($size) && isset($size->value) ? explode(' | ', $size->value) : [];
-
-                                    $values1 = isset($layer) && isset($layer->value) ? explode(' | ', $layer->value) : [];
-
-                                    $values2 = isset($flavor) && isset($flavor->value) ? explode(' | ', $flavor->value) : [];
-
-                                    $values3 = isset($product) && isset($product->item) ? explode(' | ', $product->item) : [];
-                                @endphp
-
-                                @if($size != null)
                                 <div class="select-wrapper">
                                     <select name="size" id="layersBy1" class="cormorant-upright-light" required>
                                         <option>Choose an option</option>
@@ -274,8 +274,8 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                @endif
                             </div>
+                                @endif
                             @if($layer != null)
                             <div class="product-size mb-5">
                                 <label for="layersBy" class="cormorant-upright-bold" >Layers:</label>

@@ -45,10 +45,10 @@
                                     <input type="hidden" name="checkout" value="{{$checkout}}">
 
                                 </div>
-{{--                                <div class="col">--}}
-{{--                                    <label>Last Name*</label>--}}
-{{--                                    <input class="form-field" type="text">--}}
-{{--                                </div>--}}
+                                {{--                                <div class="col">--}}
+                                {{--                                    <label>Last Name*</label>--}}
+                                {{--                                    <input class="form-field" type="text">--}}
+                                {{--                                </div>--}}
                                 <div class="col">
                                     <label>Email Address*</label>
                                     <input class="form-field" id="email" name="email" type="email"  required>
@@ -57,10 +57,10 @@
                                     <label>Phone no*</label>
                                     <input class="form-field" type="text"  name="phone" required>
                                 </div>
-{{--                                <div class="col-sm-12">--}}
-{{--                                    <label>Company Name</label>--}}
-{{--                                    <input class="form-field" type="text">--}}
-{{--                                </div>--}}
+                                {{--                                <div class="col-sm-12">--}}
+                                {{--                                    <label>Company Name</label>--}}
+                                {{--                                    <input class="form-field" type="text">--}}
+                                {{--                                </div>--}}
                                 <div class="col-sm-12">
                                     <label>Street address</label>
                                     <input class="form-field" type="text" name="address" placeholder="Street address" required>
@@ -77,102 +77,91 @@
                                         </select>
                                     </div>
                                 </div>
-{{--                                <div class="col">--}}
-{{--                                    <label>State*</label>--}}
-{{--                                    <div class="select-wrapper">--}}
-{{--                                        <select class="form-field" id="stateSelect" name="state" required>--}}
-{{--                                            <option value="">Select State</option>--}}
-{{--                                            @foreach($state as $st)--}}
-{{--                                            <option value="{{$st['name']}}">{{$st['name']}}</option>--}}
-{{--                                            @endforeach--}}
+                                {{--                                <div class="col">--}}
+                                {{--                                    <label>State*</label>--}}
+                                {{--                                    <div class="select-wrapper">--}}
+                                {{--                                        <select class="form-field" id="stateSelect" name="state" required>--}}
+                                {{--                                            <option value="">Select State</option>--}}
+                                {{--                                            @foreach($state as $st)--}}
+                                {{--                                            <option value="{{$st['name']}}">{{$st['name']}}</option>--}}
+                                {{--                                            @endforeach--}}
 
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-                                </div>
-                                <div class="col">
-                                    <label>City/Town*</label>
-                                    <div class="select-wrapper">
-                                        <input type="text" class="form-field" name="city" required>
-                                    </div>
-                                </div>
+                                {{--                                        </select>--}}
+                                {{--                                    </div>--}}
+                            </div>
                             <div class="col">
-                                    <label>Delivery Date *</label>
-                                    <input class="form-field" type="date" name="date" id="today" placeholder="Choose date" required>
+                                <label>City/Town*</label>
+                                <div class="select-wrapper">
+                                    <input type="text" class="form-field" name="city" required>
                                 </div>
+                            </div>
+                            <div class="col">
+                                <label>Delivery Date *</label>
+                                <input class="form-field" type="date" name="date" id="today" placeholder="Choose date" required>
+                            </div>
                             <br/>
                             <h4 class="merriweather-regular" style="font-size: 18px">Delivery Time *</h4>
                             <div class="col">
                                 <label>Choose Delivery Time (optional)</label>
                                 <div class="select-wrapper">
-                                <select  name="time" id="daypart" class="form-field" data-placeholder="">
-                                    <option value="blank">Select a delivery time</option>
-                                    <option value="08:30am - 12:00pm">08:30am - 12:00pm </option>
-                                    <option value="12:00pm - 04:00pm">12:00pm - 04:00pm </option>
-                                    <option value="4:00pm - 8:00pm">4:00pm - 8:00pm </option>
-                                    <option value="12am to 4pm">12am to 4pm READY TO GO ONLY</option>
-                                </select>
+                                    <select name="time" id="daypart" class="form-field" data-placeholder="">
+                                        <option value="blank">Select a delivery time</option>
+                                        <option value="08:30am - 12:00pm">08:30am - 12:00pm</option>
+                                        <option value="12:00pm - 04:00pm">12:00pm - 04:00pm</option>
+                                        <option value="4:00pm - 8:00pm">4:00pm - 8:00pm</option>
+                                        <option value="8am to 4pm">8am to 4pm READY TO GO ONLY</option>
+                                    </select>
                                 </div>
-                                </div>
+                            </div>
                             <br/>
                             <script>
                                 document.getElementById('daypart').addEventListener('change', function() {
                                     var selectedTime = document.getElementById('daypart').value;
-                                    var dd = document.getElementById('today').value;
+                                    var dateInput = document.getElementById('today');
                                     var now = new Date();
-                                    var currentHour = now.getHours();
 
-                                    function getFormattedDate() {
-                                        const today = new Date();
-                                        const year = today.getFullYear();
-                                        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
-                                        const day = String(today.getDate()).padStart(2, '0');
-
+                                    function getFormattedDate(date) {
+                                        const year = date.getFullYear();
+                                        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+                                        const day = String(date.getDate()).padStart(2, '0');
                                         return `${year}-${month}-${day}`;
                                     }
 
-                                    console.log(getFormattedDate())
-                                    console.log(dd);
-                                    if (selectedTime === "12am to 4pm" && currentHour >= 16) {
-                                        Swal.fire({
-                                            title: 'Delivery Notice',
-                                            text: '{{$alert->message}}',
-                                            icon: 'info',
-                                            confirmButtonText: 'OK'
-                                        });
-                                    }
-                                    if (selectedTime === "08:30am - 12:00pm" && getFormattedDate() === dd) {
-                                        Swal.fire({
-                                            title: 'Delivery Notice',
-                                            text: '{{$alert1->message}}',
-                                            icon: 'info',
-                                            confirmButtonText: 'OK'
-                                        });
+                                    if (selectedTime === "8am to 4pm") {
+                                        var nextDay = new Date(now);
+                                        nextDay.setDate(now.getDate() + 1);
+                                        dateInput.value = getFormattedDate(nextDay);
+                                    } else {
+                                        dateInput.value = ""; // Clear the value if a different time is selected
                                     }
 
+                                    console.log(getFormattedDate(now));
                                 });
+
                                 document.addEventListener("DOMContentLoaded", function() {
                                     var today = new Date();
-                                    var day = String(today.getDate()).padStart(2, '0');
+                                    var day = String(today.getDate() + 1).padStart(2, '0'); // Set to tomorrow
                                     var month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
                                     var year = today.getFullYear();
 
-                                    var todayDate = year + '-' + month + '-' + day;
-                                    document.getElementById('today').setAttribute('min', todayDate);
+                                    var minDate = year + '-' + month + '-' + day;
+                                    document.getElementById('today').setAttribute('min', minDate);
                                 });
                             </script>
-{{--                                <div class="col-sm-12 d-flex flex-wrap gap-6">--}}
-{{--                                    <div class="form-check m-0">--}}
-{{--                                        <input class="form-check-input" type="checkbox" id="create_account">--}}
-{{--                                        <label class="form-check-label" for="create_account">Create an Acount?</label>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="form-check m-0">--}}
-{{--                                        <input class="form-check-input" type="checkbox" id="shiping_address" data-toggle-shipping="#shipping-form">--}}
-{{--                                        <label class="form-check-label" for="shiping_address">Ship to Different Address</label>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-                            </div>
 
+                            {{--                                <div class="col-sm-12 d-flex flex-wrap gap-6">--}}
+                            {{--                                    <div class="form-check m-0">--}}
+                            {{--                                        <input class="form-check-input" type="checkbox" id="create_account">--}}
+                            {{--                                        <label class="form-check-label" for="create_account">Create an Acount?</label>--}}
+                            {{--                                    </div>--}}
+                            {{--                                    <div class="form-check m-0">--}}
+                            {{--                                        <input class="form-check-input" type="checkbox" id="shiping_address" data-toggle-shipping="#shipping-form">--}}
+                            {{--                                        <label class="form-check-label" for="shiping_address">Ship to Different Address</label>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
                         </div>
+
+                    </div>
 
 
                     <div class="col-lg-7">
@@ -186,7 +175,7 @@
                                     <input class="form-field" name="namec"  type="text" required>
 
                                 </div>
-                              <div class="col">
+                                <div class="col">
                                     <label>Email Address*</label>
                                     <input class="form-field" id="email" name="emailc" type="email"  required>
                                 </div>
@@ -207,7 +196,7 @@
                                         </select>
                                     </div>
                                 </div>
-                               </div>
+                            </div>
                             <div class="col">
                                 <label>City/Town*</label>
                                 <div class="select-wrapper">
@@ -216,64 +205,64 @@
                             </div>
 
                             <br/>
-                           </div>
-
-                    </div>
-
-                    </div>
-
-                    <div class="col-lg-5">
-
-{{--                        <!-- Checkout Summary Start -->--}}
-                        <div class="checkout-box">
-
-                            <h4 class="mb-4">Cart Total</h4>
-
-                            <table class="checkout-summary-table table table-borderless">
-                                <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Total</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @forelse($cart as $cat)
-                                    <tr>
-                                        <td>{{ $cat['name'] }}</td>
-                                        <td>₦{{ number_format($cat['amount']) }}</td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="2">No items in the cart</td>
-                                    </tr>
-                                @endforelse
-                                </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th class="border-top">Grand Total</th>
-                                    <th class="border-top">₦{{ number_format($checkout) }}</th>
-                                </tr>
-                                </tfoot>
-                            </table>
-
                         </div>
-                        <!-- Checkout Summary End -->
-
-                        <!-- Payment Method Start -->
-                        <div class="checkout-box">
-                            <h4 class="mb-4">Payment Method</h4>
-                            <input type="hidden" name="amount" value="{{$checkout}}">
-{{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Direct Bank Transfer</a>--}}
-{{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Cash on Delivery</a>--}}
-                            <button type="submit" class="btn btn-dark btn-primary-hover rounded-0 mt-6" >Place Order</button>
-                        </div>
-                        <!-- Payment Method End -->
 
                     </div>
-            </form>
 
                 </div>
+
+                <div class="col-lg-5">
+
+                    {{--                        <!-- Checkout Summary Start -->--}}
+                    <div class="checkout-box">
+
+                        <h4 class="mb-4">Cart Total</h4>
+
+                        <table class="checkout-summary-table table table-borderless">
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @forelse($cart as $cat)
+                                <tr>
+                                    <td>{{ $cat['name'] }}</td>
+                                    <td>₦{{ number_format($cat['amount']) }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="2">No items in the cart</td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th class="border-top">Grand Total</th>
+                                <th class="border-top">₦{{ number_format($checkout) }}</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                    <!-- Checkout Summary End -->
+
+                    <!-- Payment Method Start -->
+                    <div class="checkout-box">
+                        <h4 class="mb-4">Payment Method</h4>
+                        <input type="hidden" name="amount" value="{{$checkout}}">
+                        {{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Direct Bank Transfer</a>--}}
+                        {{--                                    <a href="#" class="btn btn-dark btn-primary-hover rounded-0 mt-6">Cash on Delivery</a>--}}
+                        <button type="submit" class="btn btn-dark btn-primary-hover rounded-0 mt-6" >Place Order</button>
+                    </div>
+                    <!-- Payment Method End -->
+
+                </div>
+            </form>
+
         </div>
+    </div>
     </div>
 
     <script>
