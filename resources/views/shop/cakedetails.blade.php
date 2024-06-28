@@ -176,7 +176,7 @@
                             </style>
 
 {{--                            <span class="product-head-price"  style="font-size: 30px "></span>--}}
-                            <input type="text" id="total" class="no-border-input merriweather-bold fs-4"  style="font-size: 20px; "
+                            <input type="text" id="to" class="no-border-input merriweather-bold fs-4"  style="font-size: 20px; "
                                    value="₦{{ number_format(intval($product->price * 1))}}">
                             <input type="hidden" id="defaultAmount"
                                    value="{{$product->price}}">
@@ -280,7 +280,7 @@
                             <div class="product-size mb-5">
                                 <label for="layersBy" class="cormorant-upright-bold" >Layers:</label>
                                 <div class="select-wrapper">
-                                    <select name="layers" id="layerSelect" class="cormorant-upright-light " required>
+                                    <select name="layers" id="layerSelect" class="cormorant-upright-light " style="pointer-events: auto;" required>
                                         <option>Choose an option</option>
                                         @foreach ($values1 as $value)
                                             <option value="{{ $value }}">{{ $value }}</option>
@@ -293,7 +293,7 @@
                             <div class="product-color mb-2" >
                             <label for="flavourBy" class="cormorant-upright-bold">Flavour</label>
                             <div class="select-wrapper">
-                                <select name="flavor" id="flavorSelect" class=" cormorant-upright-light tag" required>
+                                <select name="flavor" id="flavorSelect" class=" cormorant-upright-light tag" style="pointer-events: auto;" required>
                                     <option>Choose an option</option>
                                     @foreach ($values2 as $value)
                                         <option value="{{ $value }}">{{ $value }}</option>
@@ -384,7 +384,7 @@
                             <div class="product-color">
                                 <label for="topperBy" class="cormorant-upright-bold" ><span>Topper</span></label>
                         </div>
-                            <select name="topper" id="topperBy" class="form-control cormorant-upright-light">
+                            <select name="topper" id="topperBy"  style="pointer-events: auto;" class="form-control cormorant-upright-light">
                                 <option value="0">Choose an option</option>
                                 <option value="4000" data-wapf-price="4000" data-wapf-pricetype="fixed">Customized Topper (+₦4,000.00)</option>
                                 <option value="1000" data-wapf-price="1000" data-wapf-pricetype="fixed">In-House Happy Birthday Topper (+₦1,000.00)</option>
@@ -424,7 +424,7 @@
                             <div class="product-size">
                                 <label for="layersBy" class="cormorant-upright-bold" ><span>Base Colour of Cake</span></label>
                             </div>
-                            <select name="color"  class="form-control  cormorant-upright-light " id="color" >
+                            <select name="color"  class="form-control   cormorant-upright-light " style="pointer-events: auto;" id="color" >
                                 <option value="no">Choose an option</option>
                                 <option value="White" style="color: white;">White</option>
                                 <option value="black" style="color: black;">Black</option>
@@ -438,7 +438,7 @@
 
                             </select>
                             <br/>
-                            <input type="text" id="customColor" name="color" class="hidden form-control " placeholder="Enter custom color"/>
+                            <input type="text" id="customColor" name="color"  class="hidden form-control " placeholder="Enter custom color"/>
                             <script>
                                 document.getElementById('color').addEventListener('change', function() {
                                     var customColorInput = document.getElementById('customColor');
@@ -489,7 +489,7 @@
 {{--                                </select>--}}
 {{--                            </div>--}}
                         </div>
-                            <select name="card"  class="form-control  cormorant-upright-light " id="ekoCakesCard" >
+                            <select name="card"  class="form-control  cormorant-upright-light " style="pointer-events: auto;" id="ekoCakesCard" >
                             <option value="no" data-wapf-price="0" >Choose an option</option>
                             <option value="no" data-wapf-price="0" >No, please</option>
                             <option value="yes" data-wapf-price="1500" data-wapf-pricetype="fixed">Yes, please (+₦1,500.00)</option>
@@ -519,7 +519,7 @@
                             @if(!empty($items) && $items->count())
                                 <h6 class="cormorant-upright-bold">Special Product</h6>
 
-                                <select name="option" class="form-control cormorant-upright-light" id="item">
+                                <select name="option" class="form-control cormorant-upright-light"  style="pointer-events: auto;" id="opt">
                                     <option value="0" data-wapf-price="0">Choose an option</option>
                                     @foreach($items as $item)
                                         <option value="{{ $item->price }}" data-wapf-price="{{ $item->price }}" data-wapf-pricetype="fixed">{{ $item->product }} (₦{{ $item->price }})</option>
@@ -579,8 +579,11 @@
                                     var selectedPrice = parseFloat(selectedOption.getAttribute('data-wapf-price'));
 
                                     var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
+                                    var to = parseInt(document.getElementById('totalp').value); // Get previous layer price
                                     totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
+                                    totalAmount -= to; // Subtract previous layer price from total amount
                                     document.getElementById('tPrice').value = selectedPrice; // Store current layer price for next calculation
+                                    document.getElementById('totalp').value = selectedPrice; // Store current layer price for next calculation
 
                                     // Update total amount
                                     var totalAmountElement = document.getElementById('totalAmount');
