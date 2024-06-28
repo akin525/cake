@@ -392,7 +392,7 @@
                             <div class="product-color">
                                 <label for="topperBy" class="cormorant-upright-bold" ><span>Topper</span></label>
                         </div>
-                            <select name="topper" id="topperBy"  style="pointer-events: auto;" class="form-control cormorant-upright-light">
+                            <select name="topper" id="topperBy"   class="form-control cormorant-upright-light">
                                 <option value="0">Choose an option</option>
                                 <option value="4000" data-wapf-price="4000" data-wapf-pricetype="fixed">Customized Topper (+₦4,000.00)</option>
                                 <option value="1000" data-wapf-price="1000" data-wapf-pricetype="fixed">In-House Happy Birthday Topper (+₦1,000.00)</option>
@@ -431,21 +431,46 @@
                             </style>
 
                             <div class="product-size">
-                                <label for="layersBy" class="cormorant-upright-bold" ><span>Base Colour of Cake</span></label>
+                                <label for="baseColor" class="cormorant-upright-bold">
+                                    <span>Base Colour of Cake</span>
+                                </label>
                             </div>
-                            <select name="color"  class="form-control   cormorant-upright-light " style="pointer-events: auto;" id="color" >
-                                <option value="no">Choose an option</option>
-                                <option value="White" style="color: white;">White</option>
-                                <option value="black" style="color: black;">Black</option>
-                                <option value="blue" style="color: blue;">Blue</option>
-                                <option value="purple" style="color: purple;">Purple</option>
-                                <option value="green" style="color: green;">Green</option>
-                                <option value="orange" style="color: orange;">Orange</option>
-                                <option value="brown" style="color: brown;">Brown</option>
-                                <option value="pink" style="color: pink;">Pink</option>
-                                <option value="custom">Custom Color</option>
-
+                            <select name="baseColor" class="form-control cormorant-upright-light" id="baseColor">
+                                <option value="">---</option>
+                                <option value="choose">Choose an option</option>
+                                <option value="inHouse">In-house base colour</option>
                             </select>
+
+                            <br/>
+                            <br/>
+                            <div id="colorOptions" style="display: none;">
+                                <select name="color" class="form-control cormorant-upright-light" id="color">
+                                    <option value="">Choose an option</option>
+                                    <option value="white" style="color: white;">White</option>
+                                    <option value="black" style="color: black;">Black</option>
+                                    <option value="blue" style="color: blue;">Blue</option>
+                                    <option value="purple" style="color: purple;">Purple</option>
+                                    <option value="green" style="color: green;">Green</option>
+                                    <option value="orange" style="color: orange;">Orange</option>
+                                    <option value="brown" style="color: brown;">Brown</option>
+                                    <option value="pink" style="color: pink;">Pink</option>
+                                    <option value="custom">Custom Color</option>
+                                </select>
+                            </div>
+
+                            <script>
+                                document.getElementById('baseColor').addEventListener('change', function() {
+                                    var selectedOption = this.value;
+                                    var colorOptions = document.getElementById('colorOptions');
+
+                                    if (selectedOption === 'choose') {
+                                        colorOptions.style.display = 'block';
+                                    } else {
+                                        colorOptions.style.display = 'none';
+                                    }
+                                });
+
+                            </script>
                             <br/>
                             <input type="text" id="customColor" name="color"  class="hidden form-control " placeholder="Enter custom color"/>
                             <script>
