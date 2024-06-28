@@ -53,6 +53,8 @@ class ProductsController
          'category' => $request->input('categories') ?? 'cakes',
          'status' => 1,
          'fee' => $request->input('fee') ?? 0,
+         'topper'=>$request->input('topper') ?? 1,
+         'card'=>$request->input('card') ?? 1,
      ]);
 
 // Handle product variations
@@ -263,6 +265,8 @@ class ProductsController
      $product->fee = $validatedData['fee'];
      $product->description = $validatedData['description'];
      $product->category = $validatedData['categories'];
+     $product->topper = $request['topper'];
+     $product->card = $request['card'];
 
      $product->save();
      if ($request->has('attribute') && $request->input('attribute') != null) {
@@ -388,6 +392,8 @@ class ProductsController
          'category' => $request->input('categories'),
          'status' => 1,
          'fee' => $request->input('fee') ?? 0,
+         'topper'=>$request->input('topper') ?? 1,
+         'card'=>$request->input('card') ?? 1,
      ]);
 
 // Handle product variations

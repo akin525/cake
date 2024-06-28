@@ -13829,7 +13829,7 @@ textarea.form-control {
 }
 .product-summery .product-color .select-wrapper::after, .product-summery .product-size .select-wrapper::after {
   position: absolute;
-  content: "\ea10";
+  content: "";
   /*right: 10px;*/
   /*top: 50%;*/
   /*transform: translateY(-50%);*/

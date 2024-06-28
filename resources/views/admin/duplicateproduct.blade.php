@@ -65,6 +65,33 @@
                                             <option>NGN</option>
                                         </select>
                                     </div>
+
+                                    <div class="checkbox-container">
+                                        <label>
+                                            <input type="hidden" name="topper" value="0">
+                                            <input type="checkbox" value="1" name="topper" class="checkbox" data-index="0" @if($product->topper ==1) checked @endif> Allow Topper
+                                        </label>
+                                        <label>
+                                            <input type="hidden" name="card" value="0">
+                                            <input type="checkbox" value="1" name="card" class="checkbox" data-index="1" @if($product->card ==1) checked @endif> Allow Eko Card
+                                        </label>
+                                        {{-- <label> --}}
+                                        {{-- <input type="checkbox" class="checkbox" data-index="2"> Option 3 --}}
+                                        {{-- </label> --}}
+                                    </div>
+                                    <br/>
+                                    <br/>
+                                    <script>
+                                        document.querySelectorAll('.checkbox').forEach((checkbox) => {
+                                            // Set initial value based on checked state
+                                            checkbox.value = checkbox.checked ? 1 : 0;
+
+                                            checkbox.addEventListener('change', function() {
+                                                this.value = this.checked ? 1 : 0;
+                                                console.log(`Checkbox ${this.dataset.index} value: ${this.value}`);
+                                            });
+                                        });
+                                    </script>
                                 </div>
 
 

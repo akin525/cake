@@ -173,6 +173,13 @@
                                     font-size: 30px;
                                     width: auto; /* Optionally adjust the width as needed */
                                 }
+                                .checkbox-container {
+                                    display: flex;
+                                    flex-direction: row;
+                                }
+                                .checkbox-container label {
+                                    margin-right: 10px;
+                                }
                             </style>
 
 {{--                            <span class="product-head-price"  style="font-size: 30px "></span>--}}
@@ -267,7 +274,7 @@
 
                                 </style>
                                 <div class="select-wrapper">
-                                    <select name="size" id="layersBy1" class="cormorant-upright-light" required>
+                                    <select name="size" id="layersBy1" class="custom-select cormorant-upright-light" required>
                                         <option>Choose an option</option>
                                         @foreach ($values as $value)
                                             <option value="{{ $value }}">{{ $value }}</option>
@@ -280,7 +287,7 @@
                             <div class="product-size mb-5">
                                 <label for="layersBy" class="cormorant-upright-bold" >Layers:</label>
                                 <div class="select-wrapper">
-                                    <select name="layers" id="layerSelect" class="cormorant-upright-light " style="pointer-events: auto;" required>
+                                    <select name="layers" id="layerSelect" class="form-control cormorant-upright-light " style="pointer-events: auto;" required>
                                         <option>Choose an option</option>
                                         @foreach ($values1 as $value)
                                             <option value="{{ $value }}">{{ $value }}</option>
@@ -293,7 +300,7 @@
                             <div class="product-color mb-2" >
                             <label for="flavourBy" class="cormorant-upright-bold">Flavour</label>
                             <div class="select-wrapper">
-                                <select name="flavor" id="flavorSelect" class=" cormorant-upright-light tag" style="pointer-events: auto;" required>
+                                <select name="flavor" id="flavorSelect" class="form-control cormorant-upright-light tag" style="pointer-events: auto;" required>
                                     <option>Choose an option</option>
                                     @foreach ($values2 as $value)
                                         <option value="{{ $value }}">{{ $value }}</option>
@@ -381,6 +388,7 @@
 {{--                                    </b></h4>--}}
 {{--                            </div>--}}
                             <br/>
+                            @if($product->topper == 1)
                             <div class="product-color">
                                 <label for="topperBy" class="cormorant-upright-bold" ><span>Topper</span></label>
                         </div>
@@ -393,6 +401,7 @@
 
                             <div class="cormorant-upright-regular">Please write a short message you would like to see on the Topper. e.g. Mummy at 60, Happy Birthday Baby</div>
 
+                            @endif
                             <br/>
                             <div class="" id="topperInput" style="display: none;">
                                 <h6 class="cormorant-upright-bold" >Topper Text</h6>
@@ -480,7 +489,8 @@
 {{--                                    </b></h6>--}}
 {{--                            </div>--}}
 {{--                        </div>--}}
-                        <div class="product-color mb-2">
+                            @if($product->card == 1)
+                                <div class="product-color mb-2">
                             <label for="ekoCakesCard" class="cormorant-upright-bold" >Add Eko Cakes Greeting Card?</label>
 {{--                            <div class="select-wrapper">--}}
 {{--                                <select name="ekoCakesCard" id="ekoCakesCard" class=" cormorant-upright-light text-center" >--}}
@@ -495,6 +505,7 @@
                             <option value="yes" data-wapf-price="1500" data-wapf-pricetype="fixed">Yes, please (+₦1,500.00)</option>
                             </select>
                             <br/>
+                            @endif
                         <div  id="ekoCakesMessageSection" >
                             <label for="ekoCakesMessage" class="cormorant-upright-bold" >Eko Cakes Card Message</label>
                             <br/>
