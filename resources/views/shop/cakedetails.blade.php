@@ -176,8 +176,8 @@
                             </style>
 
 {{--                            <span class="product-head-price"  style="font-size: 30px "></span>--}}
-                            <input type="text" id="to" class="no-border-input merriweather-bold fs-4"  style="font-size: 20px; "
-                                   value="₦{{ number_format(intval($product->price * 1))}}">
+{{--                            <input type="text" id="to" class="no-border-input merriweather-bold fs-4"  style="font-size: 20px; "--}}
+{{--                                   value="₦{{ number_format(intval($product->price * 1))}}">--}}
                             <input type="hidden" id="defaultAmount"
                                    value="{{$product->price}}">
 {{--                            <span class="product-head-price" id="defaultAmount" style="font-size: 30px ">₦{{ number_format(intval($product->price * 1)) }}</span>--}}
