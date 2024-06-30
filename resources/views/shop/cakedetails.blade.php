@@ -5,72 +5,7 @@
     @endif
 @endsection
 @section('content')
-{{--    <style>--}}
-{{--        .size-selector {--}}
-{{--            display: flex;--}}
-{{--            align-items: center;--}}
-{{--        }--}}
 
-{{--        .size-selector label {--}}
-{{--            margin-right: 10px;--}}
-{{--        }--}}
-
-{{--        .size-options {--}}
-{{--            display: flex;--}}
-{{--        }--}}
-
-{{--        .size-options input[type="radio"] {--}}
-{{--            display: none;--}}
-{{--        }--}}
-
-{{--        .size-options label {--}}
-{{--            display: block;--}}
-{{--            border: 1px solid #ccc;--}}
-{{--            padding: 5px 10px;--}}
-{{--            margin-right: 5px;--}}
-{{--            cursor: pointer;--}}
-{{--            border-radius: 5px;--}}
-{{--        }--}}
-
-{{--        .size-options input[type="radio"]:checked + label {--}}
-{{--            background-color: #ccc;--}}
-{{--        }--}}
-
-
-{{--        .flavor-selector {--}}
-{{--            display: flex;--}}
-{{--            align-items: center;--}}
-{{--        }--}}
-
-{{--        .flavor-selector label {--}}
-{{--            margin-right: 10px;--}}
-{{--        }--}}
-
-{{--        .flavor-options {--}}
-{{--            display: flex;--}}
-{{--        }--}}
-
-{{--        .flavor-options input[type="radio"] {--}}
-{{--            display: none;--}}
-{{--        }--}}
-
-{{--        .flavor-options label {--}}
-{{--            display: inline-block;--}}
-{{--            margin-right: 5px;--}}
-{{--            cursor: pointer;--}}
-{{--        }--}}
-
-{{--        .flavor-options label img {--}}
-{{--            width: 50px; /* Adjust image width as needed */--}}
-{{--            height: 50px; /* Adjust image height as needed */--}}
-{{--            border-radius: 50%; /* Rounded corners for circular images */--}}
-{{--        }--}}
-
-{{--        .flavor-options input[type="radio"]:checked + label {--}}
-{{--            border: 2px solid #000; /* Add border when selected */--}}
-{{--        }--}}
-
-{{--    </style>--}}
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
         <div class="loading-spinner"></div>
     </div>
@@ -140,19 +75,10 @@
 
                             </div>
 
-                            <!-- Swiper Pagination Start -->
-                            <!-- <div class="swiper-pagination d-none"></div> -->
-                            <!-- Swiper Pagination End -->
 
-                            <!-- Next Previous Button Start -->
-                            <!--
-                                <div class="swiper-button-vertical-next  swiper-button-next"><i class="lastudioicon-right-arrow"></i></div>
-                                <div class="swiper-button-vertical-prev swiper-button-prev"><i class="lastudioicon-left-arrow"></i></div>
-                            -->
-                            <!-- Next Previous Button End -->
 
                         </div>
-                        <!-- Single Product Thumb End -->
+
 
                     </div>
                     <!-- Product Details Image End -->
@@ -182,13 +108,10 @@
                                 }
                             </style>
 
-{{--                            <span class="product-head-price"  style="font-size: 30px "></span>--}}
-{{--                            <input type="text" id="to" class="no-border-input merriweather-bold fs-4"  style="font-size: 20px; "--}}
-{{--                                   value="₦{{ number_format(intval($product->price * 1))}}">--}}
+
                             <input type="hidden" id="defaultAmount"
                                    value="{{$product->price}}">
-{{--                            <span class="product-head-price" id="defaultAmount" style="font-size: 30px ">₦{{ number_format(intval($product->price * 1)) }}</span>--}}
-                            <!-- Price End -->
+
                             <!-- Rating Start -->
                             <div class="review-rating">
                 <span class="review-rating-bg">
@@ -311,59 +234,6 @@
                             @endif
 
 
-{{--<script>--}}
-{{--    const layerSelect = document.getElementById('layerSelect');--}}
-{{--    const flavorSelect = document.getElementById('flavorSelect');--}}
-
-{{--    function updateFlavorOptions() {--}}
-{{--        const selectedLayers = layerSelect.value;--}}
-{{--        flavorSelect.disabled = false; // Enable flavor selection by default--}}
-
-{{--        // Clear existing options--}}
-{{--        flavorSelect.innerHTML = '';--}}
-
-{{--        // Add a default option--}}
-{{--        const defaultOption = document.createElement('option');--}}
-{{--        defaultOption.value = '';--}}
-{{--        defaultOption.text = '-- Select Flavor(s) --';--}}
-{{--        flavorSelect.appendChild(defaultOption);--}}
-
-{{--        // Add flavor options based on selected layers--}}
-{{--        if (selectedLayers === "1 layers" || selectedLayers === "1 Layers" ) {--}}
-{{--            const flavors = ['Vanilla ', 'Chocolate', 'Red Velvet', 'Cookies and cream' ]; // Add more flavors here if needed--}}
-{{--            flavors.forEach(flavor => {--}}
-{{--                const option = document.createElement('option');--}}
-{{--                option.value = flavor;--}}
-{{--                option.text = flavor;--}}
-{{--                flavorSelect.appendChild(option);--}}
-{{--            });--}}
-{{--        } else if(selectedLayers === "2 layers" || selectedLayers === "2 Layers "){--}}
-{{--            const flavors = ['Vanilla only ', 'Chocolate only', 'Red Velvet only', 'Cookies and Cream only', 'Vanilla & Chocolate', 'Red Velvet and Cookies and Cream', 'Chocolate and Cookies and Cream', 'Vanilla and Red Velvet', 'Red Velvet and Chocolate', 'Vanilla and Cookies and Cream']; // Add more flavors here if needed--}}
-{{--            flavors.forEach(flavor => {--}}
-{{--                const option = document.createElement('option');--}}
-{{--                option.value = flavor;--}}
-{{--                option.text = flavor;--}}
-{{--                flavorSelect.appendChild(option);--}}
-{{--            });--}}
-{{--        } else if(selectedLayers === "3 layers " || selectedLayers === "3 Layers "){--}}
-{{--            const flavors = ['vanilla,chocolate and red velvet', 'chocolate,  red velvet and cookies and cream',  'vanilla, chocolate and cookies and cream', 'vanilla,  red velvet and cookies and cream']; // Add more flavors here if needed--}}
-{{--            flavors.forEach(flavor => {--}}
-{{--                const option = document.createElement('option');--}}
-{{--                option.value = flavor;--}}
-{{--                option.text = flavor;--}}
-{{--                flavorSelect.appendChild(option);--}}
-{{--            });--}}
-{{--        } else {--}}
-{{--            flavorSelect.disabled = true; // Disable if only 1 layer selected--}}
-{{--        }--}}
-{{--    }--}}
-
-{{--    layerSelect.addEventListener('change', updateFlavorOptions);--}}
-
-{{--    // Call updateFlavorOptions initially to set the disabled state--}}
-{{--    updateFlavorOptions();--}}
-
-{{--</script>--}}
 
 
 
@@ -376,17 +246,6 @@
 
                             <div class="cormorant-upright-regular">Please write a short message you would like to see <br/>on the cake</div>
 
-                            {{--                            <div class="">--}}
-{{--                                <h3 class="cormorant-upright-bold" style="font-size: 21px">--}}
-{{--                                Text to Appear on the Cake--}}
-{{--                                </h3><br/>--}}
-{{--                                <input type="text"  placeholder="Enter your cake text" name="text"  class="bo cormorant-upright-light text-center" style="font-size: 21px;"/>--}}
-{{--                            </div>--}}
-{{--                            <div class="alert alert-warning">--}}
-{{--                                <h4 class="cormorant-upright-regular" style="font-size: 21px"><b>--}}
-{{--                                        Please write a short message you would like to see on the cake--}}
-{{--                                    </b></h4>--}}
-{{--                            </div>--}}
                             <br/>
                             @if($product->topper == 1)
                             <div class="product-color">
@@ -436,16 +295,16 @@
                                 </label>
                             </div>
                             <select name="baseColor" class="form-control cormorant-upright-light" id="baseColor">
-                                <option value="">---</option>
+                                <option value=""></option>
                                 <option value="choose">Choose an option</option>
-                                <option value="inHouse">In-house base colour</option>
+                                <option value="inHouse">In-house colour</option>
                             </select>
 
                             <br/>
                             <br/>
                             <div id="colorOptions" style="display: none;">
                                 <select name="color" class="form-control cormorant-upright-light" id="color">
-                                    <option value="">Choose an option</option>
+                                    <option value="">Pick a color</option>
                                     <option value="white" style="color: white;">White</option>
                                     <option value="black" style="color: black;">Black</option>
                                     <option value="blue" style="color: blue;">Blue</option>
@@ -483,46 +342,15 @@
                                     }
                                 });
                             </script>
-{{--                            <script>--}}
-{{--                                $(document).ready(function() {--}}
-{{--                                    $('#color').select2({--}}
-{{--                                        templateResult: formatColor,--}}
-{{--                                        templateSelection: formatColor--}}
-{{--                                    });--}}
-{{--                                });--}}
-
-{{--                                function formatColor(option) {--}}
-{{--                                    if (!option.id) {--}}
-{{--                                        return option.text;--}}
-{{--                                    }--}}
-{{--                                    var $option = $('<span></span>').text(option.text).css('color', option.element.style.color);--}}
-{{--                                    return $option;--}}
-{{--                                }--}}
-{{--                            </script>--}}
-{{--                            <input type="color" name="color" id="color" class="form-control cormorant-upright-light text-center"  />--}}
 
                             <div class="cormorant-upright-regular">Would you like the Cake in a different colour? Please specify preferred colour and shade. We will try our best to meet your colour preference</div>
 
                             <input type="hidden" name="id" value="{{$product->id}}">
-{{--                        <div class="" id="topperTextSection" style="display: none;">--}}
-{{--                            <h6 class="cormorant-upright-bold" >Topper Text</h6>--}}
-{{--                            <input type="text" name="topperText" id="topperText" class="cormorant-upright-light text-center"  />--}}
-{{--                            <br/>--}}
-{{--                            <div class="alert alert-warning">--}}
-{{--                                <h6 class="cormorant-upright-regular" style="font-size: 21px"><b>--}}
-{{--                                        Please write a short message you would like to see on the Topper. E.g. I love you baby. Daddy Rocks @ 40--}}
-{{--                                    </b></h6>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+
                             @if($product->card == 1)
                                 <div class="product-color mb-2">
                             <label for="ekoCakesCard" class="cormorant-upright-bold" >Add Eko Cakes Greeting Card?</label>
-{{--                            <div class="select-wrapper">--}}
-{{--                                <select name="ekoCakesCard" id="ekoCakesCard" class=" cormorant-upright-light text-center" >--}}
-{{--                                    <option value="no">No</option>--}}
-{{--                                    <option value="yes">Yes</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
+
                         </div>
                             <select name="card"  class="form-control  cormorant-upright-light " style="pointer-events: auto;" id="ekoCakesCard" >
                             <option value="no" data-wapf-price="0" >Choose an option</option>
@@ -565,15 +393,7 @@
 
                             <br/>
                             <br/>
-{{--                            <h6 class="cormorant-upright-bold" >Include Items</h6>--}}
 
-{{--                            <select name="option"  class="form-control  cormorant-upright-light " id="opt" >--}}
-{{--                                <option value="0" data-wapf-price="0" >Choose an option</option>--}}
-{{--                                @foreach($option as $opt)--}}
-{{--                                    <option value="{{$opt['price']}}" data-wapf-price="{{$opt['price']}}" data-wapf-pricetype="fixed">{{$opt['product']}} (₦{{$opt['price']}})</option>--}}
-
-{{--                                @endforeach--}}
-{{--                                 </select>--}}
                             <script>
                                 $(document).ready(function () {
                                     // Function to update flavor options based on selected layers
@@ -971,39 +791,7 @@
         });
 
     </script>
-{{--    <script>--}}
-{{--        $(document).ready(function() {--}}
-{{--            $('#layerSelect').change(function() {--}}
-{{--                var selectedValue = $(this).val();--}}
-{{--                // Show the loading spinner--}}
-{{--                $('#loadingSpinner').show();--}}
-{{--                // Send the selected value to the '/getOptions' route--}}
-{{--                $.ajax({--}}
-{{--                    url: '{{ url('getlayer') }}/' + selectedValue,--}}
-{{--                    type: 'GET',--}}
-{{--                    success: function(response) {--}}
-{{--                        $('#loadingSpinner').hide();--}}
 
-{{--                        // Handle the successful response--}}
-{{--                        var layerPrice = parseInt(response); // Get the selected layer price--}}
-{{--                        var defaultAmount = parseInt(document.getElementById('totalAmount').value);--}}
-{{--                        var totalAmount = defaultAmount + layerPrice; // Calculate the total amount--}}
-
-{{--                        console.log(totalAmount);--}}
-{{--                        console.log(defaultAmount);--}}
-{{--                        console.log(layerPrice);--}}
-{{--                        document.getElementById('totalAmount').value = totalAmount; // Update the total amount display--}}
-
-{{--                    },--}}
-{{--                    error: function(xhr) {--}}
-{{--                        // Handle any errors--}}
-{{--                        console.log(xhr.responseText);--}}
-{{--                    }--}}
-{{--                });--}}
-{{--            });--}}
-{{--        });--}}
-
-{{--    </script>--}}
 
 
 
