@@ -295,9 +295,8 @@
                                 </label>
                             </div>
                             <select name="baseColor" class="form-control cormorant-upright-light" id="baseColor">
-                                <option value=""></option>
-                                <option value="choose">Choose an option</option>
                                 <option value="inHouse">In-house colour</option>
+                                <option value="choose">Choose an option</option>
                             </select>
 
                             <br/>
@@ -381,7 +380,7 @@
                             <br/>
                             <br/>
                             @if(!empty($items) && $items->count())
-                                <h6 class="cormorant-upright-bold">Special Product</h6>
+                                <h6 class="cormorant-upright-bold">Add-Ons</h6>
 
                                 <select name="option" class="form-control cormorant-upright-light"  style="pointer-events: auto;" id="opt">
                                     <option value="0" data-wapf-price="0">Choose an option</option>
