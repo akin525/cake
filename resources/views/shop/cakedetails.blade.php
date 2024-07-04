@@ -348,15 +348,14 @@
 
                             @if($product->card == 1)
                                 <div class="product-color mb-2">
-                            <label for="ekoCakesCard" class="cormorant-upright-bold" >Add Eko Cakes Greeting Card?</label>
-
-                        </div>
-                            <select name="card"  class="form-control  cormorant-upright-light " style="pointer-events: auto;" id="ekoCakesCard" >
-                            <option value="no" data-wapf-price="0" >Choose an option</option>
-                            <option value="no" data-wapf-price="0" >No, please</option>
-                            <option value="yes" data-wapf-price="1500" data-wapf-pricetype="fixed">Yes, please (+₦1,500.00)</option>
-                            </select>
-                            <br/>
+                                    <label for="ekoCakesCard" class="cormorant-upright-bold">Add Eko Cakes Greeting Card?</label>
+                                </div>
+                                <select name="card" class="form-control cormorant-upright-light" id="ekoCakesCard">
+                                    <option value="no" data-wapf-price="0">Choose an option</option>
+                                    <option value="no" data-wapf-price="0" data-wapf-pricetype="fixed">No, please</option>
+                                    <option value="yes" data-wapf-price="1500" data-wapf-pricetype="fixed">Yes, please (+₦1,500.00)</option>
+                                </select>
+                                <br/>
                             @endif
                         <div  id="ekoCakesMessageSection" >
                             <label for="ekoCakesMessage" class="cormorant-upright-bold" >Eko Cakes Card Message</label>
@@ -382,7 +381,7 @@
                             @if(!empty($items) && $items->count())
                                 <h6 class="cormorant-upright-bold">Add-Ons</h6>
 
-                                <select name="option" class="form-control cormorant-upright-light"  style="pointer-events: auto;" id="opt">
+                                <select name="option" class="form-control cormorant-upright-light" style="pointer-events: auto;" id="item">
                                     <option value="0" data-wapf-price="0">Choose an option</option>
                                     @foreach($items as $item)
                                         <option value="{{ $item->price }}" data-wapf-price="{{ $item->price }}" data-wapf-pricetype="fixed">{{ $item->product }} (₦{{ $item->price }})</option>
@@ -426,25 +425,6 @@
 
                                     handleTopperVisibility();
                                     handleEkoCakesCard();
-                                });
-
-                                document.getElementById('ekoCakesCard').addEventListener('change', function() {
-                                    var selectElement = this;
-                                    var selectedOption = selectElement.options[selectElement.selectedIndex];
-                                    var selectedPrice = parseFloat(selectedOption.getAttribute('data-wapf-price'));
-
-                                    var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
-                                    var to = parseInt(document.getElementById('totalp').value); // Get previous layer price
-                                    totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
-                                    totalAmount -= to; // Subtract previous layer price from total amount
-                                    document.getElementById('tPrice').value = selectedPrice; // Store current layer price for next calculation
-                                    document.getElementById('totalp').value = selectedPrice; // Store current layer price for next calculation
-
-                                    // Update total amount
-                                    var totalAmountElement = document.getElementById('totalAmount');
-                                    var currentTotal = parseFloat(totalAmountElement.value.replace('', '').replace(',', ''));
-                                    var newTotal = currentTotal + selectedPrice;
-                                    totalAmountElement.value = newTotal.toFixed(2);
                                 });
 
                             </script>
@@ -748,50 +728,55 @@
         });
     </script>
     <script>
-        // topperBy
-
-
-        document.getElementById('topperBy').addEventListener('change', function() {
-            var toppernumber = parseInt(this.value); // Get the selected layer price
-            var defaultAmount = parseInt(document.getElementById('totalAmount').value);
-            var totalAmount = defaultAmount + toppernumber; // Calculate the total amount
-
-            var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
-            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
-            document.getElementById('tPrice').value = toppernumber; // Store current layer price for next calculation
-
-
-            document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
-        });
-
-        document.getElementById('opt').addEventListener('change', function() {
-            var optnumber = parseInt(this.value); // Get the selected layer price
-            var defaultAmount = parseInt(document.getElementById('totalAmount').value);
-            var totalAmount = defaultAmount + optnumber; // Calculate the total amount
-
-            var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
-            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
-            document.getElementById('tPrice').value = optnumber; // Store current layer price for next calculation
-
-
-            document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
-        });
         document.getElementById('item').addEventListener('change', function() {
-            var itemnumber = parseInt(this.value); // Get the selected layer price
-            var defaultAmount = parseInt(document.getElementById('totalAmount').value);
-            var totalAmount = defaultAmount + itemnumber; // Calculate the total amount
+            var itemnumber = parseFloat(this.value); // Get the selected item price
 
-            var previousLayerPrice = parseInt(document.getElementById('tPrice').value); // Get previous layer price
+            var defaultAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));
+            var totalAmount = defaultAmount; // Initialize total amount with current total
+
+            var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price
             totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
+            totalAmount += itemnumber; // Add new item price to total amount
+
             document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation
-
-
-            document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
+            document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display
         });
-
     </script>
+    <script>
+        function updatePrice(selectElementId, totalAmountId, previousPriceId) {
+            document.getElementById(selectElementId).addEventListener('change', function() {
+                var selectedOption = this.options[this.selectedIndex];
+                var selectedPrice = parseFloat(selectedOption.getAttribute('data-wapf-price')) || parseFloat(this.value) || 0;
 
+                var totalAmountElement = document.getElementById(totalAmountId);
+                var totalAmount = parseFloat(totalAmountElement.value.replace(',', '')) || 0;
 
+                var previousPriceElement = document.getElementById(previousPriceId);
+                var previousPrice = parseFloat(previousPriceElement.value) || 0;
+
+                totalAmount -= previousPrice;
+                totalAmount += selectedPrice;
+
+                previousPriceElement.value = selectedPrice;
+                totalAmountElement.value = totalAmount.toFixed(2);
+            });
+        }
+
+        // Create hidden inputs to store previous prices
+        var previousPricesHtml = `
+        <input type="hidden" id="previousPrice_ekoCakesCard" value="0">
+        <input type="hidden" id="previousPrice_topperBy" value="0">
+        <input type="hidden" id="previousPrice_opt" value="0">
+        <input type="hidden" id="previousPrice_item" value="0">
+    `;
+        document.body.insertAdjacentHTML('beforeend', previousPricesHtml);
+
+        // Apply the function to all relevant select elements
+        updatePrice('ekoCakesCard', 'totalAmount', 'previousPrice_ekoCakesCard');
+        updatePrice('topperBy', 'totalAmount', 'previousPrice_topperBy');
+        updatePrice('opt', 'totalAmount', 'previousPrice_opt');
+        updatePrice('item', 'totalAmount', 'previousPrice_item');
+    </script>
 
 
     <script>
