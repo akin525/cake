@@ -93,8 +93,15 @@ function updateabout(Request $request){
         ]);
 
         $slider = Storage::put('cover', $request['slider']);
-        $upload=Homepage::where('status', 1)->first();
+        $upload=Homepage::get();
+        foreach ($upload as $up){
+            $up->slider=$slider;
+            $up->save();
+        }
 
+
+        $mg = "Slider upload successfully";
+        return redirect('admin/settings')->with('success', $mg);
 
 }
 }

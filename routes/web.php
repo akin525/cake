@@ -133,6 +133,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('admin/settings', [SetiingsController::class, 'loadsettings'])->name('admin/settings');
     Route::post('admin/savepage', [SetiingsController::class, 'changepage'])->name('admin/savepage');
+    Route::post('admin/saveslide', [SetiingsController::class, 'banneruploadslidder'])->name('admin/saveslide');
 
     Route::get('admin/size', [VariationController::class, 'sizeindex'])->name('admin/size');
     Route::post('admin/psize', [VariationController::class, 'createsize'])->name('admin/psize');

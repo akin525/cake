@@ -6,7 +6,7 @@
         <div class="swiper">
             <div class="swiper-wrapper">
                 <!-- Single Slider Start -->
-                <div class="swiper-slide single-slider-07 animation-style-07 movearea" style="background-image: url(cake.jpg);">
+                <div class="swiper-slide single-slider-07 animation-style-07 movearea" style="background-image: url({{url($page->slider)}});">
                     <div class="image movex">
 {{--                        <img class="img-center" width="70" src="{{asset('ct2.png')}}" alt="Slider-Image">--}}
                     </div>

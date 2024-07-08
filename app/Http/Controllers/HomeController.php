@@ -100,13 +100,13 @@ function landingpage()
             $page=Homepage::where('status', 1)->first();
             if ($page->page == 01){
                 return view('welcome', compact('product',
-                    'product1', 'setting', 'fq', 'hot', 'latest', 'category', 'cartsum', 'cart'));
+                    'product1', 'page', 'setting', 'fq', 'hot', 'latest', 'category', 'cartsum', 'cart'));
             }elseif ($page->page == 02){
                 return view('homepage1', compact('product',
-                    'product1', 'setting', 'hot', 'fq', 'latest', 'category', 'cartsum', 'cart'));
+                    'product1', 'page', 'setting', 'hot', 'fq', 'latest', 'category', 'cartsum', 'cart'));
             }elseif ($page->page == 03){
                 return view('homepage2', compact('product',
-                    'product1', 'setting', 'hot', 'fq', 'latest', 'category', 'cartsum', 'cart'));
+                    'product1', 'setting', 'page', 'hot', 'fq', 'latest', 'category', 'cartsum', 'cart'));
             }
 
 }

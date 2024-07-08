@@ -9,7 +9,16 @@
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
         <div class="loading-spinner"></div>
     </div>
-
+    @if (session('errors'))
+        <div class="alert alert-danger">
+            {{ session('errors') }}
+        </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="card mb-4 rounded-4 p-7">
         <div class="card-body pt-7 pb-0 px-0">
             <div class="row mx-n8">
@@ -74,9 +83,10 @@
                                         <input class="form-check-input rounded-0" type="checkbox" value id="mycheck_notify" checked>
                                         <label class="form-check-label" for="mycheck_notify"> Select image with size 1500 x 800 </label>
                                     </div>
-                                    <form action="" method="post">
+                                    <form action="{{route('admin/saveslide')}}" method="post" enctype="multipart/form-data">
+                                        @csrf
                                     <div class="mb-3">
-                                        <input type="file" class="form-control" placeholder="Text"  id="file-input">
+                                        <input type="file" class="form-control" name="slider" placeholder="Text"  id="file-input">
                                     </div>
                                     <div class="card card-body" id="image-preview"></div>
                                     <br/>
