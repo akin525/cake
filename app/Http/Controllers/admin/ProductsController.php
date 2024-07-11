@@ -15,6 +15,7 @@ use App\Models\Variation;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProductsController
 {
@@ -36,6 +37,8 @@ class ProductsController
  }
  function addproduct(Request $request)
  {
+     return $request;
+
 
      $cover = Storage::put('cover', $request->file('image'));
 
@@ -86,11 +89,13 @@ class ProductsController
      }
      if ($request->has('items') && $request->input('items') != null) {
          foreach ($request->input('items') as $item) {
-             Items::create([
-                 'product_id' => $insert->id,
-                 'Product' => $item['Sizes'],
-                 'price' => $item['price'] ?? 0,
-             ]);
+             if ($item['Sizes'] != null){
+                 Items::create([
+                     'product_id' => $insert->id,
+                     'Product' => $item['Sizes'],
+                     'price' => $item['price'] ?? 0,
+                 ]);
+         }
          }
      }
 
@@ -364,38 +369,26 @@ class ProductsController
  }
  function duplicateupdateproduct(Request $request)
  {
+//     return $request;
 //     return response()->json($request,  Response::HTTP_BAD_REQUEST);
 
-     $validatedData = $request->validate([
-         'name' => 'required|string|max:255',
-         'price' => 'required|numeric|min:0',
-         'cprice' => 'required|numeric|min:0',
-         'fee' => 'required|numeric|min:0',
-         'description' => 'nullable|string',
 
-     ]);
 
 
      $cover = Storage::put('cover', $request->file('image'));
 
 // Create the product
-     $insert = Products::create([
-         'name' => $request->input('name'),
-         'description' => $request->input('description')?? null,
-         'price' => $request->input('price') ?? 0,
-         'cprice' => $request->input('cprice') ?? 0,
-         'ramount' => $request->input('ramount') ?? null,
-         'tamount' => $request->input('tamount') ?? null,
-         'quantity' => 1,
-         'addition' => $request->input('addition') ?? null,
-         'image' => $cover,
-         'category' => $request->input('categories'),
-         'status' => 1,
-         'fee' => $request->input('fee') ?? 0,
-         'topper'=>$request->input('topper') ?? 1,
-         'card'=>$request->input('card') ?? 1,
-     ]);
 
+// Create the product
+     $insert = Products::create([
+         'name' => $request['name'],
+         'description' => $request['description'],
+         'price' => $request['price'] ,
+         'cprice' => $request['cprice'] ,
+         'quantity' => 1,
+         'image' => $cover,  // Ensure $cover is defined correctly
+         'category' => $request ?? 'cakes',
+     ]);
 // Handle product variations
      foreach ($request->attribute as $index => $tri) {
          if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
