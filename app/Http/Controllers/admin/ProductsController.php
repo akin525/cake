@@ -378,81 +378,65 @@ class ProductsController
      $cover = Storage::put('cover', $request->file('image'));
 
 // Create the product
-
-// Create the product
      $insert = Products::create([
-         'name' => $request['name'],
-         'description' => $request['description'],
-         'price' => $request['price'] ,
-         'cprice' => $request['cprice'] ,
+         'name' => $request->input('tittle'),
+         'description' => $request->input('content')?? null,
+         'price' => $request->input('price') ?? 0,
+         'cprice' => $request->input('cprice') ?? 0,
+         'ramount' => $request->input('ramount') ?? null,
+         'tamount' => $request->input('tamount') ?? null,
          'quantity' => 1,
-         'image' => $cover,  // Ensure $cover is defined correctly
-         'category' => $request ?? 'cakes',
+         'addition' => $request->input('addition') ?? null,
+         'image' => $cover,
+         'category' => $request->input('categories') ?? 'cakes',
+         'status' => 1,
+         'fee' => $request->input('fee') ?? 0,
+         'topper'=>$request->input('topper') ?? 1,
+         'card'=>$request->input('card') ?? 1,
      ]);
+
 // Handle product variations
-     foreach ($request->attribute as $index => $tri) {
-         if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
-             Attribute::create([
-                 'product_id'=>$insert['id'],
-                 'name' => $tri['name'],
-                 'value' => $request->attribute[$index + 1]['value'],
-             ]);
+     if ($request->has('attribute') && $request->input('attribute') != null) {
+
+         foreach ($request->attribute as $index => $tri) {
+             if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
+                 Attribute::create([
+                     'product_id' => $insert['id'],
+                     'name' => $tri['name'],
+                     'value' => $request->attribute[$index + 1]['value'],
+                 ]);
+             }
          }
      }
 
-//     $collectionFromArray = collect($request->variation_attributes);
 
-     $variationsArray =$request['variation'];
-
-// Define an array to store variations temporarily
-     $currentVariation = [];
-
-// Iterate through the variations array
-     foreach ($variationsArray as $variationData) {
-         // Check if the attribute is present and add it to the current variation
-         if (isset($variationData['id'])) {
-             $currentVariation[$variationData['id']] = $variationData['price'] ?? 0;
-         } elseif (isset($variationData['Sizes'])) {
-             $currentVariation['Sizes'] = $variationData['Sizes'];
-         } elseif (isset($variationData['layers'])) {
-             $currentVariation['layers'] = $variationData['layers'];
-         } elseif (isset($variationData['Flavor'])) {
-             $currentVariation['Flavor'] = $variationData['Flavor'];
-         }
-
-         // If the current variation is complete (contains all required attributes), insert it into the database
-         if (count($currentVariation) == 5) {
+     $act=Attributes::all();
+     if ($request->has('variation_attributes') && $request->input('variation_attributes') != null) {
+         foreach ($request['variation_attributes'] as $variation) {
              Variation::create([
                  'attribute_id' => $insert->id,
-                 'attribute_size' => $currentVariation['Sizes'],
-                 'attribute_layer' => $currentVariation['layers'] ?? null,
-                 'attribute_flavor' => $currentVariation['Flavor'] ?? null,
-                 'price' => $currentVariation['price'] ?? 0,
+                 'attribute_size' => $variation['Sizes'],
+                 'attribute_layer' => $variation['layers'] ?? null,
+                 'attribute_flavor' => $variation['Flavor'] ?? null,
+                 'price' => $variation['price'] ?? 0,
              ]);
-             // Reset the current variation array
-             $currentVariation = [];
          }
      }
-
-// Insert the last variation
-     if (!empty($currentVariation)) {
-         Variation::create($currentVariation);
-     }
-// Redirect with success message
-
      if ($request->has('items') && $request->input('items') != null) {
          foreach ($request->input('items') as $item) {
-             Items::create([
-                 'product_id' => $insert->id,
-                 'Product' => $item['Sizes'],
-                 'price' => $item['price'] ?? 0,
-             ]);
+             if ($item['Sizes'] != null){
+                 Items::create([
+                     'product_id' => $insert->id,
+                     'Product' => $item['Sizes'],
+                     'price' => $item['price'] ?? 0,
+                 ]);
+             }
          }
      }
 
 
      $mg = "Product post was successful";
-     return redirect('admin/addproduct')->with('success', $mg);
+     return redirect('admin/allproduct')->with('success', $mg);
 
 
  }
