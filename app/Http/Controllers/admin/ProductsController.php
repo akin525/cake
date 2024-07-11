@@ -37,7 +37,7 @@ class ProductsController
  }
  function addproduct(Request $request)
  {
-     return $request;
+//     return $request;
 
 
      $cover = Storage::put('cover', $request->file('image'));
