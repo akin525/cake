@@ -1,6 +1,57 @@
 @extends('admin.layouts.sidebar')
 @section('tittle', 'Add-Product-Hot')
 @section('content')
+    <style>
+        .checkbox-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px; /* Add some space between toggles */
+            align-items: center; /* Align items vertically centered */
+        }
+
+        .toggle {
+            display: flex;
+            align-items: center; /* Center the text vertically with the toggle */
+            gap: 10px; /* Space between the toggle switch and the text */
+        }
+
+        .toggle input {
+            display: none;
+        }
+
+        .slider {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+            cursor: pointer;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+
+    </style>
     <div class="row mb-9 align-items-center">
         <div class="col-xxl-9">
             <div class="row">
@@ -61,31 +112,55 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="card mb-8 rounded-4" id="layers">
-                                    <div class="card-header p-7 bg-transparent">
-                                        <h4 class="fs-18px mb-0 font-weight-500">Add Attribute</h4>
-                                    </div>
-                                    <div class="card-body p-7 layer">
-                                        <div class="form-border-1">
-                                            <div class="mb-8">
-                                                <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Name</label>
-                                                {{--                                            <input type="text" name="attribute[][name]" id="attributeName" class="form-control" placeholder="Name" required>--}}
-                                                <select name="attribute[][name]" id="attributeName" class="form-control">
-                                                    <option>Choose Option</option>
-                                                    @foreach($attribute as $act)
-                                                        <option value="{{$act['name']}}">{{$act['name']}}</option>
-                                                    @endforeach
-                                                </select>
-                                                <br>
-                                                {{--                                            <label>--}}
-                                                <textarea name="attribute[][value]" class="form-control" id="attributeValues" placeholder="Enter options for customer to choose from f.e, Blue, or Large , Use | to separate different options."></textarea>
-                                                {{--                                            </label>--}}
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="checkbox-container">
+                                    <label class="toggle">
+                                        <input type="hidden" name="topper" value="0">
+                                        <input type="checkbox" value="1" name="topper" class="checkbox" data-index="0">
+                                        <span class="slider"></span>
+                                        Allow Topper
+                                    </label>
+                                    <label class="toggle">
+                                        <input type="hidden" name="card" value="0">
+                                        <input type="checkbox" value="1" name="card" class="checkbox" data-index="1">
+                                        <span class="slider"></span>
+                                        Allow Eko Card
+                                    </label>
                                 </div>
-                                <button type="button" class="btn btn-primary" id="add-layer">Add New</button>
-                                <button type="button" class="btn btn-danger" onclick="generateVariations()">Generate Variations</button>
+
+                                <script>
+                                    document.querySelectorAll('.checkbox').forEach(checkbox => {
+                                        checkbox.addEventListener('change', function() {
+                                            this.previousElementSibling.value = this.checked ? "1" : "0";
+                                        });
+                                    });
+
+                                </script>
+
+                                {{--                                <div class="card mb-8 rounded-4" id="layers">--}}
+{{--                                    <div class="card-header p-7 bg-transparent">--}}
+{{--                                        <h4 class="fs-18px mb-0 font-weight-500">Add Attribute</h4>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="card-body p-7 layer">--}}
+{{--                                        <div class="form-border-1">--}}
+{{--                                            <div class="mb-8">--}}
+{{--                                                <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Name</label>--}}
+{{--                                                --}}{{--                                            <input type="text" name="attribute[][name]" id="attributeName" class="form-control" placeholder="Name" required>--}}
+{{--                                                <select name="attribute[][name]" id="attributeName" class="form-control">--}}
+{{--                                                    <option>Choose Option</option>--}}
+{{--                                                    @foreach($attribute as $act)--}}
+{{--                                                        <option value="{{$act['name']}}">{{$act['name']}}</option>--}}
+{{--                                                    @endforeach--}}
+{{--                                                </select>--}}
+{{--                                                <br>--}}
+{{--                                                --}}{{--                                            <label>--}}
+{{--                                                <textarea name="attribute[][value]" class="form-control" id="attributeValues" placeholder="Enter options for customer to choose from f.e, Blue, or Large , Use | to separate different options."></textarea>--}}
+{{--                                                --}}{{--                                            </label>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <button type="button" class="btn btn-primary" id="add-layer">Add New</button>--}}
+{{--                                <button type="button" class="btn btn-danger" onclick="generateVariations()">Generate Variations</button>--}}
 
                                 <style>
                                     .variation {
@@ -104,18 +179,18 @@
                                         width: 80px;
                                     }
                                 </style>
-                                <div class="card mb-8 rounded-4" id="variations">
-                                    <div class="card-header p-7 bg-transparent">
-                                        <h4 class="fs-18px mb-0 font-weight-500">Variations</h4>
-                                    </div>
+{{--                                <div class="card mb-8 rounded-4" id="variations">--}}
+{{--                                    <div class="card-header p-7 bg-transparent">--}}
+{{--                                        <h4 class="fs-18px mb-0 font-weight-500">Variations</h4>--}}
+{{--                                    </div>--}}
 
-                                    <div class="card-body p-7 layer" id="variationContainer">
-                                        <!-- Variations will be displayed here -->
-                                    </div>
-                                    <div class="card-body p-7 layer" id="allvariationContainer" style="display: block">
-                                        <!-- Variations will be displayed here -->
-                                    </div>
-                                </div>
+{{--                                    <div class="card-body p-7 layer" id="variationContainer">--}}
+{{--                                        <!-- Variations will be displayed here -->--}}
+{{--                                    </div>--}}
+{{--                                    <div class="card-body p-7 layer" id="allvariationContainer" style="display: block">--}}
+{{--                                        <!-- Variations will be displayed here -->--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
                                 <script>
                                     function generateVariations() {
@@ -289,7 +364,7 @@
                                         <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase " for="category">Category</label>
                                         @foreach ($category as $cat)
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $cat->name }}" id="category{{ $cat->id }}">
+                                                <input class="form-check-input" type="checkbox" name="categories" value="{{ $cat->name }}" id="category{{ $cat->id }}">
                                                 <label class="form-check-label" for="category{{ $cat->id }}">
                                                     {{ $cat->name }}
                                                 </label>

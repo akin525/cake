@@ -110,11 +110,10 @@ class ProductsController
 //     return $request;
      $request->validate([
          'tittle'=>'required',
-         'content'=>'required',
          'price'=>'required',
+         'content'=>'required',
          'cprice'=>'required',
          'fee'=>'required',
-         'category'=>'required',
          'image'=>'required',
      ]);
 
@@ -127,36 +126,15 @@ class ProductsController
          'quantity' => 1,
          'addition' => $request->input('addition') ?? null,
          'image' => $cover,
-         'category' => 'rtg',
          'status' => 1,
          'cool'=>'hots',
          'fee' => $request->input('fee') ?? 0,
+         'category' => $request->input('categories') ?? 'cakes',
+         'topper'=>$request->input('topper') ?? 1,
+         'card'=>$request->input('card') ?? 1,
      ]);
 
 // Handle product variations
-     foreach ($request->attribute as $index => $tri) {
-         if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
-             Attribute::create([
-                 'product_id'=>$insert['id'],
-                 'name' => $tri['name'],
-                 'value' => $request->attribute[$index + 1]['value'] ??null,
-             ]);
-         }
-     }
-
-//     $collectionFromArray = collect($request->variation_attributes);
-
-     $act=Attributes::all();
-     foreach ($request['variation_attributes'] as $variation) {
-         Variation::create([
-             'attribute_id' => $insert->id,
-             'attribute_size' => $variation['Sizes'],
-             'attribute_layer' => $variation['layers'] ?? null,
-             'attribute_flavor' => $variation['Flavor'] ?? null,
-             'price' => $variation['price']  ?? 0,
-         ]);
-     }
-
 
 
      $mg="product post was Successful";
