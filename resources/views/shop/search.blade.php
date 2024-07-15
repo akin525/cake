@@ -22,10 +22,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="rowdies-bold text-white">All Cake</h1>
+                        <h1 class="rowdies-bold text-white">Search Cake</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{route('home')}}">Home</a></li>
-                            <li>Cakes</li>
+                            <li>Search</li>
                         </ul>
                     </div>
                 </div>

@@ -45,6 +45,7 @@ Route::get('cart', [HomeController::class, 'mycart'])->name('cart');
 Route::post('cancelcart', [CartController::class, 'removefromcart'])->name('cancelcart');
 Route::get('clearcart', [CartController::class, 'clearcart'])->name('clearcart');
 Route::get('category/{id}', [HomeController::class, 'category'])->name('category');
+Route::post('search}', [HomeController::class, 'searccakeh'])->name('search');
 Route::get('ready', [HomeController::class, 'loadrtb'])->name('ready');
 Route::get('getlayer/{id}', [HomeController::class, 'getlayer'])->name('getlayer');
 Route::get('getsize', [HomeController::class, 'getsize'])->name('getsize');

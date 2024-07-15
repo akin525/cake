@@ -321,6 +321,19 @@ function category($request)
         ->get();
     return view('shop.category', compact('category','product', 'fq', 'pop'));
 }
+
+function searccakeh(Request $request)
+{
+    $product=Products::where([['name', 'like', '%'.$request->name.'%']])
+        ->orderBy('id', 'DESC')
+        ->paginate('12');
+    $category=Categories::all();
+    $fq=FQ::all();
+    $pop=Products::where('cool', 'hots')->orderBy('id', 'DESC')
+        ->limit(4)
+        ->get();
+    return view('shop.search', compact('category','product', 'fq', 'pop'));
+}
 function checkout()
 {
 

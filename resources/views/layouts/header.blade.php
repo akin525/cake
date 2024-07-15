@@ -317,9 +317,11 @@
                 <div class="header-meta">
                     <ul class="header-meta__action header-meta__action-02 d-flex justify-content-end">
                         <li class="d-sm-block d-none">
-                            <form action="#" class="search-form">
-                                <input type="search" class="search-form-field" placeholder="Search Product...">
-                                <button class="search-form-btn"><i class="lastudioicon-zoom-1"></i></button>
+                            <form action="{{route('search')}}" method="post" class="search-form">
+                                @csrf
+                                <input type="search" name="name" class="search-form-field" placeholder="Search Product...">
+                                <button
+                                    type="submit" class="search-form-btn"><i class="lastudioicon-zoom-1"></i></button>
                             </form>
                         </li>
                         <li class="d-block d-sm-none">
@@ -357,22 +359,18 @@
                             <a href="{{url('/')}}" class="menu-item-link merriweather-bold"><span>Home</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" class="menu-item-link  merriweather-bold"><span>Cakes</span></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a class="sub-item-link merriweather-bold" href="{{route('cakes')}}"><span>All Cakes</span></a></li>
-                                                    @isset($category)
-                                                        @forelse($category as $cat)
-                                                        <li><a class="sub-item-link merriweather-bold" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
-                                                        @empty
-                                                            <li><a class="sub-item-link merriweather-bold" href="#"><span>Add Category</span></a></li>
-                                                        @endforelse
-                                                        @endisset
-                                                    </ul>
+                                                    <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold"><span>All-Cakes</span></a>
+
                                                 </li>
 
 {{--                                                <li class="position-static">--}}
 {{--                                                    <a class="menu-item-link merriweather-bold" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>--}}
 {{--                                                </li>--}}
+                        @isset($category)
+                            @foreach($category as $cat)
+                                <li><a class="sub-item-link merriweather-bold" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
+                            @endforeach
+                        @endisset
                                                 <li class="position-static">
                                                     <a class="menu-item-link  merriweather-bold" href="{{route('about')}}"><span>About</span></a>
                                                 </li>
@@ -407,9 +405,10 @@
 <!-- Search Start  -->
 <div class="search-popup position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-6 bg-black bg-opacity-75">
     <div class="search-popup__form position-relative">
-        <form action="#">
-            <input class="search-popup__field border-0 border-bottom bg-transparent text-white w-100 tra py-3" type="text" placeholder="Search…">
-            <button class="search-popup__icon text-white border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y"><i class="lastudioicon-zoom-1"></i></button>
+        <form action="{{route('search')}}" method="post">
+            @csrf
+            <input name="name" class="search-popup__field border-0 border-bottom bg-transparent text-white w-100 tra py-3" type="text" placeholder="Search…">
+            <button type="submit" class="search-popup__icon text-white border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y"><i class="lastudioicon-zoom-1"></i></button>
         </form>
     </div>
     <button class="search-popup__close position-absolute top-0 end-0 m-8 p-3 lh-1 border-0 text-white fs-4"><i class="lastudioicon-e-remove"></i></button>
@@ -428,21 +427,18 @@
             </li>
 
             <li>
-                <a href="#" class="menu-item-link active"><span>Cakes</span></a>
-                <ul class="sub-menu">
-                    <li><a class="sub-item-link" href="{{route('cakes')}}"><span>All Cakes</span></a></li>
-                @isset($category)
-                        @forelse($category as $cat)
-                            <li><a class="sub-item-link" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
-                        @empty
-                            <li><a class="sub-item-link" href="#"><span>Add Category</span></a></li>
-                        @endforelse
-                    @endisset
-                </ul>
+                <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold"><span>All-Cakes</span></a>
+
             </li>
-{{--            <li class="position-static">--}}
-{{--                <a class="menu-item-link active" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>--}}
-{{--            </li>--}}
+
+            {{--                                                <li class="position-static">--}}
+            {{--                                                    <a class="menu-item-link merriweather-bold" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>--}}
+            {{--                                                </li>--}}
+            @isset($category)
+                @foreach($category as $cat)
+                    <li><a class="sub-item-link merriweather-bold" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
+                @endforeach
+            @endisset
             <li class="position-static">
                 <a class="menu-item-link" href="{{route('about')}}"><span>About-Us</span></a>
             </li>

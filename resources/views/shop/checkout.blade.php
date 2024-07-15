@@ -98,8 +98,27 @@
                             <div class="col">
                                 <label>Delivery Date *</label>
                                 <input class="form-field" type="date" name="date" id="today" placeholder="Choose date" required>
+                                <br/>
+                                <br/>
+                                <input type="text" class="form-field" name="date" id="formatted-date" readonly style="display: none;">
                             </div>
                             <br/>
+                            <script>
+                                document.getElementById('today').addEventListener('change', function() {
+                                    var dateInput = this.value;
+                                    var date = new Date(dateInput);
+                                    var day = ("0" + date.getDate()).slice(-2);
+                                    var month = ("0" + (date.getMonth() + 1)).slice(-2);
+                                    var year = date.getFullYear().toString().slice(-2);
+                                    var formattedDate = day + '/' + month + '/' + year;
+
+                                    // Display the formatted date in the console (or update another input/display field)
+                                    console.log(formattedDate);
+                                    document.getElementById('formatted-date').value = formattedDate;
+                                    document.getElementById('formatted-date').style.display = 'block'; // Show the formatted date field if needed
+                                });
+                            </script>
+
                             <h4 class="merriweather-regular" style="font-size: 18px">Delivery Time *</h4>
                             <div class="col">
                                 <label>Choose Delivery Time (optional)</label>
