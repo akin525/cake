@@ -108,7 +108,7 @@
     <h5 class="merriweather-bold text-center" style="color: black; font-size: 20px">We know that making cake is art</h5>
 {{--    <h3 class="text-center merriweather-light-italic" style="color: #eda939">Making cake is art</h3>--}}
     <hr/>
-    <h6 class="text-center merriweather-bold" style="color: black; font-size: 18px" > VIEW OUR CATEGORIES</h6>
+    <h6 class="text-center merriweather-bold" style="color: black; font-size: 14px" > VIEW OUR CATEGORIES</h6>
 {{--    <h5  style="font-family: Great Vibes, cursive;--}}
 {{--    font-weight: 400;--}}
 {{--    font-style: normal;">PLEASE VIEW OUR PRODUCTS BELOW--}}
@@ -139,7 +139,7 @@
                         <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_thumb">
                             <img src="{{asset('ca.jpeg')}}" alt="Category-Image">
                         </a>
-                        <div class="category-four_content" style="font: 24px cormorant, serif">
+                        <div class="category-four_content" style="font: 21px cormorant, serif">
                             <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_name merriweather-bold">Cake For Him</a>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                         <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_thumb">
                             <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0837-600x608.jpg" alt="Category-Image">
                         </a>
-                        <div class="category-four_content" style="font: 24px cormorant, serif">
+                        <div class="category-four_content" style="font: 21px cormorant, serif">
                             <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_name merriweather-bold">Cake For Her</a>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                         <a href="{{url('ready')}}" class="category-four_thumb">
                             <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0703-600x591.jpg" alt="Category-Image">
                         </a>
-                        <div class="category-four_content" style="font: 24px cormorant, serif">
+                        <div class="category-four_content" style="font: 21px cormorant, serif">
                             <a href="{{url('ready')}}" class="category-four_name merriweather-bold">Ready To Go</a>
                         </div>
                     </div>
