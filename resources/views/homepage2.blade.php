@@ -64,7 +64,7 @@
                             <div class="slider-content-05">
                                 {{--                                <h1 class="slider-content-05__title">Sweet classics.</h1>--}}
                                 {{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
-                                <a class="slider-content-05__btn btn slider-btn-01" style="background-color: white" href="{{route('cakes')}}">Shop Now</a>
+                                <a class="cormorant-upright-bold" style="background-color: white" href="{{route('cakes')}}">Shop Now</a>
                             </div>
                             <!-- Slider Content Start -->
                         </div>
@@ -76,7 +76,7 @@
                             <div class="slider-content-05">
                                 {{--                                <h1 class="slider-content-05__title">Eat it instead.</h1>--}}
                                 {{--                                <span class="slider-content-05__subtitle">Génial</span>--}}
-                                <a class="slider-content-05__btn btn slider-btn-01 " style="background-color: #ffffff " href="{{route('cakes')}}">Shop Now</a>
+                                <a class="cormorant-upright-bold" style="background-color: #ffffff " href="{{route('cakes')}}">Shop Now</a>
                             </div>
                             <!-- Slider Content Start -->
                         </div>
@@ -127,7 +127,7 @@
                             <img width="100" src="{{asset('cc.jpeg')}}" alt="Category-Image">
                         </a>
                         <div class="category-four_content" style="font: 24px cormorant, serif">
-                            <a href="{{url('cakes')}}" class="category-four_name merriweather-bold">All Cakes</a>
+                            <a href="{{url('cakes')}}" class="category-four_name cormorant-upright-bold">All Cakes</a>
                         </div>
                     </div>
                     <!-- Single Category Four End -->
@@ -140,7 +140,7 @@
                             <img src="{{asset('ca.jpeg')}}" alt="Category-Image">
                         </a>
                         <div class="category-four_content" style="font: 21px cormorant, serif">
-                            <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_name merriweather-bold">Cake For Him</a>
+                            <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_name cormorant-upright-bold">Cake For Him</a>
                         </div>
                     </div>
                     <!-- Single Category Four End -->
@@ -153,7 +153,7 @@
                             <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0837-600x608.jpg" alt="Category-Image">
                         </a>
                         <div class="category-four_content" style="font: 21px cormorant, serif">
-                            <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_name merriweather-bold">Cake For Her</a>
+                            <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_name cormorant-upright-bold">Cake For Her</a>
                         </div>
                     </div>
                     <!-- Single Category Four End -->
@@ -166,7 +166,7 @@
                             <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0703-600x591.jpg" alt="Category-Image">
                         </a>
                         <div class="category-four_content" style="font: 21px cormorant, serif">
-                            <a href="{{url('ready')}}" class="category-four_name merriweather-bold">Ready To Go</a>
+                            <a href="{{url('ready')}}" class="category-four_name cormorant-upright-bold">Ready To Go</a>
                         </div>
                     </div>
                     <!-- Single Category Four End -->
