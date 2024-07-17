@@ -110,6 +110,44 @@ function landingpage()
             }
 
 }
+function landingpage1()
+{
+    $product=Products::where('status', 1)
+        ->orderBy('id', 'DESC')
+        ->limit(12)->get();
+
+    $latest=Products::where('status', 1)
+        ->orderBy('id', 'DESC')->first();
+
+        $product1=Products::where('status', 1)
+            ->orderBy('id', 'DESC')
+            ->limit(9)->get();
+
+//        return $product1;
+//            $cheff=Cheff::where('status', 1)
+//                ->orderByRaw('updated_at  DESC')
+//                ->limit(9)->get();
+//            $cart=Session::get('cart', []);
+            if (Auth::user()) {
+                $cartsum = Cart::where('user_id', Auth::user()->id)->sum('amount');
+                $cart=Cart::where('user_id', Auth::user()->id)->get();
+
+            }else{
+                $cartsum=0;
+                $cart=null;
+            }
+            $category=Categories::all();
+
+//            return $cartsum;
+            $setting=Settings::first();
+            $hot=Products::where('cool', 'hots')->get();
+            $fq=FQ::all();
+            $page=Homepage::where('status', 1)->first();
+
+                return view('newhomepage', compact('product',
+                    'product1', 'page', 'setting', 'fq', 'hot', 'latest', 'category', 'cartsum', 'cart'));
+
+}
 function aboutus()
 {
     $setting=Settings::first();
