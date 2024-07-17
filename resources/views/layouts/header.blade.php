@@ -32,6 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet" defer="">
     <style>
         .merriweather-light {
             font-family: "Merriweather", serif;
@@ -345,7 +346,7 @@
             </div>
         </div>
         <div class="leftBox text-center">
-            <h6 class="merriweather-bold"  style="font-size: 20px">
+            <h6 class="merriweather-bold"  style="font-size: 14px;">
                 CAKES FOR EVERY LAGOSIAN. CAKES FOR LAGOS<br>
             </h6>
 
