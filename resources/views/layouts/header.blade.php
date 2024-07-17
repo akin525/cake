@@ -32,7 +32,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet" defer="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet" >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         .merriweather-light {
             font-family: "Merriweather", serif;
@@ -80,6 +84,38 @@
             font-family: "Merriweather", serif;
             font-weight: 900;
             font-style: italic;
+        }
+
+    </style>
+    <style>
+        .cormorant-upright-light {
+            font-family: "Cormorant Upright", serif;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .cormorant-upright-regular {
+            font-family: "Cormorant Upright", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .cormorant-upright-medium {
+            font-family: "Cormorant Upright", serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .cormorant-upright-semibold {
+            font-family: "Cormorant Upright", serif;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .cormorant-upright-bold {
+            font-family: "Cormorant Upright", serif;
+            font-weight: 700;
+            font-style: normal;
         }
 
     </style>
@@ -346,7 +382,7 @@
             </div>
         </div>
         <div class="leftBox text-center">
-            <h6 class="merriweather-bold"  style="font-size: 14px;">
+            <h6 class="cormorant-upright-regular"  style="font-size: 14px;">
                 CAKES FOR EVERY LAGOSIAN. CAKES FOR LAGOS<br>
             </h6>
 
