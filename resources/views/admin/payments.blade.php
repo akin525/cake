@@ -34,7 +34,7 @@
                         <tr>
                             <td><a href="#">#{{$orders['id']}}</a></td>
                             <td class="text-body-emphasis">{{$orders['name']}}</td>
-                            <td>₦{{number_format(intval($orders['price'] *1),2)}}</td>
+                            <td>₦{{number_format(intval($orders['amount'] *1),2)}}</td>
                             <td>
                                 @if($orders['status'] ==1)
                                     <span class="badge rounded-lg rounded-pill alert py-3 px-4 mb-0 alert-success border-0 text-capitalize fs-12">Received</span>
