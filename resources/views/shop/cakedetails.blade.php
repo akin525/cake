@@ -253,7 +253,9 @@
                         </div>
                             <select name="topper" id="topperBy"   class="form-control cormorant-upright-light">
                                 <option value="0">Choose an option</option>
+                                @if($product->category != "Ready To Go")
                                 <option value="4000" data-wapf-price="4000" data-wapf-pricetype="fixed">Customized Topper (+₦4,000.00)</option>
+                                @endif
                                 <option value="1000" data-wapf-price="1000" data-wapf-pricetype="fixed">In-House Happy Birthday Topper (+₦1,000.00)</option>
                             </select>
 
@@ -295,7 +297,7 @@
                                 </label>
                             </div>
                             <select name="baseColor" class="form-control cormorant-upright-light" id="baseColor">
-                                <option value="inHouse">In-house colour</option>
+                                <option value="inHouse">Original color of the cake</option>
                                 <option value="choose">Choose an option</option>
                             </select>
 

@@ -27,9 +27,10 @@
 
     <!-- Product Section Start -->
     <div class="shop-product-section section section-padding-03">
-        <div class="container custom-container">
+{{--        <div class="container custom-container" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">--}}
+        <div class="container custom-container" >
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <form class="checkout-form" id="checkout">
+            <form class="checkout-form" id="checkout" >
                 @csrf
                 <div class="row g-8">
 
@@ -37,10 +38,10 @@
 
                         <!-- Billing Address -->
                         <div id="billing-form">
-                            <h4 class="mb-4">Customer Details</h4>
+                            <h4 class="mb-4 cormorant-upright-regular">Customer Details</h4>
                             <div class="row row-cols-sm-2 row-cols-1 g-4">
                                 <div class="col">
-                                    <label>Full Name*</label>
+                                    <h4 class="mb-4" style="font-size: 14px">Full Name*</h4>
                                     <input class="form-field" name="name"  type="text" required>
                                     <input type="hidden" name="checkout" value="{{$checkout}}">
 
@@ -50,11 +51,11 @@
                                 {{--                                    <input class="form-field" type="text">--}}
                                 {{--                                </div>--}}
                                 <div class="col">
-                                    <label>Email Address*</label>
+                                    <h4 class="mb-4" style="font-size: 14px">Email Address*</h4>
                                     <input class="form-field" id="email" name="email" type="email"  required>
                                 </div>
                                 <div class="col">
-                                    <label>Phone no*</label>
+                                    <h4 class="mb-4" style="font-size: 14px">Phone no*</h4>
                                     <input class="form-field" type="text"  name="phone" required>
                                 </div>
                                 {{--                                <div class="col-sm-12">--}}
@@ -62,14 +63,14 @@
                                 {{--                                    <input class="form-field" type="text">--}}
                                 {{--                                </div>--}}
                                 <div class="col-sm-12">
-                                    <label>Street address</label>
+                                    <h4 class="mb-4" style="font-size: 14px">Street address</h4>
                                     <input class="form-field" type="text" name="address" placeholder="Street address" required>
                                 </div>
                                 <div class="col-sm-12">
                                     <input class="form-field" type="text" name="apartment" placeholder="Apartment, suite, unit, etc. (optional)">
                                 </div>
                                 <div class="col">
-                                    <label>Location</label>
+                                    <h4 class="mb-4" style="font-size: 14px">Location</h4>
                                     <div class="select-wrapper">
                                         <select class="form-field" name="country" required>
                                             <option value=Eko"">Eko(Lagos)</option>
@@ -90,13 +91,13 @@
                                 {{--                                    </div>--}}
                             </div>
                             <div class="col">
-                                <label>City/Town*</label>
+                                <h4 class="mb-4" style="font-size: 14px">City/Town*</h4>
                                 <div class="select-wrapper">
                                     <input type="text" class="form-field" name="city" required>
                                 </div>
                             </div>
                             <div class="col">
-                                <label>Delivery Date *</label>
+                                <h4 class="mb-4" style="font-size: 14px">Delivery Date *</h4>
                                 <input class="form-field" type="date" name="date" id="today" placeholder="Choose date" required>
                                 <br/>
                                 <br/>
@@ -119,9 +120,9 @@
                                 });
                             </script>
 
-                            <h4 class="merriweather-regular" style="font-size: 18px">Delivery Time *</h4>
+                            <h4 class="mb-4" style="font-size: 14px">Delivery Time *</h4>
                             <div class="col">
-                                <label>Choose Delivery Time (optional)</label>
+                                <h4 class="mb-4" style="font-size: 14px">Choose Delivery Time (optional)</h4>
                                 <div class="select-wrapper">
                                     <select name="time" id="daypart" class="form-field" data-placeholder="">
                                         <option value="blank">Select a delivery time</option>
@@ -187,27 +188,27 @@
 
                         <!-- Billing Address -->
                         <div id="billing-form">
-                            <h4 class="mb-4">Recipient Details</h4>
+                            <h4 class="mb-4" style="font-size: 14px"">Recipient Details</h4>
                             <div class="row row-cols-sm-2 row-cols-1 g-4">
                                 <div class="col">
-                                    <label>Full Name*</label>
+                                    <h4 class="mb-4" style="font-size: 14px">Full Name*</h4>
                                     <input class="form-field" name="namec"  type="text" required>
 
                                 </div>
                                 <div class="col">
-                                    <label>Email Address*</label>
+                                    <h4 class="mb-4" style="font-size: 14px">Email Address*</h4>
                                     <input class="form-field" id="email" name="emailc" type="email"  required>
                                 </div>
                                 <div class="col">
-                                    <label>Phone no*</label>
+                                    <h4 class="mb-4" style="font-size: 14px">Phone no*</h4>
                                     <input class="form-field" type="text"  name="phonec" required>
                                 </div>
                                 <div class="col-sm-12">
-                                    <label>Street address</label>
+                                    <h4 class="mb-4" style="font-size: 14px">Street address</h4>
                                     <input class="form-field" type="text" name="addressc" placeholder="Street address" required>
                                 </div>
                                 <div class="col">
-                                    <label>Location</label>
+                                    <h4 class="mb-4" style="font-size: 14px">Location</h4>
                                     <div class="select-wrapper">
                                         <select class="form-field" name="countryc" required>
                                             <option value=Eko"">Eko(Lagos)</option>
@@ -217,7 +218,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <label>City/Town*</label>
+                                <h4 class="mb-4" style="font-size: 14px">City/Town*</h4>
                                 <div class="select-wrapper">
                                     <input type="text" class="form-field" name="cityc" required>
                                 </div>
@@ -282,7 +283,7 @@
 
         </div>
     </div>
-    </div>
+
 
     <script>
         $(document).ready(function() {
