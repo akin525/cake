@@ -126,7 +126,7 @@
                         <a href="{{url('cakes')}}" class="category-four_thumb">
                             <img width="100" src="{{asset('cc.jpeg')}}" alt="Category-Image">
                         </a>
-                        <div class="category-four_content" style="font: 16px cormorant, serif">
+                        <div class="category-four_content" style="font: 12px cormorant, serif">
                             <a href="{{url('cakes')}}" class="category-four_name cormorant-upright-bold">All Cakes</a>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                         <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_thumb">
                             <img src="{{asset('ca.jpeg')}}" alt="Category-Image">
                         </a>
-                        <div class="category-four_content" style="font: 16px cormorant, serif">
+                        <div class="category-four_content" style="font: 12px cormorant, serif">
                             <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_name cormorant-upright-bold">Cake For Him</a>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                         <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_thumb">
                             <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0837-600x608.jpg" alt="Category-Image">
                         </a>
-                        <div class="category-four_content" style="font: 16px cormorant, serif">
+                        <div class="category-four_content" style="font: 12px cormorant, serif">
                             <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_name cormorant-upright-bold">Cake For Her</a>
                         </div>
                     </div>
@@ -208,13 +208,25 @@
                                 <img src="{{url($pro['image'])}}" alt="Product">
                             </a>
                             <ul class="product-item__meta meta-bottom">
+                                <style>
+                                    .round-head-button {
+                                        padding: 10px 20px;
+                                        border: none; /* Remove default border */
+                                        border-radius: 20px 20px 0 0; /* Top left and top right rounded corners */
+                                        font-size: 16px; /* Button text size */
+                                        cursor: pointer; /* Pointer cursor on hover */
+                                        transition: background-color 0.3s; /* Smooth background color transition */
+                                    }
+
+
+                                </style>
                                 <li class="product-item__meta-action meta-dark">
-                                    <a class="labtn-icon-quickview" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick View" data-product-id="{{$pro['id']}}" data-bs-toggle="modal" data-bs-target="#quickViewModal{{$pro['id']}}"></a>
+                                    <a class="labtn-icon-quickview " href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick View" data-product-id="{{$pro['id']}}" data-bs-toggle="modal" data-bs-target="#quickViewModal{{$pro['id']}}"></a>
                                 </li>
                             </ul>
                             <br>
                             <br>
-                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn cormorant-upright-regular" style="font: 19px cormorant, serif" >Add to cart</a>
+                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn cormorant-upright-regular " style="font-size: 14px; border-radius: 50px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);" >Add to cart</a>
                         </div>
                     </div>
                     <!-- Product Item End -->
@@ -314,7 +326,7 @@
                                 </div>
                                 <div class="col-md-12 form-p">
                                     <div class="form-group mb-0" style="font-size: 5px">
-                                        <button class="btn btn-black" type="submit" style="font-size: 15px">Send Message</button>
+                                        <button class="btn btn-black" type="submit" style="font-size: 10px; border-radius: 50px">Send Message</button>
                                     </div>
                                 </div>
                             </div>
@@ -367,12 +379,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$fa['id']}}" aria-expanded="true" aria-controls="collapseOne">
-                                        <h4 class="merriweather-regular" style="font-size: 18px">{{$fa['heading']}}</h4>
+                                        <h4 class="merriweather-regular" style="font-size: 14px">{{$fa['heading']}}</h4>
                                         <i class="lastudioicon lastudioicon-down-arrow"></i>
                                     </button>
                                 </h2>
                                 <div id="collapse{{$fa['id']}}" class="accordion-collapse collapse" data-bs-parent="#exampleOne">
-                                    <div class="accordion-body merriweather-bold" style="font-size: 21px">{!! $fa['content'] !!}</div>
+                                    <div class="accordion-body merriweather-bold" style="font-size: 12px">{!! $fa['content'] !!}</div>
                                 </div>
                             </div>
                         @endforeach

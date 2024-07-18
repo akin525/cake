@@ -5178,7 +5178,7 @@ textarea.form-control {
   background-color: #BC8157;
   color: #fff;
   font-size: 12px;
-  font-family: "Montaga", serif;
+  font-family: "", serif;
   text-transform: uppercase;
   min-width: 60px;
   text-align: center;
@@ -5388,7 +5388,7 @@ textarea.form-control {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
   .product-item__title {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 .product-item__rating {
@@ -5432,7 +5432,7 @@ textarea.form-control {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
   .product-item__price {
-    font-size: 20px;
+    font-size: 14px;
   }
 }
 .product-item__arrow {
@@ -11538,7 +11538,7 @@ textarea.form-control {
 .category-four_name {
   padding: 25px 20px;
   font-family: "cormorant", serif;
-  font-size: 28px;
+  font-size: 16px;
   font-weight: 700;
   font-style: italic;
   color: #000000;

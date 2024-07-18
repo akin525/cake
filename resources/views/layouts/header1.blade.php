@@ -65,7 +65,7 @@
                         <div class="col-lg-4 order-lg-2 col-md-12">
                             <!-- logo start -->
                             <div class="logo text-center">
-                                <a href="{{url('/')}}"><img src="{{asset('assets/images/eko.png')}}" alt=""></a>
+                                <a href="{{url('/')}}"><img width="50" src="{{asset('assets/images/eko.png')}}" alt=""></a>
                             </div>
                             <!-- logo end -->
                         </div>

@@ -33,7 +33,7 @@ Route::get('/logout', function(){
     return Redirect::to('login');
 });
 Route::get('/', [HomeController::class, 'landingpage'])->name('home');
-Route::get('/new', [HomeController::class, 'landingpage1'])->name('new');
+Route::get('/newpage', [HomeController::class, 'landingpage1'])->name('newpage');
 Route::get('home', [HomeController::class, 'landingpage'])->name('home');
 Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::get('product/{id}', [HomeController::class, 'getproduct']);

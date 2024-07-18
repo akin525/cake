@@ -1,4 +1,4 @@
-@extends('layouts.header')
+@extends('layouts.header1')
 @section('tittle', 'Home')
 @section('content')
     <!-- Hero Slider start -->
@@ -13,8 +13,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="slider-text-info">
-                                            <h1>Sweet bite for you</h1>
-                                            <h1>Delicious</h1>
+{{--                                            <h1>Sweet bite for you</h1>--}}
+{{--                                            <h1>Delicious</h1>--}}
 {{--                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat</p>--}}
                                             <a href="#" class="btn slider-btn uppercase"><span><i class="fa fa-plus"></i> Shop Now</span></a>
                                         </div>
@@ -29,8 +29,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="slider-text-info">
-                                            <h1>Sweet bite for you</h1>
-                                            <h1>Delicious</h1>
+{{--                                            <h1>Sweet bite for you</h1>--}}
+{{--                                            <h1>Delicious</h1>--}}
 {{--                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat</p>--}}
                                             <a href="#" class="btn slider-btn uppercase"><span><i class="fa fa-plus"></i> SHOP NOW</span></a>
                                         </div>
@@ -46,6 +46,143 @@
     </div>
     <!-- Hero Slider end -->
 
+    <!-- Our Services Area Start -->
+    <div class="our-services-area section-pt-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <!-- single-service-item start -->
+                    <div class="single-service-item">
+                        <div class="our-service-icon">
+                            <i class="fa fa-truck"></i>
+                        </div>
+                        <div class="our-service-info">
+                            <h3>Free Shipping</h3>
+                            <p>Free shipping on all US order or order above $200</p>
+                        </div>
+                    </div>
+                    <!-- single-service-item end -->
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <!-- single-service-item start -->
+                    <div class="single-service-item">
+                        <div class="our-service-icon">
+                            <i class="fa fa-support"></i>
+                        </div>
+                        <div class="our-service-info">
+                            <h3>Support 24/7</h3>
+                            <p>Contact us 24 hours a day, 7 days a week</p>
+                        </div>
+                    </div>
+                    <!-- single-service-item end -->
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <!-- single-service-item start -->
+                    <div class="single-service-item">
+                        <div class="our-service-icon">
+                            <i class="fa fa-undo"></i>
+                        </div>
+                        <div class="our-service-info">
+                            <h3>30 Days Return</h3>
+                            <p>Simply return it within 30 days for an exchange</p>
+                        </div>
+                    </div>
+                    <!-- single-service-item end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Services Area End -->
+
+
+    <!-- Banner area start -->
+    <div class="banner-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <!-- single-banner start -->
+                    <div class="single-banner mt--30">
+                        <a href="#"><img src="{{asset('new/assets/images/cakebb.jpg')}}" alt=""></a>
+                    </div>
+                    <!-- single-banner end -->
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <!-- single-banner start -->
+                    <div class="single-banner mt--30">
+                        <a href="#"><img src="{{asset('new/assets/images/wall.jpg')}}" alt=""></a>
+                    </div>
+                    <!-- single-banner end -->
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <!-- single-banner start -->
+                    <div class="single-banner mt--30">
+                        <a href="#"><img src="{{asset('new/assets/images/wall3.jpg')}}" alt=""></a>
+                    </div>
+                    <!-- single-banner end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner area end -->
+
+    <!-- Product Area Start -->
+    <div class="product-area section-pt section-pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- section-title start -->
+                    <div class="section-title">
+                        <h5><b>BROWSE OUR CAKES </b></h5>
+{{--                        <p>Most Trendy 2023 Clother</p>--}}
+                    </div>
+                    <!-- section-title end -->
+                </div>
+            </div>
+            <!-- product-wrapper start -->
+            <div class="product-wrapper">
+                <div class="product-slider">
+                    @forelse($product as $pro)
+                    <div class="col-12">
+                        <!-- single-product-wrap start -->
+                        <div class="single-product-wrap">
+                            <div class="product-image">
+                                <a href="{{route('cakedetail', $pro['id'])}}"><img src="{{url($pro['image'])}}" alt=""></a>
+                                <span class="label-product label-new">new</span>
+{{--                                <span class="label-product label-sale">-7%</span>--}}
+                                <div class="quick_view">
+                                    <a href="#" title="quick view" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h3><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h3>
+                                <div class="price-box">
+                                    <span class="new-price">₦{{number_format(intval($pro['price'] *1))}}</span>
+{{--                                    <span class="old-price">₦{{number_format(intval($pro['price'] *1))}}</span>--}}
+                                </div>
+                                <div class="product-action">
+                                    <button class="add-to-cart" onclick="window.location.href='{{route('cakedetail', $pro['id'])}}'" title="Add to cart"><i class="fa fa-plus"></i> Add to cart</button>
+                                    <div class="star_content">
+                                        <ul class="d-flex">
+                                            <li><a class="star" href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="star" href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="star" href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="star" href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="star-o" href="#"><i class="fa fa-star-o"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                        <p class="text-center" style="font: 24px cormorant, serif">No Product Available On Store</p>
+                    @endforelse
+                </div>
+            </div>
+            <!-- product-wrapper end -->
+        </div>
+    </div>
+    <!-- Product Area End -->
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
