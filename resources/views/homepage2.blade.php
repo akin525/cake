@@ -162,11 +162,11 @@
                     <!-- Single Category Four Start -->
                     <div class="category-four_box">
                         <span class="category-four_border"></span>
-                        <a href="{{url('ready')}}" class="category-four_thumb">
+                        <a href="{{url('category/Ready%20To%20Go')}}" class="category-four_thumb">
                             <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0703-600x591.jpg" alt="Category-Image">
                         </a>
                         <div class="category-four_content" style="font: 16px cormorant, serif">
-                            <a href="{{url('ready')}}" class="category-four_name cormorant-upright-bold">Ready To Go</a>
+                            <a href="{{url('category/Ready%20To%20Go')}}" class="category-four_name cormorant-upright-bold">Ready To Go</a>
                         </div>
                     </div>
                     <!-- Single Category Four End -->
