@@ -5,6 +5,20 @@
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
         <div class="loading-spinner"></div>
     </div>
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                {{--var username = @json(Auth::user()->username);--}}
+                var message = {{$alert->message}}
+
+                Swal.fire({
+                    title: 'Note:',
+                    html: message,
+                    icon: 'info'
+                });
+            }, 1000);
+        };
+    </script>
     <!-- Breadcrumb Section Start -->
     <div class="breadcrumb" data-bg-image="{{asset('assets/images/bg/breadcrumb-bg.jpg')}}">
         <div class="container">
@@ -151,11 +165,6 @@
                                         var nextDay = new Date(now);
                                         nextDay.setDate(now.getDate() + 1);
                                         dateInput.value = getFormattedDate(nextDay);
-                                        Swal.fire({
-                                            title: 'Note:',
-                                            html: {{$alert->message}},
-                                            icon: 'info'
-                                        });
                                     } else {
                                         dateInput.value = ""; // Clear the value if a different time is selected
                                     }
