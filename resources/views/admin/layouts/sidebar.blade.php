@@ -108,11 +108,12 @@
                         </div>
                     </div>
                     <div class="collapse navbar-collapse bg-body position-relative z-index-5" id="primaryMenuSidebar">
-                        <form class="d-block d-xl-none pt-8 px-6">
+                        <form class="d-block d-xl-none pt-8 px-6" method="post" action="{{route('admin/searchproduct')}}">
+                            @csrf
                             <div class="input-group position-relative bg-body-tertiary">
-                                <input type="text" class="form-control border-0 bg-transparent pl-4 shadow-none" placeholder="Search Item">
+                                <input type="text" name="name" class="form-control border-0 bg-transparent pl-4 shadow-none" placeholder="Search Item">
                                 <div class="input-group-append fs-14px px-6 border-start border-2x ">
-                                    <button class="bg-transparent border-0 outline-none py-5">
+                                    <button type="submit" class="bg-transparent border-0 outline-none py-5">
                                         <i class="far fa-search"></i>
                                     </button>
                                 </div>

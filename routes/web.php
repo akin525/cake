@@ -115,6 +115,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
     Route::get('admin/allproduct', [AuthController::class, 'allproduct'])->name('admin/allproduct');
+    Route::get('admin/searchproduct', [AuthController::class, 'searchproduct'])->name('admin/searchproduct');
     Route::get('admin/addproduct', [ProductsController::class, 'addproductindex'])->name('admin/addproduct');
     Route::get('admin/addproduct1', [ProductsController::class, 'addproductindex1'])->name('admin/addproduct1');
     Route::post('admin/addproducts', [ProductsController::class, 'addproduct'])->name('admin/addproducts');

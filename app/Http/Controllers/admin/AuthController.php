@@ -63,6 +63,16 @@ function authloginadmiin(Request $request)
 
      return view('admin.products', compact('product', 'category'));
  }
+ function searchproduct(Request $request)
+ {
+     $category=Categories::all();
+//     $product=Products::orderBy('id', 'DESC')->paginate('10');
+
+     $product=Products::where([['name', 'like', '%'.$request->name.'%']])
+         ->orderBy('id', 'DESC')
+         ->paginate('12');
+     return view('admin.searchproducts', compact('product', 'category'));
+ }
  function allorder()
  {
      $order=Orders::all();
