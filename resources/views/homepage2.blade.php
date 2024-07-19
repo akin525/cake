@@ -119,58 +119,21 @@
     <div class="category-four category-four_bg section-padding-03" data-bg-image="" style="background-color: #f6f6f6">
         <div class="container custom-container-five">
             <div class="row row-cols-2 row-cols-lg-4 category-four_wrapper mb-n60">
+                @foreach($category as $cat)
                 <div class="col mb-60">
                     <!-- Single Category Four Start -->
                     <div class="category-four_box">
                         <span class="category-four_border"></span>
-                        <a href="{{url('cakes')}}" class="category-four_thumb">
+                        <a href="{{url('category', $cat['name'])}}" class="category-four_thumb">
                             <img width="100" src="{{asset('cc.jpeg')}}" alt="Category-Image">
                         </a>
                         <div class="category-four_content" style="font: 12px cormorant, serif">
-                            <a href="{{url('cakes')}}" class="category-four_name cormorant-upright-bold">All Cakes</a>
+                            <a href="{{url('category', $cat['name'])}}" class="category-four_name cormorant-upright-bold">{{$cat['name']}}</a>
                         </div>
                     </div>
                     <!-- Single Category Four End -->
                 </div>
-                <div class="col mb-60">
-                    <!-- Single Category Four Start -->
-                    <div class="category-four_box">
-                        <span class="category-four_border"></span>
-                        <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_thumb">
-                            <img src="{{asset('ca.jpeg')}}" alt="Category-Image">
-                        </a>
-                        <div class="category-four_content" style="font: 12px cormorant, serif">
-                            <a href="{{url('category/Cake%20for%20Him')}}" class="category-four_name cormorant-upright-bold">Cake For Him</a>
-                        </div>
-                    </div>
-                    <!-- Single Category Four End -->
-                </div>
-                <div class="col mb-60">
-                    <!-- Single Category Four Start -->
-                    <div class="category-four_box">
-                        <span class="category-four_border"></span>
-                        <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_thumb">
-                            <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0837-600x608.jpg" alt="Category-Image">
-                        </a>
-                        <div class="category-four_content" style="font: 12px cormorant, serif">
-                            <a href="{{url('category/Cake%20For%20Her')}}" class="category-four_name cormorant-upright-bold">Cake For Her</a>
-                        </div>
-                    </div>
-                    <!-- Single Category Four End -->
-                </div>
-                <div class="col mb-60">
-                    <!-- Single Category Four Start -->
-                    <div class="category-four_box">
-                        <span class="category-four_border"></span>
-                        <a href="{{url('category/Ready%20To%20Go')}}" class="category-four_thumb">
-                            <img src="https://ekocakes.com/wp-content/uploads/2024/01/IMG_0703-600x591.jpg" alt="Category-Image">
-                        </a>
-                        <div class="category-four_content" style="font: 16px cormorant, serif">
-                            <a href="{{url('category/Ready%20To%20Go')}}" class="category-four_name cormorant-upright-bold">Ready To Go</a>
-                        </div>
-                    </div>
-                    <!-- Single Category Four End -->
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
