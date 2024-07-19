@@ -4,23 +4,33 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController
 {
 function createcategory(Request $request)
 {
-    $validatedData= $request->validate([
+     $request->validate([
        'name'=>'required',
        'slug'=>'required',
+        'image'=>'required',
+   ]);
+    $cover = Storage::put('cat', $request['image']);
+
+   Categories::create([
+       'name'=>$request->name,
+       'slug'=>$request->slug,
+       'image'=>$cover,
    ]);
 
-   Categories::create($validatedData);
+
 
    $msg="Category Create Successfully";
-   return response()->json([
-       'status'=>'success',
-       'message'=>$msg,
-   ]);
+//   return response()->json([
+//       'status'=>'success',
+//       'message'=>$msg,
+//   ]);
+    return redirect('admin/category')->with('success', $msg);
 }
 function updatecategory(Request $request)
 {

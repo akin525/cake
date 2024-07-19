@@ -93,6 +93,19 @@ Route::get('/cover/{filename}', function ($filename) {
     $response->header("Content-Type", $type);
     return $response;
 })->name('cover');
+Route::get('/cat/{filename}', function ($filename) {
+    $path = storage_path('app/cat/' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+    return $response;
+})->name('cat');
 
 Route::get('admin/login', [AuthController::class, 'loginadmin'])->name('admin/login');
 Route::post('admin/auth', [AuthController::class, 'authloginadmiin'])->name('admin/auth');

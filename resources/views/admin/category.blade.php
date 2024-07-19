@@ -29,7 +29,7 @@
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-md-3">
-                    <form id="cat">
+                    <form  method="post" action="{{ route('admin/addcat') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-8">
                             <label for="product_name" class="mb-5 fs-13px ls-1 fw-semibold text-uppercase">Name</label>
@@ -38,6 +38,10 @@
                         <div class="mb-8">
                             <label for="product_slug" class="mb-5 fs-13px ls-1 fw-semibold text-uppercase">Slug</label>
                             <input type="text" name="slug" placeholder="Type here" class="form-control" id="product_slug">
+                        </div>
+                        <div class="mb-8">
+                            <label for="product_slug" class="mb-5 fs-13px ls-1 fw-semibold text-uppercase">Picture</label>
+                            <input type="file" name="image" placeholder="Type here" class="form-control" id="image">
                         </div>
                         <div class="mb-8">
                             <label class="mb-5 fs-13px ls-1 fw-semibold text-uppercase">Description</label>
@@ -216,6 +220,11 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
                     <br/>
+                    <div class="mb-8">
+                        <label for="product_slug" class="mb-5 fs-13px ls-1 fw-semibold text-uppercase">Picture</label>
+                        <input type="file" name="image" placeholder="Type here" class="form-control" id="image">
+                    </div>
+
                     <button type="submit" class="btn btn-outline-success">Update</button>
                 </div>
             </form>
