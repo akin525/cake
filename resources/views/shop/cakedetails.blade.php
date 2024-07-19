@@ -10,15 +10,15 @@
         <div class="loading-spinner"></div>
     </div>
     <!-- Breadcrumb Section Start -->
-    <div class="breadcrumb" style="background-color: #EC9C04;">
+    <div class="breadcrumb" style="background-color: #F2A71B;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="merriweather-bold text-white">{{$done->name}}</h1>
+                        <h1 class="merriweather-bold text-white" style="text-transform: capitalize">{{$done->name}}</h1>
                         <ul class="breadcrumb_list">
-                            <li><a href="{{url('/')}}">Home</a></li>
-                            <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif">
+                            <li><a href="{{url('/')}}" style="text-transform: capitalize">Home</a></li>
+                            <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif; text-transform: capitalize" >
                                 @if($product != null)
                                 {{$product->name}}
                                 @endif

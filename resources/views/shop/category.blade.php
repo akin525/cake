@@ -17,15 +17,15 @@
         };
     </script>
     <!-- Breadcrumb Section Start -->
-    <div class="breadcrumb" style="background-color: #EC9C04">
+    <div class="breadcrumb" style="background-color: #F2A71B">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="breadcrumb_title">{{$done->name}}</h1>
+                        <h1 class="breadcrumb_title" style="text-transform: capitalize">{{$done->name}}</h1>
                         <ul class="breadcrumb_list">
-                            <li><a href="{{route('home')}}">Home</a></li>
-                            <li>Cakes</li>
+                            <li><a href="{{route('home')}}" style="text-transform: capitalize">Home</a></li>
+                            <li style="text-transform: capitalize">Cakes</li>
                         </ul>
                     </div>
                 </div>
