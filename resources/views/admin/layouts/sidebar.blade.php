@@ -316,11 +316,12 @@
                 <div class="container-fluid">
                     <nav class="navbar navbar-light py-0 row no-gutters px-3 px-lg-0">
                         <div class="col-md-4 px-0 px-md-6 order-1 order-md-0">
-                            <form>
+                            <form action="{{route('admin/searchproduct')}}" method="post">
+                                @csrf
                                 <div class="input-group position-relative bg-input rounded">
-                                    <input type="text" class="form-control border-1 pl-4 shadow-none" placeholder="Search Item">
+                                    <input type="text" name="name" class="form-control border-1 pl-4 shadow-none" placeholder="Search Item">
                                     <div class="input-group-append fs-14">
-                                        <button class="btn btn-hover-bg-primary btn-hover-border-primary rounded-0 rounded-end border-start border-0 h-100 px-8 py-5">
+                                        <button type="submit" class="btn btn-hover-bg-primary btn-hover-border-primary rounded-0 rounded-end border-start border-0 h-100 px-8 py-5">
                                             <i class="far fa-search"></i>
                                         </button>
                                     </div>
