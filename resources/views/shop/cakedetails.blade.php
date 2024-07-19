@@ -10,7 +10,7 @@
         <div class="loading-spinner"></div>
     </div>
     <!-- Breadcrumb Section Start -->
-    <div class="breadcrumb" style="background-color: #fcb900;">
+    <div class="breadcrumb" style="background-color: #EC9C04;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
