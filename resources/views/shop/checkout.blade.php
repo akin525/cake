@@ -9,11 +9,11 @@
         window.onload = function() {
             setTimeout(function() {
                 {{--var username = @json(Auth::user()->username);--}}
-                var message = {{$alert->message}}
+                const message = {{$alert->message}}
 
                 Swal.fire({
                     title: 'Note:',
-                    html: message,
+                    html: {{$alert->message}},
                     icon: 'info'
                 });
             }, 1000);

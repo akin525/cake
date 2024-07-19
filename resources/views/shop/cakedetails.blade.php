@@ -10,12 +10,12 @@
         <div class="loading-spinner"></div>
     </div>
     <!-- Breadcrumb Section Start -->
-    <div class="breadcrumb" data-bg-image="{{asset('assets/images/bg/breadcrumb-bg.jpg')}}">
+    <div class="breadcrumb" style="background-color: #eca70e">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="merriweather-bold text-white">{{$done->name}}s</h1>
+                        <h1 class="merriweather-bold text-white">{{$done->name}}K</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{url('/')}}">Home</a></li>
                             <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif">

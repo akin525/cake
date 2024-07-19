@@ -17,7 +17,7 @@
         };
     </script>
     <!-- Breadcrumb Section Start -->
-    <div class="breadcrumb" data-bg-image="{{asset('assets/images/bg/breadcrumb-bg.jpg')}}">
+    <div class="breadcrumb" style="background-color: #eca70e">
         <div class="container">
             <div class="row">
                 <div class="col-12">
