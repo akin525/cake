@@ -17,7 +17,7 @@
         };
     </script>
     <!-- Breadcrumb Section Start -->
-    <div class="breadcrumb" style="background-color: #eca70e">
+    <div class="breadcrumb" style="background-color: #fcb900">
         <div class="container">
             <div class="row">
                 <div class="col-12">
