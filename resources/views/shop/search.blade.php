@@ -94,7 +94,8 @@
                             </div>
 
                         @empty
-                            <p class="text-center">No Product Available On Store</p>
+                            <p class="text-center">Oops, we can't find anything under your search, look through all our cake</p>
+                            <a href="{{route('cakes')}}" class="btn btn-black">All Cakes</a>
                         @endforelse
                     </div>
                     <!-- Product Section End -->
