@@ -151,6 +151,11 @@
                                         var nextDay = new Date(now);
                                         nextDay.setDate(now.getDate() + 1);
                                         dateInput.value = getFormattedDate(nextDay);
+                                        Swal.fire({
+                                            title: 'Note:',
+                                            html: {{$alert->message}},
+                                            icon: 'info'
+                                        });
                                     } else {
                                         dateInput.value = ""; // Clear the value if a different time is selected
                                     }

@@ -195,6 +195,8 @@ function allcake()
 function cakedetail($request)
 {
     $product=Products::where('id', $request)->first();
+    $done=Categories::where('name', $product->category)->first();
+
     $product1=Products::where('status', 1)->limit(9)->get();
     $color=Colors::all();
     $layer=Attribute::where('product_id', $product->id)
@@ -220,7 +222,7 @@ function cakedetail($request)
     $category=Categories::all();
 
     return view('shop.cakedetails', compact('product', 'product1',
-    'cart', 'cartsum', 'category', 'color', 'layer', 'size', 'layeralert', 'addalert', 'flavor', 'option', 'items'
+    'cart', 'cartsum', 'category', 'color', 'layer', 'size', 'layeralert', 'done', 'addalert', 'flavor', 'option', 'items'
     ));
 
 }
@@ -353,11 +355,12 @@ function category($request)
         ->orderBy('id', 'DESC')
         ->paginate('12');
     $category=Categories::all();
+    $done=Categories::where('name', $request)->first();
     $fq=FQ::all();
     $pop=Products::where('cool', 'hots')->orderBy('id', 'DESC')
         ->limit(4)
         ->get();
-    return view('shop.category', compact('category','product', 'fq', 'pop'));
+    return view('shop.category', compact('category','product', 'fq', 'pop', 'done'));
 }
 
 function searccakeh(Request $request)

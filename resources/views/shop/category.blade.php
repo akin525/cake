@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="breadcrumb_title">All Cake</h1>
+                        <h1 class="breadcrumb_title">{{$done->name}}</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{route('home')}}">Home</a></li>
                             <li>Cakes</li>
