@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="breadcrumb_title" style="text-transform: capitalize">{{$done->name}}</h1>
+                        <h1 class="merriweather-bold capitalize" style="text-transform: capitalize">{{$done->name}}</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{route('home')}}" style="text-transform: capitalize">Home</a></li>
                             <li style="text-transform: capitalize">Cakes</li>
