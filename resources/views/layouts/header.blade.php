@@ -403,11 +403,11 @@
 {{--                                                <li class="position-static">--}}
 {{--                                                    <a class="menu-item-link merriweather-bold" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>--}}
 {{--                                                </li>--}}
-                        @isset($category)
-                            @foreach($category as $cat)
-                                <li><a class="sub-item-link merriweather-bold" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
-                            @endforeach
-                        @endisset
+{{--                        @isset($category)--}}
+{{--                            @foreach($category as $cat)--}}
+{{--                                <li><a class="sub-item-link merriweather-bold" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>--}}
+{{--                            @endforeach--}}
+{{--                        @endisset--}}
                                                 <li class="position-static">
                                                     <a class="menu-item-link  merriweather-bold" href="{{route('about')}}"><span>About</span></a>
                                                 </li>
@@ -471,11 +471,11 @@
             {{--                                                <li class="position-static">--}}
             {{--                                                    <a class="menu-item-link merriweather-bold" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>--}}
             {{--                                                </li>--}}
-            @isset($category)
-                @foreach($category as $cat)
-                    <li><a class="sub-item-link merriweather-bold" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>
-                @endforeach
-            @endisset
+{{--            @isset($category)--}}
+{{--                @foreach($category as $cat)--}}
+{{--                    <li><a class="sub-item-link merriweather-bold" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>--}}
+{{--                @endforeach--}}
+{{--            @endisset--}}
             <li class="position-static">
                 <a class="menu-item-link" href="{{route('about')}}"><span>About-Us</span></a>
             </li>
