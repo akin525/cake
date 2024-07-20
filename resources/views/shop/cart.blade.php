@@ -63,9 +63,9 @@
                                     </a>
                                 </th>
                                 <th class="text-start">
-                                    <a href="{{route('cakedetail',$cat['id'])}}">{{$cat['name']}}</a>
+                                    <a href="{{route('cakedetail',$cat['id'])}}" style="font-size: 14px">{{$cat['name']}}</a>
                                 </th>
-                                <td>₦{{$cat['amount']}}</td>
+                                <td style="font-size: 14px">₦{{$cat['amount']}}</td>
                                 <td class="text-center cart-quantity">
                                     <!-- Quantity Start -->
                                     <div class="quantity">
@@ -73,7 +73,7 @@
                                     </div>
                                     <!-- Quantity End -->
                                 </td>
-                                <td>₦{{$cat['amount']}}</td>
+                                <td style="font-size: 14px">₦{{$cat['amount']}}</td>
                             </tr>
 {{--@endif--}}
                             @empty
@@ -103,10 +103,10 @@
                                 </div>
                                 <div class="cart-product-mobile-content">
                                     <h5 class="cart-product-mobile-title">
-                                        <a href="{{ route('cakedetail', $cat['id']) }}">{{ $cat['name'] }}</a>
+                                        <a href="{{ route('cakedetail', $cat['id']) }}" style="font-size: 14px">{{ $cat['name'] }}</a>
                                     </h5>
-                                    <span class="cart-product-mobile-quantity">1 x ₦{{ $cat['amount'] }}</span>
-                                    <span class="cart-product-mobile-total"><b>Total: ₦{{ $cat['amount'] }}</b></span>
+                                    <span class="cart-product-mobile-quantity" style="font-size: 14px">1 x ₦{{ $cat['amount'] }}</span>
+                                    <span class="cart-product-mobile-total" ><b style="font-size: 14px">Total: ₦{{ $cat['amount'] }}</b></span>
                                     <!-- Quantity Start -->
                                     <div class="quantity">
                                         <div class="cart-plus-minus border-0"></div>
@@ -121,9 +121,9 @@
 
                     <!-- Cart Action Buttons Start -->
                     <div class="row justify-content-between gap-3">
-                        <div class="col-auto"><a href="{{route('cakes')}}" class="btn btn-outline-dark btn-primary-hover rounded-0">Continue Shopping</a></div>
+                        <div class="col-auto"><a href="{{route('cakes')}}" class="btn btn-outline-dark btn-primary-hover rounded-0" style="font-size: 14px">Continue Shopping</a></div>
                         <div class="col-auto d-flex flex-wrap gap-3">
-                            <button class="btn btn-outline-dark btn-primary-hover rounded-0" id="clearcart">Clear Cart</button>
+                            <button class="btn btn-outline-dark btn-primary-hover rounded-0" id="clearcart" style="font-size: 14px">Clear Cart</button>
                         </div>
                     </div>
                     <!-- Cart Action Buttons End -->
@@ -134,23 +134,23 @@
                 <div class="col-lg-4 col-12 mb-30">
                     <div class="cart-totals">
                         <div class="cart-totals-inner">
-                            <h4 class="title">Cart totals</h4>
+                            <h4 class="title" style="font-size: 14px">Cart totals</h4>
                             <table class="table bg-transparent">
                                 <tbody>
                                 <tr class="subtotal">
-                                    <th class="sub-title">Subtotal</th>
+                                    <th class="sub-title" style="font-size: 14px">Subtotal</th>
 {{--                                    @if(empty($cat))--}}
 {{--                                        <td class="amount"><span >₦{{number_format(intval(0 *1))}}</span></td>--}}
 {{--                                    @else--}}
-                                    <td class="amount"><span >₦{{number_format(intval($cartsum *1))}}</span></td>
+                                    <td class="amount"><span style="font-size: 14px">₦{{number_format(intval($cartsum *1))}}</span></td>
 {{--                                    @endif--}}
                                 </tr>
                                 <tr class="total">
-                                    <th class="sub-title">Total</th>
+                                    <th class="sub-title" style="font-size: 14px">Total</th>
 {{--                                    @if(empty($cat))--}}
 {{--                                        <td class="amount"><span >₦{{number_format(intval(0 *1))}}</span></td>--}}
 {{--                                    @else--}}
-                                    <td class="amount"><strong>₦{{number_format(intval($cartsum *1))}}</strong></td>
+                                    <td class="amount"><strong style="font-size: 14px">₦{{number_format(intval($cartsum *1))}}</strong></td>
 {{--                                    @endif--}}
                                 </tr>
                                 </tbody>

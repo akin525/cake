@@ -509,7 +509,7 @@
                                     <img width="200" src="{{asset('assets/images/eko.png')}}" alt="Image">
                                 </div>
                                 <div class="product-desc-content">
-                                    <h5 class="merriweather-light-italic">We Love Cake</h5>
+                                    <h5 class="merriweather-light-italic" style="font-size: 16px">We Love Cake</h5>
                                     <p class="product-desc-text cormorant-upright-bold">{!! $product->description !!}</p>
                                 </div>
                             </div>
@@ -548,7 +548,7 @@
                 <div class="col-12">
                     <!-- Section Title Strat -->
                     <div class="section-title">
-                        <h2 class="sam" style="font-size: 25px">Related Product</h2>
+                        <h2 class="sam" style="font-size: 15px">Related Product</h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -577,8 +577,8 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h5 class="merriweather-bold" style="font-size: 20px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
-                                    <span class="merriweather-bold" style="font-size: 20px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                    <h5 class="merriweather-bold fs-4" style="font-size: 14px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
+                                    <span class="merriweather-bold fs-4" style="font-size: 14px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
                                 </div>
                             </div>
                             <!-- Product Item End -->
