@@ -506,7 +506,7 @@
                         <div class="tab-pane fade show active" id="connect-1" role="tabpanel" aria-labelledby="home-tab">
                             <div class="product-desc-row">
                                 <div class="product-desc-img ">
-                                    <img width="200" src="{{asset('assets/images/eko.png')}}" alt="Image">
+                                    <img width="100" src="{{asset('assets/images/eko.png')}}" alt="Image">
                                 </div>
                                 <div class="product-desc-content">
                                     <h5 class="merriweather-light-italic" style="font-size: 16px">We Love Cake</h5>
