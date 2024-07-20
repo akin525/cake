@@ -197,6 +197,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('admin/option', [ProductsController::class, 'postoptionindex'])->name('admin/option');
     Route::post('admin/option', [ProductsController::class, 'postoptionproduct'])->name('admin/option');
+    Route::post('admin/addall', [AuthController::class, 'addgeneralamount'])->name('admin/addall');
 });
     require __DIR__.'/auth.php';
 

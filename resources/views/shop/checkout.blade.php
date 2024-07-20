@@ -92,17 +92,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                {{--                                <div class="col">--}}
-                                {{--                                    <label>State*</label>--}}
-                                {{--                                    <div class="select-wrapper">--}}
-                                {{--                                        <select class="form-field" id="stateSelect" name="state" required>--}}
-                                {{--                                            <option value="">Select State</option>--}}
-                                {{--                                            @foreach($state as $st)--}}
-                                {{--                                            <option value="{{$st['name']}}">{{$st['name']}}</option>--}}
-                                {{--                                            @endforeach--}}
 
-                                {{--                                        </select>--}}
-                                {{--                                    </div>--}}
                             </div>
                             <div class="col">
                                 <h4 class="mb-4" style="font-size: 14px">City/Town*</h4>
@@ -149,30 +139,14 @@
                             </div>
                             <br/>
                             <script>
-                                document.getElementById('daypart').addEventListener('change', function() {
-                                    var selectedTime = document.getElementById('daypart').value;
-                                    var dateInput = document.getElementById('today');
-                                    var now = new Date();
+                                function getFormattedDate(date) {
+                                    const year = date.getFullYear();
+                                    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+                                    const day = String(date.getDate()).padStart(2, '0');
+                                    return `${year}-${month}-${day}`;
+                                }
 
-                                    function getFormattedDate(date) {
-                                        const year = date.getFullYear();
-                                        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
-                                        const day = String(date.getDate()).padStart(2, '0');
-                                        return `${year}-${month}-${day}`;
-                                    }
-
-                                    if (selectedTime === "8am to 4pm") {
-                                        var nextDay = new Date(now);
-                                        nextDay.setDate(now.getDate() + 1);
-                                        dateInput.value = getFormattedDate(nextDay);
-                                    } else {
-                                        dateInput.value = ""; // Clear the value if a different time is selected
-                                    }
-
-                                    console.log(getFormattedDate(now));
-                                });
-
-                                document.addEventListener("DOMContentLoaded", function() {
+                                function setMinDate() {
                                     var today = new Date();
                                     var day = String(today.getDate() + 1).padStart(2, '0'); // Set to tomorrow
                                     var month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
@@ -180,6 +154,25 @@
 
                                     var minDate = year + '-' + month + '-' + day;
                                     document.getElementById('today').setAttribute('min', minDate);
+                                }
+
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    setMinDate();
+                                });
+
+                                document.getElementById('daypart').addEventListener('change', function() {
+                                    var selectedTime = document.getElementById('daypart').value;
+                                    var dateInput = document.getElementById('today');
+                                    var now = new Date();
+
+                                    if (selectedTime === "8am to 4pm") {
+                                        dateInput.setAttribute('min', getFormattedDate(now)); // Allow today's date
+                                    } else {
+                                        setMinDate(); // Revert to tomorrow's date as minimum
+                                        dateInput.value = ""; // Clear the value if a different time is selected
+                                    }
+
+                                    console.log(getFormattedDate(now));
                                 });
                             </script>
 

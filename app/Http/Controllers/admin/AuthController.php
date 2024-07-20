@@ -132,5 +132,22 @@ function allrtg()
             'amounts' => $amounts,
         ]);
     }
+     public function addgeneralamount(Request $request)
+     {
+         $request->validate([
+             'amount'=>'required',
+         ]);
+         $amount = $request->input('amount');
+         $products=Products::all();
+         foreach ($products as $product) {
+             $product->price += $amount;
+             $product->save();
+         }
+         $msg="Amount added to all products successfully.";
+         return response()->json([
+             'status'=>'success',
+             'message'=>$msg,
+         ]);
+     }
 
 }

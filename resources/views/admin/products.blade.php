@@ -8,17 +8,45 @@
             <p>All Products</p>
         </div>
         <div class="col-md-6 d-flex flex-wrap justify-content-md-end">
-            <a href="{{route('admin/addproduct1')}}" class="btn btn-outline-primary btn-hover-bg-primary me-4">
-               Create new <span class="badge badge-soft-danger">Hots</span>
+            <a href="{{route('admin/addproduct1')}}" class="btn btn-outline-primary btn-hover-bg-primary me-4 m-3">
+               Create new(No Attribute) <span class="badge badge-soft-danger">Hots</span>
             </a>
-            <a href="{{route('admin/addproduct')}}" class="btn btn-primary">
+            <a href="{{route('admin/addproduct')}}" class="btn btn-primary m-3">
                 Create new
+            </a>
+            <a href="#" class="btn btn-primary m-3" onclick="openModal(this)">
+                Add General Amount
             </a>
         </div>
     </div>
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
         <div class="loading-spinner"></div>
     </div>
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <form id="dataForm" >
+                @csrf
+                <div class="card card-body">
+                    <div class="card"style=" background-color: #ffffff; ">
+                        <p class="text-center" >Add Amount </p>
+                    </div>
+                    {{--                       <input placeholder="Your e-mail" class="subscribe-input" name="email" type="email">--}}
+                    <br/>
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" class="form-control"  name="amount"  required />
+                    </div>
+                    <br/>
+
+                    <br/>
+
+                    <button type="submit" class="btn btn-outline-success">Add Amount</button>
+                </div>
+            </form>
+            <button class="btn btn-outline-danger" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
     <div class="card mb-4 rounded-4 p-7">
         <div class="card-header bg-transparent px-0 pt-0 pb-7">
             <div class="row align-items-center justify-content-between">
@@ -155,6 +183,86 @@
                 });
             });
         });
+    </script>
+    <script>
+        function openModal(element) {
+            const modal = document.getElementById('editModal');
+
+            modal.style.display = 'block';
+            // You can fetch user data using the userId and populate the input fields in the modal if needed
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('editModal');
+            modal.style.display = 'none';
+        }
+
+        function saveChanges() {
+            // Add code here to save the changes and update the table
+            closeModal();
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+
+
+            // Send the AJAX request
+            $('#dataForm').submit(function(e) {
+                e.preventDefault(); // Prevent the form from submitting traditionally
+
+                // Get the form data
+                var formData = $(this).serialize();
+                // The user clicked "Yes", proceed with the action
+                // Add your jQuery code here
+                // For example, perform an AJAX request or update the page content
+                $('#loadingSpinner').show();
+
+
+
+                $.ajax({
+                    url: "{{route('admin/addall')}}",
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        // Handle the success response here
+                        $('#loadingSpinner').hide();
+
+                        console.log(response);
+                        // Update the page or perform any other actions based on the response
+
+                        if (response.status == 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: response.message
+                            }).then(() => {
+                                location.reload(); // Reload the page
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'info',
+                                title: 'Pending',
+                                text: response.message
+                            });
+                            // Handle any other response status
+                        }
+
+                    },
+                    error: function(xhr) {
+                        $('#loadingSpinner').hide();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'fail',
+                            text: xhr.responseText
+                        });
+                        // Handle any errors
+                        console.log(xhr.responseText);
+
+                    }
+                });
+            });
+        });
+
     </script>
 
 @endsection
