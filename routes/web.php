@@ -51,6 +51,7 @@ Route::get('ready', [HomeController::class, 'loadrtb'])->name('ready');
 Route::get('getlayer/{id}', [HomeController::class, 'getlayer'])->name('getlayer');
 Route::get('getsize', [HomeController::class, 'getsize'])->name('getsize');
 Route::post('addcart1', [HomeController::class, 'addcart'])->name('addcart1');
+Route::post('mes', [HomeController::class, 'message'])->name('mes');
 Route::get('cart', [HomeController::class, 'mycart'])->name('cart');
 Route::post('check', [OrderController::class, 'postorder'])->name('check');
 Route::get('tran', [OrderController::class, 'confirmpayment'])->name('tran');

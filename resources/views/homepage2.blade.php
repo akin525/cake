@@ -262,33 +262,37 @@
         <div class="container custom-container-five">
             <div class="row align-items-center">
                 <div class="">
+                    <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+                        <div class="loading-spinner"></div>
+                    </div>
                     <div class="contact-section_formbg" data-bg-image="">
-                        <h2 class="merriweather-bold" style="font-size: 18px">GET IN TOUCH</h2>
-                        <form class="contact-section_form cormorant-upright-regular" id="contact-form" action="" method="post" style="background-color: white">
+                        <h2 class="merriweather-bold" style="font-size: 18px; font: normal normal normal 14px/1 LaStudioIcons">GET IN TOUCH</h2>
+                        <form class="contact-section_form cormorant-upright-regular"  id="mes" method="post" style="background-color: white">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input  style="font: 21px" class="form-control merriweather-regular" type="text" name="con_name" placeholder="Name">
+                                        <input  style="font: 21px" class="form-control merriweather-regular" type="text" name="name" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input style="font: 21px" class="form-control merriweather-regular" type="email" name="con_email" placeholder="Email">
+                                        <input style="font: 21px" class="form-control merriweather-regular" type="email" name="email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input style="font: 21px" class="form-control merriweather-regular" type="text" name="con_phone" placeholder="Phone">
+                                        <input style="font: 21px" class="form-control merriweather-regular" type="text" name="number" placeholder="Phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-p">
                                     <div class="form-group">
-                                        <input style="font: 21px" class="form-control merriweather-regular" type="text" name="con_address" placeholder="Address">
+                                        <input style="font: 21px" class="form-control merriweather-regular" type="text" name="address" placeholder="Address">
                                     </div>
                                 </div>
                                 <div class="col-md-12 form-p">
                                     <div class="form-group">
-                                        <textarea style="font: 21px" class="form-control merriweather-regular text-area" name="con_message" placeholder="Message"></textarea>
+                                        <textarea style="font: 21px" class="form-control merriweather-regular text-area" name="message" placeholder="Message"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 form-p">
@@ -302,8 +306,66 @@
                         <div class="form-message"></div>
                     </div>
                 </div>
+                <script>
+                    $(document).ready(function() {
 
-{{--                <div class="text-center">--}}
+
+                        // Send the AJAX request
+                        $('#mes').submit(function(e) {
+                            e.preventDefault();
+
+                            var formData = $(this).serialize();
+
+                            $('#loadingSpinner').show();
+
+                            $.ajax({
+                                url: "{{ route('mes') }}",
+                                type: 'POST',
+                                data: formData,
+                                success: function(response) {
+                                    // Handle the success response here
+                                    $('#loadingSpinner').hide();
+
+                                    console.log(response);
+                                    // Update the page or perform any other actions based on the response
+
+                                    if (response.status == 'success') {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Success',
+                                            text: response.message
+                                        }).then(() => {
+                                            location.reload(); // Reload the page
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'info',
+                                            title: 'Pending',
+                                            text: response.message
+                                        });
+                                        // Handle any other response status
+                                    }
+
+                                },
+                                error: function(xhr) {
+                                    $('#loadingSpinner').hide();
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'fail',
+                                        text: xhr.responseText
+                                    });
+                                    // Handle any errors
+                                    console.log(xhr.responseText);
+
+                                }
+                            });
+                        });
+                    });
+
+                </script>
+
+
+                {{--                <div class="text-center">--}}
 {{--                    <div class="contact-section_content">--}}
 {{--                        <h4 class="contact-section__title merriweather-black" style="font-size: 25px">Our Contact</h4>--}}
 {{--                        <ul class="contact-section_list">--}}

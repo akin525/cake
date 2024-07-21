@@ -383,7 +383,7 @@
         </div>
         <div class="leftBox text-center">
             <h6 class="cormorant-upright-regular"  style="font-size: 14px;">
-                CAKES FOR EVERY LAGOSIAN. CAKES FOR LAGOS<br>
+                <b> CAKES FOR EVERY LAGOSIAN. CAKES FOR LAGOS</b><br>
             </h6>
 
         </div>
@@ -639,7 +639,7 @@
         }
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <a href="https://wa.me/23480162300183" class="float" target="_blank">
+    <a href="https://wa.me/2348162300183" class="float" target="_blank">
         <i class="fa fa-whatsapp my-float"></i>
     </a>
     <!-- Footer Copyright Strat -->

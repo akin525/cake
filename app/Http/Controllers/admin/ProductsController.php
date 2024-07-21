@@ -112,8 +112,6 @@ class ProductsController
          'tittle'=>'required',
          'price'=>'required',
          'content'=>'required',
-         'cprice'=>'required',
-         'fee'=>'required',
          'image'=>'required',
      ]);
 

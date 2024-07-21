@@ -15,6 +15,7 @@ use App\Models\FQ;
 use App\Models\Homepage;
 use App\Models\Items;
 use App\Models\Layers;
+use App\Models\Message;
 use App\Models\Option;
 use App\Models\Orders;
 use App\Models\Products;
@@ -426,5 +427,30 @@ function dashboard()
     {
         $find=Attribute::where('name', 'Flavor')->first();
         return response()->json($find->value);
+    }
+
+    function message(Request $request)
+    {
+        $request->validate([
+            'email'=>'required',
+            'name'=>'required',
+            'number'=>'required',
+
+        ]);
+
+        $mess=Message::create([
+            'email'=>$request->email,
+            'name'=>$request->name,
+            'number'=>$request->number,
+            'content'=>$request->message ?? null,
+            'address'=>$request->address ?? null,
+        ]);
+        $msg="Message Receive Successfully";
+
+        return response()->json([
+            'status'=>'success',
+            'message'=>$msg,
+        ]);
+
     }
 }
