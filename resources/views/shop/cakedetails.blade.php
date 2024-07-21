@@ -123,7 +123,7 @@
                         </div>
                         <!-- Product Head End -->
                         <!-- Description Start -->
-                        <p class=" cormorant-upright-light" style="font-size: 21px">{!! $product->description !!}</p>
+                        <p class="cormorant-upright-regular" style="font-size: 14px">{!! $product->description !!}</p>
                         <!-- Description End -->
                         <form method="post" action="{{route('addcart1')}}">
                             @csrf
@@ -254,9 +254,14 @@
                             <select name="topper" id="topperBy"   class="form-control cormorant-upright-light">
                                 <option value="0">Choose an option</option>
                                 @if($product->category != "Ready To Go")
-                                <option value="4000" data-wapf-price="4000" data-wapf-pricetype="fixed">Customized Topper (+₦4,000.00)</option>
+                                @foreach($topper as $tb)
+                                <option value="{{$tb->amount}}" data-wapf-price="{{$tb->amount}}" data-wapf-pricetype="fixed">{{$tb->name}} (+{{number_format(intval($tb->amount))}})</option>
+                                    @endforeach
+                                @else
+                                    @foreach($rtg as $tb)
+                                        <option value="{{$tb->amount}}" data-wapf-price="{{$tb->amount}}" data-wapf-pricetype="fixed">{{$tb->name}} (+{{number_format(intval($tb->amount))}})</option>
+                                    @endforeach
                                 @endif
-                                <option value="1000" data-wapf-price="1000" data-wapf-pricetype="fixed">In-House Happy Birthday Topper (+₦1,000.00)</option>
                             </select>
 
 

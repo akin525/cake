@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Gateways;
 use App\Models\Homepage;
 use App\Models\Settings;
+use App\Models\Topper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -104,4 +105,58 @@ function updateabout(Request $request){
         return redirect('admin/settings')->with('success', $mg);
 
 }
+
+    function loadtopper()
+    {
+        $topper=Topper::all();
+
+        return view('admin/topper', compact('topper'));
+}
+function createtopper(Request $request)
+{
+    $validate=$request->validate([
+        'name'=>'required',
+        'amount'=>'required',
+    ]);
+
+    Topper::create($validate);
+
+    $msg="Topper Created Success";
+
+    return response()->json([
+        'status'=>'success',
+        'message'=>$msg,
+    ]);
+}
+
+    function updatetopper(Request $request)
+    {
+        $validate = $request->validate([
+            'id' => 'required|integer|exists:toppers,id', // Assuming 'id' is needed to identify the record
+            'name' => 'required|string|max:255',
+            'amount' => 'required|numeric',
+        ]);
+
+        // Find the Topper record by id and update it with the validated data
+        $topper = Topper::find($validate['id']);
+        $topper->update($validate);
+
+        $msg = "Topper Updated Successfully";
+
+        return response()->json([
+            'status' => 'success',
+            'message' => $msg,
+        ]);
+    }
+    function detetetopper($id)
+    {
+        Topper::where('id', $id)->delete();
+        $msg="Topper delete successful";
+        return response()->json([
+            'status'=>'success',
+            'message'=>$msg,
+        ]);
+
+    }
+
 }

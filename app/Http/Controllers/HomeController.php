@@ -23,6 +23,7 @@ use App\Models\Rtb;
 use App\Models\Settings;
 use App\Models\Sizes;
 use App\Models\State;
+use App\Models\Topper;
 use App\Models\User;
 use App\Models\Variation;
 use App\Providers\RouteServiceProvider;
@@ -210,6 +211,8 @@ function cakedetail($request)
     $addalert=Alert::where('name', 'addition')->first();
     $option=Option::all();
     $items=Items::where('product_id', $product->id)->get();
+    $rtg=Topper::where('name', '!=', 'Customized Topper')->get();
+    $topper=Topper::get();
 
 //    return $size;
     if (Auth::user()) {
@@ -223,7 +226,7 @@ function cakedetail($request)
     $category=Categories::all();
 
     return view('shop.cakedetails', compact('product', 'product1',
-    'cart', 'cartsum', 'category', 'color', 'layer', 'size', 'layeralert', 'done', 'addalert', 'flavor', 'option', 'items'
+    'cart', 'cartsum', 'category', 'color', 'rtg', 'topper', 'layer', 'size', 'layeralert', 'done', 'addalert', 'flavor', 'option', 'items'
     ));
 
 }

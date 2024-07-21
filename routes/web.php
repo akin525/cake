@@ -199,6 +199,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/option', [ProductsController::class, 'postoptionindex'])->name('admin/option');
     Route::post('admin/option', [ProductsController::class, 'postoptionproduct'])->name('admin/option');
     Route::post('admin/addall', [AuthController::class, 'addgeneralamount'])->name('admin/addall');
+
+
+    Route::get('admin/topper', [SetiingsController::class, 'loadtopper'])->name('admin/topper');
+    Route::post('admin/topper', [SetiingsController::class, 'createtopper'])->name('admin/topper');
+    Route::post('admin/updatetopper', [SetiingsController::class, 'updatetopper'])->name('admin/updatetopper');
+    Route::get('admin/deletetopper/{id}', [SetiingsController::class, 'detetetopper'])->name('admin/deletetopper');
 });
     require __DIR__.'/auth.php';
 
