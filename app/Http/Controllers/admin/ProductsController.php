@@ -108,12 +108,12 @@ class ProductsController
  function addproduct1(Request $request)
  {
 //     return $request;
-     $request->validate([
-         'tittle'=>'required',
-         'price'=>'required',
-         'content'=>'required',
-         'image'=>'required',
-     ]);
+//     $request->validate([
+//         'tittle'=>'required',
+//         'price'=>'required',
+//         'content'=>'required',
+//         'image'=>'required',
+//     ]);
 
      $cover = Storage::put('cover', $request['image']);
      $insert = Products::create([

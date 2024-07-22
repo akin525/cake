@@ -22,10 +22,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="rowdies-bold text-white">All Cake</h1>
+                        <h1 class="merriweather-bold capitalize text-white" style="font-size: 16px; text-transform: capitalize">All Cake</h1>
                         <ul class="breadcrumb_list">
-                            <li><a href="{{route('home')}}">Home</a></li>
-                            <li>Cakes</li>
+                            <li><a href="{{route('home')}}" style="text-transform: capitalize">Home</a></li>
+                            <li style="text-transform: capitalize">Cakes</li>
                         </ul>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <!-- Breadcrumb Section End -->
-    <marquee><b>
+    <marquee class="cormorant-upright-bold"><b>
             Dear Ekosians, please note a minimum of 24 hours is required for all categories except the Ready to Go category. Cakes under the Ready to go Category can be available between 1-6 hours after order is placed
         </b></marquee>
     <!-- Product Section Start -->
@@ -66,12 +66,12 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h6 class="merriweather-bold" style="font-size: 15px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h6>
+                                    <h6 class="cormorant-upright-bold" style="font-size: 15px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h6>
                                     @if($pro['ramount'] != null)
-                                        <span class="merriweather-bold ">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
-                                        <span class="merriweather-bold ">₦{{number_format(intval($pro['tamount'] *1))}}</span>
+                                        <span class="cormorant-upright-regular">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
+                                        <span class="cormorant-upright-regular">₦{{number_format(intval($pro['tamount'] *1))}}</span>
                                     @else
-                                        <span class="merriweather-bold ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                        <span class="cormorant-upright-regular ">₦{{number_format(intval($pro['price'] *1))}}</span>
                                     @endif
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                             </div>
 
                         @empty
-                            <p class="text-center">No Product Available On Store</p>
+                            <p class="text-center cormorant-upright-bold">No Product Available On Store</p>
                         @endforelse
                     </div>
                     <!-- Product Section End -->
@@ -126,7 +126,7 @@
                                 <h3 class="sidebars_widget__title">Category</h3>
                                 <ul class="sidebars_widget__category">
                                     @foreach($category as $cat)
-                                        <li><a href="{{url('category', $cat['name'])}}">{{$cat['name']}}</a></li>
+                                        <li class="cormorant-upright-bold"><a href="{{url('category', $cat['name'])}}">{{$cat['name']}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -143,8 +143,8 @@
                                             <img width="50" src="{{$pu['image']}}" alt="Sidebar-Image">
                                         </a>
                                         <div class="single-product_content">
-                                            <a href="#" class="single-product_content__title">{{$pu['name']}}</a>
-                                            <span class="single-product_content__price">₦{{number_format(intval($pu['price'] *1))}}</span>
+                                            <a href="#" class="cormorant-upright-bold">{{$pu['name']}}</a>
+                                            <span class="cormorant-upright-regular">₦{{number_format(intval($pu['price'] *1))}}</span>
                                         </div>
                                     </li>
                                         @endforeach
@@ -177,12 +177,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$fa['id']}}" aria-expanded="true" aria-controls="collapseOne">
-                                        <span class="rowdies-regular" style="font-size: 18px">{{$fa['heading']}}</span>
+                                        <span class="cormorant-upright-bold" style="font-size: 16px">{{$fa['heading']}}</span>
                                         <i class="lastudioicon lastudioicon-down-arrow"></i>
                                     </button>
                                 </h2>
                                 <div id="collapse{{$fa['id']}}" class="accordion-collapse collapse" data-bs-parent="#exampleOne">
-                                    <div class="accordion-body cormorant-upright-bold" style="font-size: 21px">{!! $fa['content'] !!}</div>
+                                    <div class="accordion-body cormorant-upright-regular" style="font-size: 14px">{!! $fa['content'] !!}</div>
                                 </div>
                             </div>
                         @endforeach

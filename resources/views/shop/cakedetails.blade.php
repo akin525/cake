@@ -88,7 +88,7 @@
                     <!-- Product Summery Start -->
                     <div class="product-summery position-relative card-body">
                         <!-- Product Head Start -->
-                        <h5 class="merriweather-bold capitalize" style="font-size: 15px">{{$product->name}}</h5>
+                        <h5 class="cormorant-upright-bold capitalize" style="font-size: 15px">{{$product->name}}</h5>
 
                         <div class="product-head mb-3">
                             <!-- Price Start -->
@@ -123,7 +123,7 @@
                         </div>
                         <!-- Product Head End -->
                         <!-- Description Start -->
-                        <p class="cormorant-upright-regular" style="font-size: 14px">{!! $product->description !!}</p>
+                        <div class="cormorant-upright-regular" style="font-size: 14px">{!! $product->description !!}</div>
                         <!-- Description End -->
                         <form method="post" action="{{route('addcart1')}}">
                             @csrf
@@ -370,7 +370,7 @@
                             <input type="text" name="ekoCakesMessage" id="ekoCakesMessage" class="cormorant-upright-light form-control" style="font-size: 21px;" />
                         </div>
                             <div class="">
-                                <h6 class="cormorant-upright-regular" >
+                                <h6 class="cormorant-upright-bold" >
                                     Additional Information
                                 </h6><br/>
                                 <input type="text"   name="addition"  class="form-control cormorant-upright-light text-center" style="font-size: 21px;"/>
@@ -500,10 +500,10 @@
                 <div class="col-lg-12 single-product-tab">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active merriweather-bold" style="font-size: 15px" id="home-tab" data-bs-toggle="tab" href="#connect-1" role="tab" aria-selected="true">Description</a>
+                            <a class="nav-link active cormorant-upright-bold" style="font-size: 15px" id="home-tab" data-bs-toggle="tab" href="#connect-1" role="tab" aria-selected="true">Description</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="review-tab merriweather-bold" style="font-size: 15px" data-bs-toggle="tab" href="#connect-4" role="tab" aria-selected="false">Additional information</a>
+                            <a class="nav-link" id="review-tab cormorant-upright-bold" style="font-size: 15px" data-bs-toggle="tab" href="#connect-4" role="tab" aria-selected="false">Additional information</a>
                         </li>
 
                     </ul>
@@ -514,8 +514,8 @@
                                     <img width="100" src="{{asset('assets/images/eko.png')}}" alt="Image">
                                 </div>
                                 <div class="product-desc-content">
-                                    <h5 class="merriweather-light-italic" style="font-size: 16px">We Love Cake</h5>
-                                    <p class="product-desc-text cormorant-upright-bold">{!! $product->description !!}</p>
+                                    <h5 class="cormorant-upright-bold" style="font-size: 16px">We Love Cake</h5>
+                                    <h6 class="product-desc-text cormorant-upright-regular" style="font-size: 12px">{!! $product->description !!}</h6>
                                 </div>
                             </div>
                         </div>
@@ -582,8 +582,8 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h5 class="merriweather-bold fs-4" style="font-size: 14px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
-                                    <span class="merriweather-bold fs-4" style="font-size: 14px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                    <h5 class="cormorant-upright-bold " style="font-size: 14px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
+                                    <span class="cormorant-upright-regular " style="font-size: 12px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
                                 </div>
                             </div>
                             <!-- Product Item End -->
