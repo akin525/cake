@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Jobs\SendOrderDeliveryNotice;
 use App\Mail\MailOrder;
 use App\Models\Address;
 use App\Models\Cart;
@@ -15,6 +16,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Response;
+
 
 class OrderController
 {
@@ -98,6 +101,8 @@ function postorder(Request  $request)
     curl_setopt($ch,CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_POST, true);
     curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         "Authorization: Bearer ".$gateway->skey,
         "Cache-Control: no-cache",
@@ -111,6 +116,8 @@ function postorder(Request  $request)
 //    return $result;
     $data = json_decode($result, true);
     Session::forget('selected_product');
+
+//    return response()->json($result, Response::HTTP_BAD_REQUEST);
 
     return response()->json([
         'status'=>'success',
@@ -184,6 +191,8 @@ function confirmpayment(Request $request)
         $order=Order::where('payid', $request->reference)->get();
         $total=Order::where('payid', $request->reference)->sum('price');
         Mail::to($email)->send(new MailOrder($order,  $total, $or, $move));
+        SendOrderDeliveryNotice::dispatch($order, $total, $or, $move,$email)->delay(now()->addMinutes(1));
+
 
         return  redirect('home')->with('status', 'Payments Successful');
     }

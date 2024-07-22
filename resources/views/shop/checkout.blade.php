@@ -100,6 +100,21 @@
                                     <input type="text" class="form-field" name="city" required>
                                 </div>
                             </div>
+                            <br/>
+                            <h4 class="mb-4" style="font-size: 14px">Delivery Time *</h4>
+                            <div class="col">
+                                <h4 class="mb-4" style="font-size: 14px">Choose Delivery Time (optional)</h4>
+                                <div class="select-wrapper">
+                                    <select name="time" id="daypart" class="form-field" data-placeholder="">
+                                        <option value="blank">Select a delivery time</option>
+                                        <option value="08:30am - 12:00pm">08:30am - 12:00pm</option>
+                                        <option value="12:00pm - 04:00pm">12:00pm - 04:00pm</option>
+                                        <option value="4:00pm - 8:00pm">4:00pm - 8:00pm</option>
+                                        <option value="8am to 4pm">8am to 4pm READY TO GO ONLY</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
                             <div class="col">
                                 <h4 class="mb-4" style="font-size: 14px">Delivery Date *</h4>
                                 <input class="form-field" type="date" name="date" id="today" placeholder="Choose date" required>
@@ -124,20 +139,7 @@
                                 });
                             </script>
 
-                            <h4 class="mb-4" style="font-size: 14px">Delivery Time *</h4>
-                            <div class="col">
-                                <h4 class="mb-4" style="font-size: 14px">Choose Delivery Time (optional)</h4>
-                                <div class="select-wrapper">
-                                    <select name="time" id="daypart" class="form-field" data-placeholder="">
-                                        <option value="blank">Select a delivery time</option>
-                                        <option value="08:30am - 12:00pm">08:30am - 12:00pm</option>
-                                        <option value="12:00pm - 04:00pm">12:00pm - 04:00pm</option>
-                                        <option value="4:00pm - 8:00pm">4:00pm - 8:00pm</option>
-                                        <option value="8am to 4pm">8am to 4pm READY TO GO ONLY</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <br/>
+
                             <script>
                                 function getFormattedDate(date) {
                                     const year = date.getFullYear();
