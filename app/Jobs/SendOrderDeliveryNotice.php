@@ -35,7 +35,7 @@ class SendOrderDeliveryNotice implements ShouldQueue
     public function handle()
     {
 //        try {
-            Mail::to($this->email)->send(new MailNotice($this->order, $this->total, $this->or, $this->move));
+            Mail::to($this->email)->send(new MailNotice($this->order, $this->total, $this->or, $this->move, $this->email));
 //        } catch (\Exception $e) {
 //            Log::error('SendOrderDeliveryNotice Job failed: '.$e->getMessage());
 //            throw $e; // Re-throw the exception to mark the job as failed
