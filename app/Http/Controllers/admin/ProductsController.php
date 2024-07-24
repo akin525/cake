@@ -130,10 +130,12 @@ class ProductsController
          'status' => 1,
          'cool'=>'hots',
          'fee' => $request->input('fee') ?? 0,
-         'category' => $request->input('categories') ?? 'cakes',
+//         'category' => $request->input('categories') ?? 'cakes',
          'topper'=>$request->input('topper') ?? 1,
          'card'=>$request->input('card') ?? 1,
      ]);
+     $categoryIds = $request->input('categories', []); // Ensure it's an array
+     $insert->categories()->attach($categoryIds);
 
 // Handle product variations
 
