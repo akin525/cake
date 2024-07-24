@@ -94,7 +94,7 @@ function landingpage()
                 $cartsum=0;
                 $cart=null;
             }
-            $category=Categories::all();
+            $category=Categories::orderBy('id', 'DESC')->get();
 
 //            return $cartsum;
             $setting=Settings::first();
