@@ -16,9 +16,10 @@
                     <br>
                     <small class="text-muted">Order ID: {{$order->order_id}}</small>
                 </div>
-                <div class="col-md-6 ml-auto d-flex justify-content-md-end flex-wrap">
+                <form method="post" action="#" class="col-md-6 ml-auto d-flex justify-content-md-end flex-wrap">
+                    @csrf
                     <div class="mw-210 me-5 my-3">
-                        <select class="form-select">
+                        <select class="form-select" name="status">
                             <option>Change status</option>
                             <option>Awaiting payment</option>
                             <option>Confirmed</option>
@@ -26,9 +27,9 @@
                             <option>Delivered</option>
                         </select>
                     </div>
-                    <a class="btn btn-primary my-3" href="#">Save</a>
+                    <button type="submit" class="btn btn-primary my-3" >Save</button>
                     <a class="btn btn-dark print ms-5 my-3" href="#"><i class="far fa-print"></i></a>
-                </div>
+                </form>
             </div>
         </header>
         <div class="card-body p-7">

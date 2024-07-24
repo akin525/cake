@@ -53,12 +53,15 @@ class ProductsController
          'quantity' => 1,
          'addition' => $request->input('addition') ?? null,
          'image' => $cover,
-         'category' => $request->input('categories') ?? 'cakes',
+//         'category' => $request->input('categories') ?? 'cakes',
          'status' => 1,
          'fee' => $request->input('fee') ?? 0,
          'topper'=>$request->input('topper') ?? 1,
          'card'=>$request->input('card') ?? 1,
      ]);
+
+     $categoryIds = $request->input('categories', []); // Ensure it's an array
+     $insert->categories()->attach($categoryIds);
 
 // Handle product variations
      if ($request->has('attribute') && $request->input('attribute') != null) {
@@ -245,11 +248,14 @@ class ProductsController
      $product->cprice = $validatedData['cprice'];
      $product->fee = $validatedData['fee'];
      $product->description = $validatedData['description'];
-     $product->category = $validatedData['categories'];
+//     $product->category = $validatedData['categories'];
      $product->topper = $request['topper'];
      $product->card = $request['card'];
 
      $product->save();
+     $categoryIds = $request->input('categories', []);
+     $product->categories()->sync($categoryIds);
+
      if ($request->has('attribute') && $request->input('attribute') != null) {
          foreach ($request->input('attribute') as $index => $tri) {
              if ($index % 2 == 0 && isset($tri['name']) && isset($request->input('attribute')[$index + 1]['value'])) {

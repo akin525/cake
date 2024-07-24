@@ -127,7 +127,7 @@
                                 <h3 class="sidebars_widget__title">Category</h3>
                                 <ul class="sidebars_widget__category">
                                     @foreach($category as $cat)
-                                        <li><a href="{{url('category', $cat['name'])}}">{{$cat['name']}}</a></li>
+                                        <li><a href="{{url('category', $cat['id'])}}">{{$cat['name']}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>

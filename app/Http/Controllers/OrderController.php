@@ -191,7 +191,7 @@ function confirmpayment(Request $request)
         $order=Order::where('payid', $request->reference)->get();
         $total=Order::where('payid', $request->reference)->sum('price');
         Mail::to($email)->send(new MailOrder($order,  $total, $or, $move));
-        SendOrderDeliveryNotice::dispatch($order, $total, $or, $move,$email)->delay(now()->addMinutes(30));
+        SendOrderDeliveryNotice::dispatch($order, $total, $or, $move,$email)->delay(now()->addMinutes(1));
 
 
         return  redirect('home')->with('status', 'Payments Successful');

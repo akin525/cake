@@ -9,6 +9,7 @@ use App\Models\Alert;
 use App\Models\Attribute;
 use App\Models\Cart;
 use App\Models\Categories;
+use App\Models\Category;
 use App\Models\Cheff;
 use App\Models\Colors;
 use App\Models\FQ;
@@ -196,8 +197,10 @@ function allcake()
 }
 function cakedetail($request)
 {
-    $product=Products::where('id', $request)->first();
+    $product = Products::with('categories')->findOrFail($request);
     $done=Categories::where('name', $product->category)->first();
+
+//    $done1=Category::where('products_id', $product->id)->get();
 
     $product1=Products::where('status', 1)->limit(9)->get();
     $color=Colors::all();
@@ -355,11 +358,19 @@ function mycart()
 
 function category($request)
 {
-    $product=Products::where([['category', 'like', '%'.$request.'%']])
+ $categorys = Categories::findOrFail($request);
+//return $category;
+    // Retrieve product IDs associated with the category
+    $productIds = $categorys->products->pluck('id');
+
+    // Retrieve products using the collected IDs and paginate them
+    $product = Products::whereIn('id', $productIds)
         ->orderBy('id', 'DESC')
-        ->paginate('12');
+        ->paginate(12);
+//    return $product;
+
     $category=Categories::all();
-    $done=Categories::where('name', $request)->first();
+    $done=Categories::where('id', $request)->first();
     $fq=FQ::all();
     $pop=Products::where('cool', 'hots')->orderBy('id', 'DESC')
         ->limit(4)

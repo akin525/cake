@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="merriweather-bold capitalize text-white" style="text-transform: capitalize">{{$done->name}}</h1>
+                        <h1 class="merriweather-bold capitalize text-white" style="text-transform: capitalize">{{$done->name }}</h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{route('home')}}" style="text-transform: capitalize">Home</a></li>
                             <li style="text-transform: capitalize">Cakes</li>
@@ -95,7 +95,7 @@
                             </div>
 
                         @empty
-                            <p class="text-center">No Product Available On Store</p>
+                            <p class="text-center">No products found in this category.</p>
                         @endforelse
                     </div>
                     <!-- Product Section End -->
@@ -125,7 +125,7 @@
                                 <h3 class="sidebars_widget__title">Category</h3>
                                 <ul class="sidebars_widget__category">
                                     @foreach($category as $cat)
-                                        <li><a href="{{url('category', $cat['name'])}}">{{$cat['name']}}</a></li>
+                                        <li><a href="{{url('category', $cat['id'])}}">{{$cat['name']}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>

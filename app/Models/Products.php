@@ -22,5 +22,10 @@ class Products extends Authenticatable
     protected $table = 'products';
     protected $guarded=[];
 
+    public function categories()
+    {
+        return $this->belongsToMany(Categories::class, 'category_product');
+    }
+
 
 }

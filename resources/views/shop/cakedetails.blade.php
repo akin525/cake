@@ -15,7 +15,16 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="merriweather-bold capitalize text-white" style="text-transform: capitalize">{{$done->name ?? null}}</h1>
+                        <h1 class="merriweather-bold capitalize text-white" style="text-transform: capitalize">
+                            @if($product != null && $product->categories->count() > 0)
+                                <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif; text-transform: capitalize">
+                                    Categories:
+                                    @foreach($product->categories as $category)
+                                        <span>{{ $category->name }}</span>@if(!$loop->last), @endif
+                                    @endforeach
+                                </li>
+                            @endif
+                        </h1>
                         <ul class="breadcrumb_list">
                             <li><a href="{{url('/')}}" style="text-transform: capitalize">Home</a></li>
                             <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif; text-transform: capitalize" >

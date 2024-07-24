@@ -45,7 +45,7 @@ Route::get('addcart/{id}', [HomeController::class, 'addcart'])->name('addcart');
 Route::get('cart', [HomeController::class, 'mycart'])->name('cart');
 Route::post('cancelcart', [CartController::class, 'removefromcart'])->name('cancelcart');
 Route::get('clearcart', [CartController::class, 'clearcart'])->name('clearcart');
-Route::get('category/{id}', [HomeController::class, 'category'])->name('category');
+Route::get('/category/{id}/', [HomeController::class, 'category'])->name('category');
 Route::post('search}', [HomeController::class, 'searccakeh'])->name('search');
 Route::get('ready', [HomeController::class, 'loadrtb'])->name('ready');
 Route::get('getlayer/{id}', [HomeController::class, 'getlayer'])->name('getlayer');
@@ -58,6 +58,7 @@ Route::get('tran', [OrderController::class, 'confirmpayment'])->name('tran');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 
 Route::get('about', [HomeController::class, 'aboutus'])->name('about');
