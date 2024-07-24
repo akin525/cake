@@ -124,7 +124,7 @@
                     <!-- Single Category Four Start -->
                     <div class="category-four_box">
                         <span class="category-four_border"></span>
-                        <a href="{{url('category', $cat['name'])}}" class="category-four_thumb">
+                        <a href="{{url('category', $cat['id'])}}" class="category-four_thumb">
                             @if($cat['image'] != null)
                             <img width="100" src="{{url($cat['image'])}}" alt="Category-Image">
                             @else
