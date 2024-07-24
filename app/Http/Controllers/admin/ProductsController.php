@@ -372,12 +372,13 @@ class ProductsController
          'quantity' => 1,
          'addition' => $request->input('addition') ?? null,
          'image' => $cover,
-         'category' => $request->input('categories') ?? 'cakes',
          'status' => 1,
          'fee' => $request->input('fee') ?? 0,
          'topper'=>$request->input('topper') ?? 1,
          'card'=>$request->input('card') ?? 1,
      ]);
+     $categoryIds = $request->input('categories', []); // Ensure it's an array
+     $insert->categories()->attach($categoryIds);
 
 // Handle product variations
      if ($request->has('attribute') && $request->input('attribute') != null) {

@@ -407,8 +407,8 @@
                                         <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase " for="category">Category</label>
                                         @foreach ($category as $cat)
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="categories" value="{{ $cat->name }}" id="category{{ $cat->id }}"
-                                                       @if ($cat->name == $product->category ?? []) checked @endif>
+                                                <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $cat->id }}" id="category{{ $cat->id }}"
+                                                       @if (in_array($cat->id, $product->categories->pluck('id')->toArray())) checked @endif>
                                                 <label class="form-check-label" for="category{{ $cat->id }}">
                                                     {{ $cat->name }}
                                                 </label>
@@ -421,7 +421,7 @@
                                     </div>
                                     <div class="mb-5 col-12 px-3">
                                         <button type="submit" class="btn btn-primary">
-                                            Update
+                                            Post
                                         </button>
                                     </div>
                                 </div>
