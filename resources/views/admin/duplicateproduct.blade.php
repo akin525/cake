@@ -28,7 +28,7 @@
             </div>
         @endif
         <div class="col-xxl-9">
-            <form method="post" class="form-border-1" action="{{route('admin/duplicateproduct1')}}" enctype="multipart/form-data">
+            <form method="post" class="form-border-1" action="{{route('admin/addproducts')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-8">
