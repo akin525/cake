@@ -382,8 +382,8 @@
             </div>
         </div>
         <div class="leftBox text-center">
-            <h6 class="cormorant-upright-bold"  style="font-size: 16px;">
-                <b> CAKES FOR EVERY LAGOSIAN. CAKES FOR LAGOS</b><br>
+            <h6 class="cormorant-upright-bold"  style="font-size: 16px; text-transform: uppercase;">
+                <b> Delivering yellow boxes of happiness</b><br>
             </h6>
 
         </div>
@@ -625,8 +625,8 @@
             height:60px;
             bottom:40px;
             left:40px;
-            background-color:#25d366;
-            color:#FFF;
+            background-color:yellow;
+            color:black;
             border-radius:50px;
             text-align:center;
             font-size:30px;

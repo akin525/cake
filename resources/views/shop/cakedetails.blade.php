@@ -15,9 +15,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h1 class="merriweather-bold capitalize text-white" style="text-transform: capitalize">
+                        <h1 class="merriweather-bold capitalize text-white" style="text-transform: uppercase">
                             @if($product != null && $product->categories->count() > 0)
-                                <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif; text-transform: capitalize">
+                                <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif; text-transform: uppercase">
                                     Categories:
                                     @foreach($product->categories as $category)
                                         <span>{{ $category->name }}</span>@if(!$loop->last), @endif
@@ -26,8 +26,8 @@
                             @endif
                         </h1>
                         <ul class="breadcrumb_list">
-                            <li><a href="{{url('/')}}" style="text-transform: capitalize">Home</a></li>
-                            <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif; text-transform: capitalize" >
+                            <li><a href="{{url('/')}}" style="text-transform: uppercase">Home</a></li>
+                            <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif; text-transform: uppercase" >
                                 @if($product != null)
                                 {{$product->name}}
                                 @endif
@@ -97,7 +97,7 @@
                     <!-- Product Summery Start -->
                     <div class="product-summery position-relative card-body">
                         <!-- Product Head Start -->
-                        <h5 class="cormorant-upright-bold capitalize" style="font-size: 15px">{{$product->name}}</h5>
+                        <h5 class="cormorant-upright-bold capitalize" style="font-size: 25px; text-transform: uppercase">{{$product->name}}</h5>
 
                         <div class="product-head mb-3">
                             <!-- Price Start -->
@@ -458,7 +458,7 @@
                                 <!-- Cart Button Start -->
                                 <div class="cart-btn">
                                     <div class="add-to_cart">
-                                        <button type="submit" class="btn btn-dark btn-hover-primary labtn-icon-quickview">
+                                        <button type="submit" class="btn btn-dark btn-hover-primary labtn-icon-quickview" style="background-color: yellow; color: black;" >
                                             Add to cart
                                         </button>
                                     </div>
@@ -591,8 +591,8 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h5 class="cormorant-upright-bold " style="font-size: 14px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
-                                    <span class="cormorant-upright-regular " style="font-size: 12px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                    <h5 class="cormorant-upright-bold " style="font-size: 24px; text-transform: uppercase"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h5>
+                                    <span class="cormorant-upright-regular " style="font-size: 20px; ">₦{{number_format(intval($pro['price'] *1))}}</span>
                                 </div>
                             </div>
                             <!-- Product Item End -->

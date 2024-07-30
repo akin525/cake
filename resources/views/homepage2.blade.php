@@ -125,6 +125,7 @@
                     <div class="category-four_box">
                         <span class="category-four_border"></span>
                         <a href="{{url('category', $cat['id'])}}" class="category-four_thumb">
+                            <div class="product-item__badge" style="background-color: yellow; color: black">Categories</div>
                             @if($cat['image'] != null)
                             <img width="100" src="{{url($cat['image'])}}" alt="Category-Image">
                             @else
@@ -163,7 +164,7 @@
                     <!-- Product Item Start -->
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
-                            <h3 class="merriweather-bold capitalize" style="font-size: 15px"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
+                            <h3 class="merriweather-bold capitalize" style="font-size: 25px; text-transform: uppercase"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
                             @if($pro['ramount'] != null)
                                 <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
                                 <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
@@ -189,12 +190,12 @@
 
                                 </style>
                                 <li class="product-item__meta-action meta-dark">
-                                    <a class="labtn-icon-quickview " href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick View" data-product-id="{{$pro['id']}}" data-bs-toggle="modal" data-bs-target="#quickViewModal{{$pro['id']}}"></a>
+                                    <a class="labtn-icon-quickview " style="background-color: yellow; color: black;" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick View" data-product-id="{{$pro['id']}}" data-bs-toggle="modal" data-bs-target="#quickViewModal{{$pro['id']}}"></a>
                                 </li>
                             </ul>
                             <br>
                             <br>
-                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn cormorant-upright-regular " style="font-size: 14px; border-radius: 50px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);" >Add to cart</a>
+                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn cormorant-upright-regular " style="font-size: 14px; background-color: yellow; color: black; border-radius: 50px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);" >Buy Now</a>
                         </div>
                     </div>
                     <!-- Product Item End -->

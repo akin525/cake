@@ -66,12 +66,12 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h6 class="cormorant-upright-bold" style="font-size: 15px"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h6>
+                                    <h6 class="cormorant-upright-bold" style="font-size: 22px; text-transform: uppercase;"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h6>
                                     @if($pro['ramount'] != null)
-                                        <span class="cormorant-upright-regular">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
-                                        <span class="cormorant-upright-regular">₦{{number_format(intval($pro['tamount'] *1))}}</span>
+                                        <span class="cormorant-upright-regular" style="font-size: 20px">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
+                                        <span class="cormorant-upright-regular" style="font-size: 20px">₦{{number_format(intval($pro['tamount'] *1))}}</span>
                                     @else
-                                        <span class="cormorant-upright-regular ">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                        <span class="cormorant-upright-regular " style="font-size: 20px">₦{{number_format(intval($pro['price'] *1))}}</span>
                                     @endif
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                 <h3 class="sidebars_widget__title">Category</h3>
                                 <ul class="sidebars_widget__category">
                                     @foreach($category as $cat)
-                                        <li class="cormorant-upright-bold"><a href="{{url('category', $cat['name'])}}">{{$cat['name']}}</a></li>
+                                        <li class="cormorant-upright-bold"><a href="{{url('category', $cat['id'])}}">{{$cat['name']}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
