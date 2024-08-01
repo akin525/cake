@@ -181,8 +181,11 @@
                                     <ul class="sub-menu list-unstyled"><li class="sidebar-item">
                                             <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/allproduct')}}" title="Product List">All Product</a>
                                         </li>
+{{--                                        <li class="sidebar-item">--}}
+{{--                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/addproduct')}}" title="Product Grid">Add Product</a>--}}
+{{--                                        </li>--}}
                                         <li class="sidebar-item">
-                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/addproduct')}}" title="Product Grid">Add Product</a>
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/addproducts')}}" title="Product Grid">Add Product<span class="badge badge-soft-danger">Special</span></a>
                                         </li>
 {{--                                        <li class="sidebar-item">--}}
 {{--                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/option')}}" title="Product Grid">Add Product Option</a>--}}

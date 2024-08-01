@@ -26,6 +26,16 @@ class Products extends Authenticatable
     {
         return $this->belongsToMany(Categories::class, 'category_product');
     }
-
-
+    public function variations()
+    {
+        return $this->hasMany(Variation::class);
+    }
+    public function options()
+    {
+        return $this->hasMany(VariationOption::class);
+    }
+    public function items()
+    {
+        return $this->hasMany(Items::class);
+    }
 }

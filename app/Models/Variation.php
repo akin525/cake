@@ -8,8 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Variation extends Model
 {
 
-    protected $table = 'variation';
+    protected $table = 'variations';
     protected $guarded=[];
 
+
+
+    public function product()
+    {
+        return $this->belongsTo(Products::class);
+    }
+
+    public function options()
+    {
+        return $this->hasMany(VariationOption::class);
+    }
 
 }

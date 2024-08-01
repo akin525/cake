@@ -14,7 +14,7 @@
                 Swal.fire({
                     title: 'Note:',
                     html: {{$alert->message}},
-                    icon: 'info'
+                    icon: 'info',
                 });
             }, 1000);
         };
@@ -110,7 +110,6 @@
                                         <option value="08:30am - 12:00pm">08:30am - 12:00pm</option>
                                         <option value="12:00pm - 04:00pm">12:00pm - 04:00pm</option>
                                         <option value="4:00pm - 8:00pm">4:00pm - 8:00pm</option>
-                                        <option value="8am to 4pm">8am to 4pm READY TO GO ONLY</option>
                                     </select>
                                 </div>
                             </div>
@@ -120,23 +119,52 @@
                                 <input class="form-field" type="date" name="date" id="today" placeholder="Choose date" required>
                                 <br/>
                                 <br/>
-                                <input type="text" class="form-field" name="date" id="formatted-date" readonly style="display: none;">
+                                <input type="text" class="form-field" name="formatted_date" id="formatted-date" readonly placeholder="---/--/--" style="display: none;">
                             </div>
                             <br/>
                             <script>
-                                document.getElementById('today').addEventListener('change', function() {
-                                    var dateInput = this.value;
-                                    var date = new Date(dateInput);
-                                    var day = ("0" + date.getDate()).slice(-2);
-                                    var month = ("0" + (date.getMonth() + 1)).slice(-2);
-                                    var year = date.getFullYear().toString().slice(-2);
-                                    var formattedDate = day + '/' + month + '/' + year;
+                                function setMinDate() {
+                                    const now = new Date();
+                                    const hour = now.getHours();
+                                    const minute = now.getMinutes();
+                                    let minDate = now.toISOString().split('T')[0]; // Today's date in YYYY-MM-DD format
 
-                                    // Display the formatted date in the console (or update another input/display field)
-                                    console.log(formattedDate);
+                                    // If the current time is past 4 PM (16:00)
+                                    if (hour > 16 || (hour === 16 && minute > 0)) {
+                                        const tomorrow = new Date();
+                                        tomorrow.setDate(tomorrow.getDate() + 1);
+                                        minDate = tomorrow.toISOString().split('T')[0]; // Tomorrow's date in YYYY-MM-DD format
+                                    }
+
+                                    document.getElementById('today').min = minDate;
+                                }
+
+                                document.getElementById('today').addEventListener('change', function() {
+                                    const dateValue = this.value;
+                                    const date = new Date(dateValue);
+                                    const day = ("0" + date.getDate()).slice(-2);
+                                    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+                                    const year = date.getFullYear();
+                                    const formattedDate = day + '/' + month + '/' + year;
+
+                                    // Update formatted date field
                                     document.getElementById('formatted-date').value = formattedDate;
-                                    document.getElementById('formatted-date').style.display = 'block'; // Show the formatted date field if needed
+                                    document.getElementById('formatted-date').style.display = 'block';
                                 });
+
+                                document.getElementById('today').addEventListener('focus', function() {
+                                    this.type = 'date';
+                                    setMinDate();
+                                });
+
+                                document.getElementById('today').addEventListener('blur', function() {
+                                    if (!this.value) {
+                                        this.type = 'text';
+                                    }
+                                });
+
+                                // Set the min date initially
+                                setMinDate();
                             </script>
 
 

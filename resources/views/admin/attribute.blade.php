@@ -32,7 +32,7 @@
                     <form id="cat">
                         @csrf
                         <div class="mb-8">
-                            <label for="product_name" class="mb-5 fs-13px ls-1 fw-semibold text-uppercase">Color Label</label>
+                            <label for="product_name" class="mb-5 fs-13px ls-1 fw-semibold text-uppercase">Attribute Label</label>
                             <input type="text" name="name" placeholder="Type here" class="form-control" id="label">
                         </div>
 {{--                        <div class="mb-8">--}}
@@ -78,9 +78,10 @@
                                     <td class="text-body-emphasis">{{$cat['name']}}</td>
                                     <td class="text-center">
                                         <div class="d-flex flex-nowrap justify-content-center">
-                                            <button  type="button" class="btn btn-primary" onclick="openModal(this)" data-user-id="{{$cat->id}}" data-user-amount="{{$cat->name}}" data-user-name="{{$cat->label}}" >
+                                            <button  type="button" class="btn btn-primary m-2" onclick="openModal(this)" data-user-id="{{$cat->id}}" data-user-amount="{{$cat->name}}" data-user-name="{{$cat->name}}" >
                                                 <i class="fa fa-edit"></i>Edit
                                             </button>
+                                            <button type="button" value="{{$cat['id']}}" class="btn delete-user-btn btn-outline-primary btn-hover-bg-danger btn-hover-border-danger btn-hover-text-light py-4 px-5 fs-13px btn-xs me-4"><i class="far fa-trash me-2"></i> Delete</button>
                                         </div>
                                     </td>
                                     @empty
@@ -121,7 +122,7 @@
                                             {{--                       <input placeholder="Your e-mail" class="subscribe-input" name="email" type="email">--}}
                                             <br/>
                                             <div class="form-group">
-                                                <label>Color Label</label>
+                                                <label>Attribute Label</label>
                                                 <input type="text" class="form-control" id="plan"  name="name" value="" required />
                                                 <input type="hidden" class="form-control" id="id" name="id" value="" required />
                                             </div>
@@ -246,7 +247,7 @@
 
 
                 $.ajax({
-                    url: "{{route('admin/editlayer')}}",
+                    url: "{{route('admin/attributes')}}",
                     type: 'POST',
                     data: formData,
                     success: function(response) {
@@ -290,5 +291,70 @@
         });
 
     </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.delete-user-btn').click(function () {
+                var selectedValue = $(this).val();
+                // Send the selected value to the '/getOptions' route
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'Do you want to delete this attribute',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // The user clicked "Yes", proceed with the action
+                        // Add your jQuery code here
+                        // For example, perform an AJAX request or update the page content
+                        $('#loadingSpinner').show();
+                        $.ajax({
+                            url: '{{ url('admin/deletet') }}/' + selectedValue,
+                            type: 'GET',
+                            success: function (response) {
+                                // Handle the success response here
+                                $('#loadingSpinner').hide();
+
+                                console.log(response);
+                                // Update the page or perform any other actions based on the response
+
+                                if (response.status == 'success') {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Success',
+                                        text: response.message
+                                    }).then(() => {
+                                        location.reload(); // Reload the page
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'info',
+                                        title: 'Pending',
+                                        text: response.message
+                                    });
+                                    // Handle any other response status
+                                }
+                            },
+                            error: function (xhr) {
+                                $('#loadingSpinner').hide();
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'fail',
+                                    text: xhr.responseText
+                                });
+                                // Handle any errors
+                                console.log(xhr.responseText);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
 
 @endsection

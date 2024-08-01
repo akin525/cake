@@ -27,5 +27,55 @@ class CreateAttributeController
         ]);
 
  }
+    public function updateattribute(Request $request)
+    {
+        // Validate the incoming request
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        // Find the attribute by its ID
+        $attribute = Attributes::find($request->id);
+
+        if (!$attribute) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Attribute not found',
+            ], 404);
+        }
+
+        // Update the attribute
+        $attribute->update([
+            'name' => $request->input('name'),
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Attribute updated successfully',
+        ]);
+    }
+    public function deleteattribute($request)
+    {
+        // Validate the incoming request
+
+
+        // Find the attribute by its ID
+        $attribute = Attributes::find($request);
+
+        if (!$attribute) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Attribute not found',
+            ], 404);
+        }
+
+        // Update the attribute
+        $attribute->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Attribute delete successfully',
+        ]);
+    }
 
 }

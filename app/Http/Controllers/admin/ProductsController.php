@@ -25,6 +25,12 @@ class ProductsController
      $attribute=Attributes::all();
      return view('admin.addproduct', compact('category', 'attribute'));
  }
+ function addproductindexs()
+ {
+     $category=Categories::all();
+     $attribute=Attributes::all();
+     return view('admin.addproduct3', compact('category', 'attribute'));
+ }
  function addproductindex1()
  {
      $category=Categories::all();
@@ -35,7 +41,7 @@ class ProductsController
      $category=Categories::all();
      return view('admin.addproduct2', compact('category'));
  }
- function addproduct(Request $request)
+ function addproduct3(Request $request)
  {
 //     return $request;
 
@@ -108,6 +114,85 @@ class ProductsController
      return redirect('admin/addproduct')->with('success', $mg);
 
  }
+ function addproduct(Request $request)
+ {
+//     return $request;
+
+
+     $cover = Storage::put('cover', $request->file('image'));
+
+// Create the product
+     $product = Products::create([
+         'name' => $request->input('tittle'),
+         'description' => $request->input('content')?? null,
+         'price' => $request->input('price') ?? 0,
+         'cprice' => $request->input('cprice') ?? 0,
+         'ramount' => $request->input('ramount') ?? null,
+         'tamount' => $request->input('tamount') ?? null,
+         'quantity' => 1,
+         'addition' => $request->input('addition') ?? null,
+         'image' => $cover,
+         'status' => 1,
+         'fee' => $request->input('fee') ?? 0,
+         'topper'=>$request->input('topper') ?? 1,
+         'card'=>$request->input('card') ?? 1,
+         'text'=>$request->input('text') ?? 1,
+         'color'=>$request->input('color') ?? 1,
+     ]);
+
+     $categoryIds = $request->input('categories', []); // Ensure it's an array
+     $product->categories()->attach($categoryIds);
+
+// Handle product variations
+     if ($request->has('attribute') && !empty($request->input('attribute'))) {
+         foreach ($request->attribute as $attr) {
+             if (isset($attr['name']) && isset($attr['value'])) {
+                 Attribute::create([
+                     'product_id' => $product->id,
+                     'name' => $attr['name'],
+                     'value' => $attr['value'],
+                 ]);
+             }
+         }
+     }
+
+     // Handle product variations
+     if ($request->has('variation_attributes') && !empty($request->input('variation_attributes'))) {
+         foreach ($request->variation_attributes as $variationData) {
+             $variation = $product->variations()->create([
+                 'price' => $variationData['price'],
+             ]);
+
+             foreach ($variationData as $key => $value) {
+                 if ($key !== 'price') {
+                     $variation->options()->create([
+                         'name' => $key,
+                         'value' => $value,
+                     ]);
+                 }
+             }
+         }
+     }
+
+     // Handle additional items
+     if ($request->has('items') && !empty($request->input('items'))) {
+         foreach ($request->input('items') as $item) {
+             if (!empty($item['Sizes'])) {
+                 Items::create([
+                     'products_id' => $product->id,
+                     'Product' => $item['Sizes'],
+                     'price' => $item['price'] ?? 0,
+                 ]);
+             }
+         }
+     }
+
+
+// Redirect with success message
+     $mg = "Product post was successful";
+     return redirect('admin/allproduct')->with('success', $mg);
+
+ }
  function addproduct1(Request $request)
  {
 //     return $request;
@@ -178,31 +263,31 @@ class ProductsController
  }
  function duplicateproduct($request)
  {
-     $product=Products::where('id', $request)->first();
+     $product = Products::with('variations.options')->findOrFail($request);
      $category=Categories::all();
      $attribute=Attribute::where('product_id', $product->id)->get();
-     $variation=Variation::where('attribute_id', $product->id)->get();
+//     $variation=Variation::where('attribute_id', $product->id)->get();
      $attributes=Attribute::all();
-     $size=Sizes::where('product_id', $product->id)->get();
-     $layer=Layers::where('product_id', $product->id)->get();
-     $items=Items::where('product_id', $product->id)->get();
+//     $size=Sizes::where('product_id', $product->id)->get();
+//     $layer=Layers::where('product_id', $product->id)->get();
+     $items=Items::where('products_id', $product->id)->get();
 
      return view('admin.duplicateproduct', compact('product',
-         'category', 'attribute', 'variation', 'size','attributes', 'layer', 'items'));
+         'category', 'attribute', 'attributes', 'items'));
  }
 
  function editproduct($request)
  {
-     $product=Products::where('id', $request)->first();
+     $product = Products::with('variations.options')->findOrFail($request);
      $category=Categories::all();
      $attribute=Attribute::where('product_id', $product->id)->get();
-     $variation=Variation::where('attribute_id', $product->id)->get();
+//     $variation=Variation::where('attribute_id', $product->id)->get();
      $attributes=Attribute::all();
-     $size=Sizes::where('product_id', $product->id)->get();
-     $items=Items::where('product_id', $product->id)->get();
-     $layer=Layers::where('product_id', $product->id)->get();
+//     $size=Sizes::where('product_id', $product->id)->get();
+     $items=Items::where('products_id', $product->id)->get();
+//     $layer=Layers::where('product_id', $product->id)->get();
      return view('admin.editproduct', compact('product',
-         'category', 'attribute', 'variation', 'size','attributes', 'layer', 'items'));
+         'category', 'attribute', 'attributes', 'items'));
  }
  function editproduct1($request)
  {
@@ -253,6 +338,9 @@ class ProductsController
 //     $product->category = $validatedData['categories'];
      $product->topper = $request['topper'];
      $product->card = $request['card'];
+     $product->text = $request['text'];
+     $product->color = $request['color'];
+
 
      $product->save();
      $categoryIds = $request->input('categories', []);
@@ -286,39 +374,43 @@ class ProductsController
          }
      }
 
-     if ($request->has('variation_attributes') && $request->input('variation_attributes') != null) {
-         foreach ($request->input('variation_attributes') as $index => $tri) {
-             if ($index % 2 == 0 && isset($request->input('variation_attributes')[$index + 1]['price'])) {
-                 if (isset($tri['id'])) {
-                     $act = Variation::find($tri['id']);
-                     if ($act) {
-                         $act->update([
-                             'price' => $request->input('variation_attributes')[$index + 1]['price'],
-                         ]);
-                     } else {
-                         Variation::create([
-                             'attribute_id' => $product->id,
-                             'attribute_size' => $tri['Sizes'] ?? null,
-                             'attribute_layer' => $tri['layers'] ?? null,
-                             'attribute_flavor' => $tri['Flavor'] ?? null,
-                             'price' => $request->input('variation_attributes')[$index + 1]['price'] ?? 0,
-                         ]);
-                     }
-                 } else {
-                     Variation::create([
-                         'attribute_id' => $product->id,
-                         'attribute_size' => $tri['Sizes'] ?? null,
-                         'attribute_layer' => $tri['layers'] ?? null,
-                         'attribute_flavor' => $tri['Flavor'] ?? null,
-                         'price' => $request->input('variation_attributes')[$index + 1]['price'] ?? 0,
-                     ]);
+     if ($request->has('variation')) {
+         foreach ($request->input('variation') as $variationData) {
+             $variation = $product->variations()->find($variationData['id']);
+             if ($variation) {
+                 $variation->update(['price' => $variationData['price']]);
+
+                 // Optionally, update options if needed
+                 // $variation->options()->delete(); // Uncomment if you want to clear old options before updating
+                 foreach ($variation->options as $option) {
+                     $variation->options()->updateOrCreate(
+                         ['name' => $option->name],
+                         ['value' => $variationData[$option->name] ?? $option->value]
+                     );
                  }
              }
          }
      }
 
+     // Handle new variations
+     if ($request->has('variation_attributes')) {
+         foreach ($request->input('variation_attributes') as $variationData) {
+             $variation = $product->variations()->create([
+                 'price' => $variationData['price'],
+             ]);
+
+             foreach ($variationData as $key => $value) {
+                 if ($key !== 'price') {
+                     $variation->options()->create([
+                         'name' => $key,
+                         'value' => $value,
+                     ]);
+                 }
+             }
+         }
+     }
      if ($request->has('items') && $request->input('items') != null) {
-         $existingItems = Items::where('product_id', $request->id)->get();
+         $existingItems = Items::where('products_id', $request->id)->get();
          $existingItemIds = $existingItems->pluck('id')->toArray();
 
          foreach ($request->input('items') as $key => $item) {
@@ -334,7 +426,7 @@ class ProductsController
                      // Create new item
 
                      Items::create([
-                         'product_id' => $request->id,
+                         'products_id' => $request->id,
                          'Product' => $item['Sizes'],
                          'price' => $item['price'] ?? 0,
                      ]);
@@ -358,11 +450,10 @@ class ProductsController
 
 
 
-
      $cover = Storage::put('cover', $request->file('image'));
 
 // Create the product
-     $insert = Products::create([
+     $product = Products::create([
          'name' => $request->input('tittle'),
          'description' => $request->input('content')?? null,
          'price' => $request->input('price') ?? 0,
@@ -376,42 +467,60 @@ class ProductsController
          'fee' => $request->input('fee') ?? 0,
          'topper'=>$request->input('topper') ?? 1,
          'card'=>$request->input('card') ?? 1,
+         'text'=>$request->input('text') ?? 1,
+         'color'=>$request->input('color') ?? 1,
      ]);
+
      $categoryIds = $request->input('categories', []); // Ensure it's an array
-     $insert->categories()->attach($categoryIds);
+     $product->categories()->attach($categoryIds);
 
 // Handle product variations
-     if ($request->has('attribute') && $request->input('attribute') != null) {
-
-         foreach ($request->attribute as $index => $tri) {
-             if ($index % 2 == 0 && isset($tri['name']) && isset($request->attribute[$index + 1]['value'])) {
+     if ($request->has('attribute') && !empty($request->input('attribute'))) {
+         foreach ($request->attribute as $attr) {
+             if (isset($attr['name']) && isset($attr['value'])) {
                  Attribute::create([
-                     'product_id' => $insert['id'],
-                     'name' => $tri['name'],
-                     'value' => $request->attribute[$index + 1]['value'],
+                     'product_id' => $product->id,
+                     'name' => $attr['name'],
+                     'value' => $attr['value'],
                  ]);
              }
          }
      }
 
+     if ($request->has('variation_attributes') && !empty($request->input('variation_attributes'))) {
+         // Clear existing variations if needed
+         // $product->variations()->delete(); // Uncomment if you want to clear old variations
 
-     $act=Attributes::all();
-     if ($request->has('variation_attributes') && $request->input('variation_attributes') != null) {
-         foreach ($request['variation_attributes'] as $variation) {
-             Variation::create([
-                 'attribute_id' => $insert->id,
-                 'attribute_size' => $variation['Sizes'],
-                 'attribute_layer' => $variation['layers'] ?? null,
-                 'attribute_flavor' => $variation['Flavor'] ?? null,
-                 'price' => $variation['price'] ?? 0,
-             ]);
+         foreach ($request->input('variation_attributes') as $variationIndex => $variationData) {
+             // Create or update the variation
+             $variation = $product->variations()->updateOrCreate(
+                 ['id' => $variationData['id'] ?? null], // Use ID if updating, otherwise create new
+                 ['price' => $variationData['price']]
+             );
+
+             // Clear existing options if needed
+             // $variation->options()->delete(); // Uncomment if you want to clear old options
+
+             foreach ($variationData['options'] as $optionIndex => $optionData) {
+                 // Create or update the option
+                 $variation->options()->updateOrCreate(
+                     [
+                         'name' => $optionData['name'],
+                         'value' => $optionData['value'],
+                     ],
+                     [
+                         'variation_id' => $variation->id,
+                     ]
+                 );
+             }
          }
      }
-     if ($request->has('items') && $request->input('items') != null) {
+     // Handle additional items
+     if ($request->has('items') && !empty($request->input('items'))) {
          foreach ($request->input('items') as $item) {
-             if ($item['Sizes'] != null){
+             if (!empty($item['Sizes'])) {
                  Items::create([
-                     'product_id' => $insert->id,
+                     'products_id' => $product->id,
                      'Product' => $item['Sizes'],
                      'price' => $item['price'] ?? 0,
                  ]);
@@ -420,6 +529,7 @@ class ProductsController
      }
 
 
+// Redirect with success message
      $mg = "Product post was successful";
      return redirect('admin/allproduct')->with('success', $mg);
 
@@ -450,15 +560,27 @@ class ProductsController
  }
  function destroyproduct($id)
     {
+
         // Find the product by ID
-        $product = Products::findOrFail($id);
+        $product = Products::with('variations.options', 'categories', 'items')->findOrFail($id);
 
-        $attribute=Attribute::where('product_id', $product->id)->delete();
-        $variation=Variation::where('attribute_id', $product->id)->delete();
-        $item=Items::where('product_id', $product->id)->delete();
+        // Optionally delete related data if not using cascading deletes
+        // Delete variations and their options
+        foreach ($product->variations as $variation) {
+            $variation->options()->delete();
+        }
+        $product->variations()->delete();
 
-        // Delete the product
+        // Detach categories if using many-to-many relationship
+        $product->categories()->detach();
+
+        // Delete related items
+        $product->items()->delete();
+
+        // Finally delete the product
         $product->delete();
+
+
 
         return response()->json([
             'status' => 'success',

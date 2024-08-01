@@ -197,7 +197,9 @@ function allcake()
 }
 function cakedetail($request)
 {
-    $product = Products::with('categories')->findOrFail($request);
+    $product = Products::with('categories', 'variations.options')->findOrFail($request);
+
+//    return $product;
     $done=Categories::where('name', $product->category)->first();
 
 //    $done1=Category::where('products_id', $product->id)->get();
@@ -213,7 +215,7 @@ function cakedetail($request)
     $layeralert=Alert::where('name', 'layers')->first();
     $addalert=Alert::where('name', 'addition')->first();
     $option=Option::all();
-    $items=Items::where('product_id', $product->id)->get();
+    $items=Items::where('products_id', $product->id)->get();
     $rtg=Topper::where('name', '!=', 'Customized Topper')->get();
     $topper=Topper::get();
 

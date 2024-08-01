@@ -86,23 +86,79 @@
                                 .checkbox-container {
                                     display: flex;
                                     flex-direction: row;
+                                    gap: 20px; /* Add some space between toggles */
+                                    align-items: center; /* Align items vertically centered */
                                 }
-                                .checkbox-container label {
-                                    margin-right: 10px;
+
+                                .toggle {
+                                    display: flex;
+                                    align-items: center; /* Center the text vertically with the toggle */
+                                    gap: 10px; /* Space between the toggle switch and the text */
                                 }
+
+                                .toggle input {
+                                    display: none;
+                                }
+
+                                .slider {
+                                    position: relative;
+                                    display: inline-block;
+                                    width: 60px;
+                                    height: 34px;
+                                    background-color: #ccc;
+                                    transition: .4s;
+                                    border-radius: 34px;
+                                    cursor: pointer;
+                                }
+
+                                .slider:before {
+                                    position: absolute;
+                                    content: "";
+                                    height: 26px;
+                                    width: 26px;
+                                    left: 4px;
+                                    bottom: 4px;
+                                    background-color: white;
+                                    transition: .4s;
+                                    border-radius: 50%;
+                                }
+
+                                input:checked + .slider {
+                                    background-color: #2196F3;
+                                }
+
+                                input:checked + .slider:before {
+                                    transform: translateX(26px);
+                                }
+
+
                             </style>
+
                             <div class="checkbox-container">
-                                <label>
+                                <label class="toggle">
                                     <input type="hidden" name="topper" value="0">
-                                    <input type="checkbox" value="1" name="topper" class="checkbox" data-index="0" @if($product->topper ==1) checked @endif> Allow Topper
+                                    <input type="checkbox" value="1" name="topper" class="checkbox" data-index="0" @if($product->topper ==1) checked @endif>
+                                    <span class="slider"></span>
+                                    Topper
                                 </label>
-                                <label>
+                                <label class="toggle">
                                     <input type="hidden" name="card" value="0">
-                                    <input type="checkbox" value="1" name="card" class="checkbox" data-index="1" @if($product->card ==1) checked @endif> Allow Eko Card
+                                    <input type="checkbox" value="1" name="card" class="checkbox" data-index="1" @if($product->card ==1) checked @endif>
+                                    <span class="slider"></span>
+                                    Card
                                 </label>
-                                {{-- <label> --}}
-                                {{-- <input type="checkbox" class="checkbox" data-index="2"> Option 3 --}}
-                                {{-- </label> --}}
+                                <label class="toggle">
+                                    <input type="hidden" name="color" value="0">
+                                    <input type="checkbox" value="1" name="color" class="checkbox" data-index="1" @if($product->color ==1) checked @endif>
+                                    <span class="slider"></span>
+                                    Color
+                                </label>
+                                <label class="toggle">
+                                    <input type="hidden" name="text" value="0">
+                                    <input type="checkbox" value="1" name="text" class="checkbox" data-index="1" @if($product->text ==1) checked @endif>
+                                    <span class="slider"></span>
+                                    Text
+                                </label>
                             </div>
                             <br/>
                             <br/>
@@ -151,17 +207,15 @@
                                     <div class="card-body p-7 layer">
                                         <div class="form-border-1">
                                             <div class="mb-8">
-                                                <label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Name</label>
-                                               <select name="attribute[][name]" id="attributeName" class="form-control">
+                                                <label for="attributeName0" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Name</label>
+                                                <select name="attribute[0][name]" id="attributeName0" class="form-control">
                                                     <option>Choose Option</option>
-                                                    @forelse($attributes as $act)
-                                                        <option value="{{$act['name']}}">{{$act['name']}}</option>
-                                                    @empty
-                                                        <option>------</option>
-                                                    @endforelse
+                                                    @foreach($attributes as $act)
+                                                        <option value="{{ $act['name'] }}">{{ $act['name'] }}</option>
+                                                    @endforeach
                                                 </select>
                                                 <br>
-                                                <textarea name="attribute[][value]" class="form-control" id="attributeValues" placeholder="Enter options for customer to choose from f.e, Blue, or Large , Use | to separate different options."></textarea>
+                                                <textarea name="attribute[0][value]" class="form-control" id="attributeValues0" placeholder="Enter options for customer to choose from e.g., Blue, Large. Use | to separate different options."></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -170,122 +224,135 @@
                             @endforelse
                             <br/>
                             <br/>
-                            <script>
-                                document.getElementById('add-layer').addEventListener('click', function () {
-                                    var variationTemplate = document.querySelector('.layer').cloneNode(true);
-                                    document.getElementById('layers').appendChild(variationTemplate);
-                                });
-                            </script>
 
 
 
-                                @forelse($variation as $va)
+
+                            @forelse($product->variations as $variation)
                                 <div class="card-body p-7 layer" id="variationContainer">
-                                    <!-- Variations will be displayed here -->
-
+                                    <!-- Existing Variations Display -->
                                     <div class="mb-8">
-                                    <strong>Sizes: {{$va['attribute_size']}} |</strong>
-                                    <strong>Layer: {{$va['attribute_layer']}} |</strong>
-                                    <strong>Flavor: {{$va['attribute_flavor']}} |</strong>
-                                    <input type="hidden" name="variation[][id]" value="{{$va['id']}}"/>
-                                    <input type="number" name="variation[][price]" value="{{$va['price']}}"/>
+                                        @foreach($variation->options as $option)
+                                            <strong>{{ ucfirst($option->name) }}: {{ $option->value }} |</strong>
+                                        @endforeach
+                                        <input type="hidden" name="variation[{{ $loop->index }}][id]" value="{{ $variation->id }}"/>
+                                        <input type="number" name="variation[{{ $loop->index }}][price]" value="{{ $variation->price }}"/>
                                     </div>
                                 </div>
                                 @empty
-                                <button type="button" class="btn btn-primary" id="add-layer">Add New</button>
-                                <button type="button" class="btn btn-danger" onclick="generateVariations()">Generate Variations</button>
-                            <br/>
-                            <br/>
-                                <div class="card mb-8 rounded-4" id="variations">
+                                    <button type="button" class="btn btn-primary" id="add-layer">Add New</button>
+                                    <button type="button" class="btn btn-danger" onclick="generateVariations()">Generate Variations</button>
+                                    <br/>
+                                    <br/>
+                                    <div class="card mb-8 rounded-4" id="variations">
                                         <div class="card-header p-7 bg-transparent">
                                             <h4 class="fs-18px mb-0 font-weight-500">Variations</h4>
                                         </div>
-
-                                        <div class="card-body p-7 layer" id="variationContainer">
-                                            <!-- Variations will be displayed here -->
+                                        <div class="card-body p-7 layer" id="layers">
+                                            <!-- Attribute input fields will be added here -->
                                         </div>
-                                        <div class="card-body p-7 layer" id="allvariationContainer" style="display: block">
-                                            <!-- Variations will be displayed here -->
+                                        <div class="card-body p-7 layer" id="variationContainer">
+                                            <!-- Generated variations will be displayed here -->
                                         </div>
                                     </div>
                                 @endforelse
-                            <script>
-                                function generateVariations() {
-                                    var attributeNameElements = document.getElementsByName('attribute[][name]');
-                                    var attributeValueElements = document.getElementsByName('attribute[][value]');
 
-                                    var variations = [];
-                                    for (var i = 0; i < attributeNameElements.length; i++) {
-                                        var attributeName = attributeNameElements[i].value;
-                                        var attributeValues = attributeValueElements[i].value.split('|').map(value => value.trim());
-                                        variations.push({
-                                            name: attributeName,
-                                            values: attributeValues
+                                <script>
+                                    let attributeIndex = {{ count($product->variations) }}; // Start index from existing variations count
+
+                                    document.getElementById('add-layer').addEventListener('click', function() {
+                                        const layers = document.getElementById('layers');
+                                        const layer = document.createElement('div');
+                                        layer.classList.add('card-body', 'p-7', 'layer');
+                                        layer.innerHTML = `
+            <div class="form-border-1">
+                <div class="mb-8">
+                    <label for="attributeName${attributeIndex}" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Name</label>
+                    <select name="attribute[${attributeIndex}][name]" id="attributeName${attributeIndex}" class="form-control">
+                        <option>Choose Option</option>
+                        @foreach($attribute as $act)
+                                        <option value="{{ $act['name'] }}">{{ $act['name'] }}</option>
+                        @endforeach
+                                        </select>
+                                        <br>
+                                        <textarea name="attribute[${attributeIndex}][value]" class="form-control" id="attributeValues${attributeIndex}" placeholder="Enter options for customer to choose from e.g., Blue, Large. Use | to separate different options."></textarea>
+                </div>
+            </div>
+        `;
+                                        layers.appendChild(layer);
+                                        attributeIndex++;
+                                    });
+
+                                    function generateVariations() {
+                                        const attributes = [];
+                                        for (let i = 0; i < attributeIndex; i++) {
+                                            const name = document.querySelector(`[name="attribute[${i}][name]"]`).value;
+                                            const values = document.querySelector(`[name="attribute[${i}][value]"]`).value.split('|').map(value => value.trim());
+                                            attributes.push({ name, values });
+                                        }
+
+                                        const allCombinations = getAllCombinations(attributes);
+                                        displayVariations(allCombinations);
+                                    }
+
+                                    function getAllCombinations(attributes) {
+                                        const combinations = [];
+                                        const helper = (current, remaining) => {
+                                            if (remaining.length === 0) {
+                                                combinations.push(current);
+                                            } else {
+                                                const nextAttribute = remaining[0];
+                                                for (const value of nextAttribute.values) {
+                                                    helper([...current, { name: nextAttribute.name, value }], remaining.slice(1));
+                                                }
+                                            }
+                                        };
+                                        helper([], attributes);
+                                        return combinations;
+                                    }
+
+                                    function displayVariations(variations) {
+                                        const variationContainer = document.getElementById('variationContainer');
+                                        variationContainer.innerHTML = ''; // Clear previous variations
+
+                                        variations.forEach((variation, index) => {
+                                            const variationElement = document.createElement('div');
+                                            variationElement.classList.add('mb-8');
+                                            variationElement.innerHTML = `<strong>Variation ${index + 1}:</strong> `;
+
+                                            variation.forEach(attribute => {
+                                                variationElement.innerHTML += `<strong>${attribute.name}:</strong> ${attribute.value} `;
+                                                const nameInput = document.createElement('input');
+                                                nameInput.type = 'hidden';
+                                                nameInput.name = `variation_attributes[${index}][${attribute.name}]`;
+                                                nameInput.value = attribute.value;
+                                                variationElement.appendChild(nameInput);
+                                            });
+
+                                            const priceInput = document.createElement('input');
+                                            priceInput.type = 'number';
+                                            priceInput.name = `variation_attributes[${index}][price]`;
+                                            priceInput.value = '0';
+                                            priceInput.onchange = function() {
+                                                updatePrice(index, this.value);
+                                            };
+
+                                            variationElement.appendChild(document.createElement('br'));
+                                            variationElement.appendChild(document.createTextNode('Price: ₦'));
+                                            variationElement.appendChild(priceInput);
+
+                                            variationContainer.appendChild(variationElement);
                                         });
                                     }
 
-                                    var allCombinations = getAllCombinations(variations);
-                                    displayVariations(allCombinations);
-                                }
+                                    function updatePrice(index, price) {
+                                        console.log('Variation ' + (index + 1) + ' price updated to: ₦' + price);
+                                    }
+                                </script>
 
-                                function getAllCombinations(attributes) {
-                                    var combinations = [];
-                                    var helper = function (current, remaining) {
-                                        if (remaining.length === 0) {
-                                            combinations.push(current);
-                                        } else {
-                                            var nextAttribute = remaining[0];
-                                            for (var i = 0; i < nextAttribute.values.length; i++) {
-                                                helper(current.concat({ name: nextAttribute.name, value: nextAttribute.values[i] }), remaining.slice(1));
-                                            }
-                                        }
-                                    };
-                                    helper([], attributes);
-                                    return combinations;
-                                }
 
-                                function displayVariations(variations) {
-                                    var variationContainer = document.getElementById('variationContainer');
-                                    variationContainer.innerHTML = ''; // Clear previous variations
 
-                                    variations.forEach(function (variation, index) {
-                                        var variationElement = document.createElement('div');
-                                        variationElement.classList.add('mb-8');
-                                        variationElement.innerHTML = '<strong>Variation ' + (index + 1) + ':</strong> ';
-
-                                        variation.forEach(function (attribute) {
-                                            variationElement.innerHTML += '<strong>' + attribute.name + ': </strong>' + attribute.value + ' ';
-                                            var nameInput = document.createElement('input');
-                                            nameInput.type = 'hidden';
-                                            nameInput.name = 'variation_attributes[' + index + '][' + attribute.name + ']'; // Name for the variation attribute input
-                                            nameInput.value = attribute.value;
-                                            variationElement.appendChild(nameInput);
-                                        });
-
-                                        var priceInput = document.createElement('input');
-                                        priceInput.type = 'number';
-                                        priceInput.name = 'variation_attributes[' + index + '][price]'; // Name for the variation price input
-                                        priceInput.value = '0';
-                                        priceInput.onchange = function () {
-                                            updatePrice(index, this.value);
-                                        };
-
-                                        variationElement.appendChild(document.createElement('br'));
-                                        variationElement.appendChild(document.createTextNode('Price: ₦'));
-                                        variationElement.appendChild(priceInput);
-
-                                        variationContainer.appendChild(variationElement);
-
-                                    });
-                                }
-
-                                function updatePrice(index, price) {
-                                    // Implement price update logic here
-                                    console.log('Variation ' + (index + 1) + ' price updated to: ₦' + price);
-                                }
-                            </script>
-
-                            <div class="card-header p-7 bg-transparent">
+                                <div class="card-header p-7 bg-transparent">
                                 <h4 class="fs-18px mb-0 font-weight-500">More Options</h4>
                             </div>
 

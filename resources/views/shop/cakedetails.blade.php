@@ -5,6 +5,79 @@
     @endif
 @endsection
 @section('content')
+    <style>
+        .no-border-input {
+            border: none;
+            background: none;
+            font-size: 30px;
+            width: auto; /* Optionally adjust the width as needed */
+        }
+        .checkbox-container {
+            display: flex;
+            flex-direction: row;
+        }
+        .checkbox-container label {
+            margin-right: 10px;
+        }
+    </style>
+    <style>
+        /* Style for the select */
+        .custom-select {
+            appearance: none; /* Remove default styles */
+            -webkit-appearance: none; /* For Safari/Chrome */
+            -moz-appearance: none; /* For Firefox */
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 8px 20px 8px 10px;
+            border-radius: 20px; /* Adjust the border-radius to get desired curve */
+            width: 200px;
+            outline: none; /* Remove focus outline */
+        }
+
+        /* Style for the arrow icon */
+        .custom-select::after {
+            content: '\25BC'; /* Unicode character for down arrow */
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none; /* Ensure arrow doesn't interfere with select */
+        }
+
+        /* Style for hover and focus states */
+        .custom-select:hover, .custom-select:focus {
+            background-color: #e0e0e0;
+        }
+    </style>
+    <style>
+        .bo{
+            background-color: transparent;
+            border: 1px solid #e3e3e3;
+            border-radius: 0;
+            box-sizing: border-box;
+            color: inherit;
+            cursor: pointer;
+            display: block;
+            font-family: inherit;
+            font-size: inherit;
+            height: 58px;
+            line-height: 56px;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .tag {
+            background-color: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+    </style>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
         <div class="loading-spinner"></div>
@@ -101,21 +174,6 @@
 
                         <div class="product-head mb-3">
                             <!-- Price Start -->
-                            <style>
-                                .no-border-input {
-                                    border: none;
-                                    background: none;
-                                    font-size: 30px;
-                                    width: auto; /* Optionally adjust the width as needed */
-                                }
-                                .checkbox-container {
-                                    display: flex;
-                                    flex-direction: row;
-                                }
-                                .checkbox-container label {
-                                    margin-right: 10px;
-                                }
-                            </style>
 
 
                             <input type="hidden" id="defaultAmount"
@@ -137,116 +195,120 @@
                         <form method="post" action="{{route('addcart1')}}">
                             @csrf
 
-                            <style>
-                                /* Style for the select */
-                                .custom-select {
-                                    appearance: none; /* Remove default styles */
-                                    -webkit-appearance: none; /* For Safari/Chrome */
-                                    -moz-appearance: none; /* For Firefox */
-                                    background-color: #f1f1f1;
-                                    border: 1px solid #ccc;
-                                    padding: 8px 20px 8px 10px;
-                                    border-radius: 20px; /* Adjust the border-radius to get desired curve */
-                                    width: 200px;
-                                    outline: none; /* Remove focus outline */
-                                }
-
-                                /* Style for the arrow icon */
-                                .custom-select::after {
-                                    content: '\25BC'; /* Unicode character for down arrow */
-                                    position: absolute;
-                                    top: 50%;
-                                    right: 10px;
-                                    transform: translateY(-50%);
-                                    pointer-events: none; /* Ensure arrow doesn't interfere with select */
-                                }
-
-                                /* Style for hover and focus states */
-                                .custom-select:hover, .custom-select:focus {
-                                    background-color: #e0e0e0;
-                                }
-                            </style>
 
 
 
-                                @php
-                                    $values = isset($size) && isset($size->value) ? explode(' | ', $size->value) : [];
 
-                                    $values1 = isset($layer) && isset($layer->value) ? explode(' | ', $layer->value) : [];
 
-                                    $values2 = isset($flavor) && isset($flavor->value) ? explode(' | ', $flavor->value) : [];
+                            @php
+                                // Initialize arrays to hold attribute values and attributes
+                                $attributeValues = [];
+                                $attributesOnly = [];
+                                $prices = []; // To hold prices for each attribute value
 
-                                    $values3 = isset($product) && isset($product->item) ? explode(' | ', $product->item) : [];
-                                @endphp
-                            @if($size != null)
-                            <div class="product-size mb-5">
-                                <label for="layersBy" class="cormorant-upright-bold"  >Size in Inches</label>
-                                <style>
-                                    .bo{
-                                        background-color: transparent;
-                                        border: 1px solid #e3e3e3;
-                                        border-radius: 0;
-                                        box-sizing: border-box;
-                                        color: inherit;
-                                        cursor: pointer;
-                                        display: block;
-                                        font-family: inherit;
-                                        font-size: inherit;
-                                        height: 58px;
-                                        line-height: 56px;
-                                        padding: 0;
-                                        user-select: none;
-                                        -webkit-user-select: none;
+                                // Check if variations exist and is not null
+                                if ($product->variations) {
+                                    if ($product->variations->isNotEmpty()) {
+                                        foreach ($product->variations as $variation) {
+                                            foreach ($variation->options as $option) {
+                                                $attributeValues[$option->name][] = $option->value;
+                                                $prices[$option->value] = $variation->price; // Set the price for the option
+                                            }
+                                        }
                                     }
-                                    .tag {
-                                        background-color: #f0f0f0;
-                                        padding: 4px 8px;
-                                        border-radius: 4px;
+                                }
+
+                                // Check if attributes only (without variations) exist and is not null
+                                if ($product->attributes) {
+                                    if ($product->attributes->isNotEmpty()) {
+                                        foreach ($product->attributes as $attribute) {
+                                            $attributesOnly[$attribute->name][] = $attribute->value;
+                                        }
+                                    }
+                                }
+                            @endphp
+
+                            @if(!empty($attributeValues) || !empty($attributesOnly))
+                                @foreach($attributeValues as $attributeName => $values)
+                                    @php
+                                        $uniqueValues = array_unique($values);
+                                    @endphp
+                                    <div class="product-attribute mb-5">
+                                        <label for="{{ Str::slug($attributeName) }}" class="cormorant-upright-bold">{{ ucfirst($attributeName) }}</label>
+                                        <div class="select-wrapper">
+                                            <select name="attributes[{{ $attributeName }}]" id="{{ Str::slug($attributeName) }}" class="custom-select cormorant-upright-light" required>
+                                                <option value="" data-price="0">Choose an option</option>
+                                                @foreach ($uniqueValues as $value)
+                                                    <option value="{{ $value }}" data-price="{{ $prices[$value] ?? 0 }}">{{ $value }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                                @foreach($attributesOnly as $attributeName => $values)
+                                    @php
+                                        $uniqueValues = array_unique($values);
+                                    @endphp
+                                    <div class="product-attribute mb-5">
+                                        <label for="{{ Str::slug($attributeName) }}" class="cormorant-upright-bold">{{ ucfirst($attributeName) }}</label>
+                                        <div class="select-wrapper">
+                                            <select name="attributes[{{ $attributeName }}]" id="{{ Str::slug($attributeName) }}" class="custom-select cormorant-upright-light" required>
+                                                <option value="" data-price="0">Choose an option</option>
+                                                @foreach ($uniqueValues as $value)
+                                                    <option value="{{ $value }}" data-price="{{ $prices[$value] ?? 0 }}">{{ $value }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>---</p>
+                            @endif
+                            <input type="hidden" id="productBasePrice" value="{{$product->price}}">
+{{--                            <input type="hidden" id="productBasePrice" value="0">--}}
+
+
+                            <script>
+                                $(document).ready(function() {
+                                    // Initialize base price
+                                    let basePrice = parseFloat($('#productBasePrice').val()) || 0;
+
+                                    function updateTotalAmount() {
+                                        // Start with the base price
+                                        let totalAmount = basePrice;
+                                        console.log("Base price: " + totalAmount);
+
+                                        // Iterate over each select element to add the price of selected options
+                                        $('select').each(function() {
+                                            var selectedOption = $(this).find('option:selected');
+                                            var price = parseFloat(selectedOption.data('price')) || 0; // Get the price from data attribute
+                                            console.log("Selected option: " + selectedOption.text() + " Price: " + price);
+
+                                            // Only add price if it's not the default option
+                                            if (selectedOption.val()) {
+                                                totalAmount += price; // Add to the total amount
+                                            }
+                                        });
+
+                                        $('#totalAmount').val(totalAmount.toFixed(2)); // Update the total amount display
+                                        console.log("Total amount: " + totalAmount);
                                     }
 
-                                </style>
-                                <div class="select-wrapper">
-                                    <select name="size" id="layersBy1" class="custom-select cormorant-upright-light" required>
-                                        <option>Choose an option</option>
-                                        @foreach ($values as $value)
-                                            <option value="{{ $value }}">{{ $value }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                                @endif
-                            @if($layer != null)
-                            <div class="product-size mb-5">
-                                <label for="layersBy" class="cormorant-upright-bold" >Layers:</label>
-                                <div class="select-wrapper">
-                                    <select name="layers" id="layerSelect" class="form-control cormorant-upright-light " style="pointer-events: auto;" required>
-                                        <option>Choose an option</option>
-                                        @foreach ($values1 as $value)
-                                            <option value="{{ $value }}">{{ $value }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            @endif
-                            @if($flavor != null)
-                            <div class="product-color mb-2" >
-                            <label for="flavourBy" class="cormorant-upright-bold">Flavour</label>
-                            <div class="select-wrapper">
-                                <select name="flavor" id="flavorSelect" class="form-control cormorant-upright-light tag" style="pointer-events: auto;" required>
-                                    <option>Choose an option</option>
-                                    @foreach ($values2 as $value)
-                                        <option value="{{ $value }}">{{ $value }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                            @endif
+                                    // Bind the updateTotalAmount function to the change event of the select elements
+                                    $('select').on('change', updateTotalAmount);
+
+                                    // Initial update
+                                    updateTotalAmount();
+                                });
+                            </script>
 
 
 
 
 
                             <input type="hidden" id="tPrice" value="0">
+                            @if($product->text == 1)
                             <br/>
                             <div class="product-size">
                                 <label for="layersBy" class="cormorant-upright-bold" ><span>Text to Appear on the Cake</span></label>
@@ -254,7 +316,7 @@
                             <input type="text" name="topperText" id="topperText" class="form-control cormorant-upright-light text-center"  />
 
                             <div class="cormorant-upright-regular">Please write a short message you would like to see <br/>on the cake</div>
-
+                            @endif
                             <br/>
                             @if($product->topper == 1)
                             <div class="product-color">
@@ -299,12 +361,8 @@
                                         });
                                     });
                                 </script>
-                            <style>
-                                .hidden {
-                                    display: none;
-                                }
-                            </style>
 
+                            @if($product->color == 1)
                             <div class="product-size">
                                 <label for="baseColor" class="cormorant-upright-bold">
                                     <span>Base Colour of Cake</span>
@@ -359,6 +417,7 @@
                             </script>
 
                             <div class="cormorant-upright-regular">Would you like the Cake in a different colour? Please specify preferred colour and shade. We will try our best to meet your colour preference</div>
+                            @endif
 
                             <input type="hidden" name="id" value="{{$product->id}}">
 
@@ -579,9 +638,6 @@
                                 <div class="product-item__image border w-100">
                                     <a href="{{route('cakedetail', $pro['id'])}}"><img width="350" height="350" src="{{url($pro['image'])}}" alt="Product"></a>
                                     <ul class="product-item__meta">
-{{--                                        <li class="product-item__meta-action">--}}
-{{--                                            <a class="shadow-1 labtn-icon-cart" href="#" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" data-bs-toggle="modal" data-product-id="{{$pro['id']}}" data-bs-target="#modalCart{{$pro['id']}}"></a>--}}
-{{--                                        </li>--}}
                                         <li class="product-item__meta-action">
                                             <a class="shadow-1 labtn-icon-wishlist" href="#" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to wishlist" data-bs-toggle="modal" data-bs-target="#modalWishlist"></a>
                                         </li>
@@ -615,243 +671,160 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+
     <script>
-        $(document).ready(function() {
-            $('#flavorSelect').change(function() {
-                var sizeValue = $('#layersBy1').val(); // Get the selected size value
-                var layersValue = $('#layerSelect').val(); // Get the selected layers value
-                var flavorValue = $(this).val(); // Get the selected flavor value
+        $(document).ready(function () {
+            // Initialize base price
+            let basePrice = parseFloat($('#productBasePrice').val()) || 0;
 
-                // Show the loading spinner
-                // $('#loadingSpinner').show();
+            // Function to update the total amount
+            function updateTotalAmount() {
+                let totalAmount = basePrice;
+                console.log("Base price: " + totalAmount);
 
-                // Send the selected values to the '/getsize' route
-                $.ajax({
-                    url: '{{ url('getsize') }}',
-                    type: 'GET',
-                    data: {
-                        size: sizeValue,
-                        layers: layersValue,
-                        flavor: flavorValue
-                    },
-                    success: function(response) {
-                        // $('#loadingSpinner').hide();
+                // Iterate over each select element to add the price of selected options
+                $('select').each(function () {
+                    var selectedOption = $(this).find('option:selected');
+                    var price = parseFloat(selectedOption.data('wapf-price')) || parseFloat(selectedOption.data('price')) || 0; // Get the price from data attribute
+                    console.log("Selected option: " + selectedOption.text() + " Price: " + price);
 
-                        // Handle the successful response
-                        var sizePrice = parseInt(response); // Get the selected layer price
-                        // var defaultAmount = parseInt(document.getElementById('defaultAmount').value);
-                        var defaultAmount = 0;
-                        var totalAmount = defaultAmount + sizePrice; // Calculate the total amount
-
-                        console.log(totalAmount);
-                        console.log(defaultAmount);
-                        console.log(sizePrice);
-                        document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
-
-                    },
-                    error: function(xhr) {
-                        // Handle any errors
-                        console.log(xhr.responseText);
+                    // Only add price if it's not the default option
+                    if (selectedOption.val()) {
+                        totalAmount += price; // Add to the total amount
                     }
                 });
+
+                $('#totalAmount').val(totalAmount.toFixed(2)); // Update the total amount display
+                console.log("Total amount: " + totalAmount);
+            }
+
+            // Bind the updateTotalAmount function to the change event of the select elements
+            $('select').on('change', updateTotalAmount);
+
+            // Initial update
+            updateTotalAmount();
+
+            // Function to handle visibility of topper text input based on selected topper option
+            function handleTopperVisibility() {
+                const selectedTopper = $('#topperBy').val();
+                if (selectedTopper === 'select') {
+                    $('#topperTextSection').show();
+                } else {
+                    $('#topperTextSection').hide();
+                    $('#topperText').val(''); // Clear the text input when not visible
+                }
+            }
+
+            // Function to handle visibility of Eko Cakes card message input based on selected option
+            function handleEkoCakesCard() {
+                const selectedOption = $('#ekoCakesCard').val();
+                if (selectedOption === 'yes') {
+                    $('#ekoCakesMessageSection').show();
+                } else {
+                    $('#ekoCakesMessageSection').hide();
+                    $('#ekoCakesMessage').val(''); // Clear the text input when not visible
+                }
+            }
+
+            $('#ekoCakesCard').on('change', function () {
+                handleEkoCakesCard();
+            });
+
+            // Ensure initial visibility state is correct
+            handleTopperVisibility();
+            handleEkoCakesCard();
+
+            // Ensure the topper input visibility changes based on selection
+            $('#topperBy').change(function () {
+                var selectedOption = $(this).find(':selected');
+                var price = selectedOption.data('wapf-price');
+
+                if (price == '4000') {
+                    $('#topperInput').show(); // Show the input box if Customized Topper is selected
+                } else {
+                    $('#topperInput').hide(); // Hide the input box for other options
+                }
+            });
+
+            // Ensure custom color input visibility changes based on selection
+            document.getElementById('baseColor').addEventListener('change', function () {
+                var selectedOption = this.value;
+                var colorOptions = document.getElementById('colorOptions');
+
+                if (selectedOption === 'choose') {
+                    colorOptions.style.display = 'block';
+                } else {
+                    colorOptions.style.display = 'none';
+                }
+            });
+
+            document.getElementById('color').addEventListener('change', function () {
+                var customColorInput = document.getElementById('customColor');
+                if (this.value === 'custom') {
+                    customColorInput.classList.remove('hidden');
+                } else {
+                    customColorInput.classList.add('hidden');
+                }
             });
         });
     </script>
 
-    <script>
-        $(document).ready(function() {
-            $('#layersBy1').change(function() {
-                var sizeValue = $(this).val(); // Get the selected size value
-                var layersValue = $('#layerSelect').val(); // Get the selected layers value
-                var flavorValue = $('#flavorSelect').val(); // Get the selected flavor value
-
-                // Show the loading spinner
-                // $('#loadingSpinner').show();
-
-                // Send the selected values to the '/getsize' route
-                $.ajax({
-                    url: '{{ url('getsize') }}',
-                    type: 'GET',
-                    data: {
-                        size: sizeValue,
-                        layers: layersValue,
-                        flavor: flavorValue
-                    },
-                    success: function(response) {
-                        // $('#loadingSpinner').hide();
-
-                        // Handle the successful response
-                        var sizePrice = parseInt(response); // Get the selected layer price
-                        // var defaultAmount = parseInt(document.getElementById('defaultAmount').value);
-                        var defaultAmount = 0;
-                        var totalAmount = defaultAmount + sizePrice; // Calculate the total amount
-
-                        console.log(totalAmount);
-                        console.log(defaultAmount);
-                        console.log(sizePrice);
-                        document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
-
-                    },
-                    error: function(xhr) {
-                        // Handle any errors
-                        console.log(xhr.responseText);
-                    }
-                });
-            });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $('#layerSelect').change(function() {
-                var sizeValue = $('#layersBy1').val(); // Get the selected size value
-                var layersValue = $(this).val(); // Get the selected layers value
-                var flavorValue = $('#flavorSelect').val(); // Get the selected flavor value
-
-                // Show the loading spinner
-                // $('#loadingSpinner').show();
-
-                // Send the selected values to the '/getsize' route
-                $.ajax({
-                    url: '{{ url('getsize') }}',
-                    type: 'GET',
-                    data: {
-                        size: sizeValue,
-                        layers: layersValue,
-                        flavor: flavorValue
-                    },
-                    success: function(response) {
-                        // $('#loadingSpinner').hide();
-
-                        // Handle the successful response
-                        var sizePrice = parseInt(response); // Get the selected layer price
-                        // var defaultAmount = parseInt(document.getElementById('defaultAmount').value);
-                        var defaultAmount = 0;
-                        var totalAmount = defaultAmount + sizePrice; // Calculate the total amount
-
-                        console.log(totalAmount);
-                        console.log(defaultAmount);
-                        console.log(sizePrice);
-                        document.getElementById('totalAmount').value = totalAmount; // Update the total amount display
-
-                    },
-                    error: function(xhr) {
-                        // Handle any errors
-                        console.log(xhr.responseText);
-                    }
-                });
-            });
-        });
-    </script>
-    <script>
-        document.getElementById('item').addEventListener('change', function() {
-            var itemnumber = parseFloat(this.value); // Get the selected item price
-
-            var defaultAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));
-            var totalAmount = defaultAmount; // Initialize total amount with current total
-
-            var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price
-            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
-            totalAmount += itemnumber; // Add new item price to total amount
-
-            document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation
-            document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display
-        });
-    </script>
-    <script>
-        function updatePrice(selectElementId, totalAmountId, previousPriceId) {
-            document.getElementById(selectElementId).addEventListener('change', function() {
-                var selectedOption = this.options[this.selectedIndex];
-                var selectedPrice = parseFloat(selectedOption.getAttribute('data-wapf-price')) || parseFloat(this.value) || 0;
-
-                var totalAmountElement = document.getElementById(totalAmountId);
-                var totalAmount = parseFloat(totalAmountElement.value.replace(',', '')) || 0;
-
-                var previousPriceElement = document.getElementById(previousPriceId);
-                var previousPrice = parseFloat(previousPriceElement.value) || 0;
-
-                totalAmount -= previousPrice;
-                totalAmount += selectedPrice;
-
-                previousPriceElement.value = selectedPrice;
-                totalAmountElement.value = totalAmount.toFixed(2);
-            });
-        }
-
-        // Create hidden inputs to store previous prices
-        var previousPricesHtml = `
-        <input type="hidden" id="previousPrice_ekoCakesCard" value="0">
-        <input type="hidden" id="previousPrice_topperBy" value="0">
-        <input type="hidden" id="previousPrice_opt" value="0">
-        <input type="hidden" id="previousPrice_item" value="0">
-    `;
-        document.body.insertAdjacentHTML('beforeend', previousPricesHtml);
-
-        // Apply the function to all relevant select elements
-        updatePrice('ekoCakesCard', 'totalAmount', 'previousPrice_ekoCakesCard');
-        updatePrice('topperBy', 'totalAmount', 'previousPrice_topperBy');
-        updatePrice('opt', 'totalAmount', 'previousPrice_opt');
-        updatePrice('item', 'totalAmount', 'previousPrice_item');
-    </script>
 
 
-    <script>
-            $(document).ready(function() {
+
+{{--    <script>--}}
+{{--        document.getElementById('item').addEventListener('change', function() {--}}
+{{--            var itemnumber = parseFloat(this.value); // Get the selected item price--}}
+
+{{--            var defaultAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));--}}
+{{--            var totalAmount = defaultAmount; // Initialize total amount with current total--}}
+
+{{--            var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price--}}
+{{--            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount--}}
+{{--            totalAmount += itemnumber; // Add new item price to total amount--}}
+
+{{--            document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation--}}
+{{--            document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display--}}
+{{--        });--}}
+{{--    </script>--}}
+{{--    <script>--}}
+{{--        function updatePrice(selectElementId, totalAmountId, previousPriceId) {--}}
+{{--            document.getElementById(selectElementId).addEventListener('change', function() {--}}
+{{--                var selectedOption = this.options[this.selectedIndex];--}}
+{{--                var selectedPrice = parseFloat(selectedOption.getAttribute('data-wapf-price')) || parseFloat(this.value) || 0;--}}
+
+{{--                var totalAmountElement = document.getElementById(totalAmountId);--}}
+{{--                var totalAmount = parseFloat(totalAmountElement.value.replace(',', '')) || 0;--}}
+
+{{--                var previousPriceElement = document.getElementById(previousPriceId);--}}
+{{--                var previousPrice = parseFloat(previousPriceElement.value) || 0;--}}
+
+{{--                totalAmount -= previousPrice;--}}
+{{--                totalAmount += selectedPrice;--}}
+
+{{--                previousPriceElement.value = selectedPrice;--}}
+{{--                totalAmountElement.value = totalAmount.toFixed(2);--}}
+{{--            });--}}
+{{--        }--}}
+
+{{--        // Create hidden inputs to store previous prices--}}
+{{--        var previousPricesHtml = `--}}
+{{--        <input type="hidden" id="previousPrice_ekoCakesCard" value="0">--}}
+{{--        <input type="hidden" id="previousPrice_topperBy" value="0">--}}
+{{--        <input type="hidden" id="previousPrice_opt" value="0">--}}
+{{--        <input type="hidden" id="previousPrice_item" value="0">--}}
+{{--    `;--}}
+{{--        document.body.insertAdjacentHTML('beforeend', previousPricesHtml);--}}
+
+{{--        // Apply the function to all relevant select elements--}}
+{{--        updatePrice('ekoCakesCard', 'totalAmount', 'previousPrice_ekoCakesCard');--}}
+{{--        updatePrice('topperBy', 'totalAmount', 'previousPrice_topperBy');--}}
+{{--        updatePrice('opt', 'totalAmount', 'previousPrice_opt');--}}
+{{--        updatePrice('item', 'totalAmount', 'previousPrice_item');--}}
+{{--    </script>--}}
 
 
-                // Send the AJAX request
-                $('#postcart').submit(function(e) {
-                    e.preventDefault(); // Prevent the form from submitting traditionally
 
-                    // Get the form data
-                    var formData = $(this).serialize();
-
-                    $('#loadingSpinner').show();
-
-                            $.ajax({
-                                url: "{{ route('addcart1') }}",
-                                type: 'POST',
-                                data: formData,
-                                success: function(response) {
-                                    // Handle the success response here
-                                    $('#loadingSpinner').hide();
-
-                                    console.log(response);
-                                    // Update the page or perform any other actions based on the response
-
-                                    if (response.status == 'success') {
-                                        Swal.fire({
-                                            icon: 'success',
-                                            title: 'Success',
-                                            text: response.message
-                                        }).then(() => {
-                                            location.reload(); // Reload the page
-                                        });
-                                    } else {
-                                        Swal.fire({
-                                            icon: 'info',
-                                            title: 'Pending',
-                                            text: response.message
-                                        });
-                                        // Handle any other response status
-                                    }
-
-                                },
-                                error: function(xhr) {
-                                    $('#loadingSpinner').hide();
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'fail',
-                                        text: xhr.responseText
-                                    });
-                                    // Handle any errors
-                                    console.log(xhr.responseText);
-
-                                }
-                            });
-                });
-            });
-
-        </script>
 
 @endsection

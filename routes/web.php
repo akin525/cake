@@ -119,6 +119,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/allproduct', [AuthController::class, 'allproduct'])->name('admin/allproduct');
     Route::post('admin/searchproduct', [AuthController::class, 'searchproduct'])->name('admin/searchproduct');
     Route::get('admin/addproduct', [ProductsController::class, 'addproductindex'])->name('admin/addproduct');
+    Route::get('admin/addproducts', [ProductsController::class, 'addproductindexs'])->name('admin/addproducts');
     Route::get('admin/addproduct1', [ProductsController::class, 'addproductindex1'])->name('admin/addproduct1');
     Route::post('admin/addproducts', [ProductsController::class, 'addproduct'])->name('admin/addproducts');
     Route::post('admin/addproducts1', [ProductsController::class, 'addproduct1'])->name('admin/addproducts1');
@@ -187,6 +188,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('admin/attribute', [\App\Http\Controllers\admin\CreateAttributeController::class, 'index'])->name('admin/attribute');
     Route::post('admin/attribute', [\App\Http\Controllers\admin\CreateAttributeController::class, 'createattribute'])->name('admin/attribute');
+    Route::post('admin/attributes', [\App\Http\Controllers\admin\CreateAttributeController::class, 'updateattribute'])->name('admin/attributes');
+    Route::get('admin/deletet/{id}', [\App\Http\Controllers\admin\CreateAttributeController::class, 'deleteattribute'])->name('admin/deletet');
 
     Route::get('admin/delete/{id}', [ProductsController::class, 'destroyproduct'])->name('admin/delete');
 
