@@ -254,7 +254,7 @@
                                                                 <option value="red">Red</option>
                                                                 <option value="green">Green</option>
                                                                 <option value="black">Black</option>
-                                                                <option value="yellow">Yellow</option>
+                                                                <option value="#EF9B00">#EF9B00</option>
                                                             </select>
                                                         </div>
                                                     </div>

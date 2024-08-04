@@ -125,7 +125,7 @@
                     <div class="category-four_box">
                         <span class="category-four_border"></span>
                         <a href="{{url('category', $cat['id'])}}" class="category-four_thumb">
-                            <div class="product-item__badge" style="background-color: yellow; color: black">Categories</div>
+                            <div class="product-item__badge" style="background-color: #EF9B00; color: black">Categories</div>
                             @if($cat['image'] != null)
                             <img width="100" src="{{url($cat['image'])}}" alt="Category-Image">
                             @else
@@ -190,12 +190,12 @@
 
                                 </style>
                                 <li class="product-item__meta-action meta-dark">
-                                    <a class="labtn-icon-quickview " style="background-color: yellow; color: black;" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick View" data-product-id="{{$pro['id']}}" data-bs-toggle="modal" data-bs-target="#quickViewModal{{$pro['id']}}"></a>
+                                    <a class="labtn-icon-quickview " style="background-color: #EF9B00; color: black;" href="#/" data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick View" data-product-id="{{$pro['id']}}" data-bs-toggle="modal" data-bs-target="#quickViewModal{{$pro['id']}}"></a>
                                 </li>
                             </ul>
                             <br>
                             <br>
-                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn cormorant-upright-regular " style="font-size: 14px; background-color: yellow; color: black; border-radius: 50px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);" >Buy Now</a>
+                            <a href="{{route('cakedetail', $pro['id'])}}" class="product-item__btn cormorant-upright-regular " style="font-size: 14px; background-color: #EF9B00; color: black; border-radius: 50px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);" >Buy Now</a>
                         </div>
                     </div>
                     <!-- Product Item End -->
@@ -487,7 +487,7 @@
                                                             <option value="red">Red</option>
                                                             <option value="green">Green</option>
                                                             <option value="black">Black</option>
-                                                            <option value="yellow">Yellow</option>
+                                                            <option value="#EF9B00">#EF9B00</option>
                                                         </select>
                                                     </div>
                                                 </div>

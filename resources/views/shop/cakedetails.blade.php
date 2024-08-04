@@ -517,7 +517,7 @@
                                 <!-- Cart Button Start -->
                                 <div class="cart-btn">
                                     <div class="add-to_cart">
-                                        <button type="submit" class="btn btn-dark btn-hover-primary labtn-icon-quickview" style="background-color: yellow; color: black;" >
+                                        <button type="submit" class="btn btn-dark btn-hover-primary labtn-icon-quickview" style="background-color: #EF9B00; color: black;" >
                                             Add to cart
                                         </button>
                                     </div>
@@ -593,7 +593,7 @@
                                     <tbody>
                                     <tr>
                                         <td class="cun-name"><span>Color</span></td>
-                                        <td>Blue, Gray, Green, Red, Yellow</td>
+                                        <td>Blue, Gray, Green, Red, #EF9B00</td>
                                     </tr>
                                     <tr>
                                         <td class="cun-name"><span>Size</span></td>
