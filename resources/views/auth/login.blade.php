@@ -138,7 +138,7 @@
             <div class="container-fluid">
                 <br>
                 <div class="row">
-                    <h4>Admin Login</h4>
+                    <h4>Login</h4>
                 </div>
                 <div class="row">
                     <x-auth-session-status class="mb-4" :status="session('status')" />

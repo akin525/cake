@@ -11,7 +11,7 @@
             <a href="{{route('admin/addproduct1')}}" class="btn btn-outline-primary btn-hover-bg-primary me-4 m-3">
                Create new(No Attribute) <span class="badge badge-soft-danger">Hots</span>
             </a>
-            <a href="{{route('admin/addproduct')}}" class="btn btn-primary m-3">
+            <a href="{{route('admin/addproducts')}}" class="btn btn-primary m-3">
                 Create new
             </a>
             <a href="#" class="btn btn-primary m-3" onclick="openModal(this)">

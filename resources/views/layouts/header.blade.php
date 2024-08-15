@@ -411,6 +411,16 @@
                                                 <li class="position-static">
                                                     <a class="menu-item-link  merriweather-bold" href="{{route('about')}}"><span>About</span></a>
                                                 </li>
+                        @auth
+                        <li class="position-static">
+                                                    <a class="menu-item-link  merriweather-bold" href="{{route('membership/dashboard')}}"><span>Dashboard</span></a>
+                                                </li>
+                        @endauth
+                        @guest
+                            <li class="position-static">
+                                                    <a class="menu-item-link  merriweather-bold" href="{{route('membership/login')}}"><span>Join/login Membership</span></a>
+                                                </li>
+                        @endguest
                                                 <li class="position-static">
                                                     <a class="menu-item-link merriweather-bold" href="{{route('cart')}}"><span>Cart</span></a>
                                                 </li>
@@ -467,19 +477,15 @@
                 <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold"><span>All-Cakes</span></a>
 
             </li>
-
-            {{--                                                <li class="position-static">--}}
-            {{--                                                    <a class="menu-item-link merriweather-bold" href="{{route('ready')}}"><span>Ready To Go Cakes</span></a>--}}
-            {{--                                                </li>--}}
-{{--            @isset($category)--}}
-{{--                @foreach($category as $cat)--}}
-{{--                    <li><a class="sub-item-link merriweather-bold" href="{{route('category', $cat['name'])}}"><span>{{$cat['name']}}</span></a></li>--}}
-{{--                @endforeach--}}
-{{--            @endisset--}}
             <li class="position-static">
                 <a class="menu-item-link" href="{{route('about')}}"><span>About-Us</span></a>
             </li>
-
+            @guest
+            <li><a class="menu-item-link" href="{{route('membership/login')}}"><span>Join/login Membership</span></a></li>
+            @endauth
+            @auth
+            <li><a class="menu-item-link" href="{{route('membership/dashboard')}}"><span>Dashboard</span></a></li>
+            @endauth
             <li><a class="menu-item-link" href="#"><span>Contact</span></a></li>
         </ul>
         <ul class="hotline-wrapper offcanvas-hotline">
@@ -665,13 +671,13 @@
     (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
         s1.async=true;
-        s1.src='https://embed.tawk.to/6628014ba0c6737bd12f79e7/1hs64a5vm';
+        s1.src='https://embed.tawk.to/662801221ec1082f04e5ff86/1i4lol8vl';
         s1.charset='UTF-8';
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
     })();
 </script>
-<!--End of Tawk.to Script-->
+<!--End of Tawk.to Script-->
 <!-- Vendors JS -->
 <script src="{{asset('assets/js/vendor/modernizr-3.11.7.min.js')}}"></script>
 <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>

@@ -58,7 +58,7 @@ function postorder(Request  $request)
             'user_id' => $request->name,
             'deliver_time'=>$request->time,
             'deliver_date'=>$request->date,
-            'name' => $request->name,
+            'name' => $carts['name'],
             'product_id' => $carts['id'],
             'quantity' => 1,
             'image' => $carts['image'],
@@ -177,6 +177,7 @@ function confirmpayment(Request $request)
             'amount'=>$amount,
             'payment_method'=>'Paystack',
             'transaction_id'=>$request->reference,
+            'narration'=>'payment for cake',
             'status'=>1,
         ]);
 

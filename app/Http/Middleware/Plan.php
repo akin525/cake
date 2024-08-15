@@ -22,7 +22,7 @@ class Plan
             if (Auth::user()->plan != null) {
                 return $next($request);
             } else {
-                return redirect('plans')->with('error', 'Kindly choose a membership plan');
+                return redirect('membership/plans')->with('error', 'Kindly choose a membership plan');
             }
         }
     }

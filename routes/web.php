@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\admin\VariationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MembershioController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -55,9 +56,6 @@ Route::post('mes', [HomeController::class, 'message'])->name('mes');
 Route::get('cart', [HomeController::class, 'mycart'])->name('cart');
 Route::post('check', [OrderController::class, 'postorder'])->name('check');
 Route::get('tran', [OrderController::class, 'confirmpayment'])->name('tran');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
@@ -112,6 +110,18 @@ Route::get('/cat/{filename}', function ($filename) {
 Route::get('admin/login', [AuthController::class, 'loginadmin'])->name('admin/login');
 Route::post('admin/auth', [AuthController::class, 'authloginadmiin'])->name('admin/auth');
 
+Route::get('membership/login',[MembershioController::class, 'loginmembershipindex'])->name('membership/login');
+Route::post('membership/login',[MembershioController::class, 'authlogin'])->name('membership/login');
+Route::middleware(['auth'])->group(function () {
+    Route::get('membership/plans', [MembershioController::class, 'myplan'])->name('membership/plans');
+    Route::get('membership/detail/{id}', [MembershioController::class, 'plandeatail'])->name('membership/detail');
+    Route::post('membership/paycard', [MembershioController::class, 'completeplanwithcard'])->name('membership/paycard');
+    Route::get('membership/tran', [MembershioController::class, 'verifytransactiion'])->name('membership/tran');
+    Route::group(['middleware' => ['plan']], function () {
+        Route::get('membership/dashboard', [MembershioController::class, 'mydashboard'])->name('membership/dashboard');
+        Route::get('membership/order', [MembershioController::class, 'myorder'])->name('membership/order');
+    });
+});
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/dashboard', [AuthController::class, 'dashboardadmin'])->name('admin/dashboard');
 

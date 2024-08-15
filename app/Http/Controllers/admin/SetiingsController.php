@@ -50,6 +50,8 @@ function updategateway(Request $request)
     $request->validate([
         'sk'=>'required',
         'pk'=>'required',
+        'mk'=>'required',
+        'ck'=>'required',
     ]);
 
     $gateway=Gateways::where('name', 'paystack')->first();
@@ -58,6 +60,8 @@ function updategateway(Request $request)
     $gateway->pkey=$request->pk;
     $gateway->call_url=$request->call_url ?? null;
     $gateway->cancel_url=$request->cancel_url ?? null;
+    $gateway->member_call=$request->mk ?? null;
+    $gateway->member_cancel=$request->ck ?? null;
     $gateway->save();
 
     return response()->json([

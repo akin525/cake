@@ -41,8 +41,16 @@
                                 <input  class="form-control" name="call_url"  value="{{$gateway->call_url}}" required/>
                             </div>
                             <div class="mb-8">
+                                <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Membership Call Url</label>
+                                <input  class="form-control" name="mk"  value="{{$gateway->member_call}}" required/>
+                            </div>
+                            <div class="mb-8">
                                 <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Cancel Url</label>
                                 <input  class="form-control" name="cancel_url"  value="{{$gateway->cancel_url}}" required/>
+                            </div>
+                            <div class="mb-8">
+                                <label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Membership Cancel Url</label>
+                                <input  class="form-control" name="ck"  value="{{$gateway->member_cancel}}" required/>
                             </div>
 
                             <button type="submit" class="btn btn-success">Update</button>
