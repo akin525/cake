@@ -312,7 +312,7 @@
                                             @foreach ($uniqueValues as $value)
                                                 <label>
                                                     <input type="radio" name="attributes[{{ $attributeName }}]" value="{{ $value }}" data-price="{{ $prices[$value] ?? 0 }}" style="display: none;" required>
-                                                    <span class="attribute-box">{{ $value }}</span>
+                                                    <span class="attribute-box text-white">{{ $value }}</span>
                                                 </label>
                                             @endforeach
                                         </div>
@@ -329,7 +329,7 @@
                                             @foreach ($uniqueValues as $value)
                                                 <label>
                                                     <input type="radio" name="attributes[{{ $attributeName }}]}" value="{{ $value }}" data-price="{{ $prices[$value] ?? 0 }}" style="display: none;" required>
-                                                    <span class="attribute-box">{{ $value }}</span>
+                                                    <span class="attribute-box text-white">{{ $value }}</span>
                                                 </label>
                                             @endforeach
                                         </div>
