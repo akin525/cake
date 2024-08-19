@@ -422,7 +422,7 @@
                                                 </li>
                         @endguest
                                                 <li class="position-static">
-                                                    <a class="menu-item-link merriweather-bold" href="{{route('cart')}}"><span>l Cart</span></a>
+                                                    <a class="menu-item-link merriweather-bold" href="{{route('cart')}}"><span>Cart</span></a>
                                                 </li>
                                                 <li><a class="menu-item-link merriweather-bold" href="#"><span>Contact</span></a></li>
                     </ul>
@@ -498,18 +498,18 @@
                     </div>
                 </div>
             </li>
-            <li>
-                <div class="hotline">
-                    <i class="lastudioicon lastudioicon-pin-check"></i>
-                    <div class="hotline-content">
-                        <span class="hotline-text">Store Location</span>
-                        <a class="hotline-link" href="#">9A Tony Eyinna Street
-                            Ifako, Gbagada
-                            100234
-                            Lagos</a>
-                    </div>
-                </div>
-            </li>
+{{--            <li>--}}
+{{--                <div class="hotline">--}}
+{{--                    <i class="lastudioicon lastudioicon-pin-check"></i>--}}
+{{--                    <div class="hotline-content">--}}
+{{--                        <span class="hotline-text">Store Location</span>--}}
+{{--                        <a class="hotline-link" href="#">9A Tony Eyinna Street--}}
+{{--                            Ifako, Gbagada--}}
+{{--                            100234--}}
+{{--                            Lagos</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </li>--}}
         </ul>
     </div>
 </div>
