@@ -79,6 +79,21 @@
         }
     </style>
     <style>
+        .price-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .product-head-price,
+        .no-border-input {
+            font-size: 20px;
+        }
+
+        .no-border-input {
+            border: none;
+            margin-left: 5px; /* Optional: Adds some space between the currency symbol and the input */
+        }
+
         .product-attributes {
             margin-bottom: 20px;
         }
@@ -221,6 +236,10 @@
 
                         <div class="product-head mb-3">
                             <!-- Price Start -->
+                            <div class="price-container">
+                                <span class="product-head-price">₦</span>
+                                <input type="text" id="totalAmount" class="no-border-input" name="amount">
+                            </div>
 
 
                             <input type="hidden" id="defaultAmount"
@@ -637,8 +656,7 @@
 
                                 <h6 class="cormorant-upright-semibold">Total Price</h6>
                                 <span class="product-head-price"  style="font-size: 20px ">₦</span>
-                                <input type="text" id="totalAmount" class="no-border-input" name="amount"  style="font-size: 20px "
-                                       value="{{$product->price}}">
+                                <input type="text" id="totalAmount" class="no-border-input" name="amount">
                                 <!-- Cart Button Start -->
                                 <div class="cart-btn">
                                     <div class="add-to_cart">
