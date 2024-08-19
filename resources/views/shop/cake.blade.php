@@ -66,12 +66,12 @@
                                     </ul>
                                 </div>
                                 <div class="product-item__content pt-5">
-                                    <h6 class="cormorant-upright-bold" style="font-size: 22px; text-transform: uppercase;"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h6>
+                                    <h6 class="cormorant-upright-bold" style="font-size: 22px; text-transform: uppercase; color: #EF9B00"><a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></h6>
                                     @if($pro['ramount'] != null)
-                                        <span class="cormorant-upright-regular" style="font-size: 20px">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
-                                        <span class="cormorant-upright-regular" style="font-size: 20px">₦{{number_format(intval($pro['tamount'] *1))}}</span>
+                                        <span class="cormorant-upright-regular" style="font-size: 20px"><b>₦{{number_format(intval($pro['ramount'] *1))}}</b></span>-
+                                        <span class="cormorant-upright-regular" style="font-size: 20px"><b>₦{{number_format(intval($pro['tamount'] *1))}}</b></span>
                                     @else
-                                        <span class="cormorant-upright-regular " style="font-size: 20px">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                        <span class="cormorant-upright-regular " style="font-size: 20px"><b>₦{{number_format(intval($pro['price'] *1))}}</b></span>
                                     @endif
                                 </div>
                             </div>

@@ -123,9 +123,9 @@
                 <div class="col mb-60">
                     <!-- Single Category Four Start -->
                     <div class="category-four_box">
-                        <span class="category-four_border"></span>
+{{--                        <span class="category-four_border"></span>--}}
                         <a href="{{url('category', $cat['id'])}}" class="category-four_thumb">
-                            <div class="product-item__badge" style="background-color: #EF9B00; color: black">Categories</div>
+                            <div class="product-item__badge" style="background-color: #EF9B00; color: #ffffff">Categories</div>
                             @if($cat['image'] != null)
                             <img width="100" src="{{url($cat['image'])}}" alt="Category-Image">
                             @else
@@ -152,7 +152,7 @@
                 <div class="col-12 text-center">
                     <!-- Section Title Strat -->
                     <div class="section-title-08 mb-100 z-4 position-relative">
-                        <h6 class="merriweather-bold text-capitalize" style="font-size: 18px"><b>BROWSE OUR CAKES</b></h6>
+                        <h6 class="merriweather-bold" style="font-size: 18px; text-transform: uppercase"><b>Shop your favorite</b></h6>
 {{--                        <img src="assets/images/shape/title-shape.png" alt="Shape-Image">--}}
                     </div>
                     <!-- Section Title End -->
@@ -164,12 +164,12 @@
                     <!-- Product Item Start -->
                     <div class="product-item product-item-09 text-center" style="border-radius: 50px; background-color: #ffffff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);">
                         <div class="product-item__content">
-                            <h3 class="merriweather-bold capitalize" style="font-size: 25px; text-transform: uppercase"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
+                            <h3 class="merriweather-bold capitalize" style="font-size: 30px; text-transform: uppercase; color: #EF9B00"><b> <a href="{{route('cakedetail', $pro['id'])}}">{{$pro['name']}}</a></b></h3>
                             @if($pro['ramount'] != null)
-                                <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['ramount'] *1))}}</span>-
-                                <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['tamount'] *1))}}</span>
+                                <h4 class="merriweather-bold fs-4"><b>₦{{number_format(intval($pro['ramount'] *1))}}</b></h4>-
+                                <h4 class="merriweather-bold fs-4"><b>₦{{number_format(intval($pro['tamount'] *1))}}</b></h4>
                             @else
-                                <span class="merriweather-bold fs-4">₦{{number_format(intval($pro['price'] *1))}}</span>
+                                <h4 class="merriweather-bold fs-4"><b>₦{{number_format(intval($pro['price'] *1))}}</b></h4>
                             @endif
                         </div>
                         <div class="product-item__image ">
@@ -268,7 +268,7 @@
                         <div class="loading-spinner"></div>
                     </div>
                     <div class="contact-section_formbg" data-bg-image="">
-                        <h2 class="merriweather-bold" style="font-size: 18px; font: normal normal normal 14px/1 LaStudioIcons">GET IN TOUCH</h2>
+                        <h2 class="merriweather-bold" style="font-size: 18px; font: normal normal normal 14px/1 LaStudioIcons">WE LOVE TO HEAR FROM YOU</h2>
                         <form class="contact-section_form cormorant-upright-regular"  id="mes" method="post" style="background-color: white">
                             @csrf
                             <div class="row">
@@ -287,11 +287,11 @@
                                         <input style="font: 21px" class="form-control merriweather-regular" type="text" name="number" placeholder="Phone">
                                     </div>
                                 </div>
-                                <div class="col-md-6 form-p">
-                                    <div class="form-group">
-                                        <input style="font: 21px" class="form-control merriweather-regular" type="text" name="address" placeholder="Address">
-                                    </div>
-                                </div>
+{{--                                <div class="col-md-6 form-p">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <input style="font: 21px" class="form-control merriweather-regular" type="text" name="address" placeholder="Address">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="col-md-12 form-p">
                                     <div class="form-group">
                                         <textarea style="font: 21px" class="form-control merriweather-regular text-area" name="message" placeholder="Message"></textarea>

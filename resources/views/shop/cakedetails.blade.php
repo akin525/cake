@@ -78,6 +78,53 @@
             display: none;
         }
     </style>
+    <style>
+        .product-attributes {
+            margin-bottom: 20px;
+        }
+
+        .product-attribute {
+            margin-bottom: 20px;
+        }
+
+        .radio-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-check-input {
+            margin-right: 5px;
+        }
+
+        .form-check-label {
+            margin: 0;
+            font-weight: 400; /* Adjust the weight to match your typography */
+        }
+
+        /* Optional: Add some spacing around the attribute label */
+        .product-attribute label.cormorant-upright-bold {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold; /* Adjust the weight to match your typography */
+        }
+
+        /* Optional: Customize the radio button appearance */
+        .form-check-input[type="radio"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .form-check-label {
+            font-size: 14px; /* Adjust the size to match your typography */
+        }
+
+    </style>
 
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
         <div class="loading-spinner"></div>
@@ -91,7 +138,7 @@
                         <h1 class="merriweather-bold capitalize text-white" style="text-transform: uppercase">
                             @if($product != null && $product->categories->count() > 0)
                                 <li class="cormorant-upright-regular" style="font-family: Holipop, sans-serif; text-transform: uppercase">
-                                    Categories:
+                                    Category Tittle:
                                     @foreach($product->categories as $category)
                                         <span>{{ $category->name }}</span>@if(!$loop->last), @endif
                                     @endforeach
@@ -170,7 +217,7 @@
                     <!-- Product Summery Start -->
                     <div class="product-summery position-relative card-body">
                         <!-- Product Head Start -->
-                        <h5 class="cormorant-upright-bold capitalize" style="font-size: 25px; text-transform: uppercase">{{$product->name}}</h5>
+                        <h5 class="cormorant-upright-bold capitalize" style="font-size: 25px; color: #EF9B00; text-transform: uppercase">{{$product->name}}</h5>
 
                         <div class="product-head mb-3">
                             <!-- Price Start -->
@@ -228,6 +275,32 @@
                                 }
                             @endphp
 
+                            <style>
+                                .attribute-options {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: 10px;
+                                }
+
+                                .attribute-box {
+                                    display: inline-block;
+                                    width: 100px;
+                                    height: 50px;
+                                    text-align: center;
+                                    line-height: 50px;
+                                    border: 2px solid transparent;
+                                    cursor: pointer;
+                                    border-radius: 4px;
+                                    background-color: #c19d56; /* Ash color */
+
+                                }
+
+                                .attribute-box:hover,
+                                input[type="radio"]:checked + .attribute-box {
+                                    border-color: #ef9b00;
+                                }
+
+                            </style>
                             @if(!empty($attributeValues) || !empty($attributesOnly))
                                 @foreach($attributeValues as $attributeName => $values)
                                     @php
@@ -235,13 +308,13 @@
                                     @endphp
                                     <div class="product-attribute mb-5">
                                         <label for="{{ Str::slug($attributeName) }}" class="cormorant-upright-bold">{{ ucfirst($attributeName) }}</label>
-                                        <div class="select-wrapper">
-                                            <select name="attributes[{{ $attributeName }}]" id="{{ Str::slug($attributeName) }}" class="custom-select cormorant-upright-light" required>
-                                                <option value="" data-price="0">Choose an option</option>
-                                                @foreach ($uniqueValues as $value)
-                                                    <option value="{{ $value }}" data-price="{{ $prices[$value] ?? 0 }}">{{ $value }}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="attribute-options">
+                                            @foreach ($uniqueValues as $value)
+                                                <label>
+                                                    <input type="radio" name="attributes[{{ $attributeName }}]" value="{{ $value }}" data-price="{{ $prices[$value] ?? 0 }}" style="display: none;" required>
+                                                    <span class="attribute-box">{{ $value }}</span>
+                                                </label>
+                                            @endforeach
                                         </div>
                                     </div>
                                 @endforeach
@@ -252,16 +325,17 @@
                                     @endphp
                                     <div class="product-attribute mb-5">
                                         <label for="{{ Str::slug($attributeName) }}" class="cormorant-upright-bold">{{ ucfirst($attributeName) }}</label>
-                                        <div class="select-wrapper">
-                                            <select name="attributes[{{ $attributeName }}]" id="{{ Str::slug($attributeName) }}" class="custom-select cormorant-upright-light" required>
-                                                <option value="" data-price="0">Choose an option</option>
-                                                @foreach ($uniqueValues as $value)
-                                                    <option value="{{ $value }}" data-price="{{ $prices[$value] ?? 0 }}">{{ $value }}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="attribute-options">
+                                            @foreach ($uniqueValues as $value)
+                                                <label>
+                                                    <input type="radio" name="attributes[{{ $attributeName }}]}" value="{{ $value }}" data-price="{{ $prices[$value] ?? 0 }}" style="display: none;" required>
+                                                    <span class="attribute-box">{{ $value }}</span>
+                                                </label>
+                                            @endforeach
                                         </div>
                                     </div>
                                 @endforeach
+
                             @else
                                 <p>---</p>
                             @endif
@@ -375,19 +449,70 @@
 
                             <br/>
                             <br/>
+                            <style>
+                                .color-options {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: 10px;
+                                }
+
+                                .color-box {
+                                    display: inline-block;
+                                    width: 80px;
+                                    height: 50px;
+                                    text-align: center;
+                                    line-height: 50px;
+                                    border: 2px solid transparent;
+                                    cursor: pointer;
+                                    border-radius: 4px;
+                                }
+
+                                .color-box:hover,
+                                input[type="radio"]:checked + .color-box {
+                                    border-color: #ef9b00;
+                                }
+
+                            </style>
                             <div id="colorOptions" style="display: none;">
-                                <select name="color" class="form-control cormorant-upright-light" id="color">
-                                    <option value="">Pick a color</option>
-                                    <option value="white" style="color: white;">White</option>
-                                    <option value="black" style="color: black;">Black</option>
-                                    <option value="blue" style="color: blue;">Blue</option>
-                                    <option value="purple" style="color: purple;">Purple</option>
-                                    <option value="green" style="color: green;">Green</option>
-                                    <option value="orange" style="color: orange;">Orange</option>
-                                    <option value="brown" style="color: brown;">Brown</option>
-                                    <option value="pink" style="color: pink;">Pink</option>
-                                    <option value="custom">Custom Color</option>
-                                </select>
+                                <div class="color-options">
+                                    <label>
+                                        <input type="radio" name="color" value="white" style="display: none;">
+                                        <span class="color-box" style="background-color: white;">White</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="color" value="black" style="display: none;">
+                                        <span class="color-box" style="background-color: black; color: white;">Black</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="color" value="blue" style="display: none;">
+                                        <span class="color-box" style="background-color: blue;">Blue</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="color" value="purple" style="display: none;">
+                                        <span class="color-box" style="background-color: purple;">Purple</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="color" value="green" style="display: none;">
+                                        <span class="color-box" style="background-color: green;">Green</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="color" value="orange" style="display: none;">
+                                        <span class="color-box" style="background-color: orange;">Orange</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="color" value="brown" style="display: none;">
+                                        <span class="color-box" style="background-color: brown; color: white;">Brown</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="color" value="pink" style="display: none;">
+                                        <span class="color-box" style="background-color: pink;">Pink</span>
+                                    </label>
+{{--                                    <label>--}}
+{{--                                        <input type="radio" name="color" value="custom" style="display: none;">--}}
+{{--                                        <span class="color-box" style="background-color: lightgray;">Custom Color</span>--}}
+{{--                                    </label>--}}
+                                </div>
+
                             </div>
 
                             <script>

@@ -330,20 +330,20 @@
                         </div>
                     </li>
                     <li>
-                        <div class="hotline">
-                            <i class="lastudioicon lastudioicon-pin-check"></i>
-                            <div class="hotline-content">
-                                <span class="hotline-text sam">Location</span>
-                                <a class="hotline-link cormorant-upright-regular" href="#/"> Gbagada 100234 Lagos</a>
-                            </div>
-                        </div>
+{{--                        <div class="hotline">--}}
+{{--                            <i class="lastudioicon lastudioicon-pin-check"></i>--}}
+{{--                            <div class="hotline-content">--}}
+{{--                                <span class="hotline-text sam">Location</span>--}}
+{{--                                <a class="hotline-link cormorant-upright-regular" href="#/"> Gbagada 100234 Lagos</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </li>
                 </ul>
             </div>
             <div class="headertop-center">
                 <!-- Header Logo Start -->
                 <div class="">
-                    <a href="{{url('/')}}"><img src="{{asset('assets/images/eko.png')}}" width="50" alt="Logo"></a>
+                    <a href="{{url('/')}}"><img src="{{asset('assets/images/eko.png')}}" width="100" alt="Logo"></a>
                 </div>
 
                 <!-- Header Logo End -->
@@ -422,7 +422,7 @@
                                                 </li>
                         @endguest
                                                 <li class="position-static">
-                                                    <a class="menu-item-link merriweather-bold" href="{{route('cart')}}"><span>Cart</span></a>
+                                                    <a class="menu-item-link merriweather-bold" href="{{route('cart')}}"><span>l Cart</span></a>
                                                 </li>
                                                 <li><a class="menu-item-link merriweather-bold" href="#"><span>Contact</span></a></li>
                     </ul>
@@ -671,7 +671,7 @@
     (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
         s1.async=true;
-        s1.src='https://embed.tawk.to/662801221ec1082f04e5ff86/1i4lol8vl';
+        s1.src='https://embed.tawk.to/5e3fdfb1298c395d1ce6f98a/default';
         s1.charset='UTF-8';
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
