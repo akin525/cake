@@ -197,9 +197,6 @@
 
                             </div>
 
-                            <!-- Swiper Pagination Start -->
-                            <!-- <div class="swiper-pagination d-none"></div> -->
-                            <!-- Swiper Pagination End -->
 
                             <!-- Next Previous Button Start -->
                             <div class="swiper-button-vertical-next swiper-button-next"><i class="lastudioicon-arrow-right"></i></div>
@@ -266,34 +263,6 @@
 
 
 
-                            @php
-                                // Initialize arrays to hold attribute values and attributes
-                                $attributeValues = [];
-                                $attributesOnly = [];
-                                $prices = []; // To hold prices for each attribute value
-
-                                // Check if variations exist and is not null
-                                if ($product->variations) {
-                                    if ($product->variations->isNotEmpty()) {
-                                        foreach ($product->variations as $variation) {
-                                            foreach ($variation->options as $option) {
-                                                $attributeValues[$option->name][] = $option->value;
-                                                $prices[$option->value] = $variation->price; // Set the price for the option
-                                            }
-                                        }
-                                    }
-                                }
-
-                                // Check if attributes only (without variations) exist and is not null
-                                if ($product->attributes) {
-                                    if ($product->attributes->isNotEmpty()) {
-                                        foreach ($product->attributes as $attribute) {
-                                            $attributesOnly[$attribute->name][] = $attribute->value;
-                                        }
-                                    }
-                                }
-                            @endphp
-
                             <style>
                                 .attribute-options {
                                     display: flex;
@@ -310,16 +279,51 @@
                                     border: 2px solid transparent;
                                     cursor: pointer;
                                     border-radius: 4px;
-                                    background-color: #c19d56; /* Ash color */
-
+                                    /* background-color: #c19d56;  Ash color */
+                                    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
                                 }
+
 
                                 .attribute-box:hover,
                                 input[type="radio"]:checked + .attribute-box {
                                     border-color: #ef9b00;
                                 }
 
+                                .text-white {
+                                    color: #000000; /* Optional: Ensures text color is white */
+                                }
                             </style>
+                            @php
+                                // Initialize arrays to hold attribute values, attributes, and combination prices
+                                $attributeValues = [];
+                                $attributesOnly = [];
+                                $combinations = []; // To hold the price for each specific combination of attributes
+
+                                // Check if variations exist and are not null
+                                if ($product->variations) {
+                                    if ($product->variations->isNotEmpty()) {
+                                        foreach ($product->variations as $variation) {
+                                            $combinationKey = []; // Initialize combination key
+                                            foreach ($variation->options as $option) {
+                                                $attributeValues[$option->name][] = $option->value;
+                                                $combinationKey[] = $option->value; // Build combination key
+                                            }
+                                            // Join the combination key to store the price for this specific combination
+                                            $combinations[implode('|', $combinationKey)] = $variation->price;
+                                        }
+                                    }
+                                }
+
+                                // Check if attributes only (without variations) exist and are not null
+                                if ($product->attributes) {
+                                    if ($product->attributes->isNotEmpty()) {
+                                        foreach ($product->attributes as $attribute) {
+                                            $attributesOnly[$attribute->name][] = $attribute->value;
+                                        }
+                                    }
+                                }
+                            @endphp
+
                             @if(!empty($attributeValues) || !empty($attributesOnly))
                                 @foreach($attributeValues as $attributeName => $values)
                                     @php
@@ -330,8 +334,8 @@
                                         <div class="attribute-options">
                                             @foreach ($uniqueValues as $value)
                                                 <label>
-                                                    <input type="radio" name="attributes[{{ $attributeName }}]" value="{{ $value }}" data-price="{{ $prices[$value] ?? 0 }}" style="display: none;" required>
-                                                    <span class="attribute-box text-white">{{ $value }}</span>
+                                                    <input type="radio" name="attributes[{{ $attributeName }}]" value="{{ $value }}" style="display: none;" required>
+                                                    <span class="attribute-box">{{ $value }}</span>
                                                 </label>
                                             @endforeach
                                         </div>
@@ -347,49 +351,62 @@
                                         <div class="attribute-options">
                                             @foreach ($uniqueValues as $value)
                                                 <label>
-                                                    <input type="radio" name="attributes[{{ $attributeName }}]}" value="{{ $value }}" data-price="{{ $prices[$value] ?? 0 }}" style="display: none;" required>
-                                                    <span class="attribute-box text-white">{{ $value }}</span>
+                                                    <input type="radio" name="attributes[{{ $attributeName }}]" value="{{ $value }}" style="display: none;" required>
+                                                    <span class="attribute-box">{{ $value }}</span>
                                                 </label>
                                             @endforeach
                                         </div>
                                     </div>
                                 @endforeach
-
                             @else
                                 <p>---</p>
                             @endif
-                            <input type="hidden" id="productBasePrice" value="{{$product->price}}">
-{{--                            <input type="hidden" id="productBasePrice" value="0">--}}
 
+                            <input type="hidden" id="productBasePrice" value="{{ $product->price }}">
+
+                            <!-- Store combinations and prices -->
+                            @foreach($combinations as $combination => $price)
+                                <input type="hidden" data-combination="{{ $combination }}" value="{{ $price }}">
+                            @endforeach
+
+                            <button id="resetButton" type="button" class="btn btn-secondary mt-3">Clear Options</button>
 
                             <script>
                                 $(document).ready(function() {
-                                    // Initialize base price
+                                    // Initialize the base price
                                     let basePrice = parseFloat($('#productBasePrice').val()) || 0;
 
+                                    // Function to update the total amount based on selected variations
                                     function updateTotalAmount() {
-                                        // Start with the base price
-                                        let totalAmount = basePrice;
-                                        console.log("Base price: " + totalAmount);
-
-                                        // Iterate over each select element to add the price of selected options
-                                        $('select').each(function() {
-                                            var selectedOption = $(this).find('option:selected');
-                                            var price = parseFloat(selectedOption.data('price')) || 0; // Get the price from data attribute
-                                            console.log("Selected option: " + selectedOption.text() + " Price: " + price);
-
-                                            // Only add price if it's not the default option
-                                            if (selectedOption.val()) {
-                                                totalAmount += price; // Add to the total amount
-                                            }
+                                        let selectedOptions = [];
+                                        $('input[type="radio"]:checked').each(function() {
+                                            selectedOptions.push($(this).val()); // Get the selected value
                                         });
 
-                                        $('#totalAmount').val(totalAmount.toFixed(2)); // Update the total amount display
-                                        console.log("Total amount: " + totalAmount);
+                                        // Sort selected options to match the exact order used in admin settings
+                                        selectedOptions.sort();
+
+                                        // Build a unique key for the selected combination
+                                        let selectedKey = selectedOptions.join('|');
+
+                                        // Retrieve the price for the selected combination from the stored data
+                                        let selectedPrice = $('input[type="hidden"][data-combination="' + selectedKey + '"]').val();
+                                        selectedPrice = parseFloat(selectedPrice) || basePrice; // Use base price if no match found
+
+                                        // Update the total price display
+                                        $('#totalAmount').val(selectedPrice.toFixed(2)); // Assuming an element to display the total amount
+                                        console.log("Total amount updated to: " + selectedPrice);
                                     }
 
-                                    // Bind the updateTotalAmount function to the change event of the select elements
-                                    $('select').on('change', updateTotalAmount);
+                                    // Bind the updateTotalAmount function to the change event of radio buttons
+                                    $('input[type="radio"]').on('change', updateTotalAmount);
+
+                                    // Clear selections and reset price to base price
+                                    $('#resetButton').on('click', function() {
+                                        $('input[type="radio"]').prop('checked', false); // Uncheck all radio buttons
+                                        $('#totalAmount').val(basePrice.toFixed(2)); // Reset to base price
+                                        console.log("All options cleared. Total amount reset to base price: " + basePrice);
+                                    });
 
                                     // Initial update
                                     updateTotalAmount();
@@ -599,14 +616,59 @@
                             <br/>
                             @if(!empty($items) && $items->count())
                                 <h6 class="cormorant-upright-bold">Add-Ons</h6>
-
-                                <select name="option" class="form-control cormorant-upright-light" style="pointer-events: auto;" id="item">
-                                    <option value="0" data-wapf-price="0">Choose an option</option>
+                                <div class="attribute-options">
                                     @foreach($items as $item)
-                                        <option value="{{ $item->price }}" data-wapf-price="{{ $item->price }}" data-wapf-pricetype="fixed">{{ $item->product }} (₦{{ $item->price }})</option>
+                                        <input type="radio" id="item{{ $item->id }}" name="option" value="{{ $item->price }}" data-wapf-price="{{ $item->price }}" data-wapf-pricetype="fixed" style="display: none;">
+                                        <label for="item{{ $item->id }}" class="attribute-box">
+                                            <span>{{ $item->product }} <br>(₦{{ $item->price }})</span>
+                                        </label>
                                     @endforeach
-                                </select>
+                                </div>
+                            <br/>
+                            <br/>
+                                <button id="unselectButton" type="button" class="btn btn-secondary mt-3">Unselect Add-Ons</button>
                             @endif
+
+                            <script>
+                                document.querySelectorAll('.attribute-box').forEach(function (label) {
+                                    label.addEventListener('click', function() {
+                                        var radio = document.getElementById(this.getAttribute('for'));
+                                        if (radio) {
+                                            radio.checked = true; // Manually check the radio button
+
+                                            var itemnumber = parseFloat(radio.value); // Get the selected item price
+
+                                            var defaultAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));
+                                            var totalAmount = defaultAmount; // Initialize total amount with current total
+
+                                            var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price
+                                            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
+                                            totalAmount += itemnumber; // Add new item price to total amount
+
+                                            document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation
+                                            document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display
+                                        }
+                                    });
+                                });
+
+                                // Unselect button functionality
+                                document.getElementById('unselectButton').addEventListener('click', function() {
+                                    document.querySelectorAll('input[name="option"]').forEach(function (radio) {
+                                        radio.checked = false; // Uncheck all radio buttons
+                                    });
+
+                                    var defaultPrice = 0; // Assume the default price is 0 or replace with actual base price
+                                    var currentAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));
+                                    var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price
+
+                                    var totalAmount = currentAmount - previousLayerPrice + defaultPrice; // Revert to the base price
+
+                                    document.getElementById('tPrice').value = defaultPrice; // Reset to default price
+                                    document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display
+                                });
+                            </script>
+
+
 
                             <br/>
                             <br/>
@@ -647,6 +709,102 @@
                                 });
 
                             </script>
+                            <script>
+                                $(document).ready(function () {
+                                    // Initialize base price
+                                    let basePrice = parseFloat($('#productBasePrice').val()) || 0;
+
+                                    // Function to update the total amount
+                                    function updateTotalAmount() {
+                                        let totalAmount = basePrice;
+                                        console.log("Base price: " + totalAmount);
+
+                                        // Iterate over each select element to add the price of selected options
+                                        $('select').each(function () {
+                                            var selectedOption = $(this).find('option:selected');
+                                            var price = parseFloat(selectedOption.data('wapf-price')) || parseFloat(selectedOption.data('price')) || 0; // Get the price from data attribute
+                                            console.log("Selected option: " + selectedOption.text() + " Price: " + price);
+
+                                            // Only add price if it's not the default option
+                                            if (selectedOption.val()) {
+                                                totalAmount += price; // Add to the total amount
+                                            }
+                                        });
+
+                                        $('#totalAmount').val(totalAmount.toFixed(2)); // Update the total amount display
+                                        console.log("Total amount: " + totalAmount);
+                                    }
+
+                                    // Bind the updateTotalAmount function to the change event of the select elements
+                                    $('select').on('change', updateTotalAmount);
+
+                                    // Initial update
+                                    updateTotalAmount();
+
+                                    // Function to handle visibility of topper text input based on selected topper option
+                                    function handleTopperVisibility() {
+                                        const selectedTopper = $('#topperBy').val();
+                                        if (selectedTopper === 'select') {
+                                            $('#topperTextSection').show();
+                                        } else {
+                                            $('#topperTextSection').hide();
+                                            $('#topperText').val(''); // Clear the text input when not visible
+                                        }
+                                    }
+
+                                    // Function to handle visibility of Eko Cakes card message input based on selected option
+                                    function handleEkoCakesCard() {
+                                        const selectedOption = $('#ekoCakesCard').val();
+                                        if (selectedOption === 'yes') {
+                                            $('#ekoCakesMessageSection').show();
+                                        } else {
+                                            $('#ekoCakesMessageSection').hide();
+                                            $('#ekoCakesMessage').val(''); // Clear the text input when not visible
+                                        }
+                                    }
+
+                                    $('#ekoCakesCard').on('change', function () {
+                                        handleEkoCakesCard();
+                                    });
+
+                                    // Ensure initial visibility state is correct
+                                    handleTopperVisibility();
+                                    handleEkoCakesCard();
+
+                                    // Ensure the topper input visibility changes based on selection
+                                    $('#topperBy').change(function () {
+                                        var selectedOption = $(this).find(':selected');
+                                        var price = selectedOption.data('wapf-price');
+
+                                        if (price == '4000') {
+                                            $('#topperInput').show(); // Show the input box if Customized Topper is selected
+                                        } else {
+                                            $('#topperInput').hide(); // Hide the input box for other options
+                                        }
+                                    });
+
+                                    // Ensure custom color input visibility changes based on selection
+                                    document.getElementById('baseColor').addEventListener('change', function () {
+                                        var selectedOption = this.value;
+                                        var colorOptions = document.getElementById('colorOptions');
+
+                                        if (selectedOption === 'choose') {
+                                            colorOptions.style.display = 'block';
+                                        } else {
+                                            colorOptions.style.display = 'none';
+                                        }
+                                    });
+
+                                    document.getElementById('color').addEventListener('change', function () {
+                                        var customColorInput = document.getElementById('customColor');
+                                        if (this.value === 'custom') {
+                                            customColorInput.classList.remove('hidden');
+                                        } else {
+                                            customColorInput.classList.add('hidden');
+                                        }
+                                    });
+                                });
+                            </script>
 
 
                             <br/>
@@ -654,9 +812,9 @@
 
                             <li>
 
-                                <h6 class="cormorant-upright-semibold">Total Price</h6>
-                                <span class="product-head-price"  style="font-size: 20px ">₦</span>
-                                <input type="text" id="totalAmount" class="no-border-input" name="amount">
+{{--                                <h6 class="cormorant-upright-semibold">Total Price</h6>--}}
+{{--                                <span class="product-head-price"  style="font-size: 20px ">₦</span>--}}
+{{--                                <input type="text" id="totalAmount" class="no-border-input" name="amount">--}}
                                 <!-- Cart Button Start -->
                                 <div class="cart-btn">
                                     <div class="add-to_cart">
@@ -816,121 +974,11 @@
 
 
 
-    <script>
-        $(document).ready(function () {
-            // Initialize base price
-            let basePrice = parseFloat($('#productBasePrice').val()) || 0;
-
-            // Function to update the total amount
-            function updateTotalAmount() {
-                let totalAmount = basePrice;
-                console.log("Base price: " + totalAmount);
-
-                // Iterate over each select element to add the price of selected options
-                $('select').each(function () {
-                    var selectedOption = $(this).find('option:selected');
-                    var price = parseFloat(selectedOption.data('wapf-price')) || parseFloat(selectedOption.data('price')) || 0; // Get the price from data attribute
-                    console.log("Selected option: " + selectedOption.text() + " Price: " + price);
-
-                    // Only add price if it's not the default option
-                    if (selectedOption.val()) {
-                        totalAmount += price; // Add to the total amount
-                    }
-                });
-
-                $('#totalAmount').val(totalAmount.toFixed(2)); // Update the total amount display
-                console.log("Total amount: " + totalAmount);
-            }
-
-            // Bind the updateTotalAmount function to the change event of the select elements
-            $('select').on('change', updateTotalAmount);
-
-            // Initial update
-            updateTotalAmount();
-
-            // Function to handle visibility of topper text input based on selected topper option
-            function handleTopperVisibility() {
-                const selectedTopper = $('#topperBy').val();
-                if (selectedTopper === 'select') {
-                    $('#topperTextSection').show();
-                } else {
-                    $('#topperTextSection').hide();
-                    $('#topperText').val(''); // Clear the text input when not visible
-                }
-            }
-
-            // Function to handle visibility of Eko Cakes card message input based on selected option
-            function handleEkoCakesCard() {
-                const selectedOption = $('#ekoCakesCard').val();
-                if (selectedOption === 'yes') {
-                    $('#ekoCakesMessageSection').show();
-                } else {
-                    $('#ekoCakesMessageSection').hide();
-                    $('#ekoCakesMessage').val(''); // Clear the text input when not visible
-                }
-            }
-
-            $('#ekoCakesCard').on('change', function () {
-                handleEkoCakesCard();
-            });
-
-            // Ensure initial visibility state is correct
-            handleTopperVisibility();
-            handleEkoCakesCard();
-
-            // Ensure the topper input visibility changes based on selection
-            $('#topperBy').change(function () {
-                var selectedOption = $(this).find(':selected');
-                var price = selectedOption.data('wapf-price');
-
-                if (price == '4000') {
-                    $('#topperInput').show(); // Show the input box if Customized Topper is selected
-                } else {
-                    $('#topperInput').hide(); // Hide the input box for other options
-                }
-            });
-
-            // Ensure custom color input visibility changes based on selection
-            document.getElementById('baseColor').addEventListener('change', function () {
-                var selectedOption = this.value;
-                var colorOptions = document.getElementById('colorOptions');
-
-                if (selectedOption === 'choose') {
-                    colorOptions.style.display = 'block';
-                } else {
-                    colorOptions.style.display = 'none';
-                }
-            });
-
-            document.getElementById('color').addEventListener('change', function () {
-                var customColorInput = document.getElementById('customColor');
-                if (this.value === 'custom') {
-                    customColorInput.classList.remove('hidden');
-                } else {
-                    customColorInput.classList.add('hidden');
-                }
-            });
-        });
-    </script>
 
 
 
 
-{{--    <script>--}}
-{{--        document.getElementById('item').addEventListener('change', function() {--}}
-{{--            var itemnumber = parseFloat(this.value); // Get the selected item price--}}
 
-{{--            var defaultAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));--}}
-{{--            var totalAmount = defaultAmount; // Initialize total amount with current total--}}
-
-{{--            var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price--}}
-{{--            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount--}}
-{{--            totalAmount += itemnumber; // Add new item price to total amount--}}
-
-{{--            document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation--}}
-{{--            document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display--}}
-{{--        });--}}
-{{--    </script>--}}
 {{--    <script>--}}
 {{--        function updatePrice(selectElementId, totalAmountId, previousPriceId) {--}}
 {{--            document.getElementById(selectElementId).addEventListener('change', function() {--}}

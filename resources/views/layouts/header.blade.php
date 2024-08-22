@@ -609,7 +609,7 @@
                     <!-- Footer Widget Section Strat -->
                     <div class="footer-widget">
                         <div class="">
-                            <a href="/"><img width="50" src="{{asset('assets/images/eko.png')}}" alt="Logo"></a>
+                            <a href="/"><img width="150" src="{{asset('assets/images/eko.png')}}" alt="Logo"></a>
                         </div>
                         <div class="">
                             <a href="#"><i class="lastudioicon-b-facebook"></i></a>
