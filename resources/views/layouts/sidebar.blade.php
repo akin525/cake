@@ -73,7 +73,7 @@
         <div class="loading-spinner"></div>
     </div>
 
-{{--    @include('sweetalert::alert')--}}
+    @include('sweetalert::alert')
 
     <header class="main-header">
         <div class="d-flex align-items-center logo-box justify-content-start">
