@@ -21,7 +21,7 @@
 
     <!-- Style-->
     <link rel="stylesheet" href="{{asset('ads/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('ads/css/skin_color.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('ads/css/skin_color.css')}}">--}}
 @yield('style')
 </head>
 <style>
@@ -73,7 +73,7 @@
         <div class="loading-spinner"></div>
     </div>
 
-    @include('sweetalert::alert')
+{{--    @include('sweetalert::alert')--}}
 
     <header class="main-header">
         <div class="d-flex align-items-center logo-box justify-content-start">
