@@ -248,7 +248,7 @@
                 <span class="review-rating-bg">
                     <span class="review-rating-active" style="width: 90%"></span>
                 </span>
-                                <a href="#/" class="review-rating-text">(1 Review)</a>
+                                <a href="#" class="review-rating-text">(1 Review)</a>
                             </div>
                             <!-- Rating End -->
                         </div>
@@ -372,55 +372,55 @@
 
                             <button id="resetButton" type="button" class="btn btn-secondary mt-3 cormorant-upright-regular">Clear Options</button>
 
-                            <script>
-                                $(document).ready(function() {
-                                    // Initialize the base price
-                                    let basePrice = parseFloat($('#productBasePrice').val()) || 0;
+{{--                            <script>--}}
+{{--                                $(document).ready(function() {--}}
+{{--                                    // Initialize the base price--}}
+{{--                                    let basePrice = parseFloat($('#productBasePrice').val()) || 0;--}}
 
-                                    // Function to update the total amount based on selected variations
-                                    function updateTotalAmount() {
-                                        let selectedOptions = [];
-                                        $('input[type="radio"]:checked').each(function() {
-                                            selectedOptions.push($(this).val()); // Get the selected value
-                                        });
+{{--                                    // Function to update the total amount based on selected variations--}}
+{{--                                    function updateTotalAmount() {--}}
+{{--                                        let selectedOptions = [];--}}
+{{--                                        $('input[type="radio"]:checked').each(function() {--}}
+{{--                                            selectedOptions.push($(this).val()); // Get the selected value--}}
+{{--                                        });--}}
 
-                                        // Sort selected options to match the exact order used in admin settings
-                                        selectedOptions.sort();
+{{--                                        // Sort selected options to match the exact order used in admin settings--}}
+{{--                                        selectedOptions.sort();--}}
 
-                                        // Build a unique key for the selected combination
-                                        let selectedKey = selectedOptions.join('|');
+{{--                                        // Build a unique key for the selected combination--}}
+{{--                                        let selectedKey = selectedOptions.join('|');--}}
 
-                                        console.log("Generated combination key: " + selectedKey);
+{{--                                        console.log("Generated combination key: " + selectedKey);--}}
 
-                                        // Retrieve the price for the selected combination from the stored data
-                                        let selectedPrice = $('input[type="hidden"][data-combination="' + selectedKey + '"]').val();
-                                        selectedPrice = parseFloat(selectedPrice) || basePrice; // Use base price if no match found
+{{--                                        // Retrieve the price for the selected combination from the stored data--}}
+{{--                                        let selectedPrice = $('input[type="hidden"][data-combination="' + selectedKey + '"]').val();--}}
+{{--                                        selectedPrice = parseFloat(selectedPrice) || basePrice; // Use base price if no match found--}}
 
-                                        if(selectedPrice !== basePrice) {
-                                            console.log("Match found! Price updated to: " + selectedPrice);
-                                        } else {
-                                            console.log("No match found. Using base price: " + basePrice);
-                                        }
+{{--                                        if(selectedPrice !== basePrice) {--}}
+{{--                                            console.log("Match found! Price updated to: " + selectedPrice);--}}
+{{--                                        } else {--}}
+{{--                                            console.log("No match found. Using base price: " + basePrice);--}}
+{{--                                        }--}}
 
-                                        // Update the total price display
-                                        $('#totalAmount').val(selectedPrice.toFixed(2)); // Assuming an element to display the total amount
-                                    }
+{{--                                        // Update the total price display--}}
+{{--                                        $('#totalAmount').val(selectedPrice.toFixed(2)); // Assuming an element to display the total amount--}}
+{{--                                    }--}}
 
-                                    // Bind the updateTotalAmount function to the change event of radio buttons
-                                    $('input[type="radio"]').on('change', updateTotalAmount);
+{{--                                    // Bind the updateTotalAmount function to the change event of radio buttons--}}
+{{--                                    $('input[type="radio"]').on('change', updateTotalAmount);--}}
 
-                                    // Clear selections and reset price to base price
-                                    $('#resetButton').on('click', function() {
-                                        $('input[type="radio"]').prop('checked', false); // Uncheck all radio buttons
-                                        $('#totalAmount').val(basePrice.toFixed(2)); // Reset to base price
-                                        console.log("All options cleared. Total amount reset to base price: " + basePrice);
-                                    });
+{{--                                    // Clear selections and reset price to base price--}}
+{{--                                    $('#resetButton').on('click', function() {--}}
+{{--                                        $('input[type="radio"]').prop('checked', false); // Uncheck all radio buttons--}}
+{{--                                        $('#totalAmount').val(basePrice.toFixed(2)); // Reset to base price--}}
+{{--                                        console.log("All options cleared. Total amount reset to base price: " + basePrice);--}}
+{{--                                    });--}}
 
-                                    // Initial update
-                                    updateTotalAmount();
-                                });
+{{--                                    // Initial update--}}
+{{--                                    updateTotalAmount();--}}
+{{--                                });--}}
 
-                            </script>
+{{--                            </script>--}}
 
 
 
@@ -639,44 +639,44 @@
                                 <button id="unselectButton" type="button" class="btn btn-secondary mt-3">Unselect Add-Ons</button>
                             @endif
 
-                            <script>
-                                document.querySelectorAll('.attribute-box').forEach(function (label) {
-                                    label.addEventListener('click', function() {
-                                        var radio = document.getElementById(this.getAttribute('for'));
-                                        if (radio) {
-                                            radio.checked = true; // Manually check the radio button
+{{--                            <script>--}}
+{{--                                document.querySelectorAll('.attribute-box').forEach(function (label) {--}}
+{{--                                    label.addEventListener('click', function() {--}}
+{{--                                        var radio = document.getElementById(this.getAttribute('for'));--}}
+{{--                                        if (radio) {--}}
+{{--                                            radio.checked = true; // Manually check the radio button--}}
 
-                                            var itemnumber = parseFloat(radio.value); // Get the selected item price
+{{--                                            var itemnumber = parseFloat(radio.value); // Get the selected item price--}}
 
-                                            var defaultAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));
-                                            var totalAmount = defaultAmount; // Initialize total amount with current total
+{{--                                            var defaultAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));--}}
+{{--                                            var totalAmount = defaultAmount; // Initialize total amount with current total--}}
 
-                                            var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price
-                                            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
-                                            totalAmount += itemnumber; // Add new item price to total amount
+{{--                                            var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price--}}
+{{--                                            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount--}}
+{{--                                            totalAmount += itemnumber; // Add new item price to total amount--}}
 
-                                            document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation
-                                            document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display
-                                        }
-                                    });
-                                });
+{{--                                            document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation--}}
+{{--                                            document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display--}}
+{{--                                        }--}}
+{{--                                    });--}}
+{{--                                });--}}
 
-                                // Unselect button functionality
-                                document.getElementById('unselectButton').addEventListener('click', function() {
-                                    document.querySelectorAll('input[name="option"]').forEach(function (radio) {
-                                        radio.checked = false; // Uncheck all radio buttons
-                                    });
+{{--                                // Unselect button functionality--}}
+{{--                                document.getElementById('unselectButton').addEventListener('click', function() {--}}
+{{--                                    document.querySelectorAll('input[name="option"]').forEach(function (radio) {--}}
+{{--                                        radio.checked = false; // Uncheck all radio buttons--}}
+{{--                                    });--}}
 
-                                    var defaultPrice = 0; // Assume the default price is 0 or replace with actual base price
-                                    var currentAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));
-                                    var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price
+{{--                                    var defaultPrice = 0; // Assume the default price is 0 or replace with actual base price--}}
+{{--                                    var currentAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));--}}
+{{--                                    var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price--}}
 
-                                    var totalAmount = currentAmount - previousLayerPrice + defaultPrice; // Revert to the base price
+{{--                                    var totalAmount = currentAmount - previousLayerPrice + defaultPrice; // Revert to the base price--}}
 
-                                    document.getElementById('tPrice').value = defaultPrice; // Reset to default price
-                                    document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display
-                                });
-                            </script>
+{{--                                    document.getElementById('tPrice').value = defaultPrice; // Reset to default price--}}
+{{--                                    document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display--}}
+{{--                                });--}}
+{{--                            </script>--}}
 
 
 
@@ -719,102 +719,102 @@
                                 });
 
                             </script>
-                            <script>
-                                $(document).ready(function () {
-                                    // Initialize base price
-                                    let basePrice = parseFloat($('#productBasePrice').val()) || 0;
+{{--                            <script>--}}
+{{--                                $(document).ready(function () {--}}
+{{--                                    // Initialize base price--}}
+{{--                                    let basePrice = parseFloat($('#totalAmount').val()) || 0;--}}
 
-                                    // Function to update the total amount
-                                    function updateTotalAmount() {
-                                        let totalAmount = basePrice;
-                                        console.log("Base price: " + totalAmount);
+{{--                                    // Function to update the total amount--}}
+{{--                                    function updateTotalAmount() {--}}
+{{--                                        let totalAmount = basePrice;--}}
+{{--                                        console.log("Base price: " + totalAmount);--}}
 
-                                        // Iterate over each select element to add the price of selected options
-                                        $('select').each(function () {
-                                            var selectedOption = $(this).find('option:selected');
-                                            var price = parseFloat(selectedOption.data('wapf-price')) || parseFloat(selectedOption.data('price')) || 0; // Get the price from data attribute
-                                            console.log("Selected option: " + selectedOption.text() + " Price: " + price);
+{{--                                        // Iterate over each select element to add the price of selected options--}}
+{{--                                        $('select').each(function () {--}}
+{{--                                            var selectedOption = $(this).find('option:selected');--}}
+{{--                                            var price = parseFloat(selectedOption.data('wapf-price')) || parseFloat(selectedOption.data('price')) || 0; // Get the price from data attribute--}}
+{{--                                            console.log("Selected option: " + selectedOption.text() + " Price: " + price);--}}
 
-                                            // Only add price if it's not the default option
-                                            if (selectedOption.val()) {
-                                                totalAmount += price; // Add to the total amount
-                                            }
-                                        });
+{{--                                            // Only add price if it's not the default option--}}
+{{--                                            if (selectedOption.val()) {--}}
+{{--                                                totalAmount += price; // Add to the total amount--}}
+{{--                                            }--}}
+{{--                                        });--}}
 
-                                        $('#totalAmount').val(totalAmount.toFixed(2)); // Update the total amount display
-                                        console.log("Total amount: " + totalAmount);
-                                    }
+{{--                                        $('#totalAmount').val(totalAmount.toFixed(2)); // Update the total amount display--}}
+{{--                                        console.log("Total amount: " + totalAmount);--}}
+{{--                                    }--}}
 
-                                    // Bind the updateTotalAmount function to the change event of the select elements
-                                    $('select').on('change', updateTotalAmount);
+{{--                                    // Bind the updateTotalAmount function to the change event of the select elements--}}
+{{--                                    $('select').on('change', updateTotalAmount);--}}
 
-                                    // Initial update
-                                    updateTotalAmount();
+{{--                                    // Initial update--}}
+{{--                                    updateTotalAmount();--}}
 
-                                    // Function to handle visibility of topper text input based on selected topper option
-                                    function handleTopperVisibility() {
-                                        const selectedTopper = $('#topperBy').val();
-                                        if (selectedTopper === 'select') {
-                                            $('#topperTextSection').show();
-                                        } else {
-                                            $('#topperTextSection').hide();
-                                            $('#topperText').val(''); // Clear the text input when not visible
-                                        }
-                                    }
+{{--                                    // Function to handle visibility of topper text input based on selected topper option--}}
+{{--                                    function handleTopperVisibility() {--}}
+{{--                                        const selectedTopper = $('#topperBy').val();--}}
+{{--                                        if (selectedTopper === 'select') {--}}
+{{--                                            $('#topperTextSection').show();--}}
+{{--                                        } else {--}}
+{{--                                            $('#topperTextSection').hide();--}}
+{{--                                            $('#topperText').val(''); // Clear the text input when not visible--}}
+{{--                                        }--}}
+{{--                                    }--}}
 
-                                    // Function to handle visibility of Eko Cakes card message input based on selected option
-                                    function handleEkoCakesCard() {
-                                        const selectedOption = $('#ekoCakesCard').val();
-                                        if (selectedOption === 'yes') {
-                                            $('#ekoCakesMessageSection').show();
-                                        } else {
-                                            $('#ekoCakesMessageSection').hide();
-                                            $('#ekoCakesMessage').val(''); // Clear the text input when not visible
-                                        }
-                                    }
+{{--                                    // Function to handle visibility of Eko Cakes card message input based on selected option--}}
+{{--                                    function handleEkoCakesCard() {--}}
+{{--                                        const selectedOption = $('#ekoCakesCard').val();--}}
+{{--                                        if (selectedOption === 'yes') {--}}
+{{--                                            $('#ekoCakesMessageSection').show();--}}
+{{--                                        } else {--}}
+{{--                                            $('#ekoCakesMessageSection').hide();--}}
+{{--                                            $('#ekoCakesMessage').val(''); // Clear the text input when not visible--}}
+{{--                                        }--}}
+{{--                                    }--}}
 
-                                    $('#ekoCakesCard').on('change', function () {
-                                        handleEkoCakesCard();
-                                    });
+{{--                                    $('#ekoCakesCard').on('change', function () {--}}
+{{--                                        handleEkoCakesCard();--}}
+{{--                                    });--}}
 
-                                    // Ensure initial visibility state is correct
-                                    handleTopperVisibility();
-                                    handleEkoCakesCard();
+{{--                                    // Ensure initial visibility state is correct--}}
+{{--                                    handleTopperVisibility();--}}
+{{--                                    handleEkoCakesCard();--}}
 
-                                    // Ensure the topper input visibility changes based on selection
-                                    $('#topperBy').change(function () {
-                                        var selectedOption = $(this).find(':selected');
-                                        var price = selectedOption.data('wapf-price');
+{{--                                    // Ensure the topper input visibility changes based on selection--}}
+{{--                                    $('#topperBy').change(function () {--}}
+{{--                                        var selectedOption = $(this).find(':selected');--}}
+{{--                                        var price = selectedOption.data('wapf-price');--}}
 
-                                        if (price == '4000') {
-                                            $('#topperInput').show(); // Show the input box if Customized Topper is selected
-                                        } else {
-                                            $('#topperInput').hide(); // Hide the input box for other options
-                                        }
-                                    });
+{{--                                        if (price == '4000') {--}}
+{{--                                            $('#topperInput').show(); // Show the input box if Customized Topper is selected--}}
+{{--                                        } else {--}}
+{{--                                            $('#topperInput').hide(); // Hide the input box for other options--}}
+{{--                                        }--}}
+{{--                                    });--}}
 
-                                    // Ensure custom color input visibility changes based on selection
-                                    document.getElementById('baseColor').addEventListener('change', function () {
-                                        var selectedOption = this.value;
-                                        var colorOptions = document.getElementById('colorOptions');
+{{--                                    // Ensure custom color input visibility changes based on selection--}}
+{{--                                    document.getElementById('baseColor').addEventListener('change', function () {--}}
+{{--                                        var selectedOption = this.value;--}}
+{{--                                        var colorOptions = document.getElementById('colorOptions');--}}
 
-                                        if (selectedOption === 'choose') {
-                                            colorOptions.style.display = 'block';
-                                        } else {
-                                            colorOptions.style.display = 'none';
-                                        }
-                                    });
+{{--                                        if (selectedOption === 'choose') {--}}
+{{--                                            colorOptions.style.display = 'block';--}}
+{{--                                        } else {--}}
+{{--                                            colorOptions.style.display = 'none';--}}
+{{--                                        }--}}
+{{--                                    });--}}
 
-                                    document.getElementById('color').addEventListener('change', function () {
-                                        var customColorInput = document.getElementById('customColor');
-                                        if (this.value === 'custom') {
-                                            customColorInput.classList.remove('hidden');
-                                        } else {
-                                            customColorInput.classList.add('hidden');
-                                        }
-                                    });
-                                });
-                            </script>
+{{--                                    document.getElementById('color').addEventListener('change', function () {--}}
+{{--                                        var customColorInput = document.getElementById('customColor');--}}
+{{--                                        if (this.value === 'custom') {--}}
+{{--                                            customColorInput.classList.remove('hidden');--}}
+{{--                                        } else {--}}
+{{--                                            customColorInput.classList.add('hidden');--}}
+{{--                                        }--}}
+{{--                                    });--}}
+{{--                                });--}}
+{{--                            </script>--}}
 
 
                             <br/>
@@ -1027,5 +1027,98 @@
 
 
 
+<script>
+    $(document).ready(function() {
+        // Initialize the base price
+        let basePrice = parseFloat($('#productBasePrice').val()) || 0;
 
+        // Function to update the total amount based on selected variations and attributes
+        function updateTotalAmount() {
+            let totalAmount = basePrice;
+            let selectedOptions = [];
+
+            // Add prices from selected radio buttons
+            $('input[type="radio"]:checked').each(function() {
+                selectedOptions.push($(this).val()); // Get the selected value
+            });
+
+            // Sort selected options to match the exact order used in admin settings
+            selectedOptions.sort();
+            let selectedKey = selectedOptions.join('|');
+
+            // Retrieve the price for the selected combination from the stored data
+            let selectedPrice = $('input[type="hidden"][data-combination="' + selectedKey + '"]').val();
+            selectedPrice = parseFloat(selectedPrice) || basePrice; // Use base price if no match found
+
+            if (selectedPrice !== basePrice) {
+                totalAmount = selectedPrice;
+            }
+
+            // Add prices from selected dropdowns
+            $('select').each(function() {
+                let selectedOption = $(this).find('option:selected');
+                let price = parseFloat(selectedOption.data('wapf-price')) || 0;
+                if (selectedOption.val()) {
+                    totalAmount += price;
+                }
+            });
+
+            // Update the total price display
+            $('#totalAmount').val(totalAmount.toFixed(2));
+            console.log("Total amount: " + totalAmount);
+        }
+
+        // Bind the updateTotalAmount function to the change events
+        $('input[type="radio"], select').on('change', updateTotalAmount);
+
+        // Initial update
+        updateTotalAmount();
+
+        // Clear selections and reset price to base price
+        $('#resetButton').on('click', function() {
+            $('input[type="radio"]').prop('checked', false); // Uncheck all radio buttons
+            $('select').prop('selectedIndex', 0); // Reset dropdowns to default
+            $('#totalAmount').val(basePrice.toFixed(2)); // Reset to base price
+            console.log("All options cleared. Total amount reset to base price: " + basePrice);
+        });
+
+        // Handle visibility of custom inputs based on selections
+        function handleVisibility() {
+            const selectedTopper = $('#topperBy').val();
+            if (selectedTopper === 'select') {
+                $('#topperTextSection').show();
+            } else {
+                $('#topperTextSection').hide().val(''); // Hide and clear the input
+            }
+
+            const selectedEkoCakesCard = $('#ekoCakesCard').val();
+            if (selectedEkoCakesCard === 'yes') {
+                $('#ekoCakesMessageSection').show();
+            } else {
+                $('#ekoCakesMessageSection').hide().val(''); // Hide and clear the input
+            }
+
+            const selectedBaseColor = $('#baseColor').val();
+            if (selectedBaseColor === 'choose') {
+                $('#colorOptions').show();
+            } else {
+                $('#colorOptions').hide();
+            }
+
+            const selectedColor = $('#color').val();
+            if (selectedColor === 'custom') {
+                $('#customColor').removeClass('hidden');
+            } else {
+                $('#customColor').addClass('hidden');
+            }
+        }
+
+        // Bind visibility handlers to change events
+        $('#topperBy, #ekoCakesCard, #baseColor, #color').on('change', handleVisibility);
+
+        // Ensure initial visibility state is correct
+        handleVisibility();
+    });
+
+</script>
 @endsection
