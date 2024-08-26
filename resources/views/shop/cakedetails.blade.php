@@ -144,6 +144,7 @@
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
         <div class="loading-spinner"></div>
     </div>
+
     <!-- Breadcrumb Section Start -->
     <div class="breadcrumb" style="background-color: #F2A71B;">
         <div class="container" style="background-color: #F2A71B;">
@@ -272,7 +273,7 @@
 
                                 .attribute-box {
                                     display: inline-block;
-                                    width: 100px;
+                                    width: auto;
                                     height: 50px;
                                     text-align: center;
                                     line-height: 50px;
@@ -335,7 +336,7 @@
                                             @foreach ($uniqueValues as $value)
                                                 <label>
                                                     <input type="radio" name="attributes[{{ $attributeName }}]" value="{{ $value }}" style="display: none;" required>
-                                                    <span class="attribute-box">{{ $value }}</span>
+                                                    <span class="attribute-box cormorant-upright-regular">{{ $value }}</span>
                                                 </label>
                                             @endforeach
                                         </div>
@@ -352,7 +353,7 @@
                                             @foreach ($uniqueValues as $value)
                                                 <label>
                                                     <input type="radio" name="attributes[{{ $attributeName }}]" value="{{ $value }}" style="display: none;" required>
-                                                    <span class="attribute-box">{{ $value }}</span>
+                                                    <span class="attribute-box cormorant-upright-regular">{{ $value }}</span>
                                                 </label>
                                             @endforeach
                                         </div>
@@ -369,7 +370,7 @@
                                 <input type="hidden" data-combination="{{ $combination }}" value="{{ $price }}">
                             @endforeach
 
-                            <button id="resetButton" type="button" class="btn btn-secondary mt-3">Clear Options</button>
+                            <button id="resetButton" type="button" class="btn btn-secondary mt-3 cormorant-upright-regular">Clear Options</button>
 
                             <script>
                                 $(document).ready(function() {
@@ -389,13 +390,20 @@
                                         // Build a unique key for the selected combination
                                         let selectedKey = selectedOptions.join('|');
 
+                                        console.log("Generated combination key: " + selectedKey);
+
                                         // Retrieve the price for the selected combination from the stored data
                                         let selectedPrice = $('input[type="hidden"][data-combination="' + selectedKey + '"]').val();
                                         selectedPrice = parseFloat(selectedPrice) || basePrice; // Use base price if no match found
 
+                                        if(selectedPrice !== basePrice) {
+                                            console.log("Match found! Price updated to: " + selectedPrice);
+                                        } else {
+                                            console.log("No match found. Using base price: " + basePrice);
+                                        }
+
                                         // Update the total price display
                                         $('#totalAmount').val(selectedPrice.toFixed(2)); // Assuming an element to display the total amount
-                                        console.log("Total amount updated to: " + selectedPrice);
                                     }
 
                                     // Bind the updateTotalAmount function to the change event of radio buttons
@@ -411,6 +419,7 @@
                                     // Initial update
                                     updateTotalAmount();
                                 });
+
                             </script>
 
 
@@ -620,7 +629,8 @@
                                     @foreach($items as $item)
                                         <input type="radio" id="item{{ $item->id }}" name="option" value="{{ $item->price }}" data-wapf-price="{{ $item->price }}" data-wapf-pricetype="fixed" style="display: none;">
                                         <label for="item{{ $item->id }}" class="attribute-box">
-                                            <span>{{ $item->product }} <br>(₦{{ $item->price }})</span>
+                                            <span class="cormorant-upright-regular">{{ $item->product }} (₦{{ $item->price }})</span>
+
                                         </label>
                                     @endforeach
                                 </div>

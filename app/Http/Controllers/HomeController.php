@@ -238,6 +238,7 @@ function cakedetail($request)
     function addCart(Request  $request)
     {
 //
+        return $request;
         $validate=$request->validate([
             'id'=>'required',
             'amount'=>'required',
@@ -250,9 +251,10 @@ function cakedetail($request)
                 'id' => $product->id,
                 'name' => $product->name,
                 'image' => $product->image,
-                'flavor' => $request->flavor ??null,
-                'size' => $request->size ?? null,
-                'layers' => $request->layers ?? null,
+//                'flavor' => $request->flavor ??null,
+//                'size' => $request->size ?? null,
+//                'layers' => $request->layers ?? null,
+            'attribute'=>$request->attributes,
                 'amount' => $request->amount,
                 'color' => $request->color ?? null,
                 'topper' => $request->topperText ?? null,
@@ -307,6 +309,8 @@ function cakedetail($request)
 
 
     }
+
+
     function addCart1(Request $request)
     {
         $product = Products::where('id', $request)->first();
