@@ -273,7 +273,7 @@
 
                                 .attribute-box {
                                     display: inline-block;
-                                    width: auto;
+                                    width: 110%;
                                     height: 50px;
                                     text-align: center;
                                     line-height: 50px;
@@ -336,7 +336,7 @@
                                             @foreach ($uniqueValues as $value)
                                                 <label>
                                                     <input type="radio" name="attributes[{{ $attributeName }}]" value="{{ $value }}" style="display: none;" required>
-                                                    <span class="attribute-box cormorant-upright-regular">{{ $value }}</span>
+                                                    <div class="attribute-box cormorant-upright-regular">{{ $value }}</div>
                                                 </label>
                                             @endforeach
                                         </div>
@@ -353,7 +353,7 @@
                                             @foreach ($uniqueValues as $value)
                                                 <label>
                                                     <input type="radio" name="attributes[{{ $attributeName }}]" value="{{ $value }}" style="display: none;" required>
-                                                    <span class="attribute-box cormorant-upright-regular">{{ $value }}</span>
+                                                    <div class="attribute-box cormorant-upright-regular">{{ $value }}</div>
                                                 </label>
                                             @endforeach
                                         </div>
@@ -616,10 +616,10 @@
 
                             <br/>
                             <div class="">
-                                <h6 class="cormorant-upright-regular" >
+                                <div class="cormorant-upright-regular" >
                                     {!! $addalert->message !!}
 
-                                </h6>
+                                </div>
                             </div>
                             <br/>
                             <br/>
