@@ -118,14 +118,14 @@
     <!-- Category Section Start -->
     <div class="category-four category-four_bg section-padding-03" data-bg-image="" style="background-color: #f6f6f6">
         <div class="container custom-container-five">
-            <div class="row row-cols-2 row-cols-lg-4 category-four_wrapper mb-n60">
+            <div class="row row-cols-2 row-cols-lg-4  mb-n60">
                 @foreach($category as $cat)
                 <div class="col mb-60">
                     <!-- Single Category Four Start -->
-                    <div class="category-four_box">
+                    <div class="">
 {{--                        <span class="category-four_border"></span>--}}
                         <a href="{{url('category', $cat['id'])}}" class="category-four_thumb">
-                            <div class="product-item__badge" style="background-color: #EF9B00; color: #ffffff">Categories</div>
+{{--                            <div class="product-item__badge" style="background-color: #EF9B00; color: #ffffff">Categories</div>--}}
                             @if($cat['image'] != null)
                             <img width="100" src="{{url($cat['image'])}}" alt="Category-Image">
                             @else

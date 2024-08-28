@@ -434,7 +434,7 @@
                             </div>
                             <input type="text" name="topperText" id="topperText" class="form-control cormorant-upright-light text-center"  />
 
-                            <div class="cormorant-upright-regular">Please write a short message you would like to see <br/>on the cake</div>
+                            <div class="cormorant-upright-regular">Please write a short message you would like to see on the cake</div>
                             @endif
                             <br/>
                             @if($product->topper == 1)
