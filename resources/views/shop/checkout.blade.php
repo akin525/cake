@@ -101,6 +101,14 @@
                                 </div>
                             </div>
                             <br/>
+                            <div class="col">
+                                <h4 class="mb-4" style="font-size: 14px">Delivery Date *</h4>
+                                <input class="form-field" type="date" name="date" id="today" placeholder="Choose date" required>
+                                <br/>
+                                <br/>
+                                <input type="text" class="form-field" name="formatted_date" id="formatted-date" readonly placeholder="---/--/--" style="display: none;">
+                            </div>
+
                             <h4 class="mb-4" style="font-size: 14px">Delivery Time *</h4>
                             <div class="col">
                                 <h4 class="mb-4" style="font-size: 14px">Choose Delivery Time (optional)</h4>
@@ -114,13 +122,7 @@
                                 </div>
                             </div>
                             <br/>
-                            <div class="col">
-                                <h4 class="mb-4" style="font-size: 14px">Delivery Date *</h4>
-                                <input class="form-field" type="date" name="date" id="today" placeholder="Choose date" required>
-                                <br/>
-                                <br/>
-                                <input type="text" class="form-field" name="formatted_date" id="formatted-date" readonly placeholder="---/--/--" style="display: none;">
-                            </div>
+
                             <br/>
                             <script>
                                 function setMinDate() {

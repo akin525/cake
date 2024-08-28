@@ -238,7 +238,7 @@ function cakedetail($request)
     function addCart(Request  $request)
     {
 //
-        return $request;
+//        return $request;
         $validate=$request->validate([
             'id'=>'required',
             'amount'=>'required',

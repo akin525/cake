@@ -234,10 +234,7 @@
 
                         <div class="product-head mb-3">
                             <!-- Price Start -->
-                            <div class="price-container">
-                                <span class="product-head-price">₦</span>
-                                <input type="text" id="totalAmount" class="no-border-input" name="amount">
-                            </div>
+
 
 
                             <input type="hidden" id="defaultAmount"
@@ -262,7 +259,10 @@
 
 
 
-
+                            <div class="price-container">
+                                <span class="product-head-price">₦</span>
+                                <input type="text" id="totalAmount" class="no-border-input" name="amount">
+                            </div>
 
                             <style>
                                 .attribute-options {
