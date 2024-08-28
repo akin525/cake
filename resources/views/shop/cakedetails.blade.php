@@ -639,44 +639,44 @@
                                 <button id="unselectButton" type="button" class="btn btn-secondary mt-3">Unselect Add-Ons</button>
                             @endif
 
-{{--                            <script>--}}
-{{--                                document.querySelectorAll('.attribute-box').forEach(function (label) {--}}
-{{--                                    label.addEventListener('click', function() {--}}
-{{--                                        var radio = document.getElementById(this.getAttribute('for'));--}}
-{{--                                        if (radio) {--}}
-{{--                                            radio.checked = true; // Manually check the radio button--}}
+                            <script>
+                                document.querySelectorAll('.attribute-box').forEach(function (label) {
+                                    label.addEventListener('click', function() {
+                                        var radio = document.getElementById(this.getAttribute('for'));
+                                        if (radio) {
+                                            radio.checked = true; // Manually check the radio button
 
-{{--                                            var itemnumber = parseFloat(radio.value); // Get the selected item price--}}
+                                            var itemnumber = parseFloat(radio.value); // Get the selected item price
 
-{{--                                            var defaultAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));--}}
-{{--                                            var totalAmount = defaultAmount; // Initialize total amount with current total--}}
+                                            var defaultAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));
+                                            var totalAmount = defaultAmount; // Initialize total amount with current total
 
-{{--                                            var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price--}}
-{{--                                            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount--}}
-{{--                                            totalAmount += itemnumber; // Add new item price to total amount--}}
+                                            var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price
+                                            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
+                                            totalAmount += itemnumber; // Add new item price to total amount
 
-{{--                                            document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation--}}
-{{--                                            document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display--}}
-{{--                                        }--}}
-{{--                                    });--}}
-{{--                                });--}}
+                                            document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation
+                                            document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display
+                                        }
+                                    });
+                                });
 
-{{--                                // Unselect button functionality--}}
-{{--                                document.getElementById('unselectButton').addEventListener('click', function() {--}}
-{{--                                    document.querySelectorAll('input[name="option"]').forEach(function (radio) {--}}
-{{--                                        radio.checked = false; // Uncheck all radio buttons--}}
-{{--                                    });--}}
+                                // Unselect button functionality
+                                document.getElementById('unselectButton').addEventListener('click', function() {
+                                    document.querySelectorAll('input[name="option"]').forEach(function (radio) {
+                                        radio.checked = false; // Uncheck all radio buttons
+                                    });
 
-{{--                                    var defaultPrice = 0; // Assume the default price is 0 or replace with actual base price--}}
-{{--                                    var currentAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));--}}
-{{--                                    var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price--}}
+                                    var defaultPrice = 0; // Assume the default price is 0 or replace with actual base price
+                                    var currentAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));
+                                    var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price
 
-{{--                                    var totalAmount = currentAmount - previousLayerPrice + defaultPrice; // Revert to the base price--}}
+                                    var totalAmount = currentAmount - previousLayerPrice + defaultPrice; // Revert to the base price
 
-{{--                                    document.getElementById('tPrice').value = defaultPrice; // Reset to default price--}}
-{{--                                    document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display--}}
-{{--                                });--}}
-{{--                            </script>--}}
+                                    document.getElementById('tPrice').value = defaultPrice; // Reset to default price
+                                    document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display
+                                });
+                            </script>
 
 
 
