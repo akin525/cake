@@ -113,7 +113,7 @@
                             <div class="col">
                                 <h4 class="mb-4" style="font-size: 14px">Choose Delivery Time (optional)</h4>
                                 <div class="select-wrapper">
-                                    <select name="time" id="daypart" class="form-field" data-placeholder="">
+                                    <select name="time"  class="form-field" data-placeholder="">
                                         <option value="blank">Select a delivery time</option>
                                         <option value="08:30am - 12:00pm">08:30am - 12:00pm</option>
                                         <option value="12:00pm - 04:00pm">12:00pm - 04:00pm</option>
