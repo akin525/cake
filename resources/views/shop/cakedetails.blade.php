@@ -261,7 +261,7 @@
 
                             <div class="price-container">
                                 <span class="product-head-price">₦</span>
-                                <input type="text" id="totalAmount" class="no-border-input" name="amount">
+                                <input type="text" id="totalAmount12" class="no-border-input" name="amount" value="{{ $product->price }}" readonly/>
                             </div>
 
                             <style>
@@ -822,9 +822,9 @@
 
                             <li>
 
-{{--                                <h6 class="cormorant-upright-semibold">Total Price</h6>--}}
-{{--                                <span class="product-head-price"  style="font-size: 20px ">₦</span>--}}
-{{--                                <input type="text" id="totalAmount" class="no-border-input" name="amount">--}}
+                                <h6 class="cormorant-upright-semibold">Total Price</h6>
+                                <span class="product-head-price"  style="font-size: 20px ">₦</span>
+                                <input type="text" id="totalAmount" class="no-border-input" name="amount">
                                 <!-- Cart Button Start -->
                                 <div class="cart-btn">
                                     <div class="add-to_cart">
