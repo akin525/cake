@@ -102,7 +102,7 @@
     <div class="container-fluid">
         <div class="row main-content bg-success text-center">
             <div class="col-md-4 text-center company__info">
-                <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
+{{--                <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>--}}
                 {{--            <h4 class="company_title">Your Company Logo</h4>--}}
                 <center>
                     <img width="100" src="{{asset('assets/images/eko.png')}}" alt=""/>
@@ -124,11 +124,9 @@
                 <input type="text" name="name" id="name" class="form__input" placeholder="Fullname">
                 <x-input-error :messages="$errors->get('name')" class="alert alert-danger" />
             </div>
-{{--        <div>--}}
-{{--            <x-input-label for="name" :value="__('Name')" />--}}
-{{--            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />--}}
-{{--            <x-input-error :messages="$errors->get('name')" class="mt-2" />--}}
-{{--        </div>--}}
+        <div>
+            <input id="dob" class="form__input" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+        </div>
 
             <div class="row">
                 <input type="email" name="email" id="email" class="form__input" placeholder="email">
