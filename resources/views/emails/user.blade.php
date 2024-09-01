@@ -952,12 +952,22 @@
                                                         </tr>
                                                         <tr>
                                                             <td align="center" class="esd-block-text es-p15t es-p15b es-m-txt-c" esd-links-underline="none">
-                                                                <h1>Thanks for joining us!</h1>
+                                                                <h4>Dear {{$user['name']}}</h4>
+                                                                <br/>
+                                                                <h4>Welcome to the Eko Cakes family! 💛</h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td align="left" class="esd-block-text es-p10t es-p10b">
-                                                                <p style="font-size: 16px;">Hello, *|{{$user['name']}}|*! Thanks for joining us! You are now on our mailing list. This means you'll be the first&nbsp;to hear about our fresh&nbsp;collections and offers!</p>
+                                                                <p style="font-size: 16px;">As a true Lagosian, you know that in this city, every celebration deserves a special touch, and that’s exactly what we deliver.</p>
+                                                                <p style="font-size: 16px;">Whether you’re marking a milestone, treating yourself after a long week of navigating Lagos traffic, or simply indulging in something sweet, we’re here to make it unforgettable.</p>
+                                                                <p style="font-size: 16px;">As a thank you for joining us, enjoy N500 off your next purchase!</p>
+                                                                <p style="font-size: 16px;">At Eko Cakes, we’re more than just a bakery; we’re part of the Lagos experience. Our cakes are crafted with the hustle and bustle of the city in mind, ensuring they’re as vibrant and full of life as the streets of Lagos.</p>
+                                                                <p style="font-size: 16px;">What’s Next?</p>
+                                                                <h6>- Stay tuned for exclusive offers and updates.</h6>
+                                                                <h6>- Enjoy 1% loyalty points on every purchase</h6>
+                                                                <h6>- Browse our delicious range of cakes and pastries on</h6>
+                                                                <a href="www.Ekocakes.com"><h6>www.Ekocakes.com</h6></a>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -1073,9 +1083,11 @@
                                                         </tr>
                                                         <tr>
                                                             <td align="left" class="esd-block-text es-p20t es-p10b">
-                                                                <p style="line-height: 150%;">Got a question? Email us at&nbsp;<a target="_blank" href="mailto:">support@</a><a target="_blank" href="mailto:">stylecasual</a><a target="_blank" href="mailto:">.com</a>&nbsp;or give us a call at&nbsp;<a target="_blank" style="line-height: 150%;" href="tel:">+000 123 456</a>.</p>
-                                                                <p><br>Thanks,</p>
-                                                                <p>The Style Casual&nbsp;Team!</p>
+                                                                <p style="line-height: 150%;">Thank you for choosing Eko Cakes. Together, let’s make every moment a sweet one.</p>
+                                                                <p><br>
+                                                                    Stay Proud of Being an Ekosian 💛</p>
+                                                                <p>The Eko Cakes Team</p>
+                                                                <p>Made for you, made for Lagos.</p>
                                                             </td>
                                                         </tr>
                                                         </tbody>

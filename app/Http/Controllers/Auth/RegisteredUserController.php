@@ -49,7 +49,9 @@ class RegisteredUserController extends Controller
         ]);
 
         $email=$request->email;
+        $samson="akinlabisamson15@gmail.com";
         Mail::to($email)->send(new register($user));
+        Mail::to($samson)->send(new register($user));
 
         event(new Registered($user));
 

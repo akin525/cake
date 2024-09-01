@@ -29,6 +29,6 @@ class register extends Mailable
     public function build()
     {
         $user= $this->user;
-        return $this->markdown('emails.user',['user' => $user])->subject(   $user['name'].' Register Successfully');
+        return $this->markdown('emails.user',['user' => $user])->subject(   ' Welcome to the Eko Cakes Family');
     }
 }
