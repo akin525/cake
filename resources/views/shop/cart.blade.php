@@ -1,6 +1,7 @@
 @extends('layouts.header')
 @section('tittle', 'Cart')
 @section('content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Breadcrumb Section Start -->
     <div class="breadcrumb" data-bg-image="{{asset('assets/images/bg/breadcrumb-bg.jpg')}}">
@@ -31,8 +32,7 @@
                         <table class="cart-table table text-center align-middle mb-6 d-none d-md-table">
                             <thead>
                             <tr>
-                                <th></th>
-                                <th></th>
+                                <th>Remove</th>
                                 <th class="title text-start" style="font: 21px cormorant, serif">Product</th>
                                 <th class="price" style="font: 21px cormorant, serif">Price</th>
                                 <th class="quantity" style="font: 21px cormorant, serif">Quantity</th>
@@ -43,42 +43,40 @@
 {{--                            @if(empty($cat))--}}
 {{--                                <p>Your cart is empty.</p>--}}
 {{--                            @else--}}
-                                @forelse($cart as $key => $cat)
+@forelse($cart as $key => $cat)
+    <tr>
+        <th class="cart-remove">
+            <!-- Removed the id attribute and replaced with class -->
+            <form class="remove-item-form" data-id="{{ $key }}">
+                @csrf
+                <input type="hidden" name="id" value="{{ $key }}">
+                <button type="submit" class="cart-product-mobile-remove">Remove
+                    <i class="lastudioicon lastudioicon-e-remove"></i>
+                </button>
+            </form>
+        </th>
+        <th class="cart-thumb">
+            <a href="{{ route('cakedetail', $cat['id']) }}">
+                <img src="{{ url($cat['image']) }}" alt="{{ $cat['name'] }}">
+            </a>
+        </th>
+        <th class="text-start">
+            <a href="{{ route('cakedetail', $cat['id']) }}" style="font-size: 14px">{{ $cat['name'] }}</a>
+        </th>
+        <td style="font-size: 14px">₦{{ $cat['amount'] }}</td>
+        <td class="text-center cart-quantity">
+            <!-- Quantity Start -->
+            <div class="quantity">
+                <div class="cart-plus-minus border-0 mx-auto"></div>
+            </div>
+            <!-- Quantity End -->
+        </td>
+        <td style="font-size: 14px">₦{{ $cat['amount'] }}</td>
+    </tr>
+@empty
+    <h2 class="text-center">No Product Added yet</h2>
+@endforelse
 
-
-
-                            <tr>
-                                <th class="cart-remove">
-                                    <form id="cancelcart" class="remove-item-form">
-                                        @csrf
-                                        <input type="hidden" name="item_index" value="{{ $key }}">
-                                        <button type="submit" class="cart-product-mobile-remove">
-                                            <i class="lastudioicon lastudioicon-e-remove"></i>
-                                        </button>
-                                    </form>
-                                </th>
-                                <th class="cart-thumb">
-                                    <a href="{{route('cakedetail',$cat['id'])}}">
-                                        <img src="{{url($cat['image'])}}" alt="Croissant Italy Cake">
-                                    </a>
-                                </th>
-                                <th class="text-start">
-                                    <a href="{{route('cakedetail',$cat['id'])}}" style="font-size: 14px">{{$cat['name']}}</a>
-                                </th>
-                                <td style="font-size: 14px">₦{{$cat['amount']}}</td>
-                                <td class="text-center cart-quantity">
-                                    <!-- Quantity Start -->
-                                    <div class="quantity">
-                                        <div class="cart-plus-minus border-0 mx-auto"></div>
-                                    </div>
-                                    <!-- Quantity End -->
-                                </td>
-                                <td style="font-size: 14px">₦{{$cat['amount']}}</td>
-                            </tr>
-{{--@endif--}}
-                            @empty
-                                <h2 class="text-center"> No Product Added yet</h2>
-                            @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -93,9 +91,9 @@
                                         <img src="{{ url($cat['image']) }}" alt="{{ $cat['name'] }}" width="90" height="103">
                                     </a>
                                     <!-- Form for removing item from cart -->
-                                    <form id="cancelcart" class="remove-item-form">
+                                    <form class="remove-item-form" data-id="{{ $key }}">
                                         @csrf
-                                        <input type="hidden" name="item_index" value="{{ $key }}">
+                                        <input type="hidden" name="id" value="{{ $key }}">
                                         <button type="submit" class="cart-product-mobile-remove">
                                             <i class="lastudioicon lastudioicon-e-remove"></i>
                                         </button>
@@ -106,7 +104,7 @@
                                         <a href="{{ route('cakedetail', $cat['id']) }}" style="font-size: 14px">{{ $cat['name'] }}</a>
                                     </h5>
                                     <span class="cart-product-mobile-quantity" style="font-size: 14px">1 x ₦{{ $cat['amount'] }}</span>
-                                    <span class="cart-product-mobile-total" ><b style="font-size: 14px">Total: ₦{{ $cat['amount'] }}</b></span>
+                                    <span class="cart-product-mobile-total"><b style="font-size: 14px">Total: ₦{{ $cat['amount'] }}</b></span>
                                     <!-- Quantity Start -->
                                     <div class="quantity">
                                         <div class="cart-plus-minus border-0"></div>
@@ -168,51 +166,66 @@
     <!-- Shop Cart Section End -->
     <script>
         $(document).ready(function() {
-            $('#cancelcart').click(function() {
-                var idValue = $(this).data('id'); // Get the ID value from data attribute
+            $('.remove-item-form').on('submit', function(e) {
+                e.preventDefault(); // Prevent form submission
 
-                // Show the loading spinner
+                var idValue = $(this).find('input[name="id"]').val(); // Get the ID from the hidden input
+
+                // Show the loading toast notification
                 Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'info',
                     title: 'Processing',
                     text: 'Please wait...',
-                    icon: 'info',
-                    allowOutsideClick: false,
-                    showConfirmButton: false
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    timer: 3000
                 });
 
-                // Send the selected value to the '/getOptions' route
+                // Send the selected value to the cancelcart route via AJAX
                 $.ajax({
-                    url: '{{route('cancelcart')}}',
-                    type: 'post',
-                    data: { id: idValue }, // Pass the ID value in the request
+                    url: '{{ route('cancelcart') }}', // Ensure your route is correct
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}', // CSRF token for security
+                        id: idValue // Pass the product ID
+                    },
                     success: function(response) {
                         // Handle the successful response
-                        if (response.status == '1') {
+                        if (response.status === '1') {
                             Swal.fire({
+                                toast: true,
+                                position: 'top-end',
                                 icon: 'success',
-                                title: 'Success',
-                                text: response.message
+                                title: response.message,
+                                showConfirmButton: false,
+                                timer: 3000
                             }).then(() => {
-                                location.reload(); // Reload the page
+                                location.reload(); // Reload the page to update the cart
                             });
                         } else {
                             Swal.fire({
+                                toast: true,
+                                position: 'top-end',
                                 icon: 'info',
-                                title: 'Pending',
-                                text: response.message
+                                title: response.message,
+                                showConfirmButton: false,
+                                timer: 3000
                             });
-                            // Handle any other response status
                         }
                     },
                     error: function(xhr) {
                         Swal.fire({
+                            toast: true,
+                            position: 'top-end',
                             icon: 'error',
-                            title: 'Fail',
-                            text: xhr.responseText
+                            title: 'Failed',
+                            text: xhr.responseText,
+                            showConfirmButton: false,
+                            timer: 3000
                         });
-                        // Handle any errors
                         console.log(xhr.responseText);
-                        console.log(xhr);
                     }
                 });
             });

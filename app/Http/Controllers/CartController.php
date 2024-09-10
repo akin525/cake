@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -11,27 +12,33 @@ class CartController
 {
     function removefromcart(Request $request)
     {
-        if (Auth::user()) {
-            $cart = Cart::where('id', $request)->delete();
-            $msg = "Product Removed";
-        } else {
-            $cart = Session::get('selected_product', []);
+//        return response()->json($request, Response::HTTP_BAD_REQUEST);
 
-            // You need to specify which item to remove dynamically
-            $itemIndexToRemove = $request->input('item_index');
+        // Validate the request to ensure 'id' is present
+        $validate = $request->validate([
+            'id' => 'required',
+        ]);
 
-            // Check if the item exists in the cart
-            if (isset($cart[$itemIndexToRemove])) {
-                // Unset the item from the cart array
-                unset($cart[$itemIndexToRemove]);
+        // Get the cart from the session
+        $cart = Session::get('selected_product', []);
 
-                // Update the session with the modified cart array
-                Session::put('selected_product', $cart);
-                $msg = "Product Removed from Cart";
-            } else {
-                $msg = "Item not found in Cart";
-            }
-        }
+        // Convert request id to match product id type
+        $productId = $request->id;
+
+        // Filter the cart to remove the product with the specified id
+        $cart = array_filter($cart, function ($item) use ($productId) {
+            // Ensure both values are compared as integers (or as strings if needed)
+            return (int) $item['id'] !== (int) $productId;
+        });
+
+//        return response()->json($cart, Response::HTTP_BAD_REQUEST);
+
+        // Re-index the cart to avoid gaps in the keys
+        $cart = array_values($cart);
+
+        // Update the session with the modified cart
+        Session::put('selected_product', $cart);
+        $msg = "Product Removed from Cart";
 
         return response()->json([
             'status' => 1,
