@@ -231,4 +231,10 @@ class MembershioController extends Controller
 
         return view('membership.order', compact('orders'));
     }
+    function allpayment()
+    {
+        $payment=Payments::where('user_id', Auth::user()->name)->get();
+
+        return view('membership.payment', compact('payment'));
+    }
 }

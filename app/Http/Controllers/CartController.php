@@ -12,40 +12,42 @@ class CartController
 {
     function removefromcart(Request $request)
     {
-//        return response()->json($request, Response::HTTP_BAD_REQUEST);
-
-        // Validate the request to ensure 'id' is present
-        $validate = $request->validate([
-            'id' => 'required',
+        // Validate the request to ensure 'id' is provided
+        $request->validate([
+            'id' => 'required|integer',
         ]);
 
-        // Get the cart from the session
+        // Retrieve the cart from the session
         $cart = Session::get('selected_product', []);
 
-        // Convert request id to match product id type
-        $productId = $request->id;
+        // Get the product ID from the request
+        $productId = (int) $request->id;
 
-        // Filter the cart to remove the product with the specified id
+        // Filter out the product with the given ID from the cart
         $cart = array_filter($cart, function ($item) use ($productId) {
-            // Ensure both values are compared as integers (or as strings if needed)
-            return (int) $item['id'] !== (int) $productId;
+            return (int) $item['id'] !== $productId;
         });
-
-//        return response()->json($cart, Response::HTTP_BAD_REQUEST);
 
         // Re-index the cart to avoid gaps in the keys
         $cart = array_values($cart);
 
-        // Update the session with the modified cart
-        Session::put('selected_product', $cart);
-        $msg = "Product Removed from Cart";
+        // Update the session with the modified cart, or clear the cart if empty
+        if (empty($cart)) {
+            Session::forget('selected_product'); // Clear the cart if it's empty
+            $msg = "Cart is now empty.";
+        } else {
+            Session::put('selected_product', $cart); // Update session with modified cart
+            $msg = "Product Removed from Cart";
+        }
 
+        // Return a JSON response indicating success
         return response()->json([
             'status' => 1,
             'message' => $msg,
         ]);
     }
-function clearcart()
+
+    function clearcart()
 {
 
         $msg = "Cart clear Successful";

@@ -201,7 +201,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{route('membership/payments')}}">
                                 <i class="iconsmind-File-Bookmark"><span class="path1"></span><span class="path2"></span></i>
                                 <span>Payments</span>
                             </a>

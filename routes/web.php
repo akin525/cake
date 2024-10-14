@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AlertController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\FqController;
+use App\Http\Controllers\admin\MemberShipController;
 use App\Http\Controllers\admin\OrdersController;
 use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\ProductsController;
@@ -120,6 +121,7 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['plan']], function () {
         Route::get('membership/dashboard', [MembershioController::class, 'mydashboard'])->name('membership/dashboard');
         Route::get('membership/order', [MembershioController::class, 'myorder'])->name('membership/order');
+        Route::get('membership/payments', [MembershioController::class, 'allpayment'])->name('membership/payments');
     });
 });
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -219,6 +221,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('admin/topper', [SetiingsController::class, 'createtopper'])->name('admin/topper');
     Route::post('admin/updatetopper', [SetiingsController::class, 'updatetopper'])->name('admin/updatetopper');
     Route::get('admin/deletetopper/{id}', [SetiingsController::class, 'detetetopper'])->name('admin/deletetopper');
+
+
+    Route::get('admin/plans', [MembershipController::class, 'allpan'])->name('admin/plans');
+    Route::post('admin/plans', [MembershipController::class, 'createplan'])->name('admin/plans');
+    Route::get('admin/deleteplan/{id}', [MemberShipController::class, 'deleteplan'])->name('admin/deleteplan');
+
 });
     require __DIR__.'/auth.php';
 

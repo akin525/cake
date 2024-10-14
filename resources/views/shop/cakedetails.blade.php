@@ -251,7 +251,7 @@
                         </div>
                         <!-- Product Head End -->
                         <!-- Description Start -->
-                        <div class="cormorant-upright-regular" style="font-size: 14px">{!! $product->description !!}</div>
+                        <div class="cormorant-upright-regular" style="font-size: 15px">{!! $product->description !!}</div>
                         <!-- Description End -->
                         <form method="post" action="{{route('addcart1')}}">
                             @csrf

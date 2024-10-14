@@ -50,17 +50,15 @@
             <div class="col-lg-4">
                 <div class="box">
                     <div class="box-body text-center">
-                        <h3 class="price">
-                            <sup>₦</sup>{{$pa['amount']}}
+                        <h4 class="price" style="font-size: 30px">
+                            ₦{{$pa['amount']}}
                             <span>&nbsp;</span>
-                        </h3>
+                        </h4>
                         <h5 class="text-uppercase text-muted">{{$pa['plan']}}</h5>
 
                         <hr>
-                        <p><strong>{{$pa['limits']}}</strong> Ads-Post</p>
-                        <p><strong>24x7</strong> Support</p>
                         <p><strong>{{$pa['days']}}Days</strong> Duration</p>
-                        <p><strong>1</strong> User</p>
+                        <p><strong>{!! $pa['body'] !!}</strong></p>
 
                         <br/>
                         <br/>

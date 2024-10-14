@@ -258,6 +258,14 @@
                                 </a>
                             </li>
                             <li class="list-group-item px-0 py-0 sidebar-item mb-3 border-0">
+                                <a href="{{route('admin/plans')}}" class="text-heading text-decoration-none lh-1 sidebar-link py-5 px-6 d-flex align-items-center" title="Dashboard">
+<span class="sidebar-item-icon w-40px d-inline-block text-muted">
+<i class="fas fa-money-bill alt"></i>
+</span>
+                                    <span class="sidebar-item-text fs-14px fw-semibold">All Plans</span>
+                                </a>
+                            </li>
+                            <li class="list-group-item px-0 py-0 sidebar-item mb-3 border-0">
                                 <a href="{{route('admin/about')}}" class="text-heading text-decoration-none lh-1 sidebar-link py-5 px-6 d-flex align-items-center" title="Dashboard">
 <span class="sidebar-item-icon w-40px d-inline-block text-muted">
 <i class="fas fa-book-bookmark alt"></i>

@@ -212,6 +212,8 @@
                                 title: response.message,
                                 showConfirmButton: false,
                                 timer: 3000
+                            }).then(() => {
+                                location.reload(); // Reload the page to update the cart
                             });
                         }
                     },
