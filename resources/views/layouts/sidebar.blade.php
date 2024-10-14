@@ -20,8 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Style-->
-{{--    <link rel="stylesheet" href="{{asset('ads/css/style.css')}}">--}}
-{{--    <link rel="stylesheet" href="{{asset('ads/css/skin_color.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('ads/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('ads/css/skin_color.css')}}">
 @yield('style')
 </head>
 <style>

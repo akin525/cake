@@ -19,7 +19,6 @@
 
         </div>
     </div>
-    @include('sweetalert::alert')
 
     <br>
     <br>
