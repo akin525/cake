@@ -91,9 +91,9 @@
                                         <img src="{{ url($cat['image']) }}" alt="{{ $cat['name'] }}" width="90" height="103">
                                     </a>
                                     <!-- Form for removing item from cart -->
-                                    <form class="remove-item-form" data-id="{{ $key }}">
+                                    <form class="remove-item-form" data-id="{{ $cat['id'] }}">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $key }}">
+                                        <input type="hidden" name="id" value="{{ $cat['id'] }}">
                                         <button type="submit" class="cart-product-mobile-remove">
                                             <i class="lastudioicon lastudioicon-e-remove"></i>
                                         </button>
