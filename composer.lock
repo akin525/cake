@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7589ecaa680ed67002efd51a7f0db55e",
+    "content-hash": "a68ddcad4301afc7b579a9daaaac3a5b",
     "packages": [
         {
             "name": "brick/math",
@@ -3335,6 +3335,47 @@
                 }
             ],
             "time": "2024-06-15T16:17:23+00:00"
+        },
+        {
+            "name": "savebills/laravel-budpay",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/akin525/savebills.git",
+                "reference": "bce07a0e33887ac0fb8bb218c6b672ac9dd53408"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/akin525/savebills/zipball/bce07a0e33887ac0fb8bb218c6b672ac9dd53408",
+                "reference": "bce07a0e33887ac0fb8bb218c6b672ac9dd53408",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "illuminate/support": "^8.0|^9.0|^10.0",
+                "php": "^7.3|^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BudPay\\BudPayServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BudPay\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Laravel package for interacting with BudPay APIs",
+            "support": {
+                "issues": "https://github.com/akin525/savebills/issues",
+                "source": "https://github.com/akin525/savebills/tree/main"
+            },
+            "time": "2024-09-07T12:09:56+00:00"
         },
         {
             "name": "symfony/console",
@@ -8270,7 +8311,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "savebills/laravel-budpay": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -12,6 +12,8 @@ class CartController
 {
     function removefromcart(Request $request)
     {
+
+
         // Validate the request to ensure 'id' is provided
         $request->validate([
             'id' => 'required|integer',
@@ -22,6 +24,7 @@ class CartController
 
         // Get the product ID from the request
         $productId = (int) $request->id;
+//        return response()->json($productId, Response::HTTP_BAD_REQUEST);
 
         // Filter out the product with the given ID from the cart
         $cart = array_filter($cart, function ($item) use ($productId) {
