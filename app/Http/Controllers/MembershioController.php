@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Orders;
 use App\Models\Payments;
 use App\Models\Plan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
