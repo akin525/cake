@@ -124,20 +124,20 @@
                             <i class="icon-Expand-arrows"><span class="path1"></span><span class="path2"></span></i>
                         </a>
                     </li>
-                    <li class="btn-group d-lg-inline-flex d-none">
-                        <div class="app-menu">
-                            <div class="search-bx mx-5">
-                                <form>
-                                    <div class="input-group">
-                                        <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn" type="submit" id="button-addon3"><i class="ti-search"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
+{{--                    <li class="btn-group d-lg-inline-flex d-none">--}}
+{{--                        <div class="app-menu">--}}
+{{--                            <div class="search-bx mx-5">--}}
+{{--                                <form>--}}
+{{--                                    <div class="input-group">--}}
+{{--                                        <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">--}}
+{{--                                        <div class="input-group-append">--}}
+{{--                                            <button class="btn" type="submit" id="button-addon3"><i class="ti-search"></i></button>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </li>--}}
 
                     <!-- User Account-->
                     <li class="dropdown user user-menu">
@@ -146,11 +146,11 @@
                         </a>
                         <ul class="dropdown-menu animated flipInX">
                             <li class="user-body">
-                                <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>
-                                <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
+{{--                                <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>--}}
+{{--                                <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>--}}
+{{--                                <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>--}}
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+                                <a class="dropdown-item" href="{{route('logout')}}"><i class="ti-lock text-muted mr-2"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
