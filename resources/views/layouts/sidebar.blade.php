@@ -224,6 +224,26 @@
             <section class="content">
                 <div class="row">
             @yield('content')
+                    @if(Session::has('error'))
+                        <script>
+                            Swal.fire({
+                                title: 'Ooops..',
+                                text: '{{ Session::get('error') }}',
+                                icon: 'warning',
+                                confirmButtonColor: '#3085d6',
+                            })
+                        </script>
+                    @endif
+                    @if(Session::has('status'))
+                        <script>
+                            Swal.fire({
+                                title: 'done',
+                                text: '{{ Session::get('status') }}',
+                                icon: 'success',
+                                confirmButtonColor: '#3085d6',
+                            })
+                        </script>
+                    @endif
                 </div>
             </section>
 
@@ -249,6 +269,8 @@
 
 @yield('script')
 <!-- Vendor JS -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
 <script src="{{asset('ads/js/vendors.min.js')}}"></script>
 <script src="{{asset('ads/js/pages/chat-popup.js')}}"></script>
 <script src="{{asset('ads/assets/icons/feather-icons/feather.min.js')}}"></script>

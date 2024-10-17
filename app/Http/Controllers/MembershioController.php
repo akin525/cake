@@ -9,9 +9,6 @@ use App\Models\Order;
 use App\Models\Orders;
 use App\Models\Payments;
 use App\Models\Plan;
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -218,8 +215,8 @@ class MembershioController extends Controller
             $user->save();
 
             $msg="Payments for membership plan Successful";
-            Alert::success('Done', $msg);
-            return  redirect('membership/dashboard');
+
+            return  redirect('membership/dashboard')->with('status', $msg);
 
         }
 
