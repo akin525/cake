@@ -168,7 +168,7 @@
                             </center>
                         </div>
                         <div class="row">
-                            <p>Become a membership? <a href="{{route('register')}}">Click Here</a></p>
+                            <p>Become a member? <a href="{{route('register')}}">Click Here</a></p>
                         </div>
                     </form>
                 </div>

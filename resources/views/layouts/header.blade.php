@@ -372,7 +372,7 @@
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"></span>
                             </a>
                         </li>
-                        <li><a class="action" href="{{route('dashboard')}}"><i class="lastudioicon-single-01-2"></i></a></li>
+                        <li><a class="action" href="{{route('membership/dashboard')}}"><i class="lastudioicon-single-01-2"></i></a></li>
                         <li class="d-lg-none">
                             <button class="action" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"><i class="lastudioicon-menu-8-1"></i></button>
                         </li>
