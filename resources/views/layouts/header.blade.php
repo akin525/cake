@@ -418,7 +418,7 @@
                         @endauth
                         @guest
                             <li class="position-static">
-                                                    <a class="menu-item-link  merriweather-bold" href="{{route('membership/login')}}"><span>Join/login Membership</span></a>
+                                                    <a class="menu-item-link  merriweather-bold" href="{{route('membership/login')}}"><span>login</span></a>
                                                 </li>
                         @endguest
                                                 <li class="position-static">
@@ -474,27 +474,27 @@
             </li>
 
             <li>
-                <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold"><span>All-Cakes</span></a>
+                <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold"><span>All Cakes</span></a>
 
             </li>
             <li class="position-static">
-                <a class="menu-item-link" href="{{route('about')}}"><span>About-Us</span></a>
+                <a class="menu-item-link merriweather-bold" href="{{route('about')}}"><span>About Us</span></a>
             </li>
             @guest
-            <li><a class="menu-item-link" href="{{route('membership/login')}}"><span>Join/login Membership</span></a></li>
+            <li><a class="menu-item-link merriweather-bold" href="{{route('membership/login')}}"><span>login</span></a></li>
             @endauth
             @auth
-            <li><a class="menu-item-link" href="{{route('membership/dashboard')}}"><span>Dashboard</span></a></li>
+            <li><a class="menu-item-link merriweather-bold" href="{{route('membership/dashboard')}}"><span>Dashboard</span></a></li>
             @endauth
-            <li><a class="menu-item-link" href="#"><span>Contact</span></a></li>
+            <li><a class="menu-item-link merriweather-bold" href="#"><span>Contact</span></a></li>
         </ul>
         <ul class="hotline-wrapper offcanvas-hotline">
             <li>
                 <div class="hotline">
                     <i class="lastudioicon lastudioicon-support248"></i>
                     <div class="hotline-content">
-                        <span class="hotline-text">Hotline</span>
-                        <a class="hotline-link" href="tel:08162300183">08162300183</a>
+                        <span class="hotline-text merriweather-bold" >Hotline</span>
+                        <a class="hotline-link merriweather-bold" href="tel:08162300183">08162300183</a>
                     </div>
                 </div>
             </li>
