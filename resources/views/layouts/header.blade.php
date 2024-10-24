@@ -396,7 +396,7 @@
                             <a href="{{url('/')}}" class="menu-item-link merriweather-bold"><span>Home</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold"><span>All-Cakes</span></a>
+                                                    <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold"><span>All Cakes</span></a>
 
                                                 </li>
 
