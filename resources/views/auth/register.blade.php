@@ -124,8 +124,10 @@
                 <input type="text" name="name" id="name" class="form__input" placeholder="Fullname">
                 <x-input-error :messages="$errors->get('name')" class="alert alert-danger" />
             </div>
-        <div>
-            <input id="dob" class="form__input" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+        <div class="row">
+            <label class="text-left">Date of birth</label>
+            <input type="date" name="dob" id="Dob" class="form__input" placeholder="Date of birth">
+            <x-input-error :messages="$errors->get('dob')" class="alert alert-danger" />
         </div>
 
             <div class="row">
