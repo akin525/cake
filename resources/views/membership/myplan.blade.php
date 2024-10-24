@@ -37,7 +37,7 @@
                                 <p class="text-white mb-0 font-size-20">
                                     <b>MY Plan:</b> <i>{{Auth::user()->plan}}</i>
                                 <hr>
-                                <a href="#" class="badge badge-success">Upgrade</a>
+                                <a href="#" class="badge badge-success" style="background-color: #ef9b00">Upgrade</a>
                                 </p>
                             @endif
                         </div>
@@ -64,9 +64,9 @@
                         <br/>
 
                         @if($pa['plan'] == Auth::user()->plan)
-                            <a class="badge badge-success" href="#">Current Plan</a>
+                            <a class="badge badge-success" style="background-color: #ef9b00" href="#">Current Plan</a>
                         @else
-                            <a class="btn btn-success" href="{{route('membership/detail', $pa['id'])}}">Select plan</a>
+                            <a class="btn btn-success" style="background-color: #ef9b00" href="{{route('membership/detail', $pa['id'])}}">Select plan</a>
                         @endif
                     </div>
                 </div>

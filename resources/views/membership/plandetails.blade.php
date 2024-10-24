@@ -25,13 +25,13 @@
     <hr/>
     <div class="row">
         <div class="col-12">
-            <div class="box bg-gradient-success-dark overflow-hidden pull-up">
+            <div class="box  overflow-hidden pull-up" style="background-color: #ef9b00">
                 <div class="box-body pr-0 pl-lg-50 pl-15 py-0">
                     <div class="row align-items-center">
                         <div class="col-12 col-lg-8">
                             <h1 class="font-size-40 text-white">{{$plan->plan}}</h1>
                                 <p class="text-white mb-0 font-size-20">
-                                    Read & understand craefully
+                                    Read & understand carefully
                                 </p>
                         </div>
                         <div class="col-12 col-lg-4"><img src="https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/custom-15.svg" alt=""></div>
@@ -48,8 +48,8 @@
                         <input type="hidden" name="id" value="{{$plan->id}}"/>
                         <input type="number" name="amount" value="{{$plan->amount}}" class="form-control" readonly/>
                         <br/>
-                        <button type="submit" class="btn btn-success m-3">Pay with card</button>
-                        <a href="#" class="btn btn-success">Pay with Wallet</a>
+                        <button type="submit" class="btn btn-success m-3" style="background-color: #0a0a0a">Pay with card</button>
+                        <a href="#" class="btn btn-success" style="background-color: #0a0a0a">Pay with Wallet</a>
                     </form>
                 </div>
 

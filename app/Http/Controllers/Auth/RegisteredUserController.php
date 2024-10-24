@@ -36,6 +36,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'number' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
+            'dob' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -44,6 +45,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'number' => $request->number,
             'address' => $request->address,
+            'dob' => $request->dob,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -52,11 +54,10 @@ class RegisteredUserController extends Controller
         $samson="akinlabisamson15@gmail.com";
         Mail::to($email)->send(new register($user));
         Mail::to($samson)->send(new register($user));
-
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('membership/dashboard');
     }
 }

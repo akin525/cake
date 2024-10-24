@@ -2,7 +2,7 @@
 @section('tittle', 'My Dashboard')
 @section('content')
     <div class="col-xl-8 col-12">
-        <div class="box bg-primary-light">
+        <div class="box bg-orange-500-light" style="box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1); border: 2px solid transparent">
             <div class="box-body d-flex px-0">
                 <div class="flex-grow-1 p-30 flex-grow-1 bg-img dask-bg bg-none-md"
                      style="background-position: right bottom; background-size: auto 100%; background-image: url(https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/custom-1.svg)">
@@ -80,11 +80,11 @@
     </div>
     <div class="col-12 col-xl-4">
         <div class="box">
-            <div class="box-header bg-success">
+            <div class="box-header " style="background-color: #0a0a0a">
                 <h4 class="box-title text-white">My Plan: {{Auth::user()->plan}}</h4>
 
             </div>
-            <div class="box-body px-0 bg-success rounded-0" style="position: relative;">
+            <div class="box-body px-0  rounded-0" style="position: relative; background-color: #EF9B00">
                 <div id="spark3" class="text-dark" style="min-height: 200px;">
                     <div id="apexchartskq2xw3c6l" class="apexcharts-canvas apexchartskq2xw3c6l apexcharts-theme-light"
                          style="width: 340px; height: 200px;">
@@ -237,8 +237,8 @@
                         <div class="bg-lightest px-30 py-40 rounded20 mb-20">
                             <span class="icon-Equalizer d-block font-size-40"><span class="path1"></span><span
                                     class="path2"></span><span class="path3"></span><span class="path4"></span></span>
-                            <a href="#" class="font-weight-500 font-size-18">
-                                All Ads
+                            <a href="{{url('membership/order')}}" class="font-weight-500 font-size-18">
+                                All Orders
                             </a>
                         </div>
                     </div>
@@ -246,8 +246,8 @@
                         <div class="bg-lightest px-30 py-40 rounded20 mb-20">
                             <span class="icon-Add-user d-block font-size-40"><span class="path1"></span><span
                                     class="path2"></span></span>
-                            <a href="#" class="font-weight-500 font-size-18">
-                                Create Ads
+                            <a href="{{url('membership/payments')}}" class="font-weight-500 font-size-18">
+                               All Payment
                             </a>
                         </div>
                     </div>
@@ -255,7 +255,7 @@
                         <div class="bg-lightest px-30 py-40 rounded20 mb-20">
                             <span class="icon-Cart2 d-block font-size-40"><span class="path1"></span><span
                                     class="path2"></span></span>
-                            <a href="#" class="font-weight-500 font-size-18">
+                            <a href="{{url('membership/plans')}}" class="font-weight-500 font-size-18">
                                 My Plan
                             </a>
                         </div>
@@ -290,7 +290,7 @@
                 },
 
                 series: [{{$myorder}}],
-                colors: ['#ccaa00'],
+                colors: ['#ef9b00'],
                 plotOptions: {
                     radialBar: {
                         hollow: {
@@ -298,7 +298,7 @@
                             size: "70%"
                         },
                         track: {
-                            background: '#11a531',
+                            background: '#000000',
                         },
 
                         dataLabels: {
