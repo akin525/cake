@@ -22,7 +22,7 @@
 
         <div class="row">
             <div class="col-12">
-                <div class="box bg-gradient-success-dark overflow-hidden pull-up">
+                <div class="box  overflow-hidden pull-up" style="background-color: #0a0a0a">
                     <div class="box-body pr-0 pl-lg-50 pl-15 py-0">
                         <div class="row align-items-center">
                             <div class="col-12 col-lg-8">
@@ -31,7 +31,7 @@
                                     <i> All Pay For</i>
                                 </p>
                             </div>
-                            <div class="col-12 col-lg-4"><img src="https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/custom-15.svg" alt=""></div>
+{{--                            <div class="col-12 col-lg-4"><img src="https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/custom-15.svg" alt=""></div>--}}
                         </div>
                     </div>
                 </div>
