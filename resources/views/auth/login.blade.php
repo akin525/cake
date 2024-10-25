@@ -29,6 +29,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
@@ -36,84 +37,176 @@
 </head>
 
 <style>
-    .main-content{
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+    }
+
+    .container-fluid {
+        padding: 0 2em;
+    }
+
+    /* Main Content */
+    .main-content {
         width: 50%;
         border-radius: 20px;
-        box-shadow: 0 5px 5px rgba(0,0,0,.4);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
         margin: 5em auto;
         display: flex;
+        background-color: #fff;
+        overflow: hidden;
     }
-    .company__info{
+
+    /* Company Info Section */
+    .company__info {
         background-color: #f1f0ed;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        color: #fff;
+        padding: 2em;
+        text-align: center;
     }
-    .fa-android{
-        font-size:3em;
-    }
-    @media screen and (max-width: 640px) {
-        .main-content{width: 90%;}
-        .company__info{
-            display: none;
-        }
-        .login_form{
-            border-top-left-radius:20px;
-            border-bottom-left-radius:20px;
-        }
-    }
-    @media screen and (min-width: 642px) and (max-width:800px){
-        .main-content{width: 70%;}
-    }
-    .row > h2{
+
+    .company__logo h2 {
         color: #977510;
-    }
-    .login_form{
-        background-color: #fff;
-        border-top-right-radius:20px;
-        border-bottom-right-radius:20px;
-        border-top:1px solid #ccc;
-        border-right:1px solid #ccc;
-    }
-    form{
-        padding: 0 2em;
-    }
-    .form__input{
-        width: 100%;
-        border:0px solid transparent;
-        border-radius: 0;
-        border-bottom: 1px solid #aaa;
-        padding: 1em .5em .5em;
-        padding-left: 2em;
-        outline:none;
-        margin:1.5em auto;
-        transition: all .5s ease;
-    }
-    .form__input:focus{
-        border-bottom-color: #977510;
-        box-shadow: 0 0 5px rgba(0,80,80,.4);
-        border-radius: 4px;
-    }
-    .btn{
-        transition: all .5s ease;
-        align-content: center;
-        width: 70%;
-        border-radius: 30px;
-        color: #e5b619;
-        font-weight: 600;
-        background-color: #fff;
-        border: 1px solid #e5b619;
-        margin-top: 1.5em;
         margin-bottom: 1em;
     }
-    .btn:hover, .btn:focus{
-        background-color: #e5b619;
-        color:#fff;
+
+    .company__logo img {
+        margin-top: 1em;
     }
+
+    @media screen and (max-width: 640px) {
+        .main-content {
+            width: 90%;
+        }
+        .company__info {
+            display: none;
+        }
+        .login_form {
+            border-radius: 20px;
+        }
+    }
+
+    @media screen and (min-width: 642px) and (max-width: 800px) {
+        .main-content {
+            width: 70%;
+        }
+    }
+
+    /* Login Form */
+    .login_form {
+        padding: 2em;
+        background-color: #fff;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5;
+    }
+
+    form {
+        padding: 0 1.5em;
+    }
+
+    h4 {
+        color: #977510;
+        margin-bottom: 1.5em;
+    }
+
+    /* Input Styles */
+    .form__input {
+        width: 100%;
+        border: none;
+        border-bottom: 2px solid #aaa;
+        padding: 1em 0.5em;
+        padding-left: 2.5em;
+        margin: 1.5em 0;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    .form__input:focus {
+        border-bottom-color: #977510;
+        box-shadow: 0 0 5px rgba(0,80,80,0.4);
+    }
+
+    .position-relative {
+        position: relative;
+    }
+
+    /* Toggle Password Icon */
+    #togglePassword {
+        position: absolute;
+        right: -90px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #aaa;
+    }
+
+    #togglePassword:hover {
+        color: #977510;
+    }
+
+    /* Button Styles */
+    .btn {
+        width: 70%;
+        padding: 0.8em;
+        border-radius: 30px;
+        color: #fff;
+        background-color: #e5b619;
+        border: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #d4a10b;
+    }
+
+    .btn:focus {
+        outline: none;
+    }
+
+    /* Checkbox and Links */
+    label {
+        font-size: 0.9em;
+        color: #555;
+        margin-left: 10px;
+    }
+
+    a {
+        color: #e5b619;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    p {
+        margin-top: 2em;
+        font-size: 0.9em;
+    }
+
+    /* Alerts */
+    .alert {
+        margin-bottom: 1.5em;
+        padding: 0.75em;
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        border-radius: 0.25em;
+    }
+
 </style>
+
 @if(Session::has('error'))
     <script>
         Swal.fire({
@@ -128,7 +221,7 @@
 <div class="container-fluid">
     <div class="row main-content bg-success text-center">
         <div class="col-md-4 text-center company__info">
-            <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
+{{--            <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>--}}
             {{--            <h4 class="company_title">Your Company Logo</h4>--}}
             <center>
                 <img width="100" src="{{asset('assets/images/eko.png')}}" alt=""/>
@@ -147,17 +240,32 @@
                             {{ session('errors') }}
                         </div>
                     @endif
-                    <form class="form-group" action="{{route('login')}}" method="post">
+                    <form class="form-group" action="{{route('membership/login')}}" method="post">
                         @csrf
                         <div class="row">
                             <input type="email" name="email" id="email" class="form__input" placeholder="email">
                                                             <x-input-error :messages="$errors->get('email')" class="alert alert-danger" />
                         </div>
-                        <div class="row">
-                            <span class="fa fa-lock"></span>
+                        <div class="row position-relative">
                             <input type="password" name="password" id="password" class="form__input" placeholder="Password">
-                                                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            <span id="togglePassword" class="fa fa-eye position-absolute"></span>
                         </div>
+
+                        <script>
+                            const togglePassword = document.querySelector('#togglePassword');
+                            const password = document.querySelector('#password');
+
+                            togglePassword.addEventListener('click', function (e) {
+                                // Toggle the type attribute
+                                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                                password.setAttribute('type', type);
+
+                                // Toggle the eye icon
+                                this.classList.toggle('fa-eye');
+                                this.classList.toggle('fa-eye-slash');
+                            });
+                        </script>
+
                         <div class="row">
                             <input type="checkbox" name="remember_me" id="remember_me" class="">
                             <label for="remember_me">Remember Me!</label>
