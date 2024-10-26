@@ -94,26 +94,26 @@
             <!-- Sidebar toggle button-->
             <div class="app-menu">
                 <ul class="header-megamenu nav">
-                    <li class="btn-group nav-item d-md-none">
-                        <a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
-                            <span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
-                        </a>
-                    </li>
-                    <li class="btn-group nav-item d-none d-xl-inline-block">
-                        <a href="#" class="waves-effect waves-light nav-link svg-bt-icon" title="Chat">
-                            <i class="icon-Chat"><span class="path1"></span><span class="path2"></span></i>
-                        </a>
-                    </li>
-                    <li class="btn-group nav-item d-none d-xl-inline-block">
-                        <a href="#" class="waves-effect waves-light nav-link svg-bt-icon" title="Mailbox">
-                            <i class="icon-Mailbox"><span class="path1"></span><span class="path2"></span></i>
-                        </a>
-                    </li>
-                    <li class="btn-group nav-item d-none d-xl-inline-block">
-                        <a href="#" class="waves-effect waves-light nav-link svg-bt-icon" title="Taskboard">
-                            <i class="icon-Clipboard-check"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
-                        </a>
-                    </li>
+{{--                    <li class="btn-group nav-item d-md-none">--}}
+{{--                        <a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">--}}
+{{--                            <span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li class="btn-group nav-item d-none d-xl-inline-block">--}}
+{{--                        <a href="#" class="waves-effect waves-light nav-link svg-bt-icon" title="Chat">--}}
+{{--                            <i class="icon-Chat"><span class="path1"></span><span class="path2"></span></i>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li class="btn-group nav-item d-none d-xl-inline-block">--}}
+{{--                        <a href="#" class="waves-effect waves-light nav-link svg-bt-icon" title="Mailbox">--}}
+{{--                            <i class="icon-Mailbox"><span class="path1"></span><span class="path2"></span></i>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li class="btn-group nav-item d-none d-xl-inline-block">--}}
+{{--                        <a href="#" class="waves-effect waves-light nav-link svg-bt-icon" title="Taskboard">--}}
+{{--                            <i class="icon-Clipboard-check"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                 </ul>
             </div>
 
@@ -156,11 +156,11 @@
                     </li>
 
                     <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar" title="Setting" class="waves-effect waves-light">
-                            <i class="icon-Settings"><span class="path1"></span><span class="path2"></span></i>
-                        </a>
-                    </li>
+{{--                    <li>--}}
+{{--                        <a href="#" data-toggle="control-sidebar" title="Setting" class="waves-effect waves-light">--}}
+{{--                            <i class="icon-Settings"><span class="path1"></span><span class="path2"></span></i>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
                 </ul>
             </div>
