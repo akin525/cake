@@ -280,7 +280,9 @@
                                     border: 2px solid transparent;
                                     cursor: pointer;
                                     border-radius: 4px;
-                                    /* background-color: #c19d56;  Ash color */
+                                    border-color: #000000;
+
+                                     /*background-color: #c19d56;  Ash color*/
                                     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
                                 }
 

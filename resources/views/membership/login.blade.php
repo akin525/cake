@@ -230,7 +230,8 @@
             <div class="container-fluid">
                 <br>
                 <div class="row">
-                    <h4>Membership Login</h4>
+                    <h5>Become a member? <a href="{{route('register')}}">Click Here</a></h5>
+
                 </div>
                 <div class="row">
                     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -275,7 +276,7 @@
                             </center>
                         </div>
                         <div class="row">
-                            <p>Become a member? <a href="{{route('register')}}">Click Here</a></p>
+{{--                            <h5>Become a member? <a href="{{route('register')}}">Click Here</a></h5>--}}
                         </div>
                     </form>
                 </div>

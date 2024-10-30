@@ -14,7 +14,7 @@
                                 Free deliver for all orders <strong class="text-warning">a cross</strong> Lagos
                             </p>
                             <p class="text-dark my-10 font-size-16">
-                                Progress is <strong class="text-warning">very good!</strong>
+{{--                                Progress is <strong class="text-warning">very good!</strong>--}}
                             </p>
                         </div>
                         <div class="col-12 col-xl-5"></div>

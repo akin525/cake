@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">--}}
     @yield('style')
 </head>
 
@@ -231,7 +231,7 @@
             <div class="container-fluid">
                 <br>
                 <div class="row">
-                    <h4>Login</h4>
+                    <h5>Become a member? <a href="{{route('register')}}">Click Here</a></h5>
                 </div>
                 <div class="row">
                     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -276,7 +276,7 @@
                             </center>
                         </div>
                         <div class="row">
-                            <h4>Become a member? <a href="{{route('register')}}">Click Here</a></h4>
+{{--                            <h5>Become a member? <a href="{{route('register')}}">Click Here</a></h5>--}}
                         </div>
                     </form>
                 </div>
