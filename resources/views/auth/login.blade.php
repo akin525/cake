@@ -276,7 +276,7 @@
                             </center>
                         </div>
                         <div class="row">
-                            <p>Become a membership? <a href="{{route('register')}}">Click Here</a></p>
+                            <h4>Become a member? <a href="{{route('register')}}">Click Here</a></h4>
                         </div>
                     </form>
                 </div>

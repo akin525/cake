@@ -393,10 +393,10 @@
                 <div class="header-menu d-none d-lg-block">
                     <ul class="header-primary-menu header-primary-menu-05 d-flex justify-content-center">
                         <li>
-                            <a href="{{url('/')}}" class="menu-item-link merriweather-bold"><span>Home</span></a>
+                            <a href="{{url('/')}}" class="menu-item-link merriweather-bold" style="text-transform: uppercase;"><span>Home</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold"><span>All Cakes</span></a>
+                                                    <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold" style="text-transform: uppercase;"><span>All Cakes</span></a>
 
                                                 </li>
 
@@ -409,22 +409,22 @@
 {{--                            @endforeach--}}
 {{--                        @endisset--}}
                                                 <li class="position-static">
-                                                    <a class="menu-item-link  merriweather-bold" href="{{route('about')}}"><span>About</span></a>
+                                                    <a class="menu-item-link  merriweather-bold" href="{{route('about')}}" style="text-transform: uppercase;"><span>About</span></a>
                                                 </li>
                         @auth
                         <li class="position-static">
-                                                    <a class="menu-item-link  merriweather-bold" href="{{route('membership/dashboard')}}"><span>Dashboard</span></a>
+                                                    <a class="menu-item-link  merriweather-bold" href="{{route('membership/dashboard')}}" style="text-transform: uppercase;"><span>Dashboard</span></a>
                                                 </li>
                         @endauth
                         @guest
                             <li class="position-static">
-                                                    <a class="menu-item-link  merriweather-bold" href="{{route('membership/login')}}"><span>login</span></a>
+                                                    <a class="menu-item-link  merriweather-bold" href="{{route('membership/login')}}" style="text-transform: uppercase;"><span>login</span></a>
                                                 </li>
                         @endguest
                                                 <li class="position-static">
-                                                    <a class="menu-item-link merriweather-bold" href="{{route('cart')}}"><span>Cart</span></a>
+                                                    <a class="menu-item-link merriweather-bold" href="{{route('cart')}}" style="text-transform: uppercase;"><span>Cart</span></a>
                                                 </li>
-                                                <li><a class="menu-item-link merriweather-bold" href="#"><span>Contact</span></a></li>
+                                                <li><a class="menu-item-link merriweather-bold" href="#" style="text-transform: uppercase;"><span>Contact</span></a></li>
                     </ul>
                 </div>
                 <!-- Header Menu End -->
@@ -470,23 +470,23 @@
     <div class="offcanvas-body">
         <ul class="mobile-primary-menu">
             <li>
-                <a href="{{url('/')}}" class="menu-item-link active"><span>Home</span></a>
+                <a href="{{url('/')}}" class="menu-item-link merriweather-bold" style="text-transform: uppercase;"><span>Home</span></a>
             </li>
 
             <li>
-                <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold"><span>All Cakes</span></a>
+                <a href="{{route('cakes')}}" class="menu-item-link  merriweather-bold"  style="text-transform: uppercase;"><span>All Cakes</span></a>
 
             </li>
             <li class="position-static">
-                <a class="menu-item-link merriweather-bold" href="{{route('about')}}"><span>About Us</span></a>
+                <a class="menu-item-link merriweather-bold" href="{{route('about')}}"  style="text-transform: uppercase;"><span>About Us</span></a>
             </li>
             @guest
-            <li><a class="menu-item-link merriweather-bold" href="{{route('membership/login')}}"><span>login</span></a></li>
+            <li><a class="menu-item-link merriweather-bold" href="{{route('membership/login')}}"  style="text-transform: uppercase;"><span>login</span></a></li>
             @endauth
             @auth
-            <li><a class="menu-item-link merriweather-bold" href="{{route('membership/dashboard')}}"><span>Dashboard</span></a></li>
+            <li><a class="menu-item-link merriweather-bold" href="{{route('membership/dashboard')}}"  style="text-transform: uppercase;"><span>Dashboard</span></a></li>
             @endauth
-            <li><a class="menu-item-link merriweather-bold" href="#"><span>Contact</span></a></li>
+            <li><a class="menu-item-link merriweather-bold" href="#"  style="text-transform: uppercase;"><span>Contact</span></a></li>
         </ul>
         <ul class="hotline-wrapper offcanvas-hotline">
             <li>
