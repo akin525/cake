@@ -395,7 +395,7 @@
                                 });
 
                             </script>
-{{--                            <p id="priceDisplay">Select options to see the price</p>--}}
+                            <p id="priceDisplay">Select options to see the price</p>
 
                             <input type="hidden" id="productBasePrice" value="{{ $product->price }}">
 
