@@ -297,21 +297,18 @@
                                 }
                             </style>
                             @php
-                                // Initialize arrays to hold attribute values, attributes, and combination prices
                                 $attributeValues = [];
                                 $attributesOnly = [];
-                                $combinations = []; // To hold the price for each specific combination of attributes
+                                $combinations = [];
 
-                                // Check if variations exist and are not null
                                 if ($product->variations) {
                                     if ($product->variations->isNotEmpty()) {
                                         foreach ($product->variations as $variation) {
-                                            $combinationKey = []; // Initialize combination key
+                                            $combinationKey = [];
                                             foreach ($variation->options as $option) {
                                                 $attributeValues[$option->name][] = $option->value;
-                                                $combinationKey[] = $option->value; // Build combination key
+                                                $combinationKey[] = $option->value;
                                             }
-                                            // Join the combination key to store the price for this specific combination
                                             $combinations[implode('|', $combinationKey)] = $variation->price;
                                         }
                                     }
@@ -364,6 +361,41 @@
                             @else
                                 <p>---</p>
                             @endif
+
+                            <script>
+                                const combinations = @json($combinations);
+                            </script>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    const attributeInputs = document.querySelectorAll('input[name^="attributes"]');
+                                    const priceDisplay = document.querySelector("#priceDisplay"); // Assuming you have an element with this ID for displaying price
+                                    const totalAmount = document.querySelector("#totalAmount"); // Assuming you have an element with this ID for displaying price
+
+                                    function updatePrice() {
+                                        let selectedOptions = [];
+                                        attributeInputs.forEach(input => {
+                                            if (input.checked) {
+                                                selectedOptions.push(input.value);
+                                            }
+                                        });
+
+                                        const combinationKey = selectedOptions.join('|');
+                                        const price = combinations[combinationKey] || "Price not available";
+
+                                        if (priceDisplay) {
+                                            priceDisplay.innerText = price; // Update the price display element
+                                            totalAmount.document.value=price;
+                                        }
+                                    }
+
+                                    attributeInputs.forEach(input => {
+                                        input.addEventListener("change", updatePrice);
+                                    });
+                                });
+
+                            </script>
+{{--                            <p id="priceDisplay">Select options to see the price</p>--}}
 
                             <input type="hidden" id="productBasePrice" value="{{ $product->price }}">
 
