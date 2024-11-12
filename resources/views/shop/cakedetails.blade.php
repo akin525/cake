@@ -390,35 +390,7 @@
                                 const combinations = @json($combinations);
                             </script>
 
-                            <script>
-                                document.addEventListener("DOMContentLoaded", function () {
-                                    const attributeInputs = document.querySelectorAll('input[name^="attributes"]');
-                                    const priceDisplay = document.querySelector("#priceDisplay"); // Assuming you have an element with this ID for displaying price
-                                    const totalAmount = document.getElementById("#totalAmount"); // Assuming you have an element with this ID for displaying price
 
-                                    function updatePrice() {
-                                        let selectedOptions = [];
-                                        attributeInputs.forEach(input => {
-                                            if (input.checked) {
-                                                selectedOptions.push(input.value);
-                                            }
-                                        });
-
-                                        const combinationKey = selectedOptions.join('|');
-                                        const price = combinations[combinationKey] || "Price not available";
-                                        if (priceDisplay) {
-                                            priceDisplay.innerText = price; // Update the price display element
-                                            $('#totalAmount').val(price.toFixed(2));
-
-                                        }
-                                    }
-
-                                    attributeInputs.forEach(input => {
-                                        input.addEventListener("change", updatePrice);
-                                    });
-                                });
-
-                            </script>
                             <p id="priceDisplay">Select options to see the price</p>
 
                             <input type="hidden" id="productBasePrice" value="{{ $product->price }}">
@@ -429,6 +401,7 @@
                             @endforeach
 
                             <button id="resetButton" type="button" class="btn btn-secondary mt-3 cormorant-upright-regular">Clear Options</button>
+
 
                             <input type="hidden" id="tPrice" value="0">
                             @if($product->text == 1)
@@ -463,6 +436,7 @@
 
                             @endif
                             <br/>
+
                             <div class="" id="topperInput" style="display: none;">
                                 <h6 class="cormorant-upright-bold" >Topper Text</h6>
                                 <input type="text" name="topperText" id="topperText" class="form-control cormorant-upright-light text-center"  />
@@ -615,44 +589,6 @@
                                 <button id="unselectButton" type="button" class="btn btn-secondary mt-3">Unselect Add-Ons</button>
                             @endif
 
-                            <script>
-                                document.querySelectorAll('.attribute-box').forEach(function (label) {
-                                    label.addEventListener('click', function() {
-                                        var radio = document.getElementById(this.getAttribute('for'));
-                                        if (radio) {
-                                            radio.checked = true; // Manually check the radio button
-
-                                            var itemnumber = parseFloat(radio.value); // Get the selected item price
-
-                                            var defaultAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));
-                                            var totalAmount = defaultAmount; // Initialize total amount with current total
-
-                                            var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price
-                                            totalAmount -= previousLayerPrice; // Subtract previous layer price from total amount
-                                            totalAmount += itemnumber; // Add new item price to total amount
-
-                                            document.getElementById('tPrice').value = itemnumber; // Store current layer price for next calculation
-                                            document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display
-                                        }
-                                    });
-                                });
-
-                                // Unselect button functionality
-                                document.getElementById('unselectButton').addEventListener('click', function() {
-                                    document.querySelectorAll('input[name="option"]').forEach(function (radio) {
-                                        radio.checked = false; // Uncheck all radio buttons
-                                    });
-
-                                    var defaultPrice = 0; // Assume the default price is 0 or replace with actual base price
-                                    var currentAmount = parseFloat(document.getElementById('totalAmount').value.replace('', '').replace(',', ''));
-                                    var previousLayerPrice = parseFloat(document.getElementById('tPrice').value); // Get previous layer price
-
-                                    var totalAmount = currentAmount - previousLayerPrice + defaultPrice; // Revert to the base price
-
-                                    document.getElementById('tPrice').value = defaultPrice; // Reset to default price
-                                    document.getElementById('totalAmount').value = totalAmount.toFixed(2); // Update the total amount display
-                                });
-                            </script>
 
 
 
@@ -861,143 +797,91 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const attributeInputs = document.querySelectorAll('input[name^="attributes"]');
+            const priceDisplay = document.querySelector("#priceDisplay"); // Element for displaying price
+            const totalAmount = document.querySelector("#totalAmount"); // Element for displaying total amount
+            const resetButton = document.getElementById("resetButton"); // Clear options button
+            const topperSelect = document.getElementById("topperBy"); // Topper select element
+            const cardSelect = document.getElementById("ekoCakesCard"); // Greeting card select element
+            const addOnInputs = document.querySelectorAll('input[name="option"]'); // Add-ons radio buttons
+            const unselectButton = document.getElementById("unselectButton"); // Unselect add-ons button
 
+            // Base price for the product
+            const basePrice = 0;
+            let currentTopperPrice = 0;
+            let currentCardPrice = 0;
+            let currentAddOnPrice = 0;
 
+            function updatePrice() {
+                let selectedOptions = [];
+                attributeInputs.forEach(input => {
+                    if (input.checked) {
+                        selectedOptions.push(input.value);
+                    }
+                });
 
+                const combinationKey = selectedOptions.join('|');
+                const price = combinations[combinationKey] || basePrice;
+                const totalPrice = price + currentTopperPrice + currentCardPrice + currentAddOnPrice;
 
-
-
-
-{{--    <script>--}}
-{{--        function updatePrice(selectElementId, totalAmountId, previousPriceId) {--}}
-{{--            document.getElementById(selectElementId).addEventListener('change', function() {--}}
-{{--                var selectedOption = this.options[this.selectedIndex];--}}
-{{--                var selectedPrice = parseFloat(selectedOption.getAttribute('data-wapf-price')) || parseFloat(this.value) || 0;--}}
-
-{{--                var totalAmountElement = document.getElementById(totalAmountId);--}}
-{{--                var totalAmount = parseFloat(totalAmountElement.value.replace(',', '')) || 0;--}}
-
-{{--                var previousPriceElement = document.getElementById(previousPriceId);--}}
-{{--                var previousPrice = parseFloat(previousPriceElement.value) || 0;--}}
-
-{{--                totalAmount -= previousPrice;--}}
-{{--                totalAmount += selectedPrice;--}}
-
-{{--                previousPriceElement.value = selectedPrice;--}}
-{{--                totalAmountElement.value = totalAmount.toFixed(2);--}}
-{{--            });--}}
-{{--        }--}}
-
-{{--        // Create hidden inputs to store previous prices--}}
-{{--        var previousPricesHtml = `--}}
-{{--        <input type="hidden" id="previousPrice_ekoCakesCard" value="0">--}}
-{{--        <input type="hidden" id="previousPrice_topperBy" value="0">--}}
-{{--        <input type="hidden" id="previousPrice_opt" value="0">--}}
-{{--        <input type="hidden" id="previousPrice_item" value="0">--}}
-{{--    `;--}}
-{{--        document.body.insertAdjacentHTML('beforeend', previousPricesHtml);--}}
-
-{{--        // Apply the function to all relevant select elements--}}
-{{--        updatePrice('ekoCakesCard', 'totalAmount', 'previousPrice_ekoCakesCard');--}}
-{{--        updatePrice('topperBy', 'totalAmount', 'previousPrice_topperBy');--}}
-{{--        updatePrice('opt', 'totalAmount', 'previousPrice_opt');--}}
-{{--        updatePrice('item', 'totalAmount', 'previousPrice_item');--}}
-{{--    </script>--}}
-
-
-
-<script>
-    $(document).ready(function() {
-        // Initialize the base price
-        let basePrice = parseFloat($('#productBasePrice').val()) || 0;
-
-        // Function to update the total amount based on selected variations and attributes
-        function updateTotalAmount() {
-            let totalAmount = basePrice;
-            let selectedOptions = [];
-
-            // Add prices from selected radio buttons
-            $('input[type="radio"]:checked').each(function() {
-                selectedOptions.push($(this).val()); // Get the selected value
-            });
-
-            // Sort selected options to match the exact order used in admin settings
-            selectedOptions.sort();
-            let selectedKey = selectedOptions.join('|');
-
-            // Retrieve the price for the selected combination from the stored data
-            let selectedPrice = $('input[type="hidden"][data-combination="' + selectedKey + '"]').val();
-            selectedPrice = parseFloat(selectedPrice) || basePrice; // Use base price if no match found
-
-            if (selectedPrice !== basePrice) {
-                totalAmount = selectedPrice;
+                // Update display elements
+                if (priceDisplay) priceDisplay.innerText = totalPrice.toFixed(2);
+                if (totalAmount) totalAmount.value = totalPrice.toFixed(2);
             }
 
-            // Add prices from selected dropdowns
-            $('select').each(function() {
-                let selectedOption = $(this).find('option:selected');
-                let price = parseFloat(selectedOption.data('wapf-price')) || 0;
-                if (selectedOption.val()) {
-                    totalAmount += price;
-                }
+            // Update topper price when a new topper option is selected
+            topperSelect.addEventListener("change", function () {
+                currentTopperPrice = parseFloat(topperSelect.value) || 0;
+                updatePrice(); // Recalculate total price with topper price
             });
 
-            // Update the total price display
-            $('#totalAmount').val(totalAmount.toFixed(2));
-            console.log("Total amount: " + totalAmount);
-        }
+            // Update card price when a new card option is selected
+            cardSelect.addEventListener("change", function () {
+                currentCardPrice = parseFloat(cardSelect.selectedOptions[0].dataset.wapfPrice) || 0;
+                updatePrice(); // Recalculate total price with card price
+            });
 
-        // Bind the updateTotalAmount function to the change events
-        $('input[type="radio"], select').on('change', updateTotalAmount);
+            // Update add-on price when a new add-on option is selected
+            addOnInputs.forEach(input => {
+                input.addEventListener("change", function () {
+                    currentAddOnPrice = parseFloat(input.value) || 0;
+                    updatePrice(); // Recalculate total price with add-on price
+                });
+            });
 
-        // Initial update
-        updateTotalAmount();
+            // Unselect all add-ons when the unselect button is clicked
+            unselectButton.addEventListener("click", function () {
+                addOnInputs.forEach(input => {
+                    input.checked = false; // Deselect all add-on radio buttons
+                });
+                currentAddOnPrice = 0; // Reset the add-on price
+                updatePrice(); // Recalculate total price with add-on price reset
+            });
 
-        // Clear selections and reset price to base price
-        $('#resetButton').on('click', function() {
-            $('input[type="radio"]').prop('checked', false); // Uncheck all radio buttons
-            $('select').prop('selectedIndex', 0); // Reset dropdowns to default
-            $('#totalAmount').val(basePrice.toFixed(2)); // Reset to base price
-            console.log("All options cleared. Total amount reset to base price: " + basePrice);
+            // Add event listener to reset options and price on reset button click
+            resetButton.addEventListener("click", function () {
+                attributeInputs.forEach(input => {
+                    input.checked = false;
+                });
+                topperSelect.selectedIndex = 0; // Reset topper select to default
+                cardSelect.selectedIndex = 0; // Reset card select to default
+                addOnInputs.forEach(input => input.checked = false); // Deselect all add-ons
+                currentTopperPrice = 0;
+                currentCardPrice = 0;
+                currentAddOnPrice = 0;
+                // Reset the displayed price to the base price
+                if (priceDisplay) priceDisplay.innerText = basePrice.toFixed(2);
+                if (totalAmount) totalAmount.value = basePrice.toFixed(2);
+            });
+
+            // Initial price update when options change
+            attributeInputs.forEach(input => {
+                input.addEventListener("change", updatePrice);
+            });
         });
+    </script>
 
-        // Handle visibility of custom inputs based on selections
-        function handleVisibility() {
-            const selectedTopper = $('#topperBy').val();
-            if (selectedTopper === 'select') {
-                $('#topperTextSection').show();
-            } else {
-                $('#topperTextSection').hide().val(''); // Hide and clear the input
-            }
 
-            const selectedEkoCakesCard = $('#ekoCakesCard').val();
-            if (selectedEkoCakesCard === 'yes') {
-                $('#ekoCakesMessageSection').show();
-            } else {
-                $('#ekoCakesMessageSection').hide().val(''); // Hide and clear the input
-            }
-
-            const selectedBaseColor = $('#baseColor').val();
-            if (selectedBaseColor === 'choose') {
-                $('#colorOptions').show();
-            } else {
-                $('#colorOptions').hide();
-            }
-
-            const selectedColor = $('#color').val();
-            if (selectedColor === 'custom') {
-                $('#customColor').removeClass('hidden');
-            } else {
-                $('#customColor').addClass('hidden');
-            }
-        }
-
-        // Bind visibility handlers to change events
-        $('#topperBy, #ekoCakesCard, #baseColor, #color').on('change', handleVisibility);
-
-        // Ensure initial visibility state is correct
-        handleVisibility();
-    });
-
-</script>
 @endsection
