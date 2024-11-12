@@ -140,6 +140,62 @@
         }
 
     </style>
+    <style>
+        .color-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 80px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .color-box:hover,
+        input[type="radio"]:checked + .color-box {
+            border-color: #ef9b00;
+        }
+
+    </style>
+    <style>
+        .attribute-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .attribute-box {
+            display: inline-block;
+            width: 110%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            border-radius: 4px;
+            border-color: #000000;
+
+            /*background-color: #c19d56;  Ash color*/
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .attribute-box:hover,
+        input[type="radio"]:checked + .attribute-box {
+            border-color: #ef9b00;
+        }
+
+        .text-white {
+            color: #000000; /* Optional: Ensures text color is white */
+        }
+    </style>
 
     <div class="loading-overlay" id="loadingSpinner" style="display: none;">
         <div class="loading-spinner"></div>
@@ -264,38 +320,6 @@
                                 <input type="text" id="totalAmount12" class="no-border-input" name="amount" value="{{ $product->price }}" readonly/>
                             </div>
 
-                            <style>
-                                .attribute-options {
-                                    display: flex;
-                                    flex-wrap: wrap;
-                                    gap: 10px;
-                                }
-
-                                .attribute-box {
-                                    display: inline-block;
-                                    width: 110%;
-                                    height: 50px;
-                                    text-align: center;
-                                    line-height: 50px;
-                                    border: 2px solid transparent;
-                                    cursor: pointer;
-                                    border-radius: 4px;
-                                    border-color: #000000;
-
-                                     /*background-color: #c19d56;  Ash color*/
-                                    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
-                                }
-
-
-                                .attribute-box:hover,
-                                input[type="radio"]:checked + .attribute-box {
-                                    border-color: #ef9b00;
-                                }
-
-                                .text-white {
-                                    color: #000000; /* Optional: Ensures text color is white */
-                                }
-                            </style>
                             @php
                                 $attributeValues = [];
                                 $attributesOnly = [];
@@ -370,6 +394,7 @@
                                 document.addEventListener("DOMContentLoaded", function () {
                                     const attributeInputs = document.querySelectorAll('input[name^="attributes"]');
                                     const priceDisplay = document.querySelector("#priceDisplay"); // Assuming you have an element with this ID for displaying price
+                                    const totalAmount = document.getElementById("#totalAmount"); // Assuming you have an element with this ID for displaying price
 
                                     function updatePrice() {
                                         let selectedOptions = [];
@@ -381,10 +406,10 @@
 
                                         const combinationKey = selectedOptions.join('|');
                                         const price = combinations[combinationKey] || "Price not available";
-
                                         if (priceDisplay) {
                                             priceDisplay.innerText = price; // Update the price display element
-                                            document.getElementById('totalAmount').value=price;
+                                            $('#totalAmount').val(price.toFixed(2));
+
                                         }
                                     }
 
@@ -404,60 +429,6 @@
                             @endforeach
 
                             <button id="resetButton" type="button" class="btn btn-secondary mt-3 cormorant-upright-regular">Clear Options</button>
-
-{{--                            <script>--}}
-{{--                                $(document).ready(function() {--}}
-{{--                                    // Initialize the base price--}}
-{{--                                    let basePrice = parseFloat($('#productBasePrice').val()) || 0;--}}
-
-{{--                                    // Function to update the total amount based on selected variations--}}
-{{--                                    function updateTotalAmount() {--}}
-{{--                                        let selectedOptions = [];--}}
-{{--                                        $('input[type="radio"]:checked').each(function() {--}}
-{{--                                            selectedOptions.push($(this).val()); // Get the selected value--}}
-{{--                                        });--}}
-
-{{--                                        // Sort selected options to match the exact order used in admin settings--}}
-{{--                                        selectedOptions.sort();--}}
-
-{{--                                        // Build a unique key for the selected combination--}}
-{{--                                        let selectedKey = selectedOptions.join('|');--}}
-
-{{--                                        console.log("Generated combination key: " + selectedKey);--}}
-
-{{--                                        // Retrieve the price for the selected combination from the stored data--}}
-{{--                                        let selectedPrice = $('input[type="hidden"][data-combination="' + selectedKey + '"]').val();--}}
-{{--                                        selectedPrice = parseFloat(selectedPrice) || basePrice; // Use base price if no match found--}}
-
-{{--                                        if(selectedPrice !== basePrice) {--}}
-{{--                                            console.log("Match found! Price updated to: " + selectedPrice);--}}
-{{--                                        } else {--}}
-{{--                                            console.log("No match found. Using base price: " + basePrice);--}}
-{{--                                        }--}}
-
-{{--                                        // Update the total price display--}}
-{{--                                        $('#totalAmount').val(selectedPrice.toFixed(2)); // Assuming an element to display the total amount--}}
-{{--                                    }--}}
-
-{{--                                    // Bind the updateTotalAmount function to the change event of radio buttons--}}
-{{--                                    $('input[type="radio"]').on('change', updateTotalAmount);--}}
-
-{{--                                    // Clear selections and reset price to base price--}}
-{{--                                    $('#resetButton').on('click', function() {--}}
-{{--                                        $('input[type="radio"]').prop('checked', false); // Uncheck all radio buttons--}}
-{{--                                        $('#totalAmount').val(basePrice.toFixed(2)); // Reset to base price--}}
-{{--                                        console.log("All options cleared. Total amount reset to base price: " + basePrice);--}}
-{{--                                    });--}}
-
-{{--                                    // Initial update--}}
-{{--                                    updateTotalAmount();--}}
-{{--                                });--}}
-
-{{--                            </script>--}}
-
-
-
-
 
                             <input type="hidden" id="tPrice" value="0">
                             @if($product->text == 1)
@@ -527,30 +498,6 @@
 
                             <br/>
                             <br/>
-                            <style>
-                                .color-options {
-                                    display: flex;
-                                    flex-wrap: wrap;
-                                    gap: 10px;
-                                }
-
-                                .color-box {
-                                    display: inline-block;
-                                    width: 80px;
-                                    height: 50px;
-                                    text-align: center;
-                                    line-height: 50px;
-                                    border: 2px solid transparent;
-                                    cursor: pointer;
-                                    border-radius: 4px;
-                                }
-
-                                .color-box:hover,
-                                input[type="radio"]:checked + .color-box {
-                                    border-color: #ef9b00;
-                                }
-
-                            </style>
                             <div id="colorOptions" style="display: none;">
                                 <div class="color-options">
                                     <label>
@@ -585,10 +532,6 @@
                                         <input type="radio" name="color" value="pink" style="display: none;">
                                         <span class="color-box" style="background-color: pink;">Pink</span>
                                     </label>
-{{--                                    <label>--}}
-{{--                                        <input type="radio" name="color" value="custom" style="display: none;">--}}
-{{--                                        <span class="color-box" style="background-color: lightgray;">Custom Color</span>--}}
-{{--                                    </label>--}}
                                 </div>
 
                             </div>
@@ -752,103 +695,6 @@
                                 });
 
                             </script>
-{{--                            <script>--}}
-{{--                                $(document).ready(function () {--}}
-{{--                                    // Initialize base price--}}
-{{--                                    let basePrice = parseFloat($('#totalAmount').val()) || 0;--}}
-
-{{--                                    // Function to update the total amount--}}
-{{--                                    function updateTotalAmount() {--}}
-{{--                                        let totalAmount = basePrice;--}}
-{{--                                        console.log("Base price: " + totalAmount);--}}
-
-{{--                                        // Iterate over each select element to add the price of selected options--}}
-{{--                                        $('select').each(function () {--}}
-{{--                                            var selectedOption = $(this).find('option:selected');--}}
-{{--                                            var price = parseFloat(selectedOption.data('wapf-price')) || parseFloat(selectedOption.data('price')) || 0; // Get the price from data attribute--}}
-{{--                                            console.log("Selected option: " + selectedOption.text() + " Price: " + price);--}}
-
-{{--                                            // Only add price if it's not the default option--}}
-{{--                                            if (selectedOption.val()) {--}}
-{{--                                                totalAmount += price; // Add to the total amount--}}
-{{--                                            }--}}
-{{--                                        });--}}
-
-{{--                                        $('#totalAmount').val(totalAmount.toFixed(2)); // Update the total amount display--}}
-{{--                                        console.log("Total amount: " + totalAmount);--}}
-{{--                                    }--}}
-
-{{--                                    // Bind the updateTotalAmount function to the change event of the select elements--}}
-{{--                                    $('select').on('change', updateTotalAmount);--}}
-
-{{--                                    // Initial update--}}
-{{--                                    updateTotalAmount();--}}
-
-{{--                                    // Function to handle visibility of topper text input based on selected topper option--}}
-{{--                                    function handleTopperVisibility() {--}}
-{{--                                        const selectedTopper = $('#topperBy').val();--}}
-{{--                                        if (selectedTopper === 'select') {--}}
-{{--                                            $('#topperTextSection').show();--}}
-{{--                                        } else {--}}
-{{--                                            $('#topperTextSection').hide();--}}
-{{--                                            $('#topperText').val(''); // Clear the text input when not visible--}}
-{{--                                        }--}}
-{{--                                    }--}}
-
-{{--                                    // Function to handle visibility of Eko Cakes card message input based on selected option--}}
-{{--                                    function handleEkoCakesCard() {--}}
-{{--                                        const selectedOption = $('#ekoCakesCard').val();--}}
-{{--                                        if (selectedOption === 'yes') {--}}
-{{--                                            $('#ekoCakesMessageSection').show();--}}
-{{--                                        } else {--}}
-{{--                                            $('#ekoCakesMessageSection').hide();--}}
-{{--                                            $('#ekoCakesMessage').val(''); // Clear the text input when not visible--}}
-{{--                                        }--}}
-{{--                                    }--}}
-
-{{--                                    $('#ekoCakesCard').on('change', function () {--}}
-{{--                                        handleEkoCakesCard();--}}
-{{--                                    });--}}
-
-{{--                                    // Ensure initial visibility state is correct--}}
-{{--                                    handleTopperVisibility();--}}
-{{--                                    handleEkoCakesCard();--}}
-
-{{--                                    // Ensure the topper input visibility changes based on selection--}}
-{{--                                    $('#topperBy').change(function () {--}}
-{{--                                        var selectedOption = $(this).find(':selected');--}}
-{{--                                        var price = selectedOption.data('wapf-price');--}}
-
-{{--                                        if (price == '4000') {--}}
-{{--                                            $('#topperInput').show(); // Show the input box if Customized Topper is selected--}}
-{{--                                        } else {--}}
-{{--                                            $('#topperInput').hide(); // Hide the input box for other options--}}
-{{--                                        }--}}
-{{--                                    });--}}
-
-{{--                                    // Ensure custom color input visibility changes based on selection--}}
-{{--                                    document.getElementById('baseColor').addEventListener('change', function () {--}}
-{{--                                        var selectedOption = this.value;--}}
-{{--                                        var colorOptions = document.getElementById('colorOptions');--}}
-
-{{--                                        if (selectedOption === 'choose') {--}}
-{{--                                            colorOptions.style.display = 'block';--}}
-{{--                                        } else {--}}
-{{--                                            colorOptions.style.display = 'none';--}}
-{{--                                        }--}}
-{{--                                    });--}}
-
-{{--                                    document.getElementById('color').addEventListener('change', function () {--}}
-{{--                                        var customColorInput = document.getElementById('customColor');--}}
-{{--                                        if (this.value === 'custom') {--}}
-{{--                                            customColorInput.classList.remove('hidden');--}}
-{{--                                        } else {--}}
-{{--                                            customColorInput.classList.add('hidden');--}}
-{{--                                        }--}}
-{{--                                    });--}}
-{{--                                });--}}
-{{--                            </script>--}}
-
 
                             <br/>
                         <ul class="product-cta">
