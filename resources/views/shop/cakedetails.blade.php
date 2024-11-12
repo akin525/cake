@@ -370,7 +370,6 @@
                                 document.addEventListener("DOMContentLoaded", function () {
                                     const attributeInputs = document.querySelectorAll('input[name^="attributes"]');
                                     const priceDisplay = document.querySelector("#priceDisplay"); // Assuming you have an element with this ID for displaying price
-                                    const totalAmount = document.querySelector("#totalAmount"); // Assuming you have an element with this ID for displaying price
 
                                     function updatePrice() {
                                         let selectedOptions = [];
@@ -385,7 +384,7 @@
 
                                         if (priceDisplay) {
                                             priceDisplay.innerText = price; // Update the price display element
-                                            totalAmount.document.value=price;
+                                            document.getElementById('totalAmount').value=price;
                                         }
                                     }
 
