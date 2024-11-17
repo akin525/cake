@@ -133,7 +133,7 @@
                             @endif
                         </a>
                         <div class="category-four_content" style="font: 12px cormorant, serif">
-                            <a href="{{ route('category', $cat->id) }}" class="category-four_name cormorant-upright-bold">{{ $cat->name }}</a>
+                            <a href="{{ route('category', $cat->id) }}" class="category-four_name cormorant-upright-bold" style="color: #ef9b00">{{ $cat->name }}</a>
                         </div>
 
                     </div>

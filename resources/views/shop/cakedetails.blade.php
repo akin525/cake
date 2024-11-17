@@ -317,7 +317,9 @@
 
                             <div class="price-container">
                                 <span class="product-head-price">₦</span>
-                                <input type="text" id="totalAmount12" class="no-border-input" name="amount" value="{{ $product->price }}" readonly/>
+{{--                                <input type="text" id="totalAmount12" class="no-border-input" name="amount" value="{{ $product->price }}" readonly/>--}}
+                                                            <p id="priceDisplay">Select options to see the price</p>
+
                             </div>
 
                             @php
