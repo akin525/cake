@@ -318,7 +318,7 @@
                             <div class="price-container">
                                 <span class="product-head-price">₦</span>
 {{--                                <input type="text" id="totalAmount12" class="no-border-input" name="amount" value="{{ $product->price }}" readonly/>--}}
-                                                            <p id="priceDisplay">Select options to see the price</p>
+                                                            <p id="priceDisplay">{{$product->price}}</p>
 
                             </div>
 
@@ -811,7 +811,7 @@
             const unselectButton = document.getElementById("unselectButton"); // Unselect add-ons button
 
             // Base price for the product
-            const basePrice = 0;
+            const basePrice = {{$product->price}};
             let currentTopperPrice = 0;
             let currentCardPrice = 0;
             let currentAddOnPrice = 0;

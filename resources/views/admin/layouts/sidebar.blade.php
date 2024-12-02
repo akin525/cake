@@ -144,31 +144,31 @@
                                     <span class="sidebar-item-text fs-14px fw-semibold">Add Topper</span>
                                 </a>
                             </li>
-{{--                            <li class="list-group-item px-0 py-0 sidebar-item mb-3 has-children border-0">--}}
-{{--                                <a href="#var" class="text-heading text-decoration-none lh-1 d-flex sidebar-link align-items-center py-5 px-6 position-relative" data-bs-toggle="collapse" aria-expanded="false" title="Products">--}}
-{{--<span class="sidebar-item-icon d-inline-block w-40px text-muted">--}}
-{{--<i class="fas fa-shopping-bag"></i>--}}
-{{--</span>--}}
-{{--                                    <span class="sidebar-item-text fs-14px fw-semibold">Variation</span>--}}
-{{--                                    <span class="position-absolute top-50 end-5 translate-middle-y"><i class="far fa-angle-down"></i></span>--}}
-{{--                                </a>--}}
-{{--                                <div class="collapse menu-collapse" id="var">--}}
-{{--                                    <ul class="sub-menu list-unstyled">--}}
-{{--                                        <li class="sidebar-item">--}}
-{{--                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/color')}}" title="Product List">Color</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="sidebar-item">--}}
-{{--                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/size')}}" title="Product List">Sizes</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="sidebar-item">--}}
-{{--                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/flavour')}}" title="Product Grid">Flavour</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="sidebar-item">--}}
-{{--                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/layers')}}" title="Product Grid">Layers <span class="badge badge-soft-danger">Hots</span></a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
+                            <li class="list-group-item px-0 py-0 sidebar-item mb-3 has-children border-0">
+                                <a href="#var" class="text-heading text-decoration-none lh-1 d-flex sidebar-link align-items-center py-5 px-6 position-relative" data-bs-toggle="collapse" aria-expanded="false" title="Products">
+<span class="sidebar-item-icon d-inline-block w-40px text-muted">
+<i class="fas fa-shopping-bag"></i>
+</span>
+                                    <span class="sidebar-item-text fs-14px fw-semibold">Variation</span>
+                                    <span class="position-absolute top-50 end-5 translate-middle-y"><i class="far fa-angle-down"></i></span>
+                                </a>
+                                <div class="collapse menu-collapse" id="var">
+                                    <ul class="sub-menu list-unstyled">
+                                        <li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/color')}}" title="Product List">Color</a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/size')}}" title="Product List">Sizes</a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/flavour')}}" title="Product Grid">Flavour</a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a class="sidebar-link pe-5 ps-8 py-5 lh-1 text-decoration-none fs-14px fw-semibold" href="{{route('admin/layers')}}" title="Product Grid">Layers <span class="badge badge-soft-danger">Hots</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li class="list-group-item px-0 py-0 sidebar-item mb-3 has-children border-0">
                                 <a href="#product" class="text-heading text-decoration-none lh-1 d-flex sidebar-link align-items-center py-5 px-6 position-relative" data-bs-toggle="collapse" aria-expanded="false" title="Products">
 <span class="sidebar-item-icon d-inline-block w-40px text-muted">
